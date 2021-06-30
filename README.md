@@ -6,7 +6,7 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 
 ## Grupo {N}
 
-* **Integrante 1** - [Leonardo Fernandez](https://github.com/leonelfernandez)
+* **Integrante 1** - [Leonel Fernandez](https://github.com/leonelfernandez)
 * **Integrante 2** - [Axel Higa](https://github.com/axeltomashiga)
 * **Integrante 3** - [Francisco Pereira](https://github.com)
 * **Integrante 4** - [Julia Valdovinos](https://github.com/julia-valdo)
