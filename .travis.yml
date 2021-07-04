@@ -1,0 +1,14 @@
+language: java
+jdk:
+  - oraclejdk11
+
+notifications:
+ email:
+    recipients:
+      - jvaldovinos@fi.uba.ar
+      - lvaldovinos@fi.uba.ar
+      - ahiga@fi.uba.ar
+      - lffernandez@fi.uba.ar
+      - franciscopere987@gmail.com
+    on_failure: always
+    on_success: always
