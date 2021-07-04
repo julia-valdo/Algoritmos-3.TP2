@@ -1,0 +1,19 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+'Gana Jugador 1'
+Actor Jugador
+
+Jugador -> "china:Pais": AtacarA(Katchatka:Pais)
+
+"china:Pais"-> "china:Pais": puedeAtacarA(Katchatka:Pais)
+return true
+
+"china:Pais" -> ":Batalla":batallaEntre(china:Pais, katchatka:Pais)
+
+":Batalla" -> "china:Pais": ocuparA(Katchatka:Pais)
+
+"china:Pais" -> "katchatka:Pais": mandarTropasA(:Ejercito)
+
+@enduml

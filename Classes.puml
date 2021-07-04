@@ -1,0 +1,83 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Juego{
+-primerJugador:Jugador
++accionDeJugador(unJugador:Jugador):void
+}
+
+class Jugador{
+-color:String
+-siguienteJugador:Jugador
++atacarA(unPais:Pais):void
++moverEjercidoDeA(unPais:Pais, unPais:Pais):void
++colocarEjercitoEn(unPais:Pais):void
+}
+
+class Ejercito{
+-color:String
+}
+
+
+class Pais{
+-PaisesConectados:Array
++colocarSoldado(color:string)
++atacarA(otroPais:Pais)
++PuedoAtacarA(Pais):boolean
+}
+
+
+class Objetivo{
+-objetivoComun: Ocupacion30Paises
+-objetivoSecreto
+}
+
+class Dados{
+-cantidad:int
++ordenar():void
++lanzar():int
++perdidaDeFichas(Dados, Dados)
+}
+
+interface FaseDeRonda{
++{abstract} accionDeJugador(unJugador:Jugador):void
+}
+
+class Atacar{
++accionDeJugador(unJugador:Jugador):void
+}
+
+class Reagrupar{
++accionDeJugador(unJugador:Jugador):void
+}
+
+class ColocarEjercitos{
++accionDeJugador(unJugador:Jugador):void
+}
+
+class Batalla{
+    batallaEntre(paisAtacante:Pais, paisDefensor: Pais)
+}
+
+Juego ---->"6" Jugador
+Juego --> FaseDeRonda
+
+FaseDeRonda <|.. Atacar
+FaseDeRonda <|.. Reagrupar
+FaseDeRonda <|.. ColocarEjercitos
+
+
+Jugador --> Pais
+Jugador --> Objetivo
+
+
+Pais --> "1..*"Ejercito
+
+Objetivo --> Ocupacion
+Objetivo --> Destruccion
+
+Juego -----> Batalla
+Batalla --> Dados
+
+
+@enduml
