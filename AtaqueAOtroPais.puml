@@ -14,6 +14,24 @@ return true
 
 ":Batalla" -> "china:Pais": ocuparA(Katchatka:Pais)
 
+":Batalla" -> "katchatka:Pais": tirarDadosDefensivos()
+return dadosDefensivos
+
+":Batalla" -> "china:Pais": tirarDadosAtacantes()
+    "china:Pais" -> "ejercitos:Ejercitos": tirarDadosAtacantes()
+    return dadosAtacantes
+"china:Pais" --> ":Batalla": dadosAtacantes
+
+":Batalla" -> "dadosDefensivos:Dados": batallarContra(dadosAtacantes)
+return resultadoDefensa
+
+":Batalla" -> "katchatka:Pais": contabilizarBajas(resultadoDefensa)
+
+":Batalla" -> "dadosAtacantes:Dados": batallarContra(dadosDefensivos)
+return resultadoAtaque
+
+":Batalla" -> "china:Pais": contabilizarBajas(resultadoAtaque)
+
 "china:Pais" -> "katchatka:Pais": mandarTropasA(:Ejercito)
 
 @enduml
