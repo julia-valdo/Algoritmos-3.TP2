@@ -14,8 +14,10 @@ class Jugador{
 +colocarEjercitoEn(unPais:Pais):void
 }
 
-class Ejercito{
+class Ejercitos{
 -color:String
+-numeroDeEjercitos:int
++tirarDados():Dados
 }
 
 
@@ -27,20 +29,29 @@ class Pais{
 }
 
 
-class Objetivo{
+class ObjetivoJugador{
 -objetivoComun: Ocupacion30Paises
--objetivoSecreto
+
 }
 
 class Dados{
 -cantidad:int
 +ordenar():void
 +lanzar():int
-+perdidaDeFichas(Dados, Dados)
++perdidaDeFichasContra(otrosDados:Dados):int
+}
+
+class Continente{
+-paises:Paises
++ estaOcupadoPor(color:string): boolean
 }
 
 interface FaseDeRonda{
 +{abstract} accionDeJugador(unJugador:Jugador):void
+}
+
+interface Objetivo{
++ estaCumplido(): boolean
 }
 
 class Atacar{
@@ -71,13 +82,17 @@ Jugador --> Pais
 Jugador --> Objetivo
 
 
-Pais --> "1..*"Ejercito
+Pais --> "1..*"Ejercitos
 
-Objetivo --> Ocupacion
-Objetivo --> Destruccion
+Objetivo <|.. ObjetivoJugador
+Objetivo <|.. Ocupacion
+Objetivo <|.. Destruccion
+ObjetivoJugador --> Objetivo
 
-Juego -----> Batalla
-Batalla --> Dados
+Pais ..> Batalla
+Ejercitos ..> Dados
+Batalla ..> Dados
 
+Continente --> "1..*" Pais
 
 @enduml

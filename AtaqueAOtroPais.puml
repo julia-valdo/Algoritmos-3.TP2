@@ -22,12 +22,12 @@ return true
     return dadosAtacantes
 "china:Pais" --> ":Batalla": dadosAtacantes
 
-":Batalla" -> "dadosDefensivos:Dados": batallarContra(dadosAtacantes)
+":Batalla" -> "dadosDefensivos:Dados": perdidaDeFichasContra(dadosAtacantes)
 return resultadoDefensa
 
 ":Batalla" -> "katchatka:Pais": contabilizarBajas(resultadoDefensa)
 
-":Batalla" -> "dadosAtacantes:Dados": batallarContra(dadosDefensivos)
+":Batalla" -> "dadosAtacantes:Dados": perdidaDeFichasContra(dadosDefensivos)
 return resultadoAtaque
 
 ":Batalla" -> "china:Pais": contabilizarBajas(resultadoAtaque)
