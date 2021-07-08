@@ -67,7 +67,7 @@ class ColocarEjercitos{
 }
 
 class Batalla{
-    batallaEntre(paisAtacante:Pais, paisDefensor: Pais)
++batallaEntre(paisAtacante:Pais, paisDefensor: Pais)
 }
 
 Juego ---->"6" Jugador

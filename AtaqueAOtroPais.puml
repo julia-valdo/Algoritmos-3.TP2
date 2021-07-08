@@ -14,12 +14,16 @@ return true
 
 ":Batalla" -> "katchatka:Pais": tirarDadosDefensivos()
     "katchatka:Pais" -> "ejercitosKatchatka:Ejercitos": tirarDadosDefensivos()
+    create "dadosDefensivos:Dados"
+    "ejercitosChina:Ejercitos" -> "dadosDefensivos:Dados" : new
     return dadosDefensivos
 "katchatka:Pais" --> ":Batalla": dadosDefensivos
 
 ":Batalla" -> "china:Pais": tirarDadosAtacantes()
-    "china:Pais" -> "ejercitosChina:Ejercitos": tirarDadosAtacantes()
-    return dadosAtacantes
+    "china:Pais" --> "ejercitosChina:Ejercitos": tirarDadosAtacantes()
+    create "dadosAtacantes:Dados"
+    "ejercitosChina:Ejercitos" -> "dadosAtacantes:Dados" : new
+    "ejercitosChina:Ejercitos" --> "china:Pais": dadosAtacantes
 "china:Pais" --> ":Batalla": dadosAtacantes
 
 ":Batalla" -> "dadosDefensivos:Dados": perdidaDeFichasContra(dadosAtacantes)
