@@ -1,0 +1,44 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+'Gana Jugador 1'
+Actor Jugador
+
+Jugador -> "china:Pais": AtacarA(Katchatka:Pais)
+
+"china:Pais"-> "china:Pais": puedeAtacarA(Katchatka:Pais)
+return true
+
+"china:Pais" -> ":Batalla":batallaEntre(china:Pais, katchatka:Pais)
+
+":Batalla" -> "katchatka:Pais": tirarDadosDefensivos()
+    "katchatka:Pais" -> "ejercitosKatchatka:Ejercitos": tirarDadosDefensivos()
+    create "dadosDefensivos:Dados"
+    "ejercitosChina:Ejercitos" -> "dadosDefensivos:Dados" : new
+    return dadosDefensivos
+"katchatka:Pais" --> ":Batalla": dadosDefensivos
+
+":Batalla" -> "china:Pais": tirarDadosAtacantes()
+    "china:Pais" --> "ejercitosChina:Ejercitos": tirarDadosAtacantes()
+    create "dadosAtacantes:Dados"
+    "ejercitosChina:Ejercitos" -> "dadosAtacantes:Dados" : new
+    "ejercitosChina:Ejercitos" --> "china:Pais": dadosAtacantes
+"china:Pais" --> ":Batalla": dadosAtacantes
+
+":Batalla" -> "dadosDefensivos:Dados": perdidaDeFichasContra(dadosAtacantes)
+return resultadoDefensa
+
+":Batalla" -> "katchatka:Pais": contabilizarBajas(resultadoDefensa)
+
+":Batalla" -> "dadosAtacantes:Dados": perdidaDeFichasContra(dadosDefensivos)
+return resultadoAtaque
+
+":Batalla" -> "china:Pais": contabilizarBajas(resultadoAtaque)
+
+":Batalla" -> "china:Pais": ocuparA(Katchatka:Pais)
+
+"china:Pais" -> "katchatka:Pais": mandarTropasA(:Ejercito)
+
+
+@enduml
