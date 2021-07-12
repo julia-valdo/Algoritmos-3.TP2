@@ -2,28 +2,23 @@ package edu.fiuba.algo3.modelo;
 
 public class Pais {
 
-    Ocupante fuerzasOcupantes;
+    Ejercitos fuerzasOcupantes;
 
     public Pais(){
-        this.fuerzasOcupantes = new EjercitosNulos();
+        this.fuerzasOcupantes = new Derrotados();
     }
 
     /*
     Para cambiar cuando se implementen los ejercitos
      */
-    public void recibirTropas(Ocupante otrosEjercitos){
-            if(this.fuerzasOcupantes.debenDesocupar(this)) {
-                this.cambiarDeOcupante(otrosEjercitos);
-            }
+    public void recibirTropas(Ejercitos otrosEjercitos){
+            this.fuerzasOcupantes = this.fuerzasOcupantes.evaluarFuerzasRestantes();
+            this.fuerzasOcupantes = this.fuerzasOcupantes.disputarDominioDe(this, otrosEjercitos);
     }
 
     public boolean estaOcupadoPor(Jugador unJugador){
         return this.fuerzasOcupantes.estanBajoElMandoDe(unJugador);
     }
 
-    private void cambiarDeOcupante(Ocupante otrosEjercitos){
-        this.fuerzasOcupantes = otrosEjercitos;
-        otrosEjercitos.ocupacionExitosaDe(this);
-    }
 
 }

@@ -8,7 +8,12 @@ public class Jugador {
     private ArrayList<Pais> paisesOcupados;
 
     public Jugador(int numeroDeFuerzas){
-        this.reservas = new Ejercitos(numeroDeFuerzas, this);
+        this.reservas = new EnPie(numeroDeFuerzas, this);
+        this.paisesOcupados = new ArrayList<>();
+    }
+
+    public Jugador(){
+        this.reservas = new Derrotados(this);
         this.paisesOcupados = new ArrayList<>();
     }
 
