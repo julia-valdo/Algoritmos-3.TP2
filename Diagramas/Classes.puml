@@ -15,7 +15,7 @@ class Jugador{
 }
 
 class Ejercitos{
--color:String
+-comandante:Jugador
 -numeroDeEjercitos:int
 +tirarDados():Dados
 }
@@ -54,6 +54,16 @@ interface Objetivo{
 + estaCumplido(): boolean
 }
 
+interface Ocupante{
+    + estanBajoElMandoDe(unJugador:Jugador):boolean
+    + estanDerrotadas():boolean
+    + desocupar(unPais:Pais): void
+}
+
+class EjercitosNulos{
+
+}
+
 class Atacar{
 +accionDeJugador(unJugador:Jugador):void
 }
@@ -82,7 +92,10 @@ Jugador --> Pais
 Jugador --> Objetivo
 
 
-Pais --> "1..*"Ejercitos
+Pais --> Ocupante
+
+Ocupante <|... Ejercitos
+Ocupante <|... EjercitosNulos
 
 Objetivo <|.. ObjetivoJugador
 Objetivo <|.. Ocupacion

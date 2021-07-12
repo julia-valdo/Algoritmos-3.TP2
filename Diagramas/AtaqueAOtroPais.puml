@@ -20,7 +20,7 @@ return true
 "katchatka:Pais" --> ":Batalla": dadosDefensivos
 
 ":Batalla" -> "china:Pais": tirarDadosAtacantes()
-    "china:Pais" --> "ejercitosChina:Ejercitos": tirarDadosAtacantes()
+    "china:Pais" -> "ejercitosChina:Ejercitos": tirarDadosAtacantes()
     create "dadosAtacantes:Dados"
     "ejercitosChina:Ejercitos" -> "dadosAtacantes:Dados" : new
     "ejercitosChina:Ejercitos" --> "china:Pais": dadosAtacantes
