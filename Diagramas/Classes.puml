@@ -18,6 +18,7 @@ class Ejercitos{
 -numeroDeEjercitos:int
 +tirarDados():Dados
 +agregarEjercitos(cantidad:int):void
++restarEjercito(cantidad:int):void
 }
 
 
@@ -26,8 +27,8 @@ class Pais{
 -numeroDeJugador:int
 -PaisesConectados:Array<Pais>
 +agregarEjercito(cantidad:int):void
++restarEjercito(cantidad:int):void
 +atacarA(otroPais:Pais)
-+PuedoAtacarA(Pais):boolean
 }
 
 
@@ -37,9 +38,9 @@ class ObjetivoJugador{
 
 class Dados{
 -cantidad:int
-+ordenar():void
-+lanzar():int
-+perdidaDeFichasContra(otrosDados:Dados):int
+-ordenar():void
++tirarDados():int
++compararContra(otrosDados:Dados):int
 }
 
 class Continente{
@@ -93,7 +94,7 @@ Objetivo <|.. ObjetivoJugador
 
 ObjetivoJugador --> Ocupacion
 
-Pais ..> Batalla
+Ejercitos ..> Batalla
 Ejercitos ..> Dados
 Batalla ..> Dados
 

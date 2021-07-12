@@ -6,35 +6,38 @@ autonumber
 Actor Jugador
 
 Jugador -> "china:Pais": AtacarA(Katchatka:Pais)
-"china:Pais" -> ":Batalla":batallaEntre(china:Pais, katchatka:Pais)
+"china:Pais" -> ":Batalla":batallaEntre(chinaEjercito:Ejercito, katchatkaEjercito:Ejercito)
 
-":Batalla" -> "katchatka:Pais": tirarDadosDefensivos()
-    "katchatka:Pais" -> "ejercitosKatchatka:Ejercitos": tirarDadosDefensivos()
-    create "dadosDefensivos:Dados"
-    "ejercitosChina:Ejercitos" -> "dadosDefensivos:Dados" : new
-    return dadosDefensivos
-"katchatka:Pais" --> ":Batalla": dadosDefensivos
+":Batalla" -> "dadosAtacante:Dados" **:<<new()>>
 
-":Batalla" -> "china:Pais": tirarDadosAtacantes()
-    "china:Pais" --> "ejercitosChina:Ejercitos": tirarDadosAtacantes()
-    create "dadosAtacantes:Dados"
-    "ejercitosChina:Ejercitos" -> "dadosAtacantes:Dados" : new
-    "ejercitosChina:Ejercitos" --> "china:Pais": dadosAtacantes
-"china:Pais" --> ":Batalla": dadosAtacantes
+loop max3 min1 teniendo en cuenta la cantidad de ejercito
 
-":Batalla" -> "dadosDefensivos:Dados": perdidaDeFichasContra(dadosAtacantes)
-return resultadoDefensa
+":Batalla" -> "dadosAtacante:Dados": tirarDados()
+return int
 
-":Batalla" -> "katchatka:Pais": contabilizarBajas(resultadoDefensa)
+end
 
-":Batalla" -> "dadosAtacantes:Dados": perdidaDeFichasContra(dadosDefensivos)
-return resultadoAtaque
+":Batalla" -> "dadosDefensor:Dados" **:<<new()>>
 
-":Batalla" -> "china:Pais": contabilizarBajas(resultadoAtaque)
+loop max3 min1
 
-":Batalla" -> "china:Pais": ocuparA(Katchatka:Pais)
+":Batalla" -> "dadosDefensor:Dados": tirarDados()
+return int
 
-"china:Pais" -> "katchatka:Pais": mandarTropasA(:Ejercito)
+end
+
+":Batalla" -> ":Batalla" : resultadoBatalla(atacante, defensor)
+return perdidaAtacante
+
+":Batalla" -> "chinaEjercito:Ejercito":restarEjercito(perdidaAtacante:int)
+
+
+":Batalla" -> ":Batalla" : resultadoBatalla(defensor, atacante)
+return perdidaDefensor
+
+":Batalla" -> "kactchatkaEjercito:Ejercito":restarEjercito(perdidaDefensor:int)
+"kactchatkaEjercito:Ejercito" -> "derrotado:EstadoDelEjercito" **:new()
+return EstadoDelEjercito
 
 
 @enduml

@@ -17,7 +17,7 @@ public class PaisTest {
         Pais argentina = new Pais("Argentina");
         argentina.agregarEjercito(5);
 
-        assertEquals(5,argentina.getCantidadDeEjercitos());
+        assertEquals(6,argentina.getCantidadDeEjercitos());
     }
 
     @Test

@@ -21,9 +21,10 @@ public class Pais {
         return this.numeroDelJugador;
     }
 
+    //Solo para pruebas
     public int getCantidadDeEjercitos() {return this.ejercitos.getCantidadEjercitos();}
 
-    public Ejercitos getEjercitos() {
+    private Ejercitos getEjercitos() {
         return ejercitos;
     }
 

@@ -3,8 +3,9 @@ package edu.fiuba.algo3.modelo;
 public class Ejercitos {
     int cantidadDeEjercitos;
 
+    //siempre debe tener 1 el pais
     public Ejercitos(){
-        cantidadDeEjercitos = 0;
+        cantidadDeEjercitos = 1;
     }
 
     public int getCantidadEjercitos() {
@@ -17,5 +18,9 @@ public class Ejercitos {
 
     public void restarEjercitos(int cantidad) {
         cantidadDeEjercitos -= cantidad;
+    }
+
+    public boolean fueDerrotado(){
+        return cantidadDeEjercitos <= 0;
     }
 }
