@@ -1,39 +1,21 @@
 package edu.fiuba.algo3.modelo;
 
-public class Ejercitos implements Ocupante{
+public class Ejercitos {
+    int cantidadDeEjercitos;
 
-    Jugador comandante;
-    int numeroDeFuerzas;
-
-    public Ejercitos(int fuerzasIniciales, Jugador comandante){
-        this.numeroDeFuerzas = fuerzasIniciales;
-        this.comandante = comandante;
+    public Ejercitos(){
+        cantidadDeEjercitos = 0;
     }
 
-    @Override
-    public boolean estanBajoElMandoDe(Jugador unJugador){
-        return comandante == unJugador;
+    public int getCantidadEjercitos() {
+        return cantidadDeEjercitos;
     }
 
-    /*
-    Este metodo puede llegar a cambiar cuando se implementen los ejercitos
-     */
-    @Override
-    public boolean debenDesocupar(Pais unPais){
-        boolean hayQueDesocupar = this.fuimosDerrotados();
-        if(hayQueDesocupar) {
-            this.comandante.perdisteA(unPais);
-        }
-        return hayQueDesocupar;
+    public void agregarEjercitos(int cantidad) {
+        cantidadDeEjercitos += cantidad;
     }
 
-    @Override
-    public void ocupacionExitosaDe(Pais unPais) {
-        this.comandante.ocupasteA(unPais);
+    public void restarEjercitos(int cantidad) {
+        cantidadDeEjercitos -= cantidad;
     }
-
-    private boolean fuimosDerrotados(){
-        return numeroDeFuerzas == 0;
-    }
-
 }
