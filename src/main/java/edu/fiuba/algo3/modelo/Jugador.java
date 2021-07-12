@@ -12,23 +12,23 @@ public class Jugador {
         this.paisesOcupados = new ArrayList<>();
     }
 
+    /*
+    Este metodo hay que cambiarlo cuando se implementen bien los ejercitos
+     */
     public void ocupa(Pais unPais){
             unPais.recibirTropas(reservas);
-            if(unPais.estaOcupadoPor(this)) {
-                paisesOcupados.add(unPais);
-            }
-    }
-
-    public void atacarA(Pais unPais){
-            paisesOcupados.get(0).atacarA(unPais);
     }
 
     public boolean tieneFuerzasEn(Pais unPais){
-        return paisesOcupados.contains(unPais);
+        return unPais.estaOcupadoPor(this);
     }
 
     public void perdisteA(Pais unPais){
         this.paisesOcupados.remove(unPais);
+    }
+
+    public void ocupasteA(Pais unPais){
+        paisesOcupados.add(unPais);
     }
 
 }

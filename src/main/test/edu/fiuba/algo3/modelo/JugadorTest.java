@@ -24,7 +24,9 @@ public class JugadorTest {
         jugador1.ocupa(argentina);
         jugador2.ocupa(chile);
 
-        jugador1.atacarA(chile);
+        //Aca viene el ataque
+        jugador1.ocupa(chile);
+
 
         assertFalse(jugador2.tieneFuerzasEn(chile));
 
@@ -40,7 +42,9 @@ public class JugadorTest {
         jugador1.ocupa(argentina);
         jugador2.ocupa(chile);
 
-        jugador1.atacarA(chile);
+        //aca viene el ataque
+        jugador1.ocupa(chile);
+
 
         assertTrue(jugador2.tieneFuerzasEn(chile));
     }

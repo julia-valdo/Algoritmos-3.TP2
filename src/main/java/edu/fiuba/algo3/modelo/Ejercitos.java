@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-public class Ejercitos {
+public class Ejercitos implements Ocupante{
 
     Jugador comandante;
     int numeroDeFuerzas;
@@ -10,16 +10,30 @@ public class Ejercitos {
         this.comandante = comandante;
     }
 
+    @Override
     public boolean estanBajoElMandoDe(Jugador unJugador){
         return comandante == unJugador;
     }
 
-    public boolean estanDerrotadas(){
-        return numeroDeFuerzas == 0;
+    /*
+    Este metodo puede llegar a cambiar cuando se implementen los ejercitos
+     */
+    @Override
+    public boolean debenDesocupar(Pais unPais){
+        boolean hayQueDesocupar = this.fuimosDerrotados();
+        if(hayQueDesocupar) {
+            this.comandante.perdisteA(unPais);
+        }
+        return hayQueDesocupar;
     }
 
-    public void desocupar(Pais unPais){
-        this.comandante.perdisteA(unPais);
+    @Override
+    public void ocupacionExitosaDe(Pais unPais) {
+        this.comandante.ocupasteA(unPais);
+    }
+
+    private boolean fuimosDerrotados(){
+        return numeroDeFuerzas == 0;
     }
 
 }
