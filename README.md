@@ -12,7 +12,7 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 * **Integrante 4** - [Julia Valdovinos](https://github.com/julia-valdo)
 * **Integrante 5** - [Lucia Valdovinos](https://github.com/lvaldo)
 
-Corrector: **{Corrector}**
+Corrector: **Joaquín Gómez**
 
 ## Aplicación
 
