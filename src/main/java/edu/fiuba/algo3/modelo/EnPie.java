@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-public class EnPie implements Ejercitos{
+public class EnPie implements EstadoEjercitos{
 
     Jugador comandante;
     int numeroDeFuerzas;
@@ -16,7 +16,7 @@ public class EnPie implements Ejercitos{
     }
 
     @Override
-    public Ejercitos disputarDominioDe(Pais unPais, Ejercitos otrasFuerzas) {
+    public EstadoEjercitos disputarDominioDe(Pais unPais, EstadoEjercitos otrasFuerzas) {
         return this;
     }
 
@@ -27,7 +27,7 @@ public class EnPie implements Ejercitos{
     }
 
     @Override
-    public Ejercitos evaluarFuerzasRestantes(){
+    public EstadoEjercitos evaluarFuerzasRestantes(){
         return numeroDeFuerzas == 0 ? new Derrotados(this.comandante) : this;
     }
 

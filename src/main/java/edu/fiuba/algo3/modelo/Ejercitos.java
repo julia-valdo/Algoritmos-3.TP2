@@ -1,13 +1,27 @@
 package edu.fiuba.algo3.modelo;
 
-public interface Ejercitos {
+public class Ejercitos {
+    int cantidadDeEjercitos;
 
-    boolean estanBajoElMandoDe(Jugador unJugador);
+    //siempre debe tener 1 el pais
+    public Ejercitos(){
+        cantidadDeEjercitos = 1;
+    }
 
-    Ejercitos disputarDominioDe(Pais unPais, Ejercitos otrasFuerzas);
+    public int getCantidadEjercitos() {
+        return cantidadDeEjercitos;
+    }
 
-    void ocupacionExitosaDe(Pais unPais);
+    public void agregarEjercitos(int cantidad) {
+        cantidadDeEjercitos += cantidad;
+    }
 
-    Ejercitos evaluarFuerzasRestantes();
+    public void restarEjercitos(int cantidad) {
+        cantidadDeEjercitos -= cantidad;
+    }
+
+    public boolean fueDerrotado(){
+        return cantidadDeEjercitos <= 0;
+    }
 
 }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Jugador {
 
-    private Ejercitos reservas;
+    private EstadoEjercitos reservas;
     private ArrayList<Pais> paisesOcupados;
 
     public Jugador(int numeroDeFuerzas){

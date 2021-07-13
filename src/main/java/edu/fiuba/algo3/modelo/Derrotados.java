@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-public class Derrotados implements Ejercitos{
+public class Derrotados implements EstadoEjercitos{
 
     private Jugador comandante;
 
@@ -18,7 +18,7 @@ public class Derrotados implements Ejercitos{
     }
 
     @Override
-    public Ejercitos disputarDominioDe(Pais unPais, Ejercitos otrasFuerzas) {
+    public EstadoEjercitos disputarDominioDe(Pais unPais, EstadoEjercitos otrasFuerzas) {
         this.comandante.perdisteA(unPais);
         otrasFuerzas.ocupacionExitosaDe(unPais);
         return otrasFuerzas;
@@ -31,7 +31,7 @@ public class Derrotados implements Ejercitos{
     }
 
     @Override
-    public Ejercitos evaluarFuerzasRestantes() {
+    public EstadoEjercitos evaluarFuerzasRestantes() {
         return this;
     }
 }
