@@ -4,16 +4,16 @@ import java.util.ArrayList;
 
 public class Jugador {
 
-    private EstadoEjercitos reservas;
+    private Ejercitos reservas;
     private ArrayList<Pais> paisesOcupados;
 
     public Jugador(int numeroDeFuerzas){
-        this.reservas = new EnPie(numeroDeFuerzas, this);
+        this.reservas = new Ejercitos(numeroDeFuerzas, this);
         this.paisesOcupados = new ArrayList<>();
     }
 
     public Jugador(){
-        this.reservas = new Derrotados(this);
+        this.reservas = new Ejercitos(this);
         this.paisesOcupados = new ArrayList<>();
     }
 

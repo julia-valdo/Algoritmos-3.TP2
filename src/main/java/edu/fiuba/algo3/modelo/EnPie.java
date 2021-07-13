@@ -2,33 +2,41 @@ package edu.fiuba.algo3.modelo;
 
 public class EnPie implements EstadoEjercitos{
 
-    Jugador comandante;
     int numeroDeFuerzas;
 
-    public EnPie(int fuerzasIniciales, Jugador comandante){
+    public EnPie(int fuerzasIniciales){
         this.numeroDeFuerzas = fuerzasIniciales;
-        this.comandante = comandante;
+
+    }
+
+    public EstadoEjercitos evaluarFuerzasRestantes(){
+        return numeroDeFuerzas <= 0 ? new Derrotados() : this;
     }
 
     @Override
-    public boolean estanBajoElMandoDe(Jugador unJugador){
-        return comandante == unJugador;
+    public int getCantidadFuerzas() {
+        return this.numeroDeFuerzas;
     }
 
     @Override
-    public EstadoEjercitos disputarDominioDe(Pais unPais, EstadoEjercitos otrasFuerzas) {
+    public EstadoEjercitos agregarFuerzas(int numeroDeFuerzas) {
+        this.numeroDeFuerzas += numeroDeFuerzas;
         return this;
     }
 
-
     @Override
-    public void ocupacionExitosaDe(Pais unPais) {
-        this.comandante.ocupasteA(unPais);
+    public EstadoEjercitos restarFuerzas(int numeroFuerzas) {
+        /*
+        Despues trata de arreglar esto
+         */
+        this.numeroDeFuerzas -= numeroFuerzas;
+
+        return this.evaluarFuerzasRestantes();
     }
 
     @Override
-    public EstadoEjercitos evaluarFuerzasRestantes(){
-        return numeroDeFuerzas == 0 ? new Derrotados(this.comandante) : this;
+    public boolean estanDerrotados() {
+        return false;
     }
 
 }

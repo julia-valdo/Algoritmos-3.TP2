@@ -10,14 +10,14 @@ public class EjercitosTest {
     public void creoEjercitoYDebeTenerCero(){
         Ejercitos ejercito = new Ejercitos();
 
-        assertEquals(1, ejercito.getCantidadEjercitos());
+        assertEquals(0, ejercito.getCantidadEjercitos());
     }
 
     @Test
     public void creoEjercitoYAgregoEjercito(){
         Ejercitos ejercito = new Ejercitos();
         ejercito.agregarEjercitos(5);
-        assertEquals(6, ejercito.getCantidadEjercitos());
+        assertEquals(5, ejercito.getCantidadEjercitos());
     }
 
     @Test
@@ -25,14 +25,14 @@ public class EjercitosTest {
         Ejercitos ejercito = new Ejercitos();
         ejercito.agregarEjercitos(5);
         ejercito.restarEjercitos(2);
-        assertEquals(4, ejercito.getCantidadEjercitos());
+        assertEquals(3, ejercito.getCantidadEjercitos());
     }
 
     @Test
     public void creoEjercitoYAgregoEjercitoYLosEliminoATodosEntoncesFueDerrotado(){
         Ejercitos ejercito = new Ejercitos();
         ejercito.agregarEjercitos(5);
-        ejercito.restarEjercitos(6);
+        ejercito.restarEjercitos(5);
         assertTrue(ejercito.fueDerrotado());
     }
 }

@@ -17,7 +17,7 @@ public class PaisTest {
         Pais argentina = new Pais("Argentina");
         argentina.agregarEjercito(5);
 
-        assertEquals(6,argentina.getCantidadDeEjercitos());
+        assertEquals(5,argentina.getCantidadDeEjercitos());
     }
 
     @Test
@@ -32,10 +32,11 @@ public class PaisTest {
 
     @Test
     public void creoDosPaisesQuePertenezcanAlMismoJugadorYVerificoQueLoSean(){
+        Jugador jugador1 = new Jugador(1);
         Pais argentina = new Pais("Argentina");
         Pais chile = new Pais("Chile");
-        argentina.setNumeroDelJugador(1);
-        chile.setNumeroDelJugador(1);
+        jugador1.ocupa(argentina);
+        jugador1.ocupa(chile);
 
         assertTrue(argentina.esDelMismoEquipo(chile));
     }

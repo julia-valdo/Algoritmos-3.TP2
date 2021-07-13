@@ -3,22 +3,15 @@ import java.util.ArrayList;
 
 public class Pais {
     Ejercitos ejercitos;
-    int numeroDelJugador;
     String nombreDelPais;
     ArrayList<Pais> paisesConectados;
 
-    EstadoEjercitos fuerzasOcupantes;
-
     public Pais(){
-        this.fuerzasOcupantes = new Derrotados();
+        this.ejercitos = new Ejercitos();
     }
 
-    /*
-    Para cambiar cuando se implementen los ejercitos
-     */
-    public void recibirTropas(EstadoEjercitos otrosEjercitos) {
-        this.fuerzasOcupantes = this.fuerzasOcupantes.evaluarFuerzasRestantes();
-        this.fuerzasOcupantes = this.fuerzasOcupantes.disputarDominioDe(this, otrosEjercitos);
+    public void recibirTropas(Ejercitos otrosEjercitos) {
+        this.ejercitos = this.ejercitos.disputarDominioDe(this, otrosEjercitos);
     }
     public Pais (String nombre){
         ejercitos = new Ejercitos();
@@ -30,24 +23,12 @@ public class Pais {
         return nombreDelPais;
     }
 
-    public int getNumeroDelJugador() {
-        return this.numeroDelJugador;
-    }
-
     public boolean estaOcupadoPor(Jugador unJugador){
-        return this.fuerzasOcupantes.estanBajoElMandoDe(unJugador);
+        return this.ejercitos.estanBajoElMandoDe(unJugador);
     }
 
     //Solo para pruebas
     public int getCantidadDeEjercitos() {return this.ejercitos.getCantidadEjercitos();}
-
-    private Ejercitos getEjercitos() {
-        return ejercitos;
-    }
-
-    public void setNumeroDelJugador(int numeroDelJugador) {
-        this.numeroDelJugador = numeroDelJugador;
-    }
 
     public void agregarPaisesConectados(Pais unPais) {
         paisesConectados.add(unPais);
@@ -60,7 +41,7 @@ public class Pais {
     }
 
     public boolean esDelMismoEquipo(Pais otroPais) {
-        return this.numeroDelJugador == otroPais.getNumeroDelJugador();
+        return this.ejercitos.sonAliadosDe(otroPais.ejercitos);
     }
 
 
