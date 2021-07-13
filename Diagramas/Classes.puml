@@ -15,16 +15,29 @@ class Jugador{
 }
 
 class Ejercitos{
--numeroDeEjercitos:int
+
 +tirarDados():Dados
 +agregarEjercitos(cantidad:int):void
 +restarEjercito(cantidad:int):void
 }
 
+interface EstadoEjercitos{
+
+ + evaluarFuerzasRestantes(): EstadoEjercitos
+ + getCantidadFuerzas(): int
+ + agregarFuerzas(int numeroDeFuerzas): EstadoEjercitos
+ + restarFuerzas(int numeroFuerzas): EstadoEjercitos
+ + estanDerrotados(): boolean
+}
+
+class EnPie{
+-numeroDeEjercitos:int
+}
+class Derrotados{
+}
 
 class Pais{
 -nombreDelPais:String
--numeroDeJugador:int
 -PaisesConectados:Array<Pais>
 +agregarEjercito(cantidad:int):void
 +restarEjercito(cantidad:int):void
@@ -85,7 +98,7 @@ Jugador --> Pais
 Jugador --> Objetivo
 Jugador --> Continente
 
-Pais --> "1..*"Ejercitos
+Pais --> Ejercitos
 
 Objetivo <|.. Ocupacion
 Objetivo <|.. Destruccion
@@ -96,6 +109,10 @@ ObjetivoJugador --> Ocupacion
 
 Ejercitos ..> Batalla
 Ejercitos ..> Dados
+Ejercitos -> "comandante" Jugador
+EstadoEjercitos <- Ejercitos
+EstadoEjercitos <|.. EnPie
+EstadoEjercitos <|.. Derrotados
 Batalla ..> Dados
 
 Continente --> "1..*" Pais
