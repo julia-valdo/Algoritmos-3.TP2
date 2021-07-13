@@ -15,7 +15,7 @@ public class JugadorTest {
 
 
     @Test
-    public void despuesDeUnAtaqueExitosoElPaisCambiaDeJugador(){
+    public void unJugadorPuedeOcuparUnPaisConEjercitosDerrotados(){
         Jugador jugador1 = new Jugador(3);
         Jugador jugador2 = new Jugador(0); //Las fuerzas de este ya estan derrotadas
         Pais argentina = new Pais();
@@ -24,7 +24,7 @@ public class JugadorTest {
         jugador1.ocupa(argentina);
         jugador2.ocupa(chile);
 
-        //Aca viene el ataque
+
         jugador1.ocupa(chile);
 
 
@@ -33,7 +33,7 @@ public class JugadorTest {
     }
 
     @Test
-    public void despuesDeUnAtaqueFalladoUnPaisNoCambiaDeJugador(){
+    public void unJugadorNoPuedeOcuparUnPaisConEjercitosEnPie(){
         Jugador jugador1 = new Jugador(3);
         Jugador jugador2 = new Jugador(3); //no se derrotan sus fuerzas
         Pais argentina = new Pais();
@@ -42,7 +42,7 @@ public class JugadorTest {
         jugador1.ocupa(argentina);
         jugador2.ocupa(chile);
 
-        //aca viene el ataque
+
         jugador1.ocupa(chile);
 
 
