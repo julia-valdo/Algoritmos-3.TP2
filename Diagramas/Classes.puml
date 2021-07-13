@@ -7,7 +7,7 @@ class Juego{
 }
 
 class Jugador{
--color:String
+-numeroDeJugador:int
 -siguienteJugador:Jugador
 +atacarA(unPais:Pais):void
 +moverEjercidoDeA(unPais:Pais, unPais:Pais):void
@@ -15,35 +15,50 @@ class Jugador{
 }
 
 class Ejercitos{
--comandante:Jugador
--numeroDeEjercitos:int
+
 +tirarDados():Dados
++agregarEjercitos(cantidad:int):void
++restarEjercito(cantidad:int):void
 }
 
+interface EstadoEjercitos{
+
+ + evaluarFuerzasRestantes(): EstadoEjercitos
+ + getCantidadFuerzas(): int
+ + agregarFuerzas(int numeroDeFuerzas): EstadoEjercitos
+ + restarFuerzas(int numeroFuerzas): EstadoEjercitos
+ + estanDerrotados(): boolean
+}
+
+class EnPie{
+-numeroDeEjercitos:int
+}
+class Derrotados{
+}
 
 class Pais{
--PaisesConectados:Array
-+colocarSoldado(color:string)
+-nombreDelPais:String
+-PaisesConectados:Array<Pais>
++agregarEjercito(cantidad:int):void
++restarEjercito(cantidad:int):void
 +atacarA(otroPais:Pais)
-+PuedoAtacarA(Pais):boolean
 }
 
 
 class ObjetivoJugador{
 -objetivoComun: Ocupacion30Paises
-
 }
 
 class Dados{
 -cantidad:int
-+ordenar():void
-+lanzar():int
-+perdidaDeFichasContra(otrosDados:Dados):int
+-ordenar():void
++tirarDados():int
++compararContra(otrosDados:Dados):int
 }
 
 class Continente{
 -paises:Paises
-+ estaOcupadoPor(color:string): boolean
++ estaOcupadoPor(numeroDeJugador:int): boolean
 }
 
 interface FaseDeRonda{
@@ -54,15 +69,6 @@ interface Objetivo{
 + estaCumplido(): boolean
 }
 
-interface Ocupante{
-    + estanBajoElMandoDe(unJugador:Jugador):boolean
-    + estanDerrotadas():boolean
-    + desocupar(unPais:Pais): void
-}
-
-class EjercitosNulos{
-
-}
 
 class Atacar{
 +accionDeJugador(unJugador:Jugador):void
@@ -77,7 +83,7 @@ class ColocarEjercitos{
 }
 
 class Batalla{
-+batallaEntre(paisAtacante:Pais, paisDefensor: Pais)
++batallaEntre(ejercitoAtacante:Ejercitos, ejercitoDefensor: Ejercitos)
 }
 
 Juego ---->"6" Jugador
@@ -90,20 +96,23 @@ FaseDeRonda <|.. ColocarEjercitos
 
 Jugador --> Pais
 Jugador --> Objetivo
+Jugador --> Continente
 
+Pais --> Ejercitos
 
-Pais --> Ocupante
-
-Ocupante <|... Ejercitos
-Ocupante <|... EjercitosNulos
-
-Objetivo <|.. ObjetivoJugador
 Objetivo <|.. Ocupacion
 Objetivo <|.. Destruccion
-ObjetivoJugador --> Objetivo
+Objetivo <-- ObjetivoJugador
+Objetivo <|.. ObjetivoJugador
 
-Pais ..> Batalla
+ObjetivoJugador --> Ocupacion
+
+Ejercitos ..> Batalla
 Ejercitos ..> Dados
+Ejercitos -> "comandante" Jugador
+EstadoEjercitos <- Ejercitos
+EstadoEjercitos <|.. EnPie
+EstadoEjercitos <|.. Derrotados
 Batalla ..> Dados
 
 Continente --> "1..*" Pais

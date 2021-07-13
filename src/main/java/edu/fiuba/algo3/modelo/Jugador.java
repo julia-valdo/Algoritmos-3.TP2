@@ -12,6 +12,11 @@ public class Jugador {
         this.paisesOcupados = new ArrayList<>();
     }
 
+    public Jugador(){
+        this.reservas = new Ejercitos(this);
+        this.paisesOcupados = new ArrayList<>();
+    }
+
     /*
     Este metodo hay que cambiarlo cuando se implementen bien los ejercitos
      */
