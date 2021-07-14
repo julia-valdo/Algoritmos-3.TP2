@@ -2,10 +2,6 @@ package edu.fiuba.algo3.modelo;
 
 import java.util.ArrayList;
 
-// ojo con los numeros magicos
-// ojo cantidad distinta de dados
-// ordenar los vectores de mayor a menor
-
 public class Batalla {
 
     public void atacar(Ejercitos ejercitoAtacante, Ejercitos ejercitoDefensor){

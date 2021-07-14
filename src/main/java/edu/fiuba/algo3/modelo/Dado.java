@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import java.util.*;
-
+//asd
 public class Dado {
 
     public ArrayList<Integer> tirarDado(int cantidad){
