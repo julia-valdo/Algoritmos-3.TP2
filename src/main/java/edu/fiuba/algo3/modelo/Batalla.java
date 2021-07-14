@@ -9,9 +9,9 @@ public class Batalla {
         Dado dadoAtacante = new Dado();
         Dado dadoDefensor = new Dado();
 
-        ArrayList<Integer> resultadoDadoAtacante = new ArrayList<>();
-        ArrayList<Integer> resultadoDadoDefensor = new ArrayList<>();
-        ArrayList<Integer> resultadoBatalla = new ArrayList<>();
+        ArrayList<Integer> resultadoDadoAtacante;
+        ArrayList<Integer> resultadoDadoDefensor;
+        ArrayList<Integer> resultadoBatalla;
 
         resultadoDadoAtacante = dadoAtacante.tirarDado(ejercitoAtacante.getCantidadEjercitos());
         resultadoDadoDefensor = dadoDefensor.tirarDado(ejercitoDefensor.getCantidadEjercitos());

@@ -16,8 +16,8 @@ public class JugadorTest {
     public void unJugadorPuedeOcuparUnPaisConEjercitosDerrotados(){
         Jugador jugador1 = new Jugador();
         Jugador jugador2 = new Jugador();
-        Pais argentina = new Pais();
-        Pais chile = new Pais();
+        Pais argentina = new Pais("argentina");
+        Pais chile = new Pais("chile");
 
         jugador1.ocupa(argentina);
         jugador2.ocuparCon(chile, 0);//Las fuerzas de este ya estan derrotadas
@@ -35,8 +35,8 @@ public class JugadorTest {
     public void unJugadorNoPuedeOcuparUnPaisConEjercitosEnPie(){
         Jugador jugador1 = new Jugador();
         Jugador jugador2 = new Jugador(); //no se derrotan sus fuerzas
-        Pais argentina = new Pais();
-        Pais chile = new Pais();
+        Pais argentina = new Pais("argentina");
+        Pais chile = new Pais("chile");
 
         jugador1.ocupa(argentina);
         jugador2.ocupa(chile);
@@ -52,8 +52,8 @@ public class JugadorTest {
     public void siUnJugadorTrataDeOcuparUnPaisSinTenerFuerzasRestantesSeLanzaExcepcion(){
         Executable excepcion =  () -> {
           Jugador jugador1 = new Jugador();
-          Pais argentina = new Pais();
-          Pais chile = new Pais();
+          Pais argentina = new Pais("argentina");
+          Pais chile = new Pais("chile");
 
           jugador1.ocuparCon(argentina, 10);
           jugador1.ocupa(chile);
