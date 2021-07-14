@@ -4,7 +4,7 @@
 
 Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUBA
 
-## Grupo {N}
+## Grupo 2
 
 * **Integrante 1** - [Leonel Fernandez](https://github.com/leonelfernandez)
 * **Integrante 2** - [Axel Higa](https://github.com/axeltomashiga)
@@ -12,7 +12,7 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 * **Integrante 4** - [Julia Valdovinos](https://github.com/julia-valdo)
 * **Integrante 5** - [Lucia Valdovinos](https://github.com/lvaldo)
 
-Corrector: **{Corrector}**
+Corrector: **Joaquín Gómez**
 
 ## Aplicación
 
