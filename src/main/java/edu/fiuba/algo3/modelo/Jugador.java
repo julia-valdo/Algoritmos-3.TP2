@@ -7,8 +7,8 @@ public class Jugador {
     private Ejercitos reservas;
     private ArrayList<Pais> paisesOcupados;
 
-    public Jugador(int numeroDeFuerzas){
-        this.reservas = new Ejercitos(numeroDeFuerzas, this);
+    public Jugador(){
+        this.reservas = new Ejercitos(10,this);
         this.paisesOcupados = new ArrayList<>();
     }
 
@@ -16,7 +16,13 @@ public class Jugador {
     Este metodo hay que cambiarlo cuando se implementen bien los ejercitos
      */
     public void ocupa(Pais unPais){
-            unPais.recibirTropas(reservas);
+            Ejercitos nuevaDivision = this.reservas.generarDivision(1);
+            unPais.recibirTropas(nuevaDivision);
+    }
+
+    public void ocuparCon(Pais unPais, int cantidadFuerzas){
+        Ejercitos nuevaDivision = this.reservas.generarDivision(cantidadFuerzas);
+        unPais.recibirTropas(nuevaDivision);
     }
 
     public boolean tieneFuerzasEn(Pais unPais){
@@ -30,5 +36,7 @@ public class Jugador {
     public void ocupasteA(Pais unPais){
         paisesOcupados.add(unPais);
     }
+
+
 
 }

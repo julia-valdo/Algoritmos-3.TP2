@@ -1,39 +1,59 @@
 package edu.fiuba.algo3.modelo;
 
-public class Ejercitos implements Ocupante{
+public class Ejercitos {
 
-    Jugador comandante;
-    int numeroDeFuerzas;
+    private Jugador comandante;
+    private EstadoEjercitos condicionActual;
 
-    public Ejercitos(int fuerzasIniciales, Jugador comandante){
-        this.numeroDeFuerzas = fuerzasIniciales;
+    public Ejercitos(){
+        this.comandante = new Jugador();
+        this.condicionActual = new Derrotados();
+    }
+
+    public Ejercitos(int numeroFuerzas, Jugador comandante){
         this.comandante = comandante;
+        this.condicionActual = new EnPie(numeroFuerzas);
     }
 
-    @Override
-    public boolean estanBajoElMandoDe(Jugador unJugador){
-        return comandante == unJugador;
+    public int getCantidadEjercitos() {
+        return this.condicionActual.getCantidadFuerzas();
     }
 
-    /*
-    Este metodo puede llegar a cambiar cuando se implementen los ejercitos
-     */
-    @Override
-    public boolean debenDesocupar(Pais unPais){
-        boolean hayQueDesocupar = this.fuimosDerrotados();
-        if(hayQueDesocupar) {
-            this.comandante.perdisteA(unPais);
+    public void agregarEjercitos(int cantidad) {
+        this.condicionActual = this.condicionActual.agregarFuerzas(cantidad);
+    }
+
+    public Ejercitos generarDivision(int cantidad){ return this.confirmarNuevaDivisionDe(cantidad); }
+
+    public void restarEjercitos(int cantidad) { this.condicionActual = this.condicionActual.restarFuerzas(cantidad); }
+
+    public boolean fueDerrotado(){
+        this.condicionActual = this.condicionActual.evaluarFuerzasRestantes();
+        return this.condicionActual.estanDerrotados();
+    }
+
+    public boolean sonAliadosDe(Ejercitos ejercitos) { return this.estanBajoElMandoDe(ejercitos.comandante); }
+
+    public boolean estanBajoElMandoDe(Jugador unJugador) {
+        return this.comandante == unJugador;
+    }
+
+    public Ejercitos disputarDominioDe(Pais pais, Ejercitos otrosEjercitos) {
+            if(this.fueDerrotado()) {
+                this.comandante.perdisteA(pais);
+                otrosEjercitos.comandante.ocupasteA(pais);
+                return otrosEjercitos;
+            }
+            return this;
+    }
+
+    private Ejercitos confirmarNuevaDivisionDe(int numeroFuerzas){
+        if(this.haySuficientesFuerzasDisponibles(numeroFuerzas)){
+            this.restarEjercitos(numeroFuerzas);
+            return new Ejercitos(numeroFuerzas, this.comandante);
         }
-        return hayQueDesocupar;
+        throw new NoHayFuerzasRestantes();
     }
 
-    @Override
-    public void ocupacionExitosaDe(Pais unPais) {
-        this.comandante.ocupasteA(unPais);
-    }
-
-    private boolean fuimosDerrotados(){
-        return numeroDeFuerzas == 0;
-    }
-
+    private boolean haySuficientesFuerzasDisponibles(int numeroFuerzas){ return this.condicionActual.hayFuerzasParaUnaDivisionDe(numeroFuerzas); }
 }
