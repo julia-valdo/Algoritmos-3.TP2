@@ -12,13 +12,7 @@ public class Jugador {
         this.paisesOcupados = new ArrayList<>();
     }
 
-    /*
-    Este metodo hay que cambiarlo cuando se implementen bien los ejercitos
-     */
-    public void ocupa(Pais unPais){
-            Ejercitos nuevaDivision = this.reservas.generarDivision(1);
-            unPais.recibirTropas(nuevaDivision);
-    }
+    public void ocupa(Pais unPais){ this.ocuparCon(unPais, 1); }
 
     public void ocuparCon(Pais unPais, int cantidadFuerzas){
         Ejercitos nuevaDivision = this.reservas.generarDivision(cantidadFuerzas);
