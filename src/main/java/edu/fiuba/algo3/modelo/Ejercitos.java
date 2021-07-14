@@ -48,12 +48,8 @@ public class Ejercitos {
     }
 
     private Ejercitos confirmarNuevaDivisionDe(int numeroFuerzas){
-        if(this.haySuficientesFuerzasDisponibles(numeroFuerzas)){
-            this.restarEjercitos(numeroFuerzas);
-            return new Ejercitos(numeroFuerzas, this.comandante);
-        }
-        throw new NoHayFuerzasRestantes();
+        this.restarEjercitos(numeroFuerzas);
+        return new Ejercitos(numeroFuerzas, this.comandante);
     }
 
-    private boolean haySuficientesFuerzasDisponibles(int numeroFuerzas){ return this.condicionActual.hayFuerzasParaUnaDivisionDe(numeroFuerzas); }
 }

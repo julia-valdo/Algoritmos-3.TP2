@@ -6,10 +6,6 @@ public class Pais {
     private String nombreDelPais;
     private ArrayList<Pais> paisesConectados;
 
-    public Pais(){
-        this.ejercitos = new Ejercitos();
-    }
-
     public void recibirTropas(Ejercitos otrosEjercitos) {
         this.ejercitos = this.ejercitos.disputarDominioDe(this, otrosEjercitos);
     }
@@ -35,10 +31,7 @@ public class Pais {
     }
 
     //Son public para probar
-    public boolean esLimitrofe(Pais otroPais) {
-        return paisesConectados.contains(otroPais);
-
-    }
+    public boolean esLimitrofe(Pais otroPais) { return paisesConectados.contains(otroPais); }
 
     public boolean esDelMismoEquipo(Pais otroPais) {
         return this.ejercitos.sonAliadosDe(otroPais.ejercitos);
@@ -50,10 +43,10 @@ public class Pais {
     }
 
 
-//    public void atacarA(Pais otroPais) {
-//        if(!this.esDelMismoEquipo(otroPais) && this.esLimitrofe(otroPais)){
-//            Batalla batalla = Batalla new();
-//            batallaEntre(this.ejercitos, otroPais.getEjercitos());
-//        }
-//    }
+    public void atacarA(Pais otroPais) {
+       if(!this.esDelMismoEquipo(otroPais) && this.esLimitrofe(otroPais)){
+            Batalla batalla = new Batalla();
+           batalla.atacar(this.ejercitos, otroPais.ejercitos);
+       }
+  }
 }
