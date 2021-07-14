@@ -15,19 +15,12 @@ public class JugadorTest {
     @Test
     public void unJugadorPuedeOcuparUnPaisConEjercitosDerrotados(){
         Jugador jugador1 = new Jugador();
-        Jugador jugador2 = new Jugador();
         Pais argentina = new Pais("argentina");
-        Pais chile = new Pais("chile");
 
-        jugador1.ocupa(argentina);
-        jugador2.ocuparCon(chile, 0);//Las fuerzas de este ya estan derrotadas
+        jugador1.ocupa(argentina);//Argentina empieza con ejercitos derrotados
 
 
-        jugador1.ocupa(chile);
-
-
-        assertFalse(jugador2.tieneFuerzasEn(chile));
-        assertTrue(jugador1.tieneFuerzasEn(chile));
+        assertTrue(jugador1.tieneFuerzasEn(argentina));
 
     }
 
