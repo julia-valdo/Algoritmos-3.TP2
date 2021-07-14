@@ -2,8 +2,8 @@ package edu.fiuba.algo3.modelo;
 
 public class Ejercitos {
 
-    Jugador comandante;
-    EstadoEjercitos condicionActual;
+    private Jugador comandante;
+    private EstadoEjercitos condicionActual;
 
     public Ejercitos(){
         this.comandante = new Jugador();
@@ -23,24 +23,16 @@ public class Ejercitos {
         this.condicionActual = this.condicionActual.agregarFuerzas(cantidad);
     }
 
-    public Ejercitos generarDivision(int cantidad){
-        return this.confirmarNuevaDivisionDe(cantidad);
-    }
+    public Ejercitos generarDivision(int cantidad){ return this.confirmarNuevaDivisionDe(cantidad); }
 
-    public void restarEjercitos(int cantidad) {
-
-        this.condicionActual = this.condicionActual.restarFuerzas(cantidad);
-    }
+    public void restarEjercitos(int cantidad) { this.condicionActual = this.condicionActual.restarFuerzas(cantidad); }
 
     public boolean fueDerrotado(){
         this.condicionActual = this.condicionActual.evaluarFuerzasRestantes();
         return this.condicionActual.estanDerrotados();
     }
 
-    public boolean sonAliadosDe(Ejercitos ejercitos) {
-
-        return this.comandante == ejercitos.comandante;
-    }
+    public boolean sonAliadosDe(Ejercitos ejercitos) { return this.estanBajoElMandoDe(ejercitos.comandante); }
 
     public boolean estanBajoElMandoDe(Jugador unJugador) {
         return this.comandante == unJugador;
@@ -53,7 +45,6 @@ public class Ejercitos {
                 return otrosEjercitos;
             }
             return this;
-
     }
 
     private Ejercitos confirmarNuevaDivisionDe(int numeroFuerzas){
@@ -64,10 +55,5 @@ public class Ejercitos {
         throw new NoHayFuerzasRestantes();
     }
 
-    private boolean haySuficientesFuerzasDisponibles(int numeroFuerzas){
-        /*
-        Saca esto y mandaselo al estado
-         */
-        return this.condicionActual.hayFuerzasParaUnaDivisionDe(numeroFuerzas);
-    }
+    private boolean haySuficientesFuerzasDisponibles(int numeroFuerzas){ return this.condicionActual.hayFuerzasParaUnaDivisionDe(numeroFuerzas); }
 }

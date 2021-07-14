@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 public class EnPie implements EstadoEjercitos{
 
-    int numeroDeFuerzas;
+    private int numeroDeFuerzas;
 
     public EnPie(int fuerzasIniciales){
         this.numeroDeFuerzas = fuerzasIniciales;

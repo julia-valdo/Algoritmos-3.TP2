@@ -2,9 +2,9 @@ package edu.fiuba.algo3.modelo;
 import java.util.ArrayList;
 
 public class Pais {
-    Ejercitos ejercitos;
-    String nombreDelPais;
-    ArrayList<Pais> paisesConectados;
+    private Ejercitos ejercitos;
+    private String nombreDelPais;
+    private ArrayList<Pais> paisesConectados;
 
     public Pais(){
         this.ejercitos = new Ejercitos();
@@ -16,7 +16,7 @@ public class Pais {
     public Pais (String nombre){
         ejercitos = new Ejercitos();
         this.nombreDelPais = nombre;
-        paisesConectados = new ArrayList<Pais>();
+        paisesConectados = new ArrayList<>();
     }
 
     public String getNombreDelPais() {
