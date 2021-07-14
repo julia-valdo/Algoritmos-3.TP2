@@ -27,10 +27,14 @@ public class Jugador {
         this.paisesOcupados.remove(unPais);
     }
 
-    public void ocupasteA(Pais unPais){
-        paisesOcupados.add(unPais);
+    public void ocupasteA(Pais unPais){ paisesOcupados.add(unPais); }
+
+    public void agregarFichas(int cantidadFichas){
+        this.reservas.agregarEjercitos(cantidadFichas);
     }
 
-
+    public void atacarPaisDesdeA(Pais unPais, Pais otroPais){
+        unPais.atacarA(otroPais);
+    }
 
 }

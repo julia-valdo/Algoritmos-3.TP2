@@ -42,7 +42,7 @@ public class Ejercitos {
             if(this.fueDerrotado()) {
                 this.comandante.perdisteA(pais);
                 otrosEjercitos.comandante.ocupasteA(pais);
-                return otrosEjercitos;
+                return otrosEjercitos.generarDivision(1);
             }
             return this;
     }

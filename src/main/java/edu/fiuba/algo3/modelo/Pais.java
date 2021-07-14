@@ -48,6 +48,7 @@ public class Pais {
        if(!this.esDelMismoEquipo(otroPais) && this.esLimitrofe(otroPais)){
             Batalla batalla = new Batalla();
             batalla.atacar(this.ejercitos, otroPais.ejercitos);
+            otroPais.recibirTropas(this.ejercitos);
         }
     }
 
