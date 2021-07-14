@@ -32,7 +32,7 @@ public class PaisTest {
 
     @Test
     public void creoDosPaisesQuePertenezcanAlMismoJugadorYVerificoQueLoSean(){
-        Jugador jugador1 = new Jugador(1);
+        Jugador jugador1 = new Jugador();
         Pais argentina = new Pais("Argentina");
         Pais chile = new Pais("Chile");
         jugador1.ocupa(argentina);

@@ -24,14 +24,16 @@ public class Derrotados implements EstadoEjercitos{
 
     @Override
     public EstadoEjercitos restarFuerzas(int numeroFuerzas) {
-        /*
-        Deberia largar una excepcion
-         */
-        return this;
+        throw new NoHayFuerzasRestantes();
     }
 
     @Override
     public boolean estanDerrotados() {
         return true;
+    }
+
+    @Override
+    public boolean hayFuerzasParaUnaDivisionDe(int numeroFuerzas) {
+        return false;
     }
 }

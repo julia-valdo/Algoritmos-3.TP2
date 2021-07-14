@@ -26,9 +26,9 @@ public class EnPie implements EstadoEjercitos{
 
     @Override
     public EstadoEjercitos restarFuerzas(int numeroFuerzas) {
-        /*
-        Despues trata de arreglar esto
-         */
+        if(this.numeroDeFuerzas < numeroFuerzas){
+            throw new NoHayFuerzasRestantes();
+        }
         this.numeroDeFuerzas -= numeroFuerzas;
 
         return this.evaluarFuerzasRestantes();
@@ -37,6 +37,11 @@ public class EnPie implements EstadoEjercitos{
     @Override
     public boolean estanDerrotados() {
         return false;
+    }
+
+    @Override
+    public boolean hayFuerzasParaUnaDivisionDe(int numeroFuerzas) {
+        return this.numeroDeFuerzas >= numeroFuerzas;
     }
 
 }

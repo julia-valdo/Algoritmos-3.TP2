@@ -1,9 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class EjercitosTest {
     @Test
@@ -34,5 +34,26 @@ public class EjercitosTest {
         ejercito.agregarEjercitos(5);
         ejercito.restarEjercitos(5);
         assertTrue(ejercito.fueDerrotado());
+    }
+
+    @Test
+    public void siSeTrataDeRestarEjercitosDeUnosDerrotadosSeLanzaExcepcion(){
+        Executable excepcion = () -> {
+            Ejercitos ejercitos = new Ejercitos();
+            ejercitos.restarEjercitos(1);
+        };
+
+        assertThrows(NoHayFuerzasRestantes.class, excepcion);
+
+    }
+
+    @Test
+    public void siSeTrataDeRestarMasFuerzasDeLasQueHayEntoncesSeLanzaExcepcion(){
+        Executable excepcion = () -> {
+            Ejercitos ejercitos = new Ejercitos(2, new Jugador());
+            ejercitos.restarEjercitos(3);
+        };
+
+        assertThrows(NoHayFuerzasRestantes.class, excepcion);
     }
 }

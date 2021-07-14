@@ -39,5 +39,11 @@ return perdidaDefensor
 "kactchatkaEjercito:Ejercito" -> "derrotado:EstadoDelEjercito" **:new()
 return EstadoDelEjercito
 
+"china:Pais" -> "katctchatka:Pais": recibirEjercitos(chinaEjercito)
+"katctchatka:Pais" -> "kactchatkaEjercito:Ejercito": disputarDominioDe(katchatka, chinaEjercito)
+"kactchatkaEjercito:Ejercito" -> "derrotado:EstadoDelEjercito": estaDerrotado()
+return true
+"kactchatkaEjercito:Ejercito" --> "katctchatka:Pais": chinaEjercito
+
 
 @enduml

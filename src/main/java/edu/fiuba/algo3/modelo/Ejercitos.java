@@ -5,11 +5,6 @@ public class Ejercitos {
     Jugador comandante;
     EstadoEjercitos condicionActual;
 
-    public Ejercitos(Jugador unComandante){
-        this.comandante = unComandante;
-        this.condicionActual = new Derrotados();
-    }
-
     public Ejercitos(){
         this.comandante = new Jugador();
         this.condicionActual = new Derrotados();
@@ -26,6 +21,10 @@ public class Ejercitos {
 
     public void agregarEjercitos(int cantidad) {
         this.condicionActual = this.condicionActual.agregarFuerzas(cantidad);
+    }
+
+    public Ejercitos generarDivision(int cantidad){
+        return this.confirmarNuevaDivisionDe(cantidad);
     }
 
     public void restarEjercitos(int cantidad) {
@@ -55,5 +54,20 @@ public class Ejercitos {
             }
             return this;
 
+    }
+
+    private Ejercitos confirmarNuevaDivisionDe(int numeroFuerzas){
+        if(this.haySuficientesFuerzasDisponibles(numeroFuerzas)){
+            this.restarEjercitos(numeroFuerzas);
+            return new Ejercitos(numeroFuerzas, this.comandante);
+        }
+        throw new NoHayFuerzasRestantes();
+    }
+
+    private boolean haySuficientesFuerzasDisponibles(int numeroFuerzas){
+        /*
+        Saca esto y mandaselo al estado
+         */
+        return this.condicionActual.hayFuerzasParaUnaDivisionDe(numeroFuerzas);
     }
 }

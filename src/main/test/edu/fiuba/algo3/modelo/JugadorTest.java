@@ -1,14 +1,12 @@
 package edu.fiuba.algo3.modelo;
 
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentMatcher;
-import org.mockito.invocation.InvocationOnMock;
-import org.mockito.stubbing.Answer;
-import org.mockito.stubbing.OngoingStubbing;
+import org.junit.jupiter.api.function.Executable;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.*;
+
 
 
 public class JugadorTest {
@@ -16,26 +14,27 @@ public class JugadorTest {
 
     @Test
     public void unJugadorPuedeOcuparUnPaisConEjercitosDerrotados(){
-        Jugador jugador1 = new Jugador(3);
-        Jugador jugador2 = new Jugador(0); //Las fuerzas de este ya estan derrotadas
+        Jugador jugador1 = new Jugador();
+        Jugador jugador2 = new Jugador();
         Pais argentina = new Pais();
         Pais chile = new Pais();
 
         jugador1.ocupa(argentina);
-        jugador2.ocupa(chile);
+        jugador2.ocuparCon(chile, 0);//Las fuerzas de este ya estan derrotadas
 
 
         jugador1.ocupa(chile);
 
 
         assertFalse(jugador2.tieneFuerzasEn(chile));
+        assertTrue(jugador1.tieneFuerzasEn(chile));
 
     }
 
     @Test
     public void unJugadorNoPuedeOcuparUnPaisConEjercitosEnPie(){
-        Jugador jugador1 = new Jugador(3);
-        Jugador jugador2 = new Jugador(3); //no se derrotan sus fuerzas
+        Jugador jugador1 = new Jugador();
+        Jugador jugador2 = new Jugador(); //no se derrotan sus fuerzas
         Pais argentina = new Pais();
         Pais chile = new Pais();
 
@@ -48,4 +47,20 @@ public class JugadorTest {
 
         assertTrue(jugador2.tieneFuerzasEn(chile));
     }
+
+    @Test
+    public void siUnJugadorTrataDeOcuparUnPaisSinTenerFuerzasRestantesSeLanzaExcepcion(){
+        Executable excepcion =  () -> {
+          Jugador jugador1 = new Jugador();
+          Pais argentina = new Pais();
+          Pais chile = new Pais();
+
+          jugador1.ocuparCon(argentina, 10);
+          jugador1.ocupa(chile);
+        };
+
+        assertThrows(NoHayFuerzasRestantes.class, excepcion);
+    }
+
+
 }
