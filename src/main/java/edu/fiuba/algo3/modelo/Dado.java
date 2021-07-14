@@ -20,7 +20,7 @@ public class Dado {
             }
         }
 
-        Collections.sort(resultado);
+        resultado.sort(Collections.reverseOrder());
         return resultado;
     }
 }

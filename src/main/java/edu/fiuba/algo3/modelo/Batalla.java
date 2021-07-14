@@ -22,13 +22,18 @@ public class Batalla {
         ejercitoDefensor.restarEjercitos(resultadoBatalla.get(1));
     }
 
+
+
+
     private ArrayList<Integer> compararResultado(ArrayList<Integer> resultadoDadoAtacante, ArrayList<Integer> resultadoDadoDefensor){
 
         ArrayList<Integer> resultado = new ArrayList<>();
         int perdidaAtacante = 0;
         int perdidaDefensor = 0;
 
-        for(int i = 0; i < 3; i++ ){
+        int j = Math.min(resultadoDadoAtacante.size(), resultadoDadoDefensor.size());
+
+        for(int i = 0; i < j; i++ ){
             if( resultadoDadoAtacante.get(i) <= resultadoDadoDefensor.get(i) ){
                 perdidaAtacante++;
             }else{

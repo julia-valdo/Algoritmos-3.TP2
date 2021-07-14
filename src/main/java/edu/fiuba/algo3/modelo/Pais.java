@@ -50,10 +50,10 @@ public class Pais {
     }
 
 
-//    public void atacarA(Pais otroPais) {
-//        if(!this.esDelMismoEquipo(otroPais) && this.esLimitrofe(otroPais)){
-//            Batalla batalla = Batalla new();
-//            batallaEntre(this.ejercitos, otroPais.getEjercitos());
-//        }
-//    }
+   public void atacarA(Pais otroPais) {
+       if(!this.esDelMismoEquipo(otroPais) && this.esLimitrofe(otroPais)){
+            Batalla batalla = new Batalla();
+            batalla.atacar(this.ejercitos, otroPais.ejercitos);
+        }
+    }
 }
