@@ -52,4 +52,8 @@ public class Ejercitos {
         return new Ejercitos(numeroFuerzas, this.comandante);
     }
 
+    protected void avisarOcupacionExitosa(Pais unPais){
+        this.comandante.ocupasteA(unPais);
+    }
+
 }

@@ -9,14 +9,16 @@ public class Dado {
         Random numeroRandom = new Random();
         ArrayList <Integer> resultado = new ArrayList<>();
 
-        if(cantidad > 3){
+        if(cantidad >= 3){
             for(int i = 0; i < 3; i++){
                 resultado.add(numeroRandom.nextInt(6)+1);
+
             }
         }
         else{
             for(int i = 0; i < cantidad; i++){
                 resultado.add(numeroRandom.nextInt(6)+1);
+
             }
         }
 

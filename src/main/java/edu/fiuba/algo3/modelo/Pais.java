@@ -10,7 +10,7 @@ public class Pais {
         this.ejercitos = this.ejercitos.disputarDominioDe(this, otrosEjercitos);
     }
     public Pais (String nombre){
-        ejercitos = new Ejercitos();
+        ejercitos = new EjercitosNulos();
         this.nombreDelPais = nombre;
         paisesConectados = new ArrayList<>();
     }
