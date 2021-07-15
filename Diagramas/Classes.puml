@@ -7,22 +7,28 @@ class Juego{
 }
 
 class Jugador{
--numeroDeJugador:int
--siguienteJugador:Jugador
-+atacarA(unPais:Pais):void
+-paisesOcupados:ArrayList<Pais>
++atacarPaisDesdeA(:Pais, :Pais):void
 +moverEjercidoDeA(unPais:Pais, unPais:Pais):void
 +colocarEjercitoEn(unPais:Pais):void
++tieneFuerzasEn(:Pais):boolean
++perdisteA(:Pais):void
++ocupasteA(:Pais):void
++agregarFichas(:Pais)
 }
 
 class Ejercitos{
-
-+tirarDados():Dados
 +agregarEjercitos(cantidad:int):void
-+restarEjercito(cantidad:int):void
++restarEjercitos(cantidad:int):void
++generarDivision(cantidad:int):Ejercitos
++fueDerrotado():boolean
++sonAliadosDe(:Ejercito):boolean
++estanBajoElMandoDe(:Jugador):boolean
++disputarDominioDe(:Pais, :Ejercitos)
+-confirmarNuevaDivision(numeroDeFuerzas:int)
 }
 
 interface EstadoEjercitos{
-
  + evaluarFuerzasRestantes(): EstadoEjercitos
  + getCantidadFuerzas(): int
  + agregarFuerzas(int numeroDeFuerzas): EstadoEjercitos
@@ -39,9 +45,11 @@ class Derrotados{
 class Pais{
 -nombreDelPais:String
 -PaisesConectados:Array<Pais>
+-ejerciotos:Ejercitos
 +agregarEjercito(cantidad:int):void
 +restarEjercito(cantidad:int):void
 +atacarA(otroPais:Pais)
++estaOcupadoPor(Jugador unJugador)
 }
 
 
@@ -50,10 +58,7 @@ class ObjetivoJugador{
 }
 
 class Dados{
--cantidad:int
--ordenar():void
-+tirarDados():int
-+compararContra(otrosDados:Dados):int
++tirarDado(cantidad):ArrayList<Integer>
 }
 
 class Continente{
@@ -108,11 +113,11 @@ Objetivo <|.. ObjetivoJugador
 ObjetivoJugador --> Ocupacion
 
 Ejercitos ..> Batalla
-Ejercitos ..> Dados
-Ejercitos -> "comandante" Jugador
+Ejercitos --> "comandante" Jugador
 EstadoEjercitos <- Ejercitos
 EstadoEjercitos <|.. EnPie
 EstadoEjercitos <|.. Derrotados
+
 Batalla ..> Dados
 
 Continente --> "1..*" Pais

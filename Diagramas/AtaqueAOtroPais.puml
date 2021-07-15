@@ -4,46 +4,31 @@
 autonumber
 'Gana Jugador 1'
 Actor Jugador
+Jugador -> Jugador: AtacarPaisDesdeA(Kamchatka, china)
 
-Jugador -> "china:Pais": AtacarA(Katchatka:Pais)
-"china:Pais" -> ":Batalla":batallaEntre(chinaEjercito:Ejercito, katchatkaEjercito:Ejercito)
+Jugador -> "kamchatka:Pais": AtacarA(china:Pais)
+
+"kamchatka:Pais" -> ":Batalla": atacar(katchatka:Ejercito, china:Ejercito)
 
 ":Batalla" -> "dadosAtacante:Dados" **:<<new()>>
-
-loop max3 min1 teniendo en cuenta la cantidad de ejercito
-
-":Batalla" -> "dadosAtacante:Dados": tirarDados()
-return int
-
-end
-
 ":Batalla" -> "dadosDefensor:Dados" **:<<new()>>
 
-loop max3 min1
+":Batalla" -> "dadosAtacante:Dados": tirarDados(cantidadAtacante)
+return resultadoDadosAtacante
 
-":Batalla" -> "dadosDefensor:Dados": tirarDados()
-return int
+":Batalla" -> "dadosDefensor:Dados": tirarDados(cantidadDefensor)
+return resultadoDadosDefensor
 
-end
+":Batalla" -> ":Batalla" : compararResultados(resultadoAtacante, resultadoDefensor)
+return resultadoBatalla
 
-":Batalla" -> ":Batalla" : resultadoBatalla(atacante, defensor)
-return perdidaAtacante
+":Batalla" -> "kamchatka:Ejercito" : restarEjercitos(resultadoBatalla[0])
 
-":Batalla" -> "chinaEjercito:Ejercito":restarEjercito(perdidaAtacante:int)
-
-
-":Batalla" -> ":Batalla" : resultadoBatalla(defensor, atacante)
-return perdidaDefensor
-
-":Batalla" -> "kactchatkaEjercito:Ejercito":restarEjercito(perdidaDefensor:int)
-"kactchatkaEjercito:Ejercito" -> "derrotado:EstadoDelEjercito" **:new()
-return EstadoDelEjercito
-
-"china:Pais" -> "katctchatka:Pais": recibirEjercitos(chinaEjercito)
-"katctchatka:Pais" -> "kactchatkaEjercito:Ejercito": disputarDominioDe(katchatka, chinaEjercito)
-"kactchatkaEjercito:Ejercito" -> "derrotado:EstadoDelEjercito": estaDerrotado()
-return true
-"kactchatkaEjercito:Ejercito" --> "katctchatka:Pais": chinaEjercito
+":Batalla" -> "china:Ejercito" : restarEjercitos(resultadoBatalla[1])
 
 
+"kamchatka:Pais" ->"china:Pais" :recibirTropas(kamchatcka:Pais)
+"china:Pais" -> "china:Ejercito": disputarDominioDe(Pais, kamchatkaEjercito:Ejercito)
+
+return Ejercitos con el comandante cambiado
 @enduml
