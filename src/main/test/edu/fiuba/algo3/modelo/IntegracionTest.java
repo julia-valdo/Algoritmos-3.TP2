@@ -23,17 +23,23 @@ public class IntegracionTest {
 
         atacante.atacarPaisDesdeA(kamchatka, china);
 
-        if(atacante.tieneFuerzasEn(china)){
+        assertGanoAlguien(atacante, defensor, china);
+
+
+    }
+
+
+    private void assertGanoAlguien(Jugador atacante, Jugador defensor, Pais enDisputa){
+        if(atacante.tieneFuerzasEn(enDisputa)){
             System.out.println("gano el atacante");
 
         }
-        else if (defensor.tieneFuerzasEn(china)){
+        else if (defensor.tieneFuerzasEn(enDisputa)){
             System.out.println("Gano el defensor");
         }
         else{
             throw new RuntimeException();
         }
-
     }
 }
 
