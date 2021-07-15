@@ -19,12 +19,13 @@ public class Derrotados implements EstadoEjercitos{
 
     @Override
     public EstadoEjercitos agregarFuerzas(int numeroDeFuerzas) {
+        //sacar
         return new EnPie(numeroDeFuerzas);
     }
 
     @Override
     public EstadoEjercitos restarFuerzas(int numeroFuerzas) {
-        throw new NoHayFuerzasRestantes();
+        throw new NoHayFuerzasRestantesError();
     }
 
     @Override
@@ -32,8 +33,4 @@ public class Derrotados implements EstadoEjercitos{
         return true;
     }
 
-    @Override
-    public boolean hayFuerzasParaUnaDivisionDe(int numeroFuerzas) {
-        return false;
-    }
 }

@@ -52,7 +52,7 @@ public class JugadorTest {
           jugador1.ocupa(chile);
         };
 
-        assertThrows(NoHayFuerzasRestantes.class, excepcion);
+        assertThrows(NoHayFuerzasRestantesError.class, excepcion);
     }
 
 

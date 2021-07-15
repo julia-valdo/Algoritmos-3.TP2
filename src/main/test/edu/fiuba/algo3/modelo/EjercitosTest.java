@@ -43,7 +43,7 @@ public class EjercitosTest {
             ejercitos.restarEjercitos(1);
         };
 
-        assertThrows(NoHayFuerzasRestantes.class, excepcion);
+        assertThrows(NoHayFuerzasRestantesError.class, excepcion);
 
     }
 
@@ -54,6 +54,6 @@ public class EjercitosTest {
             ejercitos.restarEjercitos(3);
         };
 
-        assertThrows(NoHayFuerzasRestantes.class, excepcion);
+        assertThrows(NoHayFuerzasRestantesError.class, excepcion);
     }
 }

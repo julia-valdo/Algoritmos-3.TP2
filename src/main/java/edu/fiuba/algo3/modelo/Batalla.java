@@ -26,14 +26,14 @@ public class Batalla {
 
 
     private ArrayList<Integer> compararResultado(ArrayList<Integer> resultadoDadoAtacante, ArrayList<Integer> resultadoDadoDefensor){
-
+    //Mandar perdidaAtack/def para atrib.
         ArrayList<Integer> resultado = new ArrayList<>();
         int perdidaAtacante = 0;
         int perdidaDefensor = 0;
 
-        int j = Math.min(resultadoDadoAtacante.size(), resultadoDadoDefensor.size());
+        int cantidadDeDados = Math.min(resultadoDadoAtacante.size(), resultadoDadoDefensor.size());
 
-        for(int i = 0; i < j; i++ ){
+        for(int i = 0; i < cantidadDeDados; i++ ){
             if( resultadoDadoAtacante.get(i) <= resultadoDadoDefensor.get(i) ){
                 perdidaAtacante++;
             }else{

@@ -27,7 +27,7 @@ public class EnPie implements EstadoEjercitos{
     @Override
     public EstadoEjercitos restarFuerzas(int numeroFuerzas) {
         if(this.numeroDeFuerzas < numeroFuerzas){
-            throw new NoHayFuerzasRestantes();
+            throw new NoHayFuerzasRestantesError();
         }
         this.numeroDeFuerzas -= numeroFuerzas;
 
