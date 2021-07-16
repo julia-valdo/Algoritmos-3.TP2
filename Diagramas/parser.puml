@@ -1,0 +1,38 @@
+@startuml
+
+class Parser{
+- direccionArchivoDePaises:string
+- direccionArchivoCartas:string
++ leerArchivoPaises():ArrayDeJSON
++ leerArchivoCartas():ArrayDeJSON
+}
+
+class ConstructorDeJuego{
++ construirJuego(): Juego
+- crearPaises(): void
+- prepararFronteras(): void
+- prepararContinentes():void
+}
+
+class ConstructorDePaises{
+- paises:Paises
++ agregarPaises(datos:ArrayDeJson): Paises
+- agregarFronterasA(datos:ArrayDeJSON):void
+- agregarContinentes(datos:ArrayDeJSON):void
+}
+
+class ConstructorDeCartas{
+- cartas: Cartas
++ generarCartas(paises:Paises, datosCartas:ArrayDeJSON):Cartas
+- crearCartas(datosCartas:ArrayDeJSON): void
+- agregarPaises(paises:Paises):void
+}
+
+ConstructorDeJuego ..> Parser
+
+ConstructorDeJuego ..> ConstructorDePaises
+
+ConstructorDeJuego ..> ConstructorDeCartas
+
+
+@enduml
