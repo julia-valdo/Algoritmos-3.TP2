@@ -32,11 +32,7 @@ public class Ejercitos {
         return this.condicionActual.estanDerrotados();
     }
 
-    public boolean sonAliadosDe(Ejercitos ejercitos) { return this.estanBajoElMandoDe(ejercitos.comandante); }
-
-    public boolean estanBajoElMandoDe(Jugador unJugador) {
-        return this.comandante == unJugador;
-    }
+    public boolean sonAliadosDe(Ejercitos ejercitos) { return this.comandante == ejercitos.comandante; }
 
     public Ejercitos disputarDominioDe(Pais pais, Ejercitos otrosEjercitos) {
             if(this.fueDerrotado()) {

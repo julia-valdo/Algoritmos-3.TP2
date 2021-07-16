@@ -20,7 +20,7 @@ public class Jugador {
     }
 
     public boolean tieneFuerzasEn(Pais unPais){
-        return unPais.estaOcupadoPor(this);
+        return paisesOcupados.contains(unPais);
     }
 
     public void perdisteA(Pais unPais){

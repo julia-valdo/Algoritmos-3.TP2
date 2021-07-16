@@ -13,7 +13,7 @@ public class Batalla {
         ArrayList<Integer> resultadoDadoDefensor;
         ArrayList<Integer> resultadoBatalla;
 
-        resultadoDadoAtacante = dadoAtacante.tirarDado(ejercitoAtacante.getCantidadEjercitos());
+        resultadoDadoAtacante = dadoAtacante.tirarDado(ejercitoAtacante.getCantidadEjercitos() - 1);
         resultadoDadoDefensor = dadoDefensor.tirarDado(ejercitoDefensor.getCantidadEjercitos());
 
         resultadoBatalla = this.compararResultado(resultadoDadoAtacante, resultadoDadoDefensor);

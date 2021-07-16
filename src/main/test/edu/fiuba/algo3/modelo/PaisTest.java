@@ -1,8 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.function.Executable;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class PaisTest {
     @Test
@@ -21,23 +22,49 @@ public class PaisTest {
     }
 
     @Test
-    public void creoDosPaisesLimitrofesYVerificoQueLoSean(){
-        Pais argentina = new Pais("Argentina");
-        Pais chile = new Pais("Chile");
-        argentina.agregarPaisesConectados(chile);
-        chile.agregarPaisesConectados(argentina);
+    public void creoDosPaisesLimitrofesYVericoQueSePuedenAtacar(){
+        Executable excepcion = () -> {
+            Pais argentina = new Pais("Argentina");
+            Pais chile = new Pais("Chile");
+            chile.agregarEjercito(2);
+            argentina.agregarEjercito(2);
+            argentina.agregarPaisesConectados(chile);
+            chile.agregarPaisesConectados(argentina);
+            chile.atacarA(argentina);
+        };
 
-        assertTrue(argentina.esLimitrofe(chile));
+        assertDoesNotThrow(excepcion);
     }
 
     @Test
-    public void creoDosPaisesQuePertenezcanAlMismoJugadorYVerificoQueLoSean(){
-        Jugador jugador1 = new Jugador();
-        Pais argentina = new Pais("Argentina");
-        Pais chile = new Pais("Chile");
-        jugador1.ocupa(argentina);
-        jugador1.ocupa(chile);
+    public void creoDosPaisesQuePertenezcanAlMismoJugadorYVerificoQueNoSePuedenAtacar(){
+        Executable excepcion = () -> {
+            Jugador jugador1 = new Jugador();
+            Pais argentina = new Pais("Argentina");
+            Pais chile = new Pais("Chile");
+            jugador1.ocupa(argentina);
+            jugador1.ocupa(chile);
+            chile.atacarA(argentina);
+        };
 
-        assertTrue(argentina.esDelMismoEquipo(chile));
+        assertThrows(AtaqueNoPermitidoError.class, excepcion);
+    }
+
+    @Test
+    public void creoDosPaisesQueNoPertenezcanAlMismoJugadorYVerificoQueSePuedenAtacar(){
+        Executable excepcion = () -> {
+            Jugador jugador1 = new Jugador();
+            Jugador jugador2 = new Jugador();
+            Pais argentina = new Pais("Argentina");
+            Pais chile = new Pais("Chile");
+            argentina.agregarPaisesConectados(chile);
+            chile.agregarPaisesConectados(argentina);
+            jugador1.ocuparCon(chile, 3);
+            jugador2.ocuparCon(argentina, 3);
+
+            chile.atacarA(argentina);
+        };
+
+        assertDoesNotThrow(excepcion);
     }
 }
