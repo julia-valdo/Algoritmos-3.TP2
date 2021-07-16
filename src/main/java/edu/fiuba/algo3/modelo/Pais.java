@@ -19,24 +19,23 @@ public class Pais {
         return nombreDelPais;
     }
 
-    //Solo para pruebas
     public int getCantidadDeEjercitos() {return this.ejercitos.getCantidadEjercitos();}
 
     public void agregarPaisesConectados(Pais unPais) {
         paisesConectados.add(unPais);
     }
 
-
-    public boolean esLimitrofe(Pais otroPais) { return paisesConectados.contains(otroPais); }
-
     public void agregarEjercito(int cantidadDeEjercitos) {
         ejercitos.agregarEjercitos(cantidadDeEjercitos);
     }
 
     public void atacarA(Pais otroPais) {
-       if(this.esDelMismoEquipo(otroPais) || !this.esLimitrofe(otroPais)){
-            throw new AtaqueNoPermitidoError();
+       if(this.esDelMismoEquipo(otroPais)){
+            throw new AtaqueNoPermitidoError("No se puede atacar a un pais del mismo equipo");
         }
+       else if (!this.esLimitrofe(otroPais)){
+           throw new AtaqueNoPermitidoError("No se puede atacar a un pais no limitrofe");
+       }
        Batalla batalla = new Batalla();
        batalla.atacar(this.ejercitos, otroPais.ejercitos);
        otroPais.recibirTropas(this.ejercitos);
@@ -45,5 +44,7 @@ public class Pais {
     private boolean esDelMismoEquipo(Pais otroPais) {
         return this.ejercitos.sonAliadosDe(otroPais.ejercitos);
     }
+
+    private boolean esLimitrofe(Pais otroPais) { return paisesConectados.contains(otroPais); }
 
 }

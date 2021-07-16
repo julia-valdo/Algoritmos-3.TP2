@@ -13,5 +13,4 @@ public interface EstadoEjercitos {
 
     boolean estanDerrotados();
 
-    boolean hayFuerzasParaUnaDivisionDe(int numeroFuerzas);
 }

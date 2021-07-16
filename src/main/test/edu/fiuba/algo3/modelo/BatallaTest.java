@@ -15,7 +15,7 @@ public class BatallaTest {
         Batalla batalla = new Batalla();
         batalla.atacar(kamchatka, china);
 
-        assertFalse(china.fueDerrotado());
+        assertNotEquals(0, china.getCantidadEjercitos());
 
     }
 
@@ -28,8 +28,8 @@ public class BatallaTest {
         Batalla batalla = new Batalla();
         batalla.atacar(kamchatka, china);
 
-        while (!china.fueDerrotado()) batalla.atacar(kamchatka, china);
-        assertTrue(china.fueDerrotado());
+        while (china.getCantidadEjercitos() != 0) batalla.atacar(kamchatka, china);
+        assertEquals(0, china.getCantidadEjercitos());
 
     }
 

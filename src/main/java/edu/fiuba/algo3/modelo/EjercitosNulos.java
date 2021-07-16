@@ -3,7 +3,7 @@ package edu.fiuba.algo3.modelo;
 public class EjercitosNulos extends Ejercitos{
 
     public EjercitosNulos(){
-        new Ejercitos();
+        super();
     }
 
     @Override

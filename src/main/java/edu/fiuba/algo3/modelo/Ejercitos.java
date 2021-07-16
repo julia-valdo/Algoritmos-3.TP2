@@ -27,11 +27,6 @@ public class Ejercitos {
 
     public void restarEjercitos(int cantidad) { this.condicionActual = this.condicionActual.restarFuerzas(cantidad); }
 
-    public boolean fueDerrotado(){
-        this.condicionActual = this.condicionActual.evaluarFuerzasRestantes();
-        return this.condicionActual.estanDerrotados();
-    }
-
     public boolean sonAliadosDe(Ejercitos ejercitos) { return this.comandante == ejercitos.comandante; }
 
     public Ejercitos disputarDominioDe(Pais pais, Ejercitos otrosEjercitos) {
@@ -50,6 +45,11 @@ public class Ejercitos {
 
     protected void avisarOcupacionExitosa(Pais unPais){
         this.comandante.ocupasteA(unPais);
+    }
+
+    private boolean fueDerrotado(){
+        this.condicionActual = this.condicionActual.evaluarFuerzasRestantes();
+        return this.condicionActual.estanDerrotados();
     }
 
 }

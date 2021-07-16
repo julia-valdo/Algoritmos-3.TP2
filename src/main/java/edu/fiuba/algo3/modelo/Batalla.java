@@ -4,47 +4,51 @@ import java.util.ArrayList;
 
 public class Batalla {
 
+    private int perdidaAtacante;
+    private int perdidaDefensor;
+    ArrayList<Integer> resultadoDadoAtacante;
+    ArrayList<Integer> resultadoDadoDefensor;
+
+    public Batalla(){
+        this.perdidaAtacante = 0;
+        this.perdidaDefensor = 0;
+    }
+
     public void atacar(Ejercitos ejercitoAtacante, Ejercitos ejercitoDefensor){
 
-        Dado dadoAtacante = new Dado();
-        Dado dadoDefensor = new Dado();
+        this.tirarDadoAtacante(ejercitoAtacante.getCantidadEjercitos());
+        this.tirarDadoDefensor(ejercitoDefensor.getCantidadEjercitos());
 
-        ArrayList<Integer> resultadoDadoAtacante;
-        ArrayList<Integer> resultadoDadoDefensor;
-        ArrayList<Integer> resultadoBatalla;
+        this.compararResultado(resultadoDadoAtacante, resultadoDadoDefensor);
 
-        resultadoDadoAtacante = dadoAtacante.tirarDado(ejercitoAtacante.getCantidadEjercitos() - 1);
-        resultadoDadoDefensor = dadoDefensor.tirarDado(ejercitoDefensor.getCantidadEjercitos());
-
-        resultadoBatalla = this.compararResultado(resultadoDadoAtacante, resultadoDadoDefensor);
-
-        ejercitoAtacante.restarEjercitos(resultadoBatalla.get(0));
-        ejercitoDefensor.restarEjercitos(resultadoBatalla.get(1));
+        ejercitoAtacante.restarEjercitos(this.perdidaAtacante);
+        ejercitoDefensor.restarEjercitos(this.perdidaDefensor);
     }
 
 
-
-
-    private ArrayList<Integer> compararResultado(ArrayList<Integer> resultadoDadoAtacante, ArrayList<Integer> resultadoDadoDefensor){
-    //Mandar perdidaAtack/def para atrib.
-        ArrayList<Integer> resultado = new ArrayList<>();
-        int perdidaAtacante = 0;
-        int perdidaDefensor = 0;
+    private void compararResultado(ArrayList<Integer> resultadoDadoAtacante, ArrayList<Integer> resultadoDadoDefensor) {
 
         int cantidadDeDados = Math.min(resultadoDadoAtacante.size(), resultadoDadoDefensor.size());
-
-        for(int i = 0; i < cantidadDeDados; i++ ){
-            if( resultadoDadoAtacante.get(i) <= resultadoDadoDefensor.get(i) ){
+        for (int i = 0; i < cantidadDeDados; i++) {
+            if (resultadoDadoAtacante.get(i) <= resultadoDadoDefensor.get(i)) {
                 perdidaAtacante++;
-            }else{
+            } else {
                 perdidaDefensor++;
             }
         }
-
-        resultado.add(perdidaAtacante);
-        resultado.add(perdidaDefensor);
-        return resultado;
     }
 
+    private ArrayList<Integer> tirarDado(int cantidadDeTiros){
+        Dado dadoATirar = new Dado();
 
+        return dadoATirar.tirarDado(cantidadDeTiros);
+    }
+
+    private void tirarDadoAtacante(int numeroFichasAtacante){
+        resultadoDadoAtacante = this.tirarDado(numeroFichasAtacante - 1);
+    }
+
+    private void tirarDadoDefensor(int numeroFichasDefensor){
+        resultadoDadoDefensor = this.tirarDado(numeroFichasDefensor);
+    }
 }

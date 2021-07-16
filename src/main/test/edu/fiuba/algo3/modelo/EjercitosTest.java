@@ -15,25 +15,25 @@ public class EjercitosTest {
 
     @Test
     public void creoEjercitoYAgregoEjercito(){
-        Ejercitos ejercito = new Ejercitos();
-        ejercito.agregarEjercitos(5);
+        Ejercitos ejercito = new Ejercitos(1, new Jugador());
+        ejercito.agregarEjercitos(4);
         assertEquals(5, ejercito.getCantidadEjercitos());
     }
 
     @Test
     public void creoEjercitoYAgregoEjercitoYResto(){
-        Ejercitos ejercito = new Ejercitos();
+        Ejercitos ejercito = new Ejercitos(1, new Jugador());
         ejercito.agregarEjercitos(5);
-        ejercito.restarEjercitos(2);
+        ejercito.restarEjercitos(3);
         assertEquals(3, ejercito.getCantidadEjercitos());
     }
 
     @Test
     public void creoEjercitoYAgregoEjercitoYLosEliminoATodosEntoncesFueDerrotado(){
-        Ejercitos ejercito = new Ejercitos();
-        ejercito.agregarEjercitos(5);
+        Ejercitos ejercito = new Ejercitos(1, new Jugador());
+        ejercito.agregarEjercitos(4);
         ejercito.restarEjercitos(5);
-        assertTrue(ejercito.fueDerrotado());
+        assertEquals(0, ejercito.getCantidadEjercitos());
     }
 
     @Test

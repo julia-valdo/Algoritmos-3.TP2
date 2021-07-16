@@ -2,11 +2,8 @@ package edu.fiuba.algo3.modelo;
 
 public class Derrotados implements EstadoEjercitos{
 
-
-
     public Derrotados(){
     }
-
     @Override
     public EstadoEjercitos evaluarFuerzasRestantes() {
         return this;
@@ -19,10 +16,8 @@ public class Derrotados implements EstadoEjercitos{
 
     @Override
     public EstadoEjercitos agregarFuerzas(int numeroDeFuerzas) {
-        //sacar
-        return new EnPie(numeroDeFuerzas);
+        throw new EjercitosDerrotadosError();
     }
-
     @Override
     public EstadoEjercitos restarFuerzas(int numeroFuerzas) {
         throw new NoHayFuerzasRestantesError();

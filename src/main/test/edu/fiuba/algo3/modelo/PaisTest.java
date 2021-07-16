@@ -15,17 +15,23 @@ public class PaisTest {
 
     @Test
     public void creoUnPaisYAgregoEjercitos(){
+        Jugador jugador1 = new Jugador();
         Pais argentina = new Pais("Argentina");
+        jugador1.ocupa(argentina);
         argentina.agregarEjercito(5);
 
-        assertEquals(5,argentina.getCantidadDeEjercitos());
+        assertEquals(6,argentina.getCantidadDeEjercitos());
     }
 
     @Test
     public void creoDosPaisesLimitrofesYVericoQueSePuedenAtacar(){
         Executable excepcion = () -> {
+            Jugador jugador1 = new Jugador();
+            Jugador jugador2 = new Jugador();
             Pais argentina = new Pais("Argentina");
             Pais chile = new Pais("Chile");
+            jugador1.ocupa(argentina);
+            jugador2.ocupa(chile);
             chile.agregarEjercito(2);
             argentina.agregarEjercito(2);
             argentina.agregarPaisesConectados(chile);

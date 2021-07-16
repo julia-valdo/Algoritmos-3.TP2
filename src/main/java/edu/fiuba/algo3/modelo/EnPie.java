@@ -39,9 +39,4 @@ public class EnPie implements EstadoEjercitos{
         return false;
     }
 
-    @Override
-    public boolean hayFuerzasParaUnaDivisionDe(int numeroFuerzas) {
-        return this.numeroDeFuerzas >= numeroFuerzas;
-    }
-
 }

@@ -19,10 +19,6 @@ public class Jugador {
         unPais.recibirTropas(nuevaDivision);
     }
 
-    public boolean tieneFuerzasEn(Pais unPais){
-        return paisesOcupados.contains(unPais);
-    }
-
     public void perdisteA(Pais unPais){
         this.paisesOcupados.remove(unPais);
     }
@@ -35,6 +31,10 @@ public class Jugador {
 
     public void atacarPaisDesdeA(Pais unPais, Pais otroPais){
         unPais.atacarA(otroPais);
+    }
+
+    private boolean tieneFuerzasEn(Pais unPais){
+        return paisesOcupados.contains(unPais);
     }
 
 }

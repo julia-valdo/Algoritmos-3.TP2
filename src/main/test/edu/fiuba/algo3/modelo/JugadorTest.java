@@ -3,10 +3,7 @@ package edu.fiuba.algo3.modelo;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class JugadorTest {
@@ -20,7 +17,7 @@ public class JugadorTest {
         jugador1.ocupa(argentina);//Argentina empieza con ejercitos derrotados
 
 
-        assertTrue(jugador1.tieneFuerzasEn(argentina));
+        assertNotEquals(0, argentina.getCantidadDeEjercitos());
 
     }
 
@@ -30,15 +27,19 @@ public class JugadorTest {
         Jugador jugador2 = new Jugador(); //no se derrotan sus fuerzas
         Pais argentina = new Pais("argentina");
         Pais chile = new Pais("chile");
+        chile.agregarPaisesConectados(argentina);
+        argentina.agregarPaisesConectados(chile);
 
         jugador1.ocupa(argentina);
         jugador2.ocupa(chile);
 
-
         jugador1.ocupa(chile);
 
-
-        assertTrue(jugador2.tieneFuerzasEn(chile));
+        Executable noExcepcion = () -> {
+            jugador1.atacarPaisDesdeA(chile, argentina);
+        };
+        //Como no lo ocupa, lo puede atacar
+        assertDoesNotThrow(noExcepcion);
     }
 
     @Test
