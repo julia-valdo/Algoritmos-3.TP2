@@ -34,8 +34,8 @@ public class PaisTest {
             jugador2.ocupa(chile);
             chile.agregarEjercito(2);
             argentina.agregarEjercito(2);
-            argentina.agregarPaisesConectados(chile);
-            chile.agregarPaisesConectados(argentina);
+            argentina.agregarPaisConectado(chile);
+            chile.agregarPaisConectado(argentina);
             chile.atacarA(argentina);
         };
 
@@ -63,8 +63,8 @@ public class PaisTest {
             Jugador jugador2 = new Jugador();
             Pais argentina = new Pais("Argentina");
             Pais chile = new Pais("Chile");
-            argentina.agregarPaisesConectados(chile);
-            chile.agregarPaisesConectados(argentina);
+            argentina.agregarPaisConectado(chile);
+            chile.agregarPaisConectado(argentina);
             jugador1.ocuparCon(chile, 3);
             jugador2.ocuparCon(argentina, 3);
 

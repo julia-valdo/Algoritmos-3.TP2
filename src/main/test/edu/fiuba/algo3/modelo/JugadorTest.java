@@ -27,8 +27,8 @@ public class JugadorTest {
         Jugador jugador2 = new Jugador(); //no se derrotan sus fuerzas
         Pais argentina = new Pais("argentina");
         Pais chile = new Pais("chile");
-        chile.agregarPaisesConectados(argentina);
-        argentina.agregarPaisesConectados(chile);
+        chile.agregarPaisConectado(argentina);
+        argentina.agregarPaisConectado(chile);
 
         jugador1.ocupa(argentina);
         jugador2.ocupa(chile);
