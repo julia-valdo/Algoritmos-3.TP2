@@ -77,6 +77,32 @@ public class ParserJson {
         String limite = (String) fronterasObject.get("Limita con");
         System.out.println(limite);
 
+<<<<<<< Updated upstream
+=======
+
+        if (!continentes.containsKey(nombreContinente)) {
+            Continente continente;
+            switch (nombreContinente) {
+                case "Africa":
+                case "America del Sur":
+                    continente = new Continente(nombreContinente, 3);
+                    break;
+                case "America del Norte":
+                case "Europa":
+                    continente = new Continente(nombreContinente, 5);
+                    break;
+                case "Asia":
+                    continente = new Continente(nombreContinente, 7);
+                    break;
+                default:
+                    continente = new Continente(nombreContinente, 2);
+                    break;
+            }
+            continentes.put(nombreContinente, continente);
+        }
+        (continentes.get(nombreContinente)).agregarPais(paises.get(nombrePais));
+        agregarPaisesLimitrofesASusPaises(paisesLimitrofes, nombrePais);
+>>>>>>> Stashed changes
     }
 
 
