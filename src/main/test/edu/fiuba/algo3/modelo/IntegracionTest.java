@@ -15,8 +15,8 @@ public class IntegracionTest {
         Pais kamchatka = new Pais("Kamchatka");
         Pais china = new Pais("China");
 
-        kamchatka.agregarPaisesConectados(china);
-        china.agregarPaisesConectados(kamchatka);
+        kamchatka.agregarPaisConectado(china);
+        china.agregarPaisConectado(kamchatka);
         atacante.agregarFichas(70);
 
         atacante.ocuparCon(kamchatka, 80);
@@ -39,8 +39,8 @@ public class IntegracionTest {
         Pais kamchatka = new Pais("Kamchatka");
         Pais china = new Pais("China");
 
-        kamchatka.agregarPaisesConectados(china);
-        china.agregarPaisesConectados(kamchatka);
+        kamchatka.agregarPaisConectado(china);
+        china.agregarPaisConectado(kamchatka);
         defensor.agregarFichas(70);
 
         atacante.ocuparCon(kamchatka, 5);
