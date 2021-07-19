@@ -6,6 +6,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+<<<<<<< HEAD
+=======
+import static org.junit.jupiter.api.Assertions.assertTrue;
+>>>>>>> 8e319831bdf454fe9e654daaa03357e2cec10b0e
 
 
 public class ParseoTest {
@@ -48,5 +52,8 @@ public class ParseoTest {
 
     }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8e319831bdf454fe9e654daaa03357e2cec10b0e
 }

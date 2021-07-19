@@ -3,13 +3,15 @@ package edu.fiuba.algo3.modelo;
 import java.util.ArrayList;
 
 public class Jugador {
-
+    private int numeroDeJugador;
     private Ejercitos reservas;
     private ArrayList<Pais> paisesOcupados;
+    private ArrayList<Carta>cartas;
 
-    public Jugador(){
+    public Jugador(int numeroDeJugador){
         this.reservas = new Ejercitos(10,this);
         this.paisesOcupados = new ArrayList<>();
+        this.numeroDeJugador = numeroDeJugador;
     }
 
     public void ocupa(Pais unPais){ this.ocuparCon(unPais, 1); }
@@ -33,8 +35,11 @@ public class Jugador {
         unPais.atacarA(otroPais);
     }
 
-    private boolean tieneFuerzasEn(Pais unPais){
-        return paisesOcupados.contains(unPais);
+    public int cantidadDeEjercitosAColocar(Banco banco){
+        int cantidadEjercitos = (paisesOcupados.size()) / 2;
+        cantidadEjercitos += banco.ejercitosPorCanjeoDeCartas(cartas);
+        cantidadEjercitos += banco.ejercitosPorContinentesConquistados(paisesOcupados);
+        return cantidadEjercitos;
     }
 
 }

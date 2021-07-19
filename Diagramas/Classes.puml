@@ -91,6 +91,10 @@ class Batalla{
 +batallaEntre(ejercitoAtacante:Ejercitos, ejercitoDefensor: Ejercitos)
 }
 
+class Banco
+
+class Carta
+
 Juego ---->"6" Jugador
 Juego --> FaseDeRonda
 
@@ -100,6 +104,7 @@ FaseDeRonda <|.. ColocarEjercitos
 
 
 Jugador --> Pais
+
 Jugador --> Objetivo
 Jugador --> Continente
 
@@ -113,7 +118,7 @@ Objetivo <|.. ObjetivoJugador
 ObjetivoJugador --> Ocupacion
 
 Ejercitos ..> Batalla
-Ejercitos --> "comandante" Jugador
+Ejercitos -->  Jugador
 EstadoEjercitos <- Ejercitos
 EstadoEjercitos <|.. EnPie
 EstadoEjercitos <|.. Derrotados
@@ -121,5 +126,9 @@ EstadoEjercitos <|.. Derrotados
 Batalla ..> Dados
 
 Continente --> "1..*" Pais
+
+Jugador ..> Banco
+Banco --> Carta
+Banco --> Continente
 
 @enduml

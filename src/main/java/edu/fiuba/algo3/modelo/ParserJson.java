@@ -77,12 +77,40 @@ public class ParserJson implements Parser {
         String nombreContinente = (String) fronterasObject.get("Continente");
         String paisesLimitrofes = (String) fronterasObject.get("Limita con");
 
+<<<<<<< HEAD
         if (!continentes.containsKey(nombreContinente)) {
             Continente continente = new Continente(nombreContinente);
+=======
+<<<<<<< Updated upstream
+=======
+
+        if (!continentes.containsKey(nombreContinente)) {
+            Continente continente;
+            switch (nombreContinente) {
+                case "Africa":
+                case "America del Sur":
+                    continente = new Continente(nombreContinente, 3);
+                    break;
+                case "America del Norte":
+                case "Europa":
+                    continente = new Continente(nombreContinente, 5);
+                    break;
+                case "Asia":
+                    continente = new Continente(nombreContinente, 7);
+                    break;
+                default:
+                    continente = new Continente(nombreContinente, 2);
+                    break;
+            }
+>>>>>>> 8e319831bdf454fe9e654daaa03357e2cec10b0e
             continentes.put(nombreContinente, continente);
         }
         (continentes.get(nombreContinente)).agregarPais(paises.get(nombrePais));
         agregarPaisesLimitrofesASusPaises(paisesLimitrofes, nombrePais);
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
+>>>>>>> 8e319831bdf454fe9e654daaa03357e2cec10b0e
     }
 
 
