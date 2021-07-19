@@ -32,7 +32,7 @@ public class Juego {
     }
 
     private void crearJugadores(int cantidadDeJugadores){
-        for(int i = 0; i < cantidadDeJugadores; i++) this.jugadores.add(new Jugador(i));
+        for(int i = 0; i < cantidadDeJugadores; i++) this.jugadores.add(new Jugador());
     }
 
     private void repartirPaises(){

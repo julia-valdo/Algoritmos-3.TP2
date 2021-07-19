@@ -18,6 +18,7 @@ public class ParserJson implements Parser {
     HashMap<String, Pais> paises;
     ArrayList<Carta> cartas;
     HashMap<String, Continente> continentes;
+
     @SuppressWarnings("unchecked")
 
     public ParserJson() {
@@ -38,11 +39,11 @@ public class ParserJson implements Parser {
             JSONArray tegList = (JSONArray) obj;
 
             if (path.equals("Teg - Cartas.json")) tegList.forEach(carta -> parseCartasObject((JSONObject) carta));
-            if (path.equals("Teg - Fronteras.json")) tegList.forEach(frontera -> parseFronterasObject((JSONObject) frontera));
+            if (path.equals("Teg - Fronteras.json"))
+                tegList.forEach(frontera -> parseFronterasObject((JSONObject) frontera));
 
 
-
-        } catch (IOException | ParseException e ) {
+        } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
     }
@@ -69,6 +70,18 @@ public class ParserJson implements Parser {
         }
 
     }
+    @Override
+    public Collection<Pais> getPaises() {
+        return paises.values();
+    }
+    @Override
+    public ArrayList<Carta> getCartas() {
+        return cartas;
+    }
+    @Override
+    public Collection<Continente> getContinentes() {
+        return continentes.values();
+    }
 
     private void parseFronterasObject(JSONObject fronteras) {
         JSONObject fronterasObject = (JSONObject) fronteras;
@@ -77,57 +90,30 @@ public class ParserJson implements Parser {
         String nombreContinente = (String) fronterasObject.get("Continente");
         String paisesLimitrofes = (String) fronterasObject.get("Limita con");
 
-<<<<<<< HEAD
-        if (!continentes.containsKey(nombreContinente)) {
-            Continente continente = new Continente(nombreContinente);
-=======
-<<<<<<< Updated upstream
-=======
-
         if (!continentes.containsKey(nombreContinente)) {
             Continente continente;
             switch (nombreContinente) {
-                case "Africa":
-                case "America del Sur":
-                    continente = new Continente(nombreContinente, 3);
-                    break;
-                case "America del Norte":
-                case "Europa":
-                    continente = new Continente(nombreContinente, 5);
-                    break;
-                case "Asia":
-                    continente = new Continente(nombreContinente, 7);
-                    break;
-                default:
-                    continente = new Continente(nombreContinente, 2);
-                    break;
+                    case "Africa":
+                    case "America del Sur":
+                        continente = new Continente(nombreContinente, 3);
+                        break;
+                    case "America del Norte":
+                    case "Europa":
+                        continente = new Continente(nombreContinente, 5);
+                        break;
+                    case "Asia":
+                        continente = new Continente(nombreContinente, 7);
+                        break;
+                    default:
+                        continente = new Continente(nombreContinente, 2);
+                        break;
+                }
+                continentes.put(nombreContinente, continente);
             }
->>>>>>> 8e319831bdf454fe9e654daaa03357e2cec10b0e
-            continentes.put(nombreContinente, continente);
-        }
         (continentes.get(nombreContinente)).agregarPais(paises.get(nombrePais));
         agregarPaisesLimitrofesASusPaises(paisesLimitrofes, nombrePais);
-<<<<<<< HEAD
-=======
->>>>>>> Stashed changes
->>>>>>> 8e319831bdf454fe9e654daaa03357e2cec10b0e
-    }
 
-
-    @Override
-    public Collection<Pais> getPaises() {
-        return  paises.values();
     }
-    @Override
-    public ArrayList<Carta> getCartas() {
-        return cartas;
-    }
-    @Override
-    public Collection<Continente> getContinentes() {
-        return  continentes.values();
-    }
-
-
 }
 
 

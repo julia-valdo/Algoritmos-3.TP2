@@ -6,12 +6,12 @@ import java.util.Collection;
 public interface Parser  {
     //Implementar Facade
 
-    public void parsearArchivo(String path);
+    void parsearArchivo(String path);
 
-    public Collection<Pais> getPaises() ;
+    Collection<Pais> getPaises() ;
 
-    public ArrayList<Carta> getCartas();
+    ArrayList<Carta> getCartas();
 
-    public Collection<Continente> getContinentes();
+    Collection<Continente> getContinentes();
 
 }

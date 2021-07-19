@@ -5,7 +5,6 @@ public class Pais {
     private Ejercitos ejercitos;
     private String nombreDelPais;
     private ArrayList<Pais> paisesConectados;
-    private Continente continente;
 
     public void recibirTropas(Ejercitos otrosEjercitos) {
         this.ejercitos = this.ejercitos.disputarDominioDe(this, otrosEjercitos);
@@ -28,11 +27,6 @@ public class Pais {
 
     public void agregarEjercito(int cantidadDeEjercitos) {
         ejercitos.agregarEjercitos(cantidadDeEjercitos);
-    }
-
-    public void agregarContinente(Continente continente) {
-        this.continente = continente;
-
     }
 
     public void atacarA(Pais otroPais) {

@@ -8,10 +8,10 @@ public class Jugador {
     private ArrayList<Pais> paisesOcupados;
     private ArrayList<Carta>cartas;
 
-    public Jugador(int numeroDeJugador){
+    public Jugador(){
         this.reservas = new Ejercitos(10,this);
         this.paisesOcupados = new ArrayList<>();
-        this.numeroDeJugador = numeroDeJugador;
+        //this.numeroDeJugador = numeroDeJugador;
     }
 
     public void ocupa(Pais unPais){ this.ocuparCon(unPais, 1); }
@@ -37,7 +37,7 @@ public class Jugador {
 
     public int cantidadDeEjercitosAColocar(Banco banco){
         int cantidadEjercitos = (paisesOcupados.size()) / 2;
-        cantidadEjercitos += banco.ejercitosPorCanjeoDeCartas(cartas);
+        //cantidadEjercitos += banco.ejercitosPorCanjeoDeCartas(cartas);
         cantidadEjercitos += banco.ejercitosPorContinentesConquistados(paisesOcupados);
         return cantidadEjercitos;
     }
