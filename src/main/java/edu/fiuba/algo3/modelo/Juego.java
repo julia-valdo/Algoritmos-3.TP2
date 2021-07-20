@@ -14,6 +14,8 @@ public class Juego {
         parser.parsearArchivo("Teg - Cartas.json");
         parser.parsearArchivo("Teg - Fronteras.json");
         this.parser = parser;
+        this.fase = new FaseColocarEjercitos();
+        iniciarJuego();
     }
 
     public void iniciarJuego(){
@@ -32,7 +34,7 @@ public class Juego {
     }
 
     private void crearJugadores(int cantidadDeJugadores){
-        for(int i = 0; i < cantidadDeJugadores; i++) this.jugadores.add(new Jugador());
+        for(int i = 0; i < cantidadDeJugadores; i++) this.jugadores.add(new Jugador(i));
     }
 
     private void repartirPaises(){

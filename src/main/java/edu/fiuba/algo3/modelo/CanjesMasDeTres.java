@@ -1,9 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
-public class MasDeTresCanjes implements Canjes {
+public class CanjesMasDeTres implements Canjes {
     private int canjesRealizados;
 
-    public MasDeTresCanjes(){
+    public CanjesMasDeTres(){
         this.canjesRealizados = 3;
     }
 

@@ -9,8 +9,8 @@ public class BatallaTest {
     @Test
     public void ataqueEntrePaisesConElDefensorComoGanador() {
 
-        Ejercitos kamchatka = new Ejercitos(2, new Jugador());
-        Ejercitos china = new Ejercitos(70, new Jugador());
+        Ejercitos kamchatka = new Ejercitos(2, new Jugador(1));
+        Ejercitos china = new Ejercitos(70, new Jugador(2));
 
         Batalla batalla = new Batalla();
         batalla.atacar(kamchatka, china);
@@ -22,8 +22,8 @@ public class BatallaTest {
     @Test
     public void ataqueEntrePaisesConElAtacanteComoGanador() {
 
-        Ejercitos kamchatka = new Ejercitos(70, new Jugador());
-        Ejercitos china = new Ejercitos(1, new Jugador());
+        Ejercitos kamchatka = new Ejercitos(70, new Jugador(1));
+        Ejercitos china = new Ejercitos(1, new Jugador(2));
 
         Batalla batalla = new Batalla();
         batalla.atacar(kamchatka, china);

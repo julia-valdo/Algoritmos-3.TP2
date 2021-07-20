@@ -14,7 +14,7 @@ public class Cuartel {
     public Cuartel(Jugador dueno){
         cartas = new ArrayList<>();
         fichasDisponibles = 10;
-        cantidadDeCanjesHechos = new CeroCanjes();
+        cantidadDeCanjesHechos = new CanjesCero();
         this.duenoDelCuartel = dueno;
     }
 
@@ -60,10 +60,12 @@ public class Cuartel {
     /*
     Canjea la carta y manda dos divisiones al pais ocupado si se encuentra comoparametro
      */
-    public void canjearCarta(Carta unaCarta, ArrayList<Pais> paisesOcupados) {
-        Pais paisASumarleEjercitos = unaCarta.ObtenerPaisAsociado(paisesOcupados);
-        if(paisASumarleEjercitos != null){
-            paisASumarleEjercitos.recibirTropasAliadas(new Ejercitos(2, this.duenoDelCuartel));
+
+    public void agregarFichasA(int numeroDeFichas, Pais unPais) {
+        if(numeroDeFichas > fichasDisponibles){
+            throw new NoHayFuerzasRestantesError();
         }
+        this.fichasDisponibles -= numeroDeFichas;
+        unPais.agregarEjercito(numeroDeFichas);
     }
 }

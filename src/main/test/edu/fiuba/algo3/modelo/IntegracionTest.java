@@ -9,8 +9,8 @@ public class IntegracionTest {
 
     @Test
     public void ataqueEntreDosJugadoresYGanaElAtacante(){
-        Jugador atacante = new Jugador();
-        Jugador defensor = new Jugador();
+        Jugador atacante = new Jugador(1);
+        Jugador defensor = new Jugador(2);
 
         Pais kamchatka = new Pais("Kamchatka");
         Pais china = new Pais("China");
@@ -33,8 +33,8 @@ public class IntegracionTest {
 
     @Test
     public void ataqueEntreDosJugadoresYGanaElDefensor(){
-        Jugador atacante = new Jugador();
-        Jugador defensor = new Jugador();
+        Jugador atacante = new Jugador(1);
+        Jugador defensor = new Jugador(2);
 
         Pais kamchatka = new Pais("Kamchatka");
         Pais china = new Pais("China");

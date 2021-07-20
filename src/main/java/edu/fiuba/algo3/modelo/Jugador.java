@@ -7,9 +7,9 @@ public class Jugador {
     private ArrayList<Pais> paisesOcupados;
     private Cuartel cuartel;
 
-    public Jugador(){
+    public Jugador(int numeroDeJugador){
         this.paisesOcupados = new ArrayList<>();
-        //this.numeroDeJugador = numeroDeJugador;
+        this.numeroDeJugador = numeroDeJugador;
         this.cuartel = new Cuartel(this);
     }
 
@@ -45,8 +45,7 @@ public class Jugador {
     Agrega fichas a un pais que el jugador esta ocupando, si no lo ocupa eleva excepcion
      */
     public void agregarFichasA(int numeroDeFichas, Pais unPais) {
-        Ejercitos nuevaDivision = this.cuartel.generarDivision(numeroDeFichas);
-        unPais.recibirTropasAliadas(nuevaDivision);
+        this.cuartel.agregarFichasA(numeroDeFichas, unPais);
     }
 
     /*
@@ -67,6 +66,8 @@ public class Jugador {
     Canjea una carta que tiene como pais, si no lo tiene no la canjea
      */
     public void canjearCarta(Carta unaCarta) {
-        this.cuartel.canjearCarta(unaCarta, this.paisesOcupados);
+        if(paisesOcupados.contains(unaCarta.getPais())){
+            unaCarta.getPais().agregarEjercito(2);
+        };
     }
 }

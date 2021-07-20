@@ -1,9 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
-public class UnCanje implements Canjes {
+public class CanjesUno implements Canjes {
     @Override
     public Canjes actualizarCantidadDeCanjes() {
-        return new DosCanjes();
+        return new CanjesDos();
     }
 
     @Override

@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-public class ColocarEjercitos implements FaseDeRonda{
+public class FaseColocarEjercitos implements FaseDeRonda{
 
     @Override
     public void accionJugador(Jugador jugador, Banco banco) {
@@ -9,6 +9,6 @@ public class ColocarEjercitos implements FaseDeRonda{
     }
     @Override
     public FaseDeRonda cambiarFase() {
-        return new Atacar();
+        return new FaseAtacar();
     }
 }

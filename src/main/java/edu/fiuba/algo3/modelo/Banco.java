@@ -25,15 +25,16 @@ public class Banco {
         return ejercitosTotal;
     }
 
-//    private boolean puedoCanjear(ArrayList<Carta> cartas){
-//        int globos = 0;
-//        int cañon = 0;
-//        int barco = 0;
-//
-//        for(Carta carta : cartas){
-//            if(carta.getSimbolo().equals("Globo")) globos += 1;
-//            else if (carta.getSimbolo().equals("Cañon")) cañon += 1;
-//            else barco += 1;
-//        }
-//    }
+    private boolean puedoCanjear(ArrayList<Carta> cartas){
+        int globos = 0;
+        int cañon = 0;
+        int barco = 0;
+
+        for(Carta carta : cartas){
+            if(carta.getSimbolo().equals("Globo")) globos += 1;
+            else if (carta.getSimbolo().equals("Cañon")) cañon += 1;
+            else barco += 1;
+        }
+        return false;
+    }
 }

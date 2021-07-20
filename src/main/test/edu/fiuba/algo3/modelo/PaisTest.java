@@ -15,7 +15,7 @@ public class PaisTest {
 
     @Test
     public void creoUnPaisYAgregoEjercitos(){
-        Jugador jugador1 = new Jugador();
+        Jugador jugador1 = new Jugador(1);
         Pais argentina = new Pais("Argentina");
         jugador1.ocupa(argentina);
         argentina.agregarEjercito(5);
@@ -26,8 +26,8 @@ public class PaisTest {
     @Test
     public void creoDosPaisesLimitrofesYVericoQueSePuedenAtacar(){
         Executable excepcion = () -> {
-            Jugador jugador1 = new Jugador();
-            Jugador jugador2 = new Jugador();
+            Jugador jugador1 = new Jugador(1);
+            Jugador jugador2 = new Jugador(2);
             Pais argentina = new Pais("Argentina");
             Pais chile = new Pais("Chile");
             jugador1.ocupa(argentina);
@@ -45,7 +45,7 @@ public class PaisTest {
     @Test
     public void creoDosPaisesQuePertenezcanAlMismoJugadorYVerificoQueNoSePuedenAtacar(){
         Executable excepcion = () -> {
-            Jugador jugador1 = new Jugador();
+            Jugador jugador1 = new Jugador(1);
             Pais argentina = new Pais("Argentina");
             Pais chile = new Pais("Chile");
             jugador1.ocupa(argentina);
@@ -59,8 +59,8 @@ public class PaisTest {
     @Test
     public void creoDosPaisesQueNoPertenezcanAlMismoJugadorYVerificoQueSePuedenAtacar(){
         Executable excepcion = () -> {
-            Jugador jugador1 = new Jugador();
-            Jugador jugador2 = new Jugador();
+            Jugador jugador1 = new Jugador(1);
+            Jugador jugador2 = new Jugador(2);
             Pais argentina = new Pais("Argentina");
             Pais chile = new Pais("Chile");
             argentina.agregarPaisConectado(chile);

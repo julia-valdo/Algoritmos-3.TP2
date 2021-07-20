@@ -1,16 +1,16 @@
 package edu.fiuba.algo3.modelo;
 
-public class EnPie implements EstadoEjercitos{
+public class EstadoEjercitosEnPie implements EstadoEjercitos{
 
     private int numeroDeFuerzas;
 
-    public EnPie(int fuerzasIniciales){
+    public EstadoEjercitosEnPie(int fuerzasIniciales){
         this.numeroDeFuerzas = fuerzasIniciales;
 
     }
 
     public EstadoEjercitos evaluarFuerzasRestantes(){
-        return numeroDeFuerzas <= 0 ? new Derrotados() : this;
+        return numeroDeFuerzas <= 0 ? new EstadoEjercitosDerrotados(): this;
     }
 
     @Override
@@ -42,8 +42,8 @@ public class EnPie implements EstadoEjercitos{
     @Override
     public boolean equals(Object otro){
         if(otro == this) return true;
-        else if (otro == null || otro.getClass() != EnPie.class) return false;
-        EnPie otroEnPie = (EnPie) otro;
+        else if (otro == null || otro.getClass() != EstadoEjercitosEnPie.class) return false;
+        EstadoEjercitosEnPie otroEnPie = (EstadoEjercitosEnPie) otro;
 
         return otroEnPie.numeroDeFuerzas == this.numeroDeFuerzas;
     }

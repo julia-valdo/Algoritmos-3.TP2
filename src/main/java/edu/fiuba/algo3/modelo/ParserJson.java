@@ -55,9 +55,11 @@ public class ParserJson implements Parser {
         String nombrePais = (String) cartasObject.get("Pais");
         String simbolo = (String) cartasObject.get("Simbolo");
 
-        Carta carta = new Carta(nombrePais, simbolo);
+
         Pais pais = new Pais(nombrePais);
         this.paises.put(nombrePais, pais);
+
+        Carta carta = new Carta(pais, simbolo);
         this.cartas.add(carta);
 
     }

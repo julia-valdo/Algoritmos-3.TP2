@@ -6,13 +6,13 @@ public class Ejercitos {
     protected EstadoEjercitos condicionActual;
 
     public Ejercitos(){
-        this.comandante = new Jugador();
-        this.condicionActual = new Derrotados();
+        this.comandante = new Jugador(0);
+        this.condicionActual = new EstadoEjercitosDerrotados();
     }
 
     public Ejercitos(int numeroFuerzas, Jugador comandante){
         this.comandante = comandante;
-        this.condicionActual = new EnPie(numeroFuerzas);
+        this.condicionActual = new EstadoEjercitosEnPie(numeroFuerzas);
     }
 
     public int getCantidadEjercitos() {
@@ -20,7 +20,7 @@ public class Ejercitos {
     }
 
     public void agregarEjercitos(int cantidad) {
-        this.condicionActual = this.condicionActual.agregarFuerzas(cantidad);
+        this.condicionActual.agregarFuerzas(cantidad);
     }
 
     public Ejercitos generarDivision(int cantidad){ return this.confirmarNuevaDivisionDe(cantidad); }
@@ -48,7 +48,6 @@ public class Ejercitos {
     }
 
     private boolean fueDerrotado(){
-        this.condicionActual = this.condicionActual.evaluarFuerzasRestantes();
         return this.condicionActual.estanDerrotados();
     }
 

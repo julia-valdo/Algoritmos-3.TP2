@@ -38,9 +38,9 @@ class EjercitosNulos{
 + {override} disputarDominioDe(:Pais, :Ejercitos)
 }
 
-class EjercitosDeReserva{
-+ {override} restarEjercitos(int cantidad)
-}
+'class EjercitosDeReserva{
+'+ {override} restarEjercitos(int cantidad)
+'}
 
 interface EstadoEjercitos{
  + evaluarFuerzasRestantes(): EstadoEjercitos
@@ -123,21 +123,21 @@ class Batalla{
 +batallaEntre(ejercitoAtacante:Ejercitos, ejercitoDefensor: Ejercitos)
 }
 
-class Banco
+'class Banco
 
 class Carta
 
 Juego ---->"6" Jugador
-Juego --> FaseDeRonda
+Juego ----> FaseDeRonda
 
 FaseDeRonda <|.. Atacar
 FaseDeRonda <|.. Reagrupar
 FaseDeRonda <|.. ColocarEjercitos
 
 
-Jugador --> Pais
+Jugador ----> Pais
 
-Jugador --> Objetivo
+Jugador ----> Objetivo
 Jugador --> Continente
 
 Pais --> Ejercitos
@@ -160,15 +160,14 @@ Batalla ..> Dados
 Continente --> "1..*" Pais
 
 
-Banco --> Carta
-Banco --> Continente
+'Banco --> Carta
+'Banco --> Continente
 
 
-EjercitosDeReserva -|> Ejercitos
-EjercitosNulos -|> Ejercitos
-Jugador -> Cuartel
-Cuartel -> Jugador
-Cuartel ..> Ejercitos
+'EjercitosDeReserva -|> Ejercitos
+Ejercitos <|- EjercitosNulos
+Cuartel <-> Jugador
+Cuartel ...> Ejercitos
 Cuartel -> "*" Carta
 Cuartel -> Canjes
 

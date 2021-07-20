@@ -47,17 +47,4 @@ public class Pais {
 
     private boolean esLimitrofe(Pais otroPais) { return paisesConectados.contains(otroPais); }
 
-    /*
-    Agrega fichas del jugador que esta ocupando el pais
-     */
-    public void recibirTropasAliadas(Ejercitos nuevaDivision) {
-        this.ejercitos.agregarDivision(nuevaDivision);
-    }
-
-    /*
-    Devuelve si el pais se llama como el nombre pasado por parametro
-     */
-    public boolean es(String nombreDePais) {
-        return nombreDePais.equals(this.nombreDelPais);
-    }
 }
