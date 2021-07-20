@@ -16,12 +16,11 @@ public class Carta {
     }
     /*
     Devuelve 0 si las tres cartas no son del mismo tipo 4 si lo son
+    cambiarlo cuando agregas funcionalidad de cantidad de veces que canjeaste las cartas
      */
-    public int recibirFichasPorCanjeCon(Carta segundaCarta, Carta terceraCarta) {
-        if(this.simbolo.equals((segundaCarta.simbolo)) && this.simbolo.equals(terceraCarta.simbolo)){
-            return 4;
-        }
-        return 0;
+    public boolean esValidoElCanje(Carta segundaCarta, Carta terceraCarta) {
+
+        return this.simbolo.equals((segundaCarta.simbolo)) && this.simbolo.equals(terceraCarta.simbolo);
     }
     /*
     Verifica que el pais asociado este entre los paises del parametro

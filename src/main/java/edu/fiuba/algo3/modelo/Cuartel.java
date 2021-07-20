@@ -8,11 +8,13 @@ Guarda la informacion del canjeo de cartas del jugador particular
 public class Cuartel {
     private ArrayList<Carta> cartas;
     int fichasDisponibles;
+    Canjes cantidadDeCanjesHechos;
     Jugador duenoDelCuartel;
 
     public Cuartel(Jugador dueno){
         cartas = new ArrayList<>();
         fichasDisponibles = 10;
+        cantidadDeCanjesHechos = new CeroCanjes();
         this.duenoDelCuartel = dueno;
     }
 
@@ -25,10 +27,15 @@ public class Cuartel {
 
     /*
     Canjea las cartas elegidas y actualiza la cantidad de fichas disponibles
+    Pensar como mejorar esto para que se pueda actualizar segun la cantidad de
+    veces que el jugador canjeo las cartas
      */
     public void canjearCartas(Carta primeraCarta, Carta segundaCarta, Carta terceraCarta) {
-        this.fichasDisponibles += primeraCarta.recibirFichasPorCanjeCon(segundaCarta, terceraCarta);
+        if (primeraCarta.esValidoElCanje(segundaCarta, terceraCarta)){
+            this.fichasDisponibles += this.cantidadDeCanjesHechos.realizarCanje();
+            this.cantidadDeCanjesHechos = this.cantidadDeCanjesHechos.actualizarCantidadDeCanjes();
         this.cartas.remove(primeraCarta);this.cartas.remove(primeraCarta);this.cartas.remove(primeraCarta);
+        }
     }
 
     /*

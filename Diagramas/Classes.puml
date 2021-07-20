@@ -84,6 +84,24 @@ interface FaseDeRonda{
 +{abstract} accionDeJugador(unJugador:Jugador):void
 }
 
+interface Canjes{
++ realizarCanje():int
++ actualizarCantidadDeCanjes():Canjes
+}
+
+class CeroCanjes{
+}
+
+class UnCanje{
+}
+
+class DosCanjes{
+}
+
+class MasDeTresCanjes{
+- numeroDeCanjes:int
+}
+
 interface Objetivo{
 + estaCumplido(): boolean
 }
@@ -152,5 +170,11 @@ Jugador -> Cuartel
 Cuartel -> Jugador
 Cuartel ..> Ejercitos
 Cuartel -> "*" Carta
+Cuartel -> Canjes
+
+Canjes <|.. CeroCanjes
+Canjes <|.. UnCanje
+Canjes <|.. DosCanjes
+Canjes <|.. MasDeTresCanjes
 
 @enduml
