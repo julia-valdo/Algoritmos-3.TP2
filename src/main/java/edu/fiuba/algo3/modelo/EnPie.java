@@ -39,4 +39,13 @@ public class EnPie implements EstadoEjercitos{
         return false;
     }
 
+    @Override
+    public boolean equals(Object otro){
+        if(otro == this) return true;
+        else if (otro == null || otro.getClass() != EnPie.class) return false;
+        EnPie otroEnPie = (EnPie) otro;
+
+        return otroEnPie.numeroDeFuerzas == this.numeroDeFuerzas;
+    }
+
 }

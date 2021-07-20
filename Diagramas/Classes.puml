@@ -17,6 +17,12 @@ class Jugador{
 +agregarFichas(:Pais)
 }
 
+class Cuartel{
+- fichasDisponibles:int
++ generarDivision (cantidad:int): Ejercitos
++ canjearCartas(primeraCarta:Carta, segundaCarta:Carta, terceraCarta:Carta)
+}
+
 class Ejercitos{
 +agregarEjercitos(cantidad:int):void
 +restarEjercitos(cantidad:int):void
@@ -26,6 +32,14 @@ class Ejercitos{
 +estanBajoElMandoDe(:Jugador):boolean
 +disputarDominioDe(:Pais, :Ejercitos)
 -confirmarNuevaDivision(numeroDeFuerzas:int)
+}
+
+class EjercitosNulos{
++ {override} disputarDominioDe(:Pais, :Ejercitos)
+}
+
+class EjercitosDeReserva{
++ {override} restarEjercitos(int cantidad)
 }
 
 interface EstadoEjercitos{
@@ -127,8 +141,16 @@ Batalla ..> Dados
 
 Continente --> "1..*" Pais
 
-Jugador ..> Banco
+
 Banco --> Carta
 Banco --> Continente
+
+
+EjercitosDeReserva -|> Ejercitos
+EjercitosNulos -|> Ejercitos
+Jugador -> Cuartel
+Cuartel -> Jugador
+Cuartel ..> Ejercitos
+Cuartel -> "*" Carta
 
 @enduml

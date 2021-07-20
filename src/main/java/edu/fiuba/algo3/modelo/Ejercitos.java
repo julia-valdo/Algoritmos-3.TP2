@@ -3,7 +3,7 @@ package edu.fiuba.algo3.modelo;
 public class Ejercitos {
 
     private Jugador comandante;
-    private EstadoEjercitos condicionActual;
+    protected EstadoEjercitos condicionActual;
 
     public Ejercitos(){
         this.comandante = new Jugador();
@@ -52,4 +52,21 @@ public class Ejercitos {
         return this.condicionActual.estanDerrotados();
     }
 
+    /*
+    Se junta con las fichas de la otra division, solamente si tienen el mismo comandante
+     */
+    public void agregarDivision(Ejercitos nuevaDivision) {
+        this.agregarEjercitos(nuevaDivision.getCantidadEjercitos());
+    }
+
+    /*
+    Hago override del metodo equals
+     */
+    public boolean equals(Object otroObjeto){
+        if(this == otroObjeto) return true;
+        else if(otroObjeto == null || otroObjeto.getClass() != Ejercitos.class) return false;
+        Ejercitos otroEjercito = (Ejercitos) otroObjeto;
+
+        return otroEjercito.comandante == this.comandante && otroEjercito.condicionActual.equals(this.condicionActual);
+    }
 }

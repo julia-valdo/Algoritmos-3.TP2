@@ -28,4 +28,9 @@ public class Derrotados implements EstadoEjercitos{
         return true;
     }
 
+    @Override
+    public boolean equals(Object otro){
+        return otro.getClass() == Derrotados.class;
+    }
+
 }
