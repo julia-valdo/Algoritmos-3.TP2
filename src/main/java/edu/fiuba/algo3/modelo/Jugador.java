@@ -70,4 +70,8 @@ public class Jugador {
             unaCarta.getPais().agregarEjercito(2);
         };
     }
+
+    public ArrayList<Pais> getPaisesOcupados() {
+        return paisesOcupados;
+    }
 }
