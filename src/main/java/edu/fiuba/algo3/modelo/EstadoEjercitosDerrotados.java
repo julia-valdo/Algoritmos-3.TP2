@@ -1,8 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
-public class Derrotados implements EstadoEjercitos{
+public class EstadoEjercitosDerrotados implements EstadoEjercitos{
 
-    public Derrotados(){
+    public EstadoEjercitosDerrotados(){
     }
     @Override
     public EstadoEjercitos evaluarFuerzasRestantes() {
@@ -26,6 +26,11 @@ public class Derrotados implements EstadoEjercitos{
     @Override
     public boolean estanDerrotados() {
         return true;
+    }
+
+    @Override
+    public boolean equals(Object otro){
+        return otro.getClass() == EstadoEjercitosDerrotados.class;
     }
 
 }

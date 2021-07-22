@@ -2,6 +2,9 @@ package edu.fiuba.algo3.modelo;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -11,77 +14,108 @@ import org.json.simple.parser.ParseException;
 
 //Todos los prints que vean son para checkear que funca nomas
 
-public class ParserJson {
+public class ParserJson implements Parser {
+    HashMap<String, Pais> paises;
+    ArrayList<Carta> cartas;
+    HashMap<String, Continente> continentes;
+
     @SuppressWarnings("unchecked")
 
-    public static void obtenerParse(String path) {
+    public ParserJson() {
+
+        paises = new HashMap<>();
+        cartas = new ArrayList<>();
+        continentes = new HashMap<>();
+
+    }
+
+    @Override
+    public void parsearArchivo(String path) {
         JSONParser jsonParser = new JSONParser();
 
         try (FileReader reader = new FileReader(path)) {
             Object obj = jsonParser.parse(reader);
 
             JSONArray tegList = (JSONArray) obj;
-            System.out.println(tegList);
 
             if (path.equals("Teg - Cartas.json")) tegList.forEach(carta -> parseCartasObject((JSONObject) carta));
-            if (path.equals("Teg - Fronteras.json")) tegList.forEach(frontera -> parseFronterasObject((JSONObject) frontera));
+            if (path.equals("Teg - Fronteras.json"))
+                tegList.forEach(frontera -> parseFronterasObject((JSONObject) frontera));
 
 
-
-        } catch (IOException | ParseException e ) {
+        } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
     }
 
-    //        public static void main(String[] args) {
-//        JSONParser jsonParser = new JSONParser();
-//
-//        try (FileReader reader = new FileReader("Teg - Cartas.json")) {
-//            Object obj = jsonParser.parse(reader);
-//
-//            JSONArray tegList = (JSONArray) obj;
-//            System.out.println(tegList);
-//
-//             tegList.forEach(carta -> parseCartasObject((JSONObject) carta));
-//            //if (path.equals("Teg - Fronteras.json")) tegList.forEach(frontera -> parseFronterasObject((JSONObject) frontera));
-//
-//
-//
-//        } catch (IOException | ParseException e ) {
-//            e.printStackTrace();
-//        }
-//    }
 
-
-
-    private static void parseCartasObject(JSONObject cartas) {
+    private void parseCartasObject(JSONObject cartas) {
         JSONObject cartasObject = (JSONObject) cartas;
 
-        String pais = (String) cartasObject.get("Pais");
-        System.out.println(pais);
-
+        String nombrePais = (String) cartasObject.get("Pais");
         String simbolo = (String) cartasObject.get("Simbolo");
-        System.out.println(simbolo);
+
+
+        Pais pais = new Pais(nombrePais);
+        this.paises.put(nombrePais, pais);
+
+        Carta carta = new Carta(pais, simbolo);
+        this.cartas.add(carta);
 
     }
 
-    private static void parseFronterasObject(JSONObject fronteras) {
+    private void agregarPaisesLimitrofesASusPaises(String limitrofes, String pais) {
+
+        String[] paisesLimitrofes = limitrofes.split(",");
+        for (String paisLimitrofe : paisesLimitrofes) {
+            (paises.get(pais)).agregarPaisConectado(paises.get(paisLimitrofe));
+        }
+
+    }
+    @Override
+    public Collection<Pais> getPaises() {
+        return paises.values();
+    }
+    @Override
+    public ArrayList<Carta> getCartas() {
+        return cartas;
+    }
+    @Override
+    public Collection<Continente> getContinentes() {
+        return continentes.values();
+    }
+
+    private void parseFronterasObject(JSONObject fronteras) {
         JSONObject fronterasObject = (JSONObject) fronteras;
 
-        String pais = (String) fronterasObject.get("Pais");
-        System.out.println(pais);
+        String nombrePais = (String) fronterasObject.get("Pais");
+        String nombreContinente = (String) fronterasObject.get("Continente");
+        String paisesLimitrofes = (String) fronterasObject.get("Limita con");
 
-        String continente = (String) fronterasObject.get("Continente");
-        System.out.println(continente);
-
-        String limite = (String) fronterasObject.get("Limita con");
-        System.out.println(limite);
+        if (!continentes.containsKey(nombreContinente)) {
+            Continente continente;
+            switch (nombreContinente) {
+                    case "Africa":
+                    case "America del Sur":
+                        continente = new Continente(nombreContinente, 3);
+                        break;
+                    case "America del Norte":
+                    case "Europa":
+                        continente = new Continente(nombreContinente, 5);
+                        break;
+                    case "Asia":
+                        continente = new Continente(nombreContinente, 7);
+                        break;
+                    default:
+                        continente = new Continente(nombreContinente, 2);
+                        break;
+                }
+                continentes.put(nombreContinente, continente);
+            }
+        (continentes.get(nombreContinente)).agregarPais(paises.get(nombrePais));
+        agregarPaisesLimitrofesASusPaises(paisesLimitrofes, nombrePais);
 
     }
-
-
-
-
 }
 
 

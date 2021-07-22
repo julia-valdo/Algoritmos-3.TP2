@@ -3,16 +3,16 @@ package edu.fiuba.algo3.modelo;
 public class Ejercitos {
 
     private Jugador comandante;
-    private EstadoEjercitos condicionActual;
+    protected EstadoEjercitos condicionActual;
 
     public Ejercitos(){
-        this.comandante = new Jugador();
-        this.condicionActual = new Derrotados();
+        this.comandante = new Jugador(0);
+        this.condicionActual = new EstadoEjercitosDerrotados();
     }
 
     public Ejercitos(int numeroFuerzas, Jugador comandante){
         this.comandante = comandante;
-        this.condicionActual = new EnPie(numeroFuerzas);
+        this.condicionActual = new EstadoEjercitosEnPie(numeroFuerzas);
     }
 
     public int getCantidadEjercitos() {
@@ -20,7 +20,7 @@ public class Ejercitos {
     }
 
     public void agregarEjercitos(int cantidad) {
-        this.condicionActual = this.condicionActual.agregarFuerzas(cantidad);
+        this.condicionActual.agregarFuerzas(cantidad);
     }
 
     public Ejercitos generarDivision(int cantidad){ return this.confirmarNuevaDivisionDe(cantidad); }
@@ -48,8 +48,24 @@ public class Ejercitos {
     }
 
     private boolean fueDerrotado(){
-        this.condicionActual = this.condicionActual.evaluarFuerzasRestantes();
         return this.condicionActual.estanDerrotados();
     }
 
+    /*
+    Se junta con las fichas de la otra division, solamente si tienen el mismo comandante
+     */
+    public void agregarDivision(Ejercitos nuevaDivision) {
+        this.agregarEjercitos(nuevaDivision.getCantidadEjercitos());
+    }
+
+    /*
+    Hago override del metodo equals
+     */
+    public boolean equals(Object otroObjeto){
+        if(this == otroObjeto) return true;
+        else if(otroObjeto == null || otroObjeto.getClass() != Ejercitos.class) return false;
+        Ejercitos otroEjercito = (Ejercitos) otroObjeto;
+
+        return otroEjercito.comandante == this.comandante && otroEjercito.condicionActual.equals(this.condicionActual);
+    }
 }

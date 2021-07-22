@@ -9,14 +9,14 @@ public class IntegracionTest {
 
     @Test
     public void ataqueEntreDosJugadoresYGanaElAtacante(){
-        Jugador atacante = new Jugador();
-        Jugador defensor = new Jugador();
+        Jugador atacante = new Jugador(1);
+        Jugador defensor = new Jugador(2);
 
         Pais kamchatka = new Pais("Kamchatka");
         Pais china = new Pais("China");
 
-        kamchatka.agregarPaisesConectados(china);
-        china.agregarPaisesConectados(kamchatka);
+        kamchatka.agregarPaisConectado(china);
+        china.agregarPaisConectado(kamchatka);
         atacante.agregarFichas(70);
 
         atacante.ocuparCon(kamchatka, 80);
@@ -33,14 +33,14 @@ public class IntegracionTest {
 
     @Test
     public void ataqueEntreDosJugadoresYGanaElDefensor(){
-        Jugador atacante = new Jugador();
-        Jugador defensor = new Jugador();
+        Jugador atacante = new Jugador(1);
+        Jugador defensor = new Jugador(2);
 
         Pais kamchatka = new Pais("Kamchatka");
         Pais china = new Pais("China");
 
-        kamchatka.agregarPaisesConectados(china);
-        china.agregarPaisesConectados(kamchatka);
+        kamchatka.agregarPaisConectado(china);
+        china.agregarPaisConectado(kamchatka);
         defensor.agregarFichas(70);
 
         atacante.ocuparCon(kamchatka, 5);

@@ -21,7 +21,7 @@ public class Pais {
 
     public int getCantidadDeEjercitos() {return this.ejercitos.getCantidadEjercitos();}
 
-    public void agregarPaisesConectados(Pais unPais) {
+    public void agregarPaisConectado(Pais unPais) {
         paisesConectados.add(unPais);
     }
 
