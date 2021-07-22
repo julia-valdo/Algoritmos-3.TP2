@@ -11,14 +11,14 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 
-public class CartaTest {
+public class CanjeoDeCartasTest {
 
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
     }
 
     @Test
-    public void unJugadorConTresGlobosAlCanjearlosPuedePoner3FichasEnElPaisQueOcupa(){
+    public void unJugadorConTresGlobosAlCanjearlosPuedePoner4FichasEnElPaisQueOcupa(){
         Jugador jugador1 = new Jugador(1);
         Carta globoUno = new Carta(new Pais("Francia"), "Globo");
         Carta globoDos = new Carta(new Pais("Chile"), "Globo");
@@ -28,26 +28,24 @@ public class CartaTest {
         //Pongo todas las fichas del jugador en argentina
         jugador1.ocuparCon(argentina, 10);
 
-        //Le doy las cartas al jugador
+
         jugador1.recibirCarta(globoUno);
         jugador1.recibirCarta(globoDos);
         jugador1.recibirCarta(globoTres);
 
-        //Las canjeo
+
         jugador1.canjearCartas(globoUno, globoDos, globoTres);
 
-        //Pongo tres fichas en el pais que ocupa el jugador
-        Executable noProduceExcepcion = () -> {
+        Executable puedoPonerTresFichasMas = () -> {
           jugador1.agregarFichasA(3, argentina);
         };
 
-        assertDoesNotThrow(noProduceExcepcion);
+        assertDoesNotThrow(puedoPonerTresFichasMas);
     }
 
 
     @Test
     public void jugadorCanjeaCartaDePaisQueOcupaYLeAgregaDosEjercitos(){
-        ArgumentCaptor<Integer> ejercitosParametros = ArgumentCaptor.forClass(Integer.class);
         Jugador jugador1 = new Jugador(1);
         Pais argentina = mock(Pais.class);
         Carta cartaArgentina = new Carta(argentina, "Globo");
@@ -56,18 +54,16 @@ public class CartaTest {
             jugador1.ocupasteA(argentina);
             return null;
         }).when(argentina).recibirTropas(any());
-        //Hago que el jugador ocupe argentina y le doy la carta de argentina
+
         jugador1.ocupa(argentina);
         jugador1.recibirCarta(cartaArgentina);
 
-        //El jugador canjea la carta de argentina
+
         jugador1.canjearCarta(cartaArgentina);
 
         //Compruebo que se haya llamado al metodo recibirFuerzasAliadas
-        verify(argentina, times(1)).agregarEjercito(ejercitosParametros.capture());
+        verify(argentina, times(1)).agregarEjercito(2);
 
-        //Verifico que el parametro sea el que queria
-        assertEquals(2, ejercitosParametros.getValue());
 
     }
 
@@ -102,24 +98,40 @@ public class CartaTest {
     }
 
     @Test
+    public void seRealizaElCanjeTambienCuandoLasTresCartasSonDiferentes(){
+        Jugador jugador1 = new Jugador(1);
+        Pais chile = new Pais("chile");
+        Carta cartaGlobo = new Carta(new Pais("Francia"), "Globo");
+        Carta cartaBarco = new Carta(new Pais("Chile"), "Barco");
+        Carta cartaCanon = new Carta(new Pais("Etiopia"), "Cañon");
+        //Dejo al jugador sin fichas
+        jugador1.ocuparCon(chile, 10);
+
+        jugador1.recibirCarta(cartaGlobo);
+        jugador1.recibirCarta(cartaBarco);
+        jugador1.recibirCarta(cartaCanon);
+
+        jugador1.canjearCartas(cartaBarco, cartaCanon, cartaGlobo);
+
+        Executable puedoAgregar4FichasAChile = () -> {
+            jugador1.agregarFichasA(4, chile);
+        };
+
+        assertDoesNotThrow(puedoAgregar4FichasAChile);
+
+
+    }
+
+    @Test
     public void alCanjearUnaCartaDeUnPaisQueNoOcupaNoAumentanLasFuerzasEnEsePais(){
 
         Jugador jugador1 = new Jugador(1);
-        Pais argentina = mock(Pais.class);
         Carta cartaFrancia = new Carta(new Pais("Francia"), "Globo");
-        //Armo el mock
+        Pais argentina = this.armarMockPaisPara(jugador1);
 
-        doAnswer(new Answer() {
-            public Object answer(InvocationOnMock invocationOnMock) throws Throwable {
-                jugador1.ocupasteA(argentina);
-                return null;
-            }
-        }).when(argentina).recibirTropas(any());
-        //Hago que el jugador ocupe argentina y le doy la carta de argentina
         jugador1.ocupa(argentina);
         jugador1.recibirCarta(cartaFrancia);
 
-        //El jugador canjea la carta de argentina
         jugador1.canjearCarta(cartaFrancia);
 
         //Compruebo que se haya llamado al metodo recibirFuerzasAliadas
@@ -147,6 +159,34 @@ public class CartaTest {
         };
 
         assertThrows(NoHayFuerzasRestantesError.class, noTieneMasFichas);
+    }
+
+    @Test
+    public void siSeCanjeaDosVecesUnaMismaCartaLaSegundaVezNoSeSumanEjercitos(){
+        Jugador jugador1 = new Jugador(0);
+        Pais argentina = this.armarMockPaisPara(jugador1);
+        Carta cartaArgentina = new Carta(argentina, "Globo");
+
+        jugador1.ocupa(argentina);
+        jugador1.recibirCarta(cartaArgentina);
+        jugador1.canjearCarta(cartaArgentina);
+        jugador1.canjearCarta(cartaArgentina);
+
+        verify(argentina, times(1)).agregarEjercito(2);
+
+    }
+
+
+    private Pais armarMockPaisPara(Jugador unJugador){
+        Pais argentina = mock(Pais.class);
+        doAnswer(new Answer() {
+            public Object answer(InvocationOnMock invocationOnMock) throws Throwable {
+                unJugador.ocupasteA(argentina);
+                return null;
+            }
+        }).when(argentina).recibirTropas(any());
+
+        return argentina;
     }
 
 

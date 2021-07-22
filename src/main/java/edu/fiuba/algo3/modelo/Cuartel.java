@@ -7,9 +7,9 @@ Guarda la informacion del canjeo de cartas del jugador particular
  */
 public class Cuartel {
     private ArrayList<Carta> cartas;
-    int fichasDisponibles;
-    Canjes cantidadDeCanjesHechos;
-    Jugador duenoDelCuartel;
+    private int fichasDisponibles;
+    private Canjes cantidadDeCanjesHechos;
+    private Jugador duenoDelCuartel;
 
     public Cuartel(Jugador dueno){
         cartas = new ArrayList<>();
@@ -18,30 +18,17 @@ public class Cuartel {
         this.duenoDelCuartel = dueno;
     }
 
-    /*
-    Recibe una carta y la guarda
-     */
     public void recibirCarta(Carta unaCarta) {
         this.cartas.add(unaCarta);
     }
 
-    /*
-    Canjea las cartas elegidas y actualiza la cantidad de fichas disponibles
-    Pensar como mejorar esto para que se pueda actualizar segun la cantidad de
-    veces que el jugador canjeo las cartas
-     */
     public void canjearCartas(Carta primeraCarta, Carta segundaCarta, Carta terceraCarta) {
         if (primeraCarta.esValidoElCanje(segundaCarta, terceraCarta)){
-            this.fichasDisponibles += this.cantidadDeCanjesHechos.realizarCanje();
-            this.cantidadDeCanjesHechos = this.cantidadDeCanjesHechos.actualizarCantidadDeCanjes();
+            this.cantidadDeCanjesHechos = this.cantidadDeCanjesHechos.realizarCanjeA(this);
         this.cartas.remove(primeraCarta);this.cartas.remove(primeraCarta);this.cartas.remove(primeraCarta);
         }
     }
 
-    /*
-    Devuelve los ejercitos con la cantidad de fichas pasadas por parametro
-    siempre que esta no supere las fichas disponibles
-     */
     public Ejercitos generarDivision(int cantidadFuerzas) {
         if(cantidadFuerzas > fichasDisponibles){
             throw new NoHayFuerzasRestantesError();
@@ -50,16 +37,9 @@ public class Cuartel {
         return new Ejercitos(cantidadFuerzas, duenoDelCuartel);
     }
 
-    /*
-    Agrega la cantidad de fichas pasadas por parametro
-     */
     public void agregarEjercitos(int cantidadFichas) {
         this.fichasDisponibles += cantidadFichas;
     }
-
-    /*
-    Canjea la carta y manda dos divisiones al pais ocupado si se encuentra comoparametro
-     */
 
     public void agregarFichasA(int numeroDeFichas, Pais unPais) {
         if(numeroDeFichas > fichasDisponibles){
@@ -67,5 +47,9 @@ public class Cuartel {
         }
         this.fichasDisponibles -= numeroDeFichas;
         unPais.agregarEjercito(numeroDeFichas);
+    }
+
+    public void canjearCarta(Carta unaCarta) {
+        unaCarta.canjearse();
     }
 }

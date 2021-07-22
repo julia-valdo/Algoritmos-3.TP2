@@ -7,15 +7,19 @@ public class CanjesMasDeTres implements Canjes {
         this.canjesRealizados = 3;
     }
 
-
     @Override
-    public Canjes actualizarCantidadDeCanjes() {
+    public Canjes realizarCanjeA(Cuartel unCuartel) {
+        this.actualizarNumeroDeCanjes();
+        this.sumarFichasPorCanje(unCuartel);
         return this;
     }
 
-    @Override
-    public int realizarCanje() {
+    private void sumarFichasPorCanje(Cuartel unCuartel){
+        int cantidadDeFichasPorCanje = (this.canjesRealizados - 1) * 5;
+        unCuartel.agregarEjercitos(cantidadDeFichasPorCanje);
+    }
+
+    private void actualizarNumeroDeCanjes(){
         this.canjesRealizados++;
-        return (this.canjesRealizados - 1) * 5;
     }
 }

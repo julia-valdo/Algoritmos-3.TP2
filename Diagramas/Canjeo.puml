@@ -1,0 +1,60 @@
+@startuml
+
+class Cuartel{
+- fichasDisponibles:int
++ generarDivision (cantidad:int): Ejercitos
++ canjearCartas(primeraCarta:Carta, segundaCarta:Carta, terceraCarta:Carta)
++ canjearCarta(unaCarta:Carta):void
+}
+
+interface Canjes{
++ realizarCanjeA(unCuartel:Cuartel): Canjes
+}
+
+class CeroCanjes{
+- sumarFichasPorCanje(unCuartel:Cuartel): void
+}
+
+class UnCanje{
+- sumarFichasPorCanje(unCuartel:Cuartel): void
+}
+
+class DosCanjes{
+- sumarFichasPorCanje(unCuartel:Cuartel):void
+}
+
+class MasDeTresCanjes{
+- numeroDeCanjes:int
+- sumarFichasPorCanje(unCuartel:Cuartel):void
+- actualizarNumeroDeCanjes():void
+}
+
+class Carta{
+- pais:Pais
+- simbolo:String
++ canjearme():void
+- activarse():void
+}
+
+interface EstadoDeActivacion{
++ activarseEn(unPais:Pais):void
+}
+
+class Desactivada{
+}
+
+class Activada{
+}
+
+Carta "*" <- Cuartel
+EstadoDeActivacion <- Carta
+EstadoDeActivacion <|.. Desactivada
+EstadoDeActivacion <|.. Activada
+Cuartel -> Canjes
+
+Canjes <|.. CeroCanjes
+Canjes <|.. UnCanje
+Canjes <|.. DosCanjes
+Canjes <|.. MasDeTresCanjes
+
+@enduml

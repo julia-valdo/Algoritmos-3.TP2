@@ -1,13 +1,15 @@
 package edu.fiuba.algo3.modelo;
 
 public class CanjesDos implements Canjes {
+
+
     @Override
-    public Canjes actualizarCantidadDeCanjes() {
+    public Canjes realizarCanjeA(Cuartel unCuartel) {
+        this.sumarFichasPorCanje(unCuartel);
         return new CanjesMasDeTres();
     }
 
-    @Override
-    public int realizarCanje() {
-        return 10;
+    private void sumarFichasPorCanje(Cuartel unCuartel){
+        unCuartel.agregarEjercitos(10);
     }
 }
