@@ -6,11 +6,13 @@ public class Jugador {
     private int numeroDeJugador;
     private ArrayList<Pais> paisesOcupados;
     private Cuartel cuartel;
+    public boolean derrotado;
 
     public Jugador(int numeroDeJugador){
         this.paisesOcupados = new ArrayList<>();
         this.numeroDeJugador = numeroDeJugador;
         this.cuartel = new Cuartel(this);
+        this.derrotado = false;
     }
 
     public void ocupa(Pais unPais){ this.ocuparCon(unPais, 1); }
@@ -20,8 +22,10 @@ public class Jugador {
         unPais.recibirTropas(nuevaDivision);
     }
 
+    //AgregarEstadoDerrotado
     public void perdisteA(Pais unPais){
         this.paisesOcupados.remove(unPais);
+        if (this.paisesOcupados.isEmpty()) this.derrotado = true;
     }
 
     public void ocupasteA(Pais unPais){ paisesOcupados.add(unPais); }
@@ -67,5 +71,9 @@ public class Jugador {
 
     private boolean puedoCanjearLaCarta(Carta unaCarta){
         return paisesOcupados.contains(unaCarta.getPais());
+    }
+
+    public boolean fueDerrotado(){
+        return this.derrotado;
     }
 }

@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import java.util.ArrayList;
+import java.util.stream.Stream;
 
 public class Continente {
 
@@ -34,11 +35,15 @@ public class Continente {
     }
 
     public boolean fueConquistado(ArrayList<Pais> paises){
-        return this.paises.equals(paises);
+        return paises.containsAll(this.paises);
     }
 
     public int getCantidadDeFichasPorContinente() {
         return cantidadDeFichasPorContinente;
+    }
+
+    public boolean pertenece(Pais pais){
+        return paises.contains(pais);
     }
 
 }

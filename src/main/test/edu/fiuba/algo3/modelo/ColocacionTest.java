@@ -1,6 +1,11 @@
 package edu.fiuba.algo3.modelo;
 
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ColocacionTest {
@@ -25,61 +30,25 @@ public class ColocacionTest {
         Jugador jugadorUno = new Jugador(1);
         Jugador jugadorDos = new Jugador(2);
         Jugador jugadorTres = new Jugador(3);
+        Parser parser = new ParserJson();
+        parser.parsearArchivo("Teg - Cartas.json");
+        parser.parsearArchivo("Teg - Fronteras.json");
+        ArrayList<Pais> paises = new ArrayList<>(parser.getPaises());
+        ArrayList<Continente> continentes = new ArrayList<>(parser.getContinentes());
 
-        Pais francia = new Pais("francia");
-        Pais argentina = new Pais("argentina");
+        Pais francia = new Pais("Francia");
+        Pais argentina = new Pais("Argentina");
 
-        Pais tartaria = new Pais("tartaria");
-        Pais mongolia = new Pais("mongolia");
-        Pais kantchatka = new Pais("kantchatka");
-        Pais turquia = new Pais("turquia");
-        Pais iran = new Pais("iran");
-        Pais israel = new Pais("israel");
-        Pais taymir = new Pais("taymir");
-        Pais aral = new Pais("aral");
-        Pais siberia = new Pais("siberia");
-        Pais japon = new Pais("japon");
-        Pais gobi = new Pais("gobi");
-        Pais arabia = new Pais("arabia");
-        Pais india = new Pais("india");
-        Pais china = new Pais("china");
-        Pais malasia = new Pais("malasia");
-        Continente asia = new Continente("asia", 7);
 
-        asia.agregarPais(tartaria);
-        asia.agregarPais(mongolia);
-        asia.agregarPais(kantchatka);
-        asia.agregarPais(turquia);
-        asia.agregarPais(iran);
-        asia.agregarPais(israel);
-        asia.agregarPais(taymir);
-        asia.agregarPais(aral);
-        asia.agregarPais(siberia);
-        asia.agregarPais(japon);
-        asia.agregarPais(gobi);
-        asia.agregarPais(arabia);
-        asia.agregarPais(india);
-        asia.agregarPais(china);
-        asia.agregarPais(malasia);
+        Continente asia = continentes.stream().filter(continente -> continente.getNombre().equals("Asia")).findFirst().get();
+        List<Pais> paisesDeAsia = paises.stream().filter(asia::pertenece).collect(Collectors.toList());
 
         assertEquals(asia.cantidadPaisesQueMeConforman(), 15);
         assertEquals(asia.getCantidadDeFichasPorContinente(), 7);
 
-        jugadorDos.ocupasteA(tartaria);
-        jugadorDos.ocupasteA(mongolia);
-        jugadorDos.ocupasteA(kantchatka);
-        jugadorDos.ocupasteA(turquia);
-        jugadorDos.ocupasteA(iran);
-        jugadorDos.ocupasteA(israel);
-        jugadorDos.ocupasteA(taymir);
-        jugadorDos.ocupasteA(aral);
-        jugadorDos.ocupasteA(siberia);
-        jugadorDos.ocupasteA(japon);
-        jugadorDos.ocupasteA(gobi);
-        jugadorDos.ocupasteA(arabia);
-        jugadorDos.ocupasteA(india);
-        jugadorDos.ocupasteA(china);
-        jugadorDos.ocupasteA(malasia);
+        for(Pais pais: paisesDeAsia){
+            jugadorDos.ocupasteA(pais);
+        }
 
         jugadorUno.ocuparCon(francia, 2);
         jugadorTres.ocuparCon(argentina, 3);
