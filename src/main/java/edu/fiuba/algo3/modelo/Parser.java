@@ -2,16 +2,41 @@ package edu.fiuba.algo3.modelo;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 
-public interface Parser  {
-    //Implementar Facade
+public class Parser {
+    ParserTipo parser;
+    Constructor objetos;
 
-    void parsearArchivo(String path);
+    public Parser(){
+        objetos = new Constructor();
+        parser = null;
+    }
 
-    Collection<Pais> getPaises() ;
+    public void parsearArchivo(String path) {
+        if (parser == null){
+            if(path.contains("json")) parser = new ParserJson();
+        }
+        if (parser != null) {
+            parser.parsearArchivo(path);
+        }
+    }
 
-    ArrayList<Carta> getCartas();
+    public void construirObjetos(){
+        objetos.construirPaisesYCartas(parser.getPaisesConSimbolos(), parser.getFronteras());
+        objetos.construirContinente(parser.getContinentes());
 
-    Collection<Continente> getContinentes();
+    }
 
+    public HashMap<String, Pais> getPaises(){
+        return objetos.getPaises();
+    }
+
+    public ArrayList<Carta> getCartas(){
+        return objetos.getCartas();
+    }
+
+    public HashMap<String, Continente> getContinentes(){
+        return objetos.getContinente();
+    }
 }

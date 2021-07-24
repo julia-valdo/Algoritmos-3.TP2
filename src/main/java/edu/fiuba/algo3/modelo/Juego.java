@@ -6,14 +6,12 @@ import java.util.Scanner;
 
 public class Juego {
     ArrayList<Jugador> jugadores;
-    Parser parser;
     FaseDeRonda fase;
 
     public Juego(){
         ParserJson parser = new ParserJson();
         parser.parsearArchivo("Teg - Cartas.json");
         parser.parsearArchivo("Teg - Fronteras.json");
-        this.parser = parser;
         this.fase = new FaseColocarEjercitos();
         iniciarJuego();
     }
@@ -28,7 +26,6 @@ public class Juego {
         int cantidadDeJugadores = numeroDeJugadores.nextInt();
 
         crearJugadores(cantidadDeJugadores);
-        repartirPaises();
 
 
     }
@@ -37,13 +34,4 @@ public class Juego {
         for(int i = 0; i < cantidadDeJugadores; i++) this.jugadores.add(new Jugador(i));
     }
 
-    private void repartirPaises(){
-        ArrayList<Pais> paises = new ArrayList<>(parser.getPaises());
-        Collections.shuffle(paises);
-        while(!paises.isEmpty()){
-            for(Jugador jugador : jugadores){
-                jugador.ocupa(paises.remove(0));
-            }
-        }
-    }
 }

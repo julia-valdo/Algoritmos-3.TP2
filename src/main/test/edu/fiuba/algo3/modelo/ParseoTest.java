@@ -2,49 +2,49 @@ package edu.fiuba.algo3.modelo;
 
 import org.junit.jupiter.api.Test;
 
+import javax.print.attribute.HashAttributeSet;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ParseoTest {
 
     @Test
-    public void parsearAmbosArchivos() {
-        //Este test tiene que cambiarse con el Facade pattern, esta implementado como interfaz para probar nomas
+    public void funcionamientoDelParser() {
+        Parser parseador = new Parser();
 
-        ParserJson parserBienPiola = new ParserJson();
-        parserBienPiola.parsearArchivo("Teg - Cartas.json");
-        parserBienPiola.parsearArchivo("Teg - Fronteras.json");
+        parseador.parsearArchivo("Teg - Cartas.json");
+        parseador.parsearArchivo("Teg - Fronteras.json");
 
-        ArrayList<Carta> cartas  = parserBienPiola.getCartas();
-        Collection<Continente> continentes = parserBienPiola.getContinentes();
-        Collection<Pais> paises = parserBienPiola.getPaises();
+        parseador.construirObjetos();
 
-        for (Continente continente : continentes) {
-            if ((continente.getNombre()).equals("Asia")){
-                assertEquals(15, continente.cantidadPaisesQueMeConforman());
-            }
-            if ((continente.getNombre()).equals("Europa")){
-                assertEquals(9, continente.cantidadPaisesQueMeConforman());
-            }
-            if ((continente.getNombre()).equals("America del Norte")){
-                assertEquals(10, continente.cantidadPaisesQueMeConforman());
-            }
-            if ((continente.getNombre()).equals("America del Sur")){
-                assertEquals(6, continente.cantidadPaisesQueMeConforman());
-            }
-            if ((continente.getNombre()).equals("Oceania")){
-                assertEquals(4, continente.cantidadPaisesQueMeConforman());
-            }
-            if ((continente.getNombre()).equals("Africa")){
-                assertEquals(6, continente.cantidadPaisesQueMeConforman());
-            }
-
-        }
-        assertEquals(50, cartas.size());
-        assertEquals(50, paises.size());
-
+        assertEquals(50,parseador.getPaises().size());
+        assertEquals(50,parseador.getCartas().size());
+        assertEquals(6,parseador.getContinentes().size());
     }
+
+    @Test
+    public void verificoAlgunObjetoBienConstruido() {
+        Parser parseador = new Parser();
+
+        parseador.parsearArchivo("Teg - Cartas.json");
+        parseador.parsearArchivo("Teg - Fronteras.json");
+
+        parseador.construirObjetos();
+
+        Continente america = parseador.getContinentes().get("America del Sur");
+        HashMap<String, Pais> paises = parseador.getPaises();
+
+        assertTrue(america.pertenece(paises.get("Argentina")));
+        assertTrue(america.pertenece(paises.get("Colombia")));
+        assertTrue(america.pertenece(paises.get("Peru")));
+        assertTrue(america.pertenece(paises.get("Uruguay")));
+        assertTrue(america.pertenece(paises.get("Brasil")));
+        assertTrue(america.pertenece(paises.get("Chile")));
+    }
+
 
 }
