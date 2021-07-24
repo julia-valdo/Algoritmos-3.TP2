@@ -14,19 +14,17 @@ import org.json.simple.parser.ParseException;
 
 //Todos los prints que vean son para checkear que funca nomas
 
-public class ParserJson implements Parser {
-    HashMap<String, Pais> paises;
-    ArrayList<Carta> cartas;
-    HashMap<String, Continente> continentes;
+public class ParserJson implements ParserTipo {
+    HashMap<String, String> paises;
+    HashMap<String, String> continentes;
+    HashMap<String, String> fronteras;
 
     @SuppressWarnings("unchecked")
 
     public ParserJson() {
-
         paises = new HashMap<>();
-        cartas = new ArrayList<>();
         continentes = new HashMap<>();
-
+        fronteras = new HashMap<>();
     }
 
     @Override
@@ -39,8 +37,7 @@ public class ParserJson implements Parser {
             JSONArray tegList = (JSONArray) obj;
 
             if (path.equals("Teg - Cartas.json")) tegList.forEach(carta -> parseCartasObject((JSONObject) carta));
-            if (path.equals("Teg - Fronteras.json"))
-                tegList.forEach(frontera -> parseFronterasObject((JSONObject) frontera));
+            if (path.equals("Teg - Fronteras.json")) tegList.forEach(frontera -> parseFronterasObject((JSONObject) frontera));
 
 
         } catch (IOException | ParseException e) {
@@ -48,41 +45,13 @@ public class ParserJson implements Parser {
         }
     }
 
-
     private void parseCartasObject(JSONObject cartas) {
         JSONObject cartasObject = (JSONObject) cartas;
 
         String nombrePais = (String) cartasObject.get("Pais");
         String simbolo = (String) cartasObject.get("Simbolo");
 
-
-        Pais pais = new Pais(nombrePais);
-        this.paises.put(nombrePais, pais);
-
-        Carta carta = new Carta(pais, simbolo);
-        this.cartas.add(carta);
-
-    }
-
-    private void agregarPaisesLimitrofesASusPaises(String limitrofes, String pais) {
-
-        String[] paisesLimitrofes = limitrofes.split(",");
-        for (String paisLimitrofe : paisesLimitrofes) {
-            (paises.get(pais)).agregarPaisConectado(paises.get(paisLimitrofe));
-        }
-
-    }
-    @Override
-    public Collection<Pais> getPaises() {
-        return paises.values();
-    }
-    @Override
-    public ArrayList<Carta> getCartas() {
-        return cartas;
-    }
-    @Override
-    public Collection<Continente> getContinentes() {
-        return continentes.values();
+        this.paises.put(nombrePais, simbolo);
     }
 
     private void parseFronterasObject(JSONObject fronteras) {
@@ -92,30 +61,30 @@ public class ParserJson implements Parser {
         String nombreContinente = (String) fronterasObject.get("Continente");
         String paisesLimitrofes = (String) fronterasObject.get("Limita con");
 
-        if (!continentes.containsKey(nombreContinente)) {
-            Continente continente;
-            switch (nombreContinente) {
-                    case "Africa":
-                    case "America del Sur":
-                        continente = new Continente(nombreContinente, 3);
-                        break;
-                    case "America del Norte":
-                    case "Europa":
-                        continente = new Continente(nombreContinente, 5);
-                        break;
-                    case "Asia":
-                        continente = new Continente(nombreContinente, 7);
-                        break;
-                    default:
-                        continente = new Continente(nombreContinente, 2);
-                        break;
-                }
-                continentes.put(nombreContinente, continente);
-            }
-        (continentes.get(nombreContinente)).agregarPais(paises.get(nombrePais));
-        agregarPaisesLimitrofesASusPaises(paisesLimitrofes, nombrePais);
+        this.fronteras.put(nombrePais, paisesLimitrofes);
 
+        if (!continentes.containsKey(nombreContinente)){
+            continentes.put(nombreContinente, nombrePais);
+        } else {
+            String paisesContinente = continentes.get(nombreContinente) + "," + nombrePais; //"Argentina,Chile,Brazil"
+            continentes.put(nombreContinente, paisesContinente);
+        }
     }
+
+    @Override
+    public HashMap<String, String> getPaisesConSimbolos() {
+        return paises;
+    }
+    @Override
+    public HashMap<String, String> getFronteras() {
+        return fronteras;
+    }
+    @Override
+    public HashMap<String, String> getContinentes() {
+        return continentes;
+    }
+
+
 }
 
 

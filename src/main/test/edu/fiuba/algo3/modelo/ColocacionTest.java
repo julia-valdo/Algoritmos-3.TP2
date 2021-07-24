@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -35,18 +36,24 @@ public class ColocacionTest {
         jugadorUno.agregarFichas(15);
         jugadorDos.agregarFichas(15);
         jugadorTres.agregarFichas(15);
-        Parser parser = new ParserJson();
+
+
+        Parser parser = new Parser();
+
         parser.parsearArchivo("Teg - Cartas.json");
         parser.parsearArchivo("Teg - Fronteras.json");
-        ArrayList<Pais> paises = new ArrayList<>(parser.getPaises());
-        ArrayList<Continente> continentes = new ArrayList<>(parser.getContinentes());
+
+        parser.construirObjetos();
+
+        HashMap<String, Pais> paises = parser.getPaises();
+        HashMap<String, Continente> continentes = parser.getContinentes();
 
         Pais francia = new Pais("Francia");
         Pais argentina = new Pais("Argentina");
 
 
-        Continente asia = continentes.stream().filter(continente -> continente.getNombre().equals("Asia")).findFirst().get();
-        List<Pais> paisesDeAsia = paises.stream().filter(asia::pertenece).collect(Collectors.toList());
+        Continente asia = continentes.get("Asia");
+        List<Pais> paisesDeAsia = (new ArrayList<>(paises.values())).stream().filter(asia::pertenece).collect(Collectors.toList());
 
         assertEquals(asia.cantidadPaisesQueMeConforman(), 15);
         assertEquals(asia.getCantidadDeFichasPorContinente(), 7);
