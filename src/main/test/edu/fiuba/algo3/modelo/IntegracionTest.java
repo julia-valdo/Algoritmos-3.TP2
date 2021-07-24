@@ -17,7 +17,8 @@ public class IntegracionTest {
 
         kamchatka.agregarPaisConectado(china);
         china.agregarPaisConectado(kamchatka);
-        atacante.agregarFichas(70);
+        atacante.agregarFichas(80);
+        defensor.agregarFichas(1);
 
         atacante.ocuparCon(kamchatka, 80);
         defensor.ocuparCon(china, 1);
@@ -41,7 +42,8 @@ public class IntegracionTest {
 
         kamchatka.agregarPaisConectado(china);
         china.agregarPaisConectado(kamchatka);
-        defensor.agregarFichas(70);
+        defensor.agregarFichas(80);
+        atacante.agregarFichas(5);
 
         atacante.ocuparCon(kamchatka, 5);
         defensor.ocuparCon(china, 80);

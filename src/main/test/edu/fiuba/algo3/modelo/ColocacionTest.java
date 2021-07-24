@@ -15,6 +15,8 @@ public class ColocacionTest {
 
         Jugador jugadorUno = new Jugador(1);
         Jugador jugadorDos = new Jugador(2);
+        jugadorUno.agregarFichas(3);
+        jugadorDos.agregarFichas(3);
         Pais china = new Pais("china");
         Pais argentina = new Pais("argentina");
 
@@ -30,6 +32,9 @@ public class ColocacionTest {
         Jugador jugadorUno = new Jugador(1);
         Jugador jugadorDos = new Jugador(2);
         Jugador jugadorTres = new Jugador(3);
+        jugadorUno.agregarFichas(15);
+        jugadorDos.agregarFichas(15);
+        jugadorTres.agregarFichas(15);
         Parser parser = new ParserJson();
         parser.parsearArchivo("Teg - Cartas.json");
         parser.parsearArchivo("Teg - Fronteras.json");
@@ -60,7 +65,8 @@ public class ColocacionTest {
     public void jugadorUnoConquistaDosPaisesDelJugadorDos(){
         Jugador jugadorUno = new Jugador(1);
         Jugador jugadorDos = new Jugador(2);
-
+        jugadorUno.agregarFichas(10);
+        jugadorDos.agregarFichas(2);
         Pais kamchatka = new Pais("kamchatka");
         Pais china = new Pais("china");
         Pais mongolia = new Pais("mongolia");
