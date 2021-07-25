@@ -35,7 +35,12 @@ public class Ejercitos {
                 otrosEjercitos.comandante.ocupasteA(pais);
                 return otrosEjercitos.generarDivision(1);
             }
+            otrosEjercitos.retirarse();
             return this;
+    }
+
+    private void retirarse() {
+        this.comandante.agregarFichas(this.getCantidadEjercitos());
     }
 
     private Ejercitos confirmarNuevaDivisionDe(int numeroFuerzas){

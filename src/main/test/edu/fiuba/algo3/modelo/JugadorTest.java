@@ -60,5 +60,27 @@ public class JugadorTest {
         assertThrows(NoHayFuerzasRestantesError.class, excepcion);
     }
 
+    @Test
+    public void unJugadorNoPierdeFichasSiLaOcupacionDeUnPaisNoEsExitosa(){
+        Jugador unJugador = new Jugador(1);
+        Jugador otroJugador = new Jugador(2);
+
+        unJugador.agregarFichas(1);
+        otroJugador.agregarFichas(1);
+
+        Pais argentina = new Pais("Argentina");
+        Pais chile = new Pais("Chile");
+
+        unJugador.ocupa(argentina);
+
+        otroJugador.ocupa(argentina);
+
+        Executable puedeOcuparChile = () -> {
+            otroJugador.ocupa(chile);
+        };
+
+        assertDoesNotThrow(puedeOcuparChile);
+    }
+
 
 }
