@@ -1,10 +1,11 @@
 package edu.fiuba.algo3.modelo;
 
-public class CanjesMasDeTres implements Canjes {
+public class CanjesMenosDeTres implements Canjes{
+
     private int fichasPorCanje;
 
-    public CanjesMasDeTres(){
-        this.fichasPorCanje = 10;
+    public CanjesMenosDeTres(){
+        fichasPorCanje = 4;
     }
 
     @Override
@@ -14,7 +15,10 @@ public class CanjesMasDeTres implements Canjes {
 
     @Override
     public Canjes obtenerProximoCanje() {
-        this.fichasPorCanje += 5;
+        fichasPorCanje += 3;
+        if(fichasPorCanje >= 10 ){
+            return new CanjesMasDeTres();
+        }
         return this;
     }
 }

@@ -1,13 +1,17 @@
 package edu.fiuba.algo3.modelo;
 
+import java.util.ArrayList;
+
 public class Carta {
     private final Pais pais;
     private final String simbolo;
+    private Mazo mazo;
     private EstadoDeActivacion estadoCarta;
 
     public Carta(Pais pais, String simbolo){
         this.pais = pais;
         this.simbolo = simbolo;
+        this.mazo = new Mazo(new ArrayList<Carta>());
         this.estadoCarta = new Desactivada();
     }
 
@@ -43,7 +47,15 @@ public class Carta {
         return !this.sonDelMismoTipo(otraCarta);
     }
 
-    public void canjearse() {
+    public void activarse() {
         this.estadoCarta = this.estadoCarta.activarseEn(this.pais);
+    }
+
+    public void devolverAlMazo(){
+        this.mazo.vuelveAlMazo(this);
+    }
+
+    public void asociarAlMazo(Mazo unMazo){
+        this.mazo = unMazo;
     }
 }

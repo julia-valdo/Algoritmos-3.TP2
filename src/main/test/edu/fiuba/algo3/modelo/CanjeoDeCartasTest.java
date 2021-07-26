@@ -7,15 +7,13 @@ import org.mockito.*;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 
 public class CanjeoDeCartasTest {
-
-    public void setUp() throws Exception {
-        MockitoAnnotations.initMocks(this);
-    }
 
     @Test
     public void unJugadorConTresGlobosAlCanjearlosPuedePoner4FichasEnElPaisQueOcupa(){
@@ -25,8 +23,8 @@ public class CanjeoDeCartasTest {
         Carta globoTres = new Carta(new Pais("Etiopia"), "Globo");
         Pais argentina = new Pais("Argentina");
 
-        //Pongo todas las fichas del jugador en argentina
-        jugador1.ocuparCon(argentina, 10);
+        jugador1.agregarFichas(1);
+        jugador1.ocupa(argentina);
 
 
         jugador1.recibirCarta(globoUno);
@@ -43,10 +41,87 @@ public class CanjeoDeCartasTest {
         assertDoesNotThrow(puedoPonerTresFichasMas);
     }
 
+    @Test
+    public void unJugadorNoPuedeCambiarCartasQueNoLeFueronRepartidas(){
+        Jugador jugador1 = new Jugador(0);
+        Carta globoUno = new Carta(new Pais("Francia"), "Globo");
+        Carta globoDos = new Carta(new Pais("Chile"), "Globo");
+        Carta globoTres = new Carta(new Pais("Etiopia"), "Globo");
+        Pais argentina = new Pais("Argentina");
+
+        jugador1.canjearCartas(globoUno, globoDos, globoTres);
+
+        Executable noPuedePonerMasFichas = () -> {
+            jugador1.ocuparCon(argentina, 1);
+        };
+
+        assertThrows(NoHayFuerzasRestantesError.class, noPuedePonerMasFichas);
+
+    }
+
+    @Test
+    public void alRepartirCartasElInventarioSeQuedaSinCartas(){
+        Jugador jugador1 = new Jugador(1);
+        Carta globoUno = new Carta(new Pais("Francia"), "Globo");
+        Carta globoDos = new Carta(new Pais("Chile"), "Globo");
+        Carta globoTres = new Carta(new Pais("Etiopia"), "Globo");
+        ArrayList<Carta> mazoDeCartas = new ArrayList<>();
+        mazoDeCartas.add(globoUno); mazoDeCartas.add(globoDos);mazoDeCartas.add(globoTres);
+
+        InventarioDeJuego inventario = new InventarioDeJuego(mazoDeCartas, new ArrayList<>());
+
+        inventario.repartirCarta(jugador1);
+        inventario.repartirCarta(jugador1);
+        inventario.repartirCarta(jugador1);
+
+        Executable noHayMasCartas = () -> {
+            inventario.repartirCarta(jugador1);
+        };
+
+        assertThrows(NoQuedanCartasError.class, noHayMasCartas);
+
+    }
+
+    @Test
+    public void alCanjearTresCartasVuelvenAlMazo(){
+        Jugador jugador1 = new Jugador(1);
+        Carta globoUno = new Carta(new Pais("Francia"), "Globo");
+        Carta globoDos = new Carta(new Pais("Chile"), "Globo");
+        Carta globoTres = new Carta(new Pais("Etiopia"), "Globo");
+        Pais unPais = new Pais("Angola");
+        ArrayList<Carta> mazoDeCartas = new ArrayList<>();
+        mazoDeCartas.add(globoUno); mazoDeCartas.add(globoDos);mazoDeCartas.add(globoTres);
+
+        InventarioDeJuego inventario = new InventarioDeJuego(mazoDeCartas, new ArrayList<>());
+
+        inventario.repartirCarta(jugador1);
+        inventario.repartirCarta(jugador1);
+        inventario.repartirCarta(jugador1);
+
+        jugador1.canjearCartas(globoUno, globoDos, globoTres);
+
+        inventario.repartirCarta(jugador1);
+        inventario.repartirCarta(jugador1);
+        inventario.repartirCarta(jugador1);
+
+        jugador1.canjearCartas(globoUno,globoDos,globoTres);
+
+        //Canjeo dos veces las mismas cartas, 4 + 7 = 11 fichas disponibles
+
+        Executable puedePoner11Fichas = () -> {
+            jugador1.ocuparCon(unPais, 11);
+        };
+
+        assertDoesNotThrow(puedePoner11Fichas);
+
+
+    }
+
 
     @Test
     public void jugadorCanjeaCartaDePaisQueOcupaYLeAgregaDosEjercitos(){
         Jugador jugador1 = new Jugador(1);
+        jugador1.agregarFichas(1);
         Pais argentina = mock(Pais.class);
         Carta cartaArgentina = new Carta(argentina, "Globo");
         //Armo el mock
@@ -75,7 +150,8 @@ public class CanjeoDeCartasTest {
         Carta globoDos = new Carta(new Pais("Chile"), "Globo");
         Carta globoTres = new Carta(new Pais("Etiopia"), "Globo");
         //Dejo al jugador sin fichas
-        jugador1.ocuparCon(chile, 10);
+        jugador1.agregarFichas(1);
+        jugador1.ocupa(chile);
 
         //4->7->10->(n-1)*5 si canjeo 5 veces entonces sumo 56 ejercitos
         for(int i = 0; i < 5; i++){
@@ -104,8 +180,9 @@ public class CanjeoDeCartasTest {
         Carta cartaGlobo = new Carta(new Pais("Francia"), "Globo");
         Carta cartaBarco = new Carta(new Pais("Chile"), "Barco");
         Carta cartaCanon = new Carta(new Pais("Etiopia"), "Cañon");
-        //Dejo al jugador sin fichas
-        jugador1.ocuparCon(chile, 10);
+
+        jugador1.agregarFichas(1);
+        jugador1.ocupa(chile);
 
         jugador1.recibirCarta(cartaGlobo);
         jugador1.recibirCarta(cartaBarco);
@@ -126,6 +203,7 @@ public class CanjeoDeCartasTest {
     public void alCanjearUnaCartaDeUnPaisQueNoOcupaNoAumentanLasFuerzasEnEsePais(){
 
         Jugador jugador1 = new Jugador(1);
+        jugador1.agregarFichas(1);
         Carta cartaFrancia = new Carta(new Pais("Francia"), "Globo");
         Pais argentina = this.armarMockPaisPara(jugador1);
 
@@ -146,7 +224,8 @@ public class CanjeoDeCartasTest {
         Carta globoUno = new Carta(new Pais("Chile"), "Globo");
         Carta globoDos = new Carta(new Pais("Etiopia"), "Globo");
 
-        jugador1.ocuparCon(chile, 10);
+        jugador1.agregarFichas(1);
+        jugador1.ocupa(chile);
 
         jugador1.recibirCarta(barcoUno);
         jugador1.recibirCarta(globoUno);
@@ -166,7 +245,7 @@ public class CanjeoDeCartasTest {
         Jugador jugador1 = new Jugador(0);
         Pais argentina = this.armarMockPaisPara(jugador1);
         Carta cartaArgentina = new Carta(argentina, "Globo");
-
+        jugador1.agregarFichas(1);
         jugador1.ocupa(argentina);
         jugador1.recibirCarta(cartaArgentina);
         jugador1.canjearCarta(cartaArgentina);

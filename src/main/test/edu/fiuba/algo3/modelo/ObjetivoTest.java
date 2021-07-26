@@ -122,6 +122,7 @@ public class ObjetivoTest {
     @Test
     public void objetivoDerrotarAlJugadorSeCumpleAlPerderElultimoPaisConquistado(){
         Jugador jugador = new Jugador(1);
+        jugador.agregarFichas(1);
         Objetivo derrotarJugador1 = new ObjetivoDerrotar(jugador);
 
         Pais japon = new Pais("Japon");

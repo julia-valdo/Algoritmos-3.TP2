@@ -5,28 +5,23 @@ import java.util.ArrayList;
 /*
 Guarda la informacion del canjeo de cartas del jugador particular
  */
-public class Cuartel {
-    private ArrayList<Carta> cartas;
+public class Inventario {
+    private ManoDeCartas mano;
     private int fichasDisponibles;
-    private Canjes cantidadDeCanjesHechos;
     private Jugador duenoDelCuartel;
 
-    public Cuartel(Jugador dueno){
-        cartas = new ArrayList<>();
-        fichasDisponibles = 10;
-        cantidadDeCanjesHechos = new CanjesCero();
+    public Inventario(Jugador dueno){
+        this.fichasDisponibles = 0;
+        this.mano = new ManoDeCartas();
         this.duenoDelCuartel = dueno;
     }
 
     public void recibirCarta(Carta unaCarta) {
-        this.cartas.add(unaCarta);
+        this.mano.recibirCarta(unaCarta);
     }
 
     public void canjearCartas(Carta primeraCarta, Carta segundaCarta, Carta terceraCarta) {
-        if (primeraCarta.esValidoElCanje(segundaCarta, terceraCarta)){
-            this.cantidadDeCanjesHechos = this.cantidadDeCanjesHechos.realizarCanjeA(this);
-        this.cartas.remove(primeraCarta);this.cartas.remove(primeraCarta);this.cartas.remove(primeraCarta);
-        }
+        this.fichasDisponibles += this.mano.canjearCartas(primeraCarta, segundaCarta, terceraCarta);
     }
 
     public Ejercitos generarDivision(int cantidadFuerzas) {
@@ -49,7 +44,7 @@ public class Cuartel {
         unPais.agregarEjercito(numeroDeFichas);
     }
 
-    public void canjearCarta(Carta unaCarta) {
-        unaCarta.canjearse();
+    public void activarCarta(Carta unaCarta) {
+        this.mano.activarCarta(unaCarta);
     }
 }
