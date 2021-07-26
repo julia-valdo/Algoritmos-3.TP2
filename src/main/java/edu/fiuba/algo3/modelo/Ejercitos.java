@@ -73,4 +73,13 @@ public class Ejercitos {
 
         return otroEjercito.comandante == this.comandante && otroEjercito.condicionActual.equals(this.condicionActual);
     }
+
+
+    public void moverEjercitoACon(Ejercitos otroEjercito, int cantidad){
+        if(this.condicionActual.getCantidadFuerzas() <= cantidad){
+            throw new MovimientoDeEjercitoError("No hay fuerzas suficientes para realizar el movimiento");
+        }
+        this.restarEjercitos(cantidad);
+        otroEjercito.agregarEjercitos(cantidad);
+    }
 }
