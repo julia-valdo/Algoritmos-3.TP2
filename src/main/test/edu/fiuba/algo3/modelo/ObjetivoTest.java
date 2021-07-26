@@ -19,7 +19,7 @@ public class ObjetivoTest {
         asia.agregarPais(china);
         asia.agregarPais(kamchatka);
 
-        ArrayList<Pais> americaDelSur = new ArrayList<>();
+        Continente americaDelSur = new Continente("america del sur");
 
         Objetivo conquistarContinente = new ObjetivoConquistar(asia, americaDelSur, 0);
 
@@ -40,7 +40,7 @@ public class ObjetivoTest {
         asia.agregarPais(china);
         asia.agregarPais(kamchatka);
 
-        ArrayList<Pais> americaDelSur = new ArrayList<>();
+        Continente americaDelSur = new Continente("america del sur");
 
         Objetivo conquistarContinente = new ObjetivoConquistar(asia, americaDelSur, 0);
 
@@ -63,8 +63,8 @@ public class ObjetivoTest {
         asia.agregarPais(china);
         asia.agregarPais(kamchatka);
 
-        ArrayList<Pais> americaDelSur = new ArrayList<>();
-        americaDelSur.add(argentina);
+        Continente americaDelSur = new Continente("america del sur");
+        americaDelSur.agregarPais(argentina);
 
         Objetivo conquistarContinente = new ObjetivoConquistar(asia, americaDelSur, 1);
 
@@ -87,8 +87,8 @@ public class ObjetivoTest {
         asia.agregarPais(china);
         asia.agregarPais(kamchatka);
 
-        ArrayList<Pais> americaDelSur = new ArrayList<>();
-        americaDelSur.add(argentina);
+        Continente americaDelSur = new Continente("america del sur");
+        americaDelSur.agregarPais(argentina);
 
         Objetivo conquistarContinente = new ObjetivoConquistar(asia, americaDelSur, 1);
 

@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class ObjetivoConquistar implements Objetivo{
     Continente primario;
-    ArrayList<Pais> secundario;
+    Continente secundario;
     int cantidadAConquistarSecundario;
 
-    public ObjetivoConquistar (Continente primario, ArrayList<Pais> secundario, int cantidadAConquistarSecundario){
+    public ObjetivoConquistar (Continente primario, Continente secundario, int cantidadAConquistarSecundario){
         this.primario = primario;
         this.secundario = secundario;
         this.cantidadAConquistarSecundario = cantidadAConquistarSecundario;
@@ -15,8 +15,8 @@ public class ObjetivoConquistar implements Objetivo{
 
     private int contadorDePaisesSecundarios(ArrayList<Pais> paises){
         int contador = 0;
-        for(Pais pais : this.secundario){
-            if(paises.contains(pais)) contador += 1;
+        for(Pais pais : paises){
+            if(secundario.pertenece(pais)) contador += 1;
         }
         return contador;
     }

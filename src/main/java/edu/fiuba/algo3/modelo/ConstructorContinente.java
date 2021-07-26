@@ -6,15 +6,15 @@ import java.util.HashMap;
 
 
 public class ConstructorContinente {
+
+    private final int sieteFichas = 7;
+    private final int cincoFichas = 5;
+    private final int tresFichas = 3;
+    private final int dosFichas = 2;
     HashMap<String, Continente> continentes;
-    int sieteFichas, cincoFichas, tresFichas, dosFichas;
 
     public ConstructorContinente() {
         continentes = new HashMap<>();
-        sieteFichas = 7;
-        cincoFichas = 5;
-        tresFichas = 3;
-        dosFichas = 2;
     }
 
     public void construirContinente(HashMap<String, String>continente, HashMap<String, Pais> paises){

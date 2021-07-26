@@ -1,0 +1,72 @@
+[
+    {
+        "TipoDeObjetivo": "Ocupacion",
+        "ContinentePrincipal": "Africa",
+        "ContinenteSecundario": "Europa",
+        "CantidadPaises": "5"
+    },
+    {
+        "TipoDeObjetivo": "Ocupacion",
+        "ContinentePrincipal": "America del Sur",
+        "ContinenteSecundario": "Europa",
+        "CantidadPaises": "7"
+    },
+    {
+        "TipoDeObjetivo": "Ocupacion",
+        "ContinentePrincipal": "Asia",
+        "ContinenteSecundario": "America del Sur",
+        "CantidadPaises": "2"
+    },
+    {
+        "TipoDeObjetivo": "Ocupacion",
+        "ContinentePrincipal": "Europa",
+        "ContinenteSecundario": "Asia",
+        "CantidadPaises": "4"
+    },
+    {
+        "TipoDeObjetivo": "Ocupacion",
+        "ContinentePrincipal": "America del Norte",
+        "ContinenteSecundario": "Oceania",
+        "CantidadPaises": "2"
+    },
+    {
+        "TipoDeObjetivo": "Ocupacion",
+        "ContinentePrincipal": "Oceania",
+        "ContinenteSecundario": "Europa",
+        "CantidadPaises": "2"
+    },
+    {
+        "TipoDeObjetivo": "Ocupacion",
+        "ContinentePrincipal": "Africa",
+        "ContinenteSecundario": "America del Norte",
+        "CantidadPaises": "5"
+    },
+    {
+        "TipoDeObjetivo": "Destruccion",
+        "DestruirJugador": "1"
+    },
+    {
+        "TipoDeObjetivo": "Destruccion",
+        "DestruirJugador": "2"
+    },
+    {
+        "TipoDeObjetivo": "Destruccion",
+        "DestruirJugador": "3"
+    },
+    {
+        "TipoDeObjetivo": "Destruccion",
+        "DestruirJugador": "4"
+    },
+    {
+        "TipoDeObjetivo": "Destruccion",
+        "DestruirJugador": "5"
+    },
+    {
+        "TipoDeObjetivo": "Destruccion",
+        "DestruirJugador": "6"
+    },
+    {
+        "TipoDeObjetivo": "Comun",
+        "Ocupar": "30"
+    }
+]
