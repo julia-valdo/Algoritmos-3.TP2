@@ -13,4 +13,6 @@ public interface ParserTipo {
     public HashMap<String, String> getFronteras();
 
     public HashMap<String, String> getPaisesConSimbolos();
+
+    public HashMap<String, ArrayList<String>> getObjetivos();
 }
