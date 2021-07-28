@@ -52,6 +52,7 @@ public class Carta {
     }
 
     public void devolverAlMazo(){
+        this.estadoCarta = new Desactivada();
         this.mazo.vuelveAlMazo(this);
     }
 

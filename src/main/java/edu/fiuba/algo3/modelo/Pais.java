@@ -32,8 +32,8 @@ public class Pais {
     public void atacarA(Pais otroPais) {
        if(this.esDelMismoEquipo(otroPais)){
             throw new AtaqueNoPermitidoError("No se puede atacar a un pais del mismo equipo");
-        }
-       else if (!this.esLimitrofe(otroPais)){
+       }
+       if (!this.esLimitrofe(otroPais)){
            throw new AtaqueNoPermitidoError("No se puede atacar a un pais no limitrofe");
        }
        Batalla batalla = new Batalla();
@@ -47,4 +47,10 @@ public class Pais {
 
     private boolean esLimitrofe(Pais otroPais) { return paisesConectados.contains(otroPais); }
 
+    public void moverEjercitoA(Pais otroPais, int cantidad){
+        if(!this.esDelMismoEquipo(otroPais) || !this.esLimitrofe(otroPais)){
+            throw new MovimientoDeEjercitoError("Movimiento de ejercito invalido");
+        }
+        this.ejercitos.moverEjercitoACon(otroPais.ejercitos, cantidad);
+    }
 }

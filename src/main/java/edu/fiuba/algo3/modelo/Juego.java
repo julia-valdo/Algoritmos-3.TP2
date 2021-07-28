@@ -7,27 +7,18 @@ import java.util.Scanner;
 public class Juego {
     ArrayList<Jugador> jugadores;
     FaseDeRonda fase;
+    Parser parser;
 
     public Juego(){
-        ParserJson parser = new ParserJson();
-        parser.parsearArchivo("Teg - Cartas.json");
-        parser.parsearArchivo("Teg - Fronteras.json");
+        parser = new Parser();
         this.fase = new FaseColocarEjercitos();
-        iniciarJuego();
     }
 
     public void iniciarJuego(){
-        Scanner numeroDeJugadores = new Scanner(System.in);
-        System.out.println("Numero de jugadores?: ");
-        while(!numeroDeJugadores.hasNextInt()) {
-            System.out.println("No es un numero valido.");
-            numeroDeJugadores.next();
-        }
-        int cantidadDeJugadores = numeroDeJugadores.nextInt();
-
-        crearJugadores(cantidadDeJugadores);
-
-
+        parser.parsearArchivo("Teg - Cartas.json");
+        parser.parsearArchivo("Teg - Fronteras.json");
+        parser.parsearArchivo("Teg - Objetivos.json");
+        parser.construirObjetos();
     }
 
     private void crearJugadores(int cantidadDeJugadores){

@@ -76,4 +76,8 @@ public class Jugador {
     public boolean fueDerrotado(){
         return this.derrotado;
     }
+
+    public void moverFichasDeACon(Pais unPais, Pais otroPais, int cantidad){
+        unPais.moverEjercitoA(otroPais, cantidad);
+    }
 }

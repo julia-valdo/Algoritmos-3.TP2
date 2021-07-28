@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 public interface FaseDeRonda {
 
-    public void accionJugador(Jugador jugador, InventarioDeJuego inventarioDeJuego);
+    public boolean accionJugador(Jugador jugador, InventarioDeJuego inventarioDeJuego, SeleccionJugador seleccion);
 
     public FaseDeRonda cambiarFase();
 }
