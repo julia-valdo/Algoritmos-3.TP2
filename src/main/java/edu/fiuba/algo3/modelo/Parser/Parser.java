@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo.Parser;
 import edu.fiuba.algo3.modelo.Batalla.Pais;
 import edu.fiuba.algo3.modelo.Cartas.Carta;
 import edu.fiuba.algo3.modelo.Objetivos.Continente;
+import edu.fiuba.algo3.modelo.Objetivos.Objetivo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,7 +29,7 @@ public class Parser {
     public void construirObjetos(){
         objetos.construirPaisesYCartas(parser.getPaisesConSimbolos(), parser.getFronteras());
         objetos.construirContinente(parser.getContinentes());
-
+        objetos.contruirObjetivos(parser.getObjetivos());
     }
 
     public HashMap<String, Pais> getPaises(){
@@ -41,5 +42,9 @@ public class Parser {
 
     public HashMap<String, Continente> getContinentes(){
         return objetos.getContinente();
+    }
+
+    public HashMap<String, ArrayList<Objetivo>> getObjetivos(){
+        return objetos.getObjetivos();
     }
 }

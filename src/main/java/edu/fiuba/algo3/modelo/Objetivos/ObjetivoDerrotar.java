@@ -7,9 +7,13 @@ import java.util.ArrayList;
 
 public class ObjetivoDerrotar implements Objetivo {
     Jugador jugador;
-
+    int numeroDeJugador;
     public ObjetivoDerrotar(Jugador jugador){
         this.jugador = jugador;
+    }
+
+    public ObjetivoDerrotar(int jugador){
+        this.numeroDeJugador = jugador;
     }
 
     @Override
