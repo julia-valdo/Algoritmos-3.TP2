@@ -1,4 +1,4 @@
-package edu.fiuba.algo3;
+package edu.fiuba.algo3.Vista;
 
 import javafx.application.Application;
 import javafx.geometry.Pos;
@@ -17,7 +17,7 @@ import javafx.stage.Stage;
 public class Tablero extends Application {
     private final Image bgImage = new Image("file:tableroTEG.png");
     private final StackPane container = new StackPane();
-    private final Scene scene = new Scene(container);
+    private final Scene scene = new Scene(container, Color.BLANCHEDALMOND);
     private final Text label  = new Text("TEG");
 
     public static void main(String[] args) {
@@ -50,7 +50,7 @@ public class Tablero extends Application {
 //        primaryStage.show();
 //
 //
-//
+        Stage ventana = new Stage();
         BorderPane border = new BorderPane();
         HBox hbox = new HBox();
         border.setCenter(hbox);
