@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo.Parser;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import edu.fiuba.algo3.modelo.Parser.ParserTipo;
@@ -17,6 +18,7 @@ public class ParserJson implements ParserTipo {
     HashMap<String, String> paises;
     HashMap<String, String> continentes;
     HashMap<String, String> fronteras;
+    HashMap<String, ArrayList<String>> objetivos;
 
     @SuppressWarnings("unchecked")
 
@@ -24,6 +26,7 @@ public class ParserJson implements ParserTipo {
         paises = new HashMap<>();
         continentes = new HashMap<>();
         fronteras = new HashMap<>();
+        objetivos = new HashMap<>();
     }
 
     @Override
@@ -37,10 +40,35 @@ public class ParserJson implements ParserTipo {
 
             if (path.equals("Teg - Cartas.json")) tegList.forEach(carta -> parseCartasObject((JSONObject) carta));
             if (path.equals("Teg - Fronteras.json")) tegList.forEach(frontera -> parseFronterasObject((JSONObject) frontera));
+            if (path.equals("Teg - Objetivos.json")) tegList.forEach(objetivo -> parseObjetivosObject((JSONObject) objetivo));
 
 
         } catch (IOException | ParseException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void parseObjetivosObject(JSONObject objetivo) {
+        JSONObject cartasObject = (JSONObject) objetivo;
+
+        String tipo = (String) cartasObject.get("TipoDeObjetivo");
+        if(!this.objetivos.containsKey(tipo)){
+            this.objetivos.put(tipo, new ArrayList<String>());
+        }
+        if(tipo.equals("Ocupacion")){
+            String principal = (String) cartasObject.get("ContinentePrincipal");
+            String secundario = (String) cartasObject.get("ContinenteSecundario");
+            String cantidad = (String) cartasObject.get("CantidadPaises");
+            String completo = principal + "," + secundario + "," + cantidad;
+            this.objetivos.get(tipo).add(completo);
+        }
+        if(tipo.equals("Destruccion")){
+            String jugador = (String) cartasObject.get("DestruirJugador");
+            this.objetivos.get(tipo).add(jugador);
+        }
+        if(tipo.equals("Comun")){
+            String cantidad = (String) cartasObject.get("Ocupar");
+            this.objetivos.get(tipo).add(cantidad);
         }
     }
 
@@ -82,8 +110,8 @@ public class ParserJson implements ParserTipo {
     public HashMap<String, String> getContinentes() {
         return continentes;
     }
-
-
+    @Override
+    public HashMap<String, ArrayList<String>> getObjetivos(){ return objetivos; }
 }
 
 
