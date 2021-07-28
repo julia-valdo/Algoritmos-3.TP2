@@ -1,13 +1,15 @@
 package edu.fiuba.algo3.Vista;
 
 import javafx.application.Application;
+import javafx.geometry.HPos;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -17,7 +19,7 @@ import javafx.stage.Stage;
 public class Tablero extends Application {
     private final Image bgImage = new Image("file:tableroTEG.png");
     private final StackPane container = new StackPane();
-    private final Scene scene = new Scene(container, Color.BLANCHEDALMOND);
+    private final Scene scene = new Scene(container);
     private final Text label  = new Text("TEG");
 
     public static void main(String[] args) {
@@ -50,7 +52,6 @@ public class Tablero extends Application {
 //        primaryStage.show();
 //
 //
-        Stage ventana = new Stage();
         BorderPane border = new BorderPane();
         HBox hbox = new HBox();
         border.setCenter(hbox);
@@ -68,6 +69,16 @@ public class Tablero extends Application {
         imageViewDos.setFitWidth(250);
         hbox.getChildren().add(imageViewDos);
         container.getChildren().add(hboxDos);
+
+        Button start = new Button("Comenzar Juego");
+
+        Background fondoStart = new Background(new BackgroundFill(Color.ALICEBLUE, CornerRadii.EMPTY, Insets.EMPTY));
+        start.setTranslateX(925);
+        start.setTranslateY(300);
+        start.setBackground(fondoStart);
+
+
+        hboxDos.getChildren().add(start);
 
         primaryStage.setScene(scene);
         primaryStage.show();

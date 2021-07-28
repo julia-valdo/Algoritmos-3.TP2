@@ -6,6 +6,11 @@ import edu.fiuba.algo3.Controlador.SeleccionJugador;
 
 public class FaseReagrupar implements FaseDeRonda {
     @Override
+    public void aplicarAccionesDeFase(Jugador jugador) {
+
+    }
+
+    @Override
     public boolean accionJugador(Jugador jugador, InventarioDeJuego inventarioDeJuego, SeleccionJugador seleccion){
         try{
             jugador.moverFichasDeACon(seleccion.getPaisUno(), seleccion.getPaisDos(), seleccion.getCantidad());

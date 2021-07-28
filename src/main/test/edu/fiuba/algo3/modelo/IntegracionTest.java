@@ -1,10 +1,15 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.Controlador.SeleccionJugador;
 import edu.fiuba.algo3.modelo.Batalla.Pais;
+import edu.fiuba.algo3.modelo.JuegoYJugador.Juego;
 import edu.fiuba.algo3.modelo.JuegoYJugador.Jugador;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
+import java.util.ArrayList;
+
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class IntegracionTest {
@@ -58,6 +63,67 @@ public class IntegracionTest {
         //Como no lo ocupo, lo puede volver a atacar
         assertDoesNotThrow(noExcepcion);
 
+    }
+
+    @Test
+    public void alEmpezarLosNumerosDeLosJugadoresNoEstanOrdenados(){
+        Juego teg = new Juego(6);
+        ArrayList<Integer> unaLista = new ArrayList();
+        for(int i = 1; i < 7; i++){
+            unaLista.add(i);
+        }
+
+        assertFalse(teg.obtenerOrder().equals(unaLista));
+    }
+
+    @Test
+    public void enUnJuegoCon2JugadoresCadaUnoTiene25Paises(){
+        Juego teg = new Juego(2);
+
+        Jugador primero = teg.obtenerSiguiente();
+        Jugador segundo = teg.obtenerSiguiente();
+
+        teg.iniciarJuego();
+
+        boolean tienenLaMismaCantidadDePaises = primero.getPaisesOcupados().size() == segundo.getPaisesOcupados().size();
+        boolean son25Paises = primero.getPaisesOcupados().size() == 25;
+
+        assertTrue(tienenLaMismaCantidadDePaises && son25Paises);
+    }
+
+    @Test
+    public void conDosJugadoresDespuesDelUltimoVuelveElPrimero(){
+        Juego teg = new Juego(2);
+        Jugador primero = teg.obtenerSiguiente();
+        teg.obtenerSiguiente();
+        Jugador deNuevoElPrimero = teg.obtenerSiguiente();
+
+        assertSame(primero, deNuevoElPrimero);
+    }
+
+    @Test
+    public void enLaPrimeraRondaLosJugadoresPuedenPoner5Fichas(){
+        Juego teg = new Juego(2);
+
+        teg.iniciarJuego();
+
+        Jugador primero = teg.obtenerSiguiente();
+        Jugador segundo = teg.obtenerSiguiente();
+
+
+
+        Executable elPrimeroPuedePoner5Fichas = () -> {
+            Pais unPais = primero.getPaisesOcupados().get(0);
+            teg.seleccionDeJugador(primero, new SeleccionJugador(unPais, unPais, 5));
+        };
+
+        Executable elSegundoPuedePoner5Fichas = () -> {
+            Pais otroPais = segundo.getPaisesOcupados().get(0);
+            teg.seleccionDeJugador(segundo, new SeleccionJugador(otroPais, otroPais, 5));
+        };
+
+        assertDoesNotThrow(elPrimeroPuedePoner5Fichas);
+        assertDoesNotThrow(elSegundoPuedePoner5Fichas);
     }
 
 }

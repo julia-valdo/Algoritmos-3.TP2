@@ -10,6 +10,12 @@ public class FaseColocarEjercitos implements FaseDeRonda {
     public FaseColocarEjercitos(){
         ejercitoFueIncrementado = false;
     }
+
+    @Override
+    public void aplicarAccionesDeFase(Jugador jugador) {
+
+    }
+
     @Override
     public boolean accionJugador(Jugador jugador, InventarioDeJuego inventarioDeJuego, SeleccionJugador seleccion) {
         if(!ejercitoFueIncrementado) this.incrementarEjercito(jugador, inventarioDeJuego);

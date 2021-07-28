@@ -84,4 +84,8 @@ public class Jugador {
     public void moverFichasDeACon(Pais unPais, Pais otroPais, int cantidad){
         unPais.moverEjercitoA(otroPais, cantidad);
     }
+
+    public Integer getNumeroJugador() {
+        return this.numeroDeJugador;
+    }
 }

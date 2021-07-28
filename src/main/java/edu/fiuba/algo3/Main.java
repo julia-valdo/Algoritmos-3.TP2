@@ -4,6 +4,6 @@ import edu.fiuba.algo3.Vista.Tablero;
 
 public class Main {
     public static void main(String[] args) {
-        Tablero.main(args);
+        App.main(args);
     }
 }
