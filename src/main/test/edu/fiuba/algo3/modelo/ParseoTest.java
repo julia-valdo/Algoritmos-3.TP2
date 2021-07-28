@@ -1,10 +1,10 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.Batalla.Pais;
+import edu.fiuba.algo3.modelo.Objetivos.Continente;
+import edu.fiuba.algo3.modelo.Parser.Parser;
 import org.junit.jupiter.api.Test;
 
-import javax.print.attribute.HashAttributeSet;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
