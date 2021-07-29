@@ -1,7 +1,8 @@
 package edu.fiuba.algo3.vista;
 
-import edu.fiuba.algo3.vista.ventana.VentanaComienzo;
-import edu.fiuba.algo3.vista.ventana.VentanaPrincipal;
+import edu.fiuba.algo3.vista.ventanas.VentanaComienzo;
+import edu.fiuba.algo3.vista.ventanas.VentanaCantidadJugadores;
+import edu.fiuba.algo3.vista.ventanas.VentanaPrincipal;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -15,8 +16,11 @@ public class Tablero extends Application {
         VentanaPrincipal ventanaPrincipal = new VentanaPrincipal(stage);
         Scene escenaJuego = new Scene(ventanaPrincipal);
 
-        VentanaComienzo vetanaComienzo = new VentanaComienzo(stage, escenaJuego);
-        Scene escenaComienzo = new Scene(vetanaComienzo);
+        VentanaCantidadJugadores ventanaCantidadJugadores = new VentanaCantidadJugadores(stage, escenaJuego);
+        Scene escenaJugadores = new Scene(ventanaCantidadJugadores);
+
+        VentanaComienzo ventanaComienzo = new VentanaComienzo(stage, escenaJugadores);
+        Scene escenaComienzo = new Scene(ventanaComienzo);
 
         stage.setScene(escenaComienzo);
         stage.show();

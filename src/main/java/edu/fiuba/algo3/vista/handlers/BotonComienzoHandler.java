@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.vista.handler;
+package edu.fiuba.algo3.vista.handlers;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

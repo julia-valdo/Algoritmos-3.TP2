@@ -1,35 +1,39 @@
-package edu.fiuba.algo3.vista.ventana;
+package edu.fiuba.algo3.vista.ventanas;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
-public class VentanaPrincipal extends BorderPane {
+public class VentanaPrincipal extends StackPane {
+
+    Stage stage;
 
     public VentanaPrincipal(Stage stage) {
+        super();
+        this.stage = stage;
         this.setFondo(stage);
     }
 
     public void setFondo(Stage stage) {
-
+        BorderPane border = new BorderPane();
         HBox mapa = new HBox();
-        this.setCenter(mapa);
+        border.setCenter(mapa);
         ImageView imageMapa = new ImageView();
         imageMapa.setImage(new Image("file:tableroTEG.png"));
         imageMapa.setFitHeight(600);
         mapa.getChildren().add(imageMapa);
+        this.getChildren().add(mapa);
 
         HBox panel = new HBox();
-        this.setRight(panel);
+        border.setRight(panel);
         ImageView imagePanel = new ImageView();
         imagePanel.setImage(new Image("file:papel.jpg"));
         imagePanel.setFitHeight(600);
         imagePanel.setFitWidth(250);
         mapa.getChildren().add(imagePanel);
+        this.getChildren().add(panel);
+
     }
-
-
 
 }
