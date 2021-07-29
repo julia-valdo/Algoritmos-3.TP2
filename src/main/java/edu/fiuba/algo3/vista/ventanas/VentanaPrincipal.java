@@ -16,23 +16,20 @@ public class VentanaPrincipal extends StackPane {
     }
 
     public void setFondo(Stage stage) {
-        BorderPane border = new BorderPane();
+
         HBox mapa = new HBox();
-        border.setCenter(mapa);
         ImageView imageMapa = new ImageView();
         imageMapa.setImage(new Image("file:tableroTEG.png"));
         imageMapa.setFitHeight(600);
         mapa.getChildren().add(imageMapa);
         this.getChildren().add(mapa);
 
-        HBox panel = new HBox();
-        border.setRight(panel);
         ImageView imagePanel = new ImageView();
         imagePanel.setImage(new Image("file:papel.jpg"));
         imagePanel.setFitHeight(600);
         imagePanel.setFitWidth(250);
         mapa.getChildren().add(imagePanel);
-        this.getChildren().add(panel);
+
 
     }
 

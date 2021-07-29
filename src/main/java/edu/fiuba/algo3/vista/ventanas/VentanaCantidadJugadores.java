@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.vista.ventanas;
 
 import edu.fiuba.algo3.vista.handlers.BotonAceptarHandler;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -9,6 +10,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+
+import java.util.ArrayList;
 
 public class VentanaCantidadJugadores extends StackPane {
 
@@ -41,24 +44,18 @@ public class VentanaCantidadJugadores extends StackPane {
 
         Label info = new Label();
         info.setText("Cantidad de jugadores:");
-        info.setTranslateX(785);
-        info.setTranslateY(250);
+        info.setStyle("-fx-font-weight: bold");
+        info.setTranslateX(905);
+        info.setTranslateY(280);
+        ArrayList<Node> nodos = new ArrayList<>();
+        nodos.add(info);
+        for(int i = 2; i < 7; i++){
+            nodos.add(new BotonDeSeleccion(i));
+        }
 
-        Label respuesta = new Label();
 
-        TextField campoDeTexto = new TextField();
-        campoDeTexto.setTranslateX(925);
-        campoDeTexto.setTranslateY(300);
+        panel.getChildren().addAll(nodos);
 
-        Button boton = new Button("Aceptar");
-        boton.setTranslateX(700);
-        boton.setTranslateY(350);
-        BotonAceptarHandler botonAceptarHandler = new BotonAceptarHandler(campoDeTexto, respuesta, stage, next);
-        boton.setOnAction(botonAceptarHandler);
-
-        panel.getChildren().add(campoDeTexto);
-        panel.getChildren().add(info);
-        panel.getChildren().add(boton);
     }
 
 }
