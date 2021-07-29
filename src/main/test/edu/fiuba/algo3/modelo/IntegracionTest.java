@@ -12,7 +12,6 @@ import org.junit.jupiter.api.function.Executable;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class IntegracionTest {
