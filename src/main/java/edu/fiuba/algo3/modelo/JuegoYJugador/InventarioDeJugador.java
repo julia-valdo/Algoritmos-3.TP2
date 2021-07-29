@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.Batalla.Ejercitos;
 import edu.fiuba.algo3.modelo.Batalla.Pais;
 import edu.fiuba.algo3.modelo.Cartas.Carta;
 import edu.fiuba.algo3.modelo.Cartas.ManoDeCartas;
+import edu.fiuba.algo3.modelo.Cartas.Mazo;
 import edu.fiuba.algo3.modelo.Excepciones.NoHayFuerzasRestantesError;
 import edu.fiuba.algo3.modelo.JuegoYJugador.Jugador;
 
@@ -51,5 +52,13 @@ public class InventarioDeJugador {
 
     public void activarCarta(Carta unaCarta) {
         this.mano.activarCarta(unaCarta);
+    }
+
+    public void pedirCarta(InventarioDeJuego inventario) {
+        this.mano.pedirCarta(inventario);
+    }
+
+    public void ocupePais() {
+        this.mano.ocupePais();
     }
 }

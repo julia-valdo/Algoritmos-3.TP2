@@ -6,7 +6,7 @@ import edu.fiuba.algo3.Controlador.SeleccionJugador;
 
 public class FaseReagrupar implements FaseDeRonda {
     @Override
-    public void aplicarAccionesDeFase(Jugador jugador) {
+    public void aplicarAccionesDeFase(Jugador jugador, InventarioDeJuego inventario) {
 
     }
 

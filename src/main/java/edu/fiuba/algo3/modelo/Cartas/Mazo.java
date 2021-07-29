@@ -21,10 +21,14 @@ public class Mazo {
     }
 
     public void repartirCarta(Jugador unJugador){
+        this.sePuedeRepartirCarta();
+        unJugador.recibirCarta(this.retirarPrimera());
+    }
+
+    private void sePuedeRepartirCarta() {
         if(!this.tengoCartasRestantes()){
             throw new NoQuedanCartasError();
         }
-        unJugador.recibirCarta(this.retirarPrimera());
     }
 
     private boolean tengoCartasRestantes(){
@@ -37,5 +41,14 @@ public class Mazo {
 
     public void vuelveAlMazo(Carta carta) {
         this.cartas.add(carta);
+    }
+
+    public boolean quedanCartas() {
+        return !this.cartas.isEmpty();
+    }
+
+    public void repartirCarta(ManoDeCartas manoDeCartas) {
+        this.sePuedeRepartirCarta();
+        manoDeCartas.recibirCarta(this.retirarPrimera());
     }
 }

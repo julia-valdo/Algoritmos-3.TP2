@@ -7,13 +7,10 @@ import edu.fiuba.algo3.Controlador.SeleccionJugador;
 public class FaseColocarEjercitos implements FaseDeRonda {
     private boolean ejercitoFueIncrementado;
 
-    public FaseColocarEjercitos(){
-        ejercitoFueIncrementado = false;
-    }
-
     @Override
-    public void aplicarAccionesDeFase(Jugador jugador) {
-
+    public void aplicarAccionesDeFase(Jugador jugador, InventarioDeJuego inventario) {
+        jugador.agregarFichas(jugador.cantidadDeEjercitosAColocar(inventario));
+        jugador.pedirCarta(inventario);
     }
 
     @Override

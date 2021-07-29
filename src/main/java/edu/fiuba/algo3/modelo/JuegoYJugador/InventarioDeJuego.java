@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo.JuegoYJugador;
 
 import edu.fiuba.algo3.modelo.Batalla.Pais;
 import edu.fiuba.algo3.modelo.Cartas.Carta;
+import edu.fiuba.algo3.modelo.Cartas.ManoDeCartas;
 import edu.fiuba.algo3.modelo.Cartas.Mazo;
 import edu.fiuba.algo3.modelo.JuegoYJugador.Jugador;
 import edu.fiuba.algo3.modelo.Objetivos.Continente;
@@ -30,5 +31,14 @@ public class InventarioDeJuego {
 
     public void repartirCarta(Jugador jugador1) {
         this.mazoDeCartas.repartirCarta(jugador1);
+    }
+
+    public boolean quedanCartas() {
+
+        return this.mazoDeCartas.quedanCartas();
+    }
+
+    public void repartirCarta(ManoDeCartas mano) {
+        this.mazoDeCartas.repartirCarta(mano);
     }
 }

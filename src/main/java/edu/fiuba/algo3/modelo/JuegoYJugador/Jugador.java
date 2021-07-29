@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo.JuegoYJugador;
 import edu.fiuba.algo3.modelo.Batalla.Ejercitos;
 import edu.fiuba.algo3.modelo.Batalla.Pais;
 import edu.fiuba.algo3.modelo.Cartas.Carta;
+import edu.fiuba.algo3.modelo.Cartas.Mazo;
 
 import java.util.ArrayList;
 
@@ -10,7 +11,7 @@ public class Jugador {
     private int numeroDeJugador;
     private ArrayList<Pais> paisesOcupados;
     private InventarioDeJugador inventarioDeJugador;
-    public boolean derrotado;
+    private boolean derrotado;
 
     public Jugador(int numeroDeJugador){
         this.paisesOcupados = new ArrayList<>();
@@ -40,6 +41,13 @@ public class Jugador {
 
     public void atacarPaisDesdeA(Pais unPais, Pais otroPais){
         unPais.atacarA(otroPais);
+        this.verificarOcupacion(otroPais);
+    }
+
+    private void verificarOcupacion(Pais otroPais) {
+        if(this.paisesOcupados.contains(otroPais)){
+            this.inventarioDeJugador.ocupePais();
+        }
     }
 
     public int cantidadDeEjercitosAColocar(InventarioDeJuego inventarioDeJuego){
@@ -87,5 +95,9 @@ public class Jugador {
 
     public Integer getNumeroJugador() {
         return this.numeroDeJugador;
+    }
+
+    public void pedirCarta(InventarioDeJuego inventario) {
+        this.inventarioDeJugador.pedirCarta(inventario);
     }
 }

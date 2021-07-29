@@ -2,9 +2,10 @@ package edu.fiuba.algo3.modelo.JuegoYJugador;
 
 import edu.fiuba.algo3.Controlador.SeleccionJugador;
 import edu.fiuba.algo3.modelo.Batalla.Pais;
-import edu.fiuba.algo3.modelo.FlujoDeJuego.FaseColocarEjercitos;
+import edu.fiuba.algo3.modelo.Cartas.Carta;
 import edu.fiuba.algo3.modelo.FlujoDeJuego.FaseDeRonda;
-import edu.fiuba.algo3.modelo.FlujoDeJuego.PrimeraColocacion;
+import edu.fiuba.algo3.modelo.FlujoDeJuego.FasePrimeraColocacion;
+import edu.fiuba.algo3.modelo.Objetivos.Continente;
 import edu.fiuba.algo3.modelo.Parser.Parser;
 
 import java.util.*;
@@ -14,12 +15,13 @@ public class Juego {
     private HashMap<Integer, Jugador> turnoJugadores;
     private FaseDeRonda fase;
     private Parser parser;
+    private InventarioDeJuego inventario;
 
     public Juego(int cantidadDeJugadores){
         parser = new Parser();
         this.turnoActual = 1;
         this.turnoJugadores = new HashMap<>();
-        this.fase = new PrimeraColocacion();
+        this.fase = new FasePrimeraColocacion();
         this.crearJugadores(cantidadDeJugadores);
     }
 
@@ -29,7 +31,9 @@ public class Juego {
         parser.parsearArchivo("Teg - Objetivos.json");
         parser.construirObjetos();
         this.repartirPaises();
+        this.generarInventario();
     }
+
 
     private void crearJugadores(int cantidadDeJugadores){
         ArrayList<Jugador> jugadores = new ArrayList<>();
@@ -59,17 +63,20 @@ public class Juego {
 
     public Jugador obtenerSiguiente() {
         Jugador siguiente =  this.turnoJugadores.get(this.turnoActual);
-        this.fase.aplicarAccionesDeFase(siguiente);
+        this.fase.aplicarAccionesDeFase(siguiente, this.inventario);
         this.avanzarTurno();
         return siguiente;
     }
 
     public void seleccionDeJugador(Jugador jugador, SeleccionJugador seleccion){
         this.fase.accionJugador(jugador, new InventarioDeJuego(new ArrayList<>(), new ArrayList<>()), seleccion);
+        if(this.esElUltimoJugador(jugador)){
+            this.fase = this.fase.cambiarFase();
+        }
     }
 
     private void avanzarTurno() {
-        if(this.turnoActual == this.turnoJugadores.size()){
+        if(this.esElUltimoJugador(this.turnoJugadores.get(this.turnoActual))){
             this.turnoActual = 1;
         }
         else {
@@ -87,4 +94,16 @@ public class Juego {
          actual.ocupa(pais);
         }
     }
+
+    private boolean esElUltimoJugador(Jugador jugador){
+        return jugador == this.turnoJugadores.get(this.turnoJugadores.size());
+    }
+
+    private void generarInventario() {
+        ArrayList<Continente> continentes = new ArrayList<>(this.parser.getContinentes().values());
+        ArrayList<Carta> cartas  = this.parser.getCartas();
+        Collections.shuffle(cartas);
+        this.inventario = new InventarioDeJuego(cartas, continentes);
+    }
+
 }
