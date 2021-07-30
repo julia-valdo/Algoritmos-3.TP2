@@ -27,7 +27,7 @@ public class Parser {
     }
 
     public void construirObjetos(){
-        objetos.construirPaisesYCartas(parser.getPaisesConSimbolos(), parser.getFronteras(), parser.getCordenadas());
+        objetos.construirPaisesYCartas(parser.getPaisesConSimbolos(), parser.getFronteras(), parser.getCoordenadas());
         objetos.construirContinente(parser.getContinentes());
         objetos.contruirObjetivos(parser.getObjetivos());
     }

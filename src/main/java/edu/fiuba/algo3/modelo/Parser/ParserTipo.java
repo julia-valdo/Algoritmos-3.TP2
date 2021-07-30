@@ -18,5 +18,5 @@ public interface ParserTipo {
 
     public HashMap<String, ArrayList<String>> getObjetivos();
 
-    HashMap<String, Pair<Integer, Integer>> getCordenadas();
+    HashMap<String, Pair<Integer, Integer>> getCoordenadas();
 }
