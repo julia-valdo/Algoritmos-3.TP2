@@ -106,4 +106,7 @@ public class Juego {
         this.inventario = new InventarioDeJuego(cartas, continentes);
     }
 
+    public void setNombreJugadorNumero(int numero, String nombre) {
+        this.turnoJugadores.get(numero).setNombre(nombre);
+    }
 }

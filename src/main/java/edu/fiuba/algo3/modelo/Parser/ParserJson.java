@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import edu.fiuba.algo3.modelo.Parser.ParserTipo;
+import javafx.util.Pair;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -18,6 +19,7 @@ public class ParserJson implements ParserTipo {
     HashMap<String, String> paises;
     HashMap<String, String> continentes;
     HashMap<String, String> fronteras;
+    HashMap<String, Pair<Integer, Integer>> cordenadas;
     HashMap<String, ArrayList<String>> objetivos;
 
     @SuppressWarnings("unchecked")
@@ -85,10 +87,13 @@ public class ParserJson implements ParserTipo {
         JSONObject fronterasObject = (JSONObject) fronteras;
 
         String nombrePais = (String) fronterasObject.get("Pais");
+        Integer cordX = (Integer) fronterasObject.get("posX");
+        Integer cordY = (Integer) fronterasObject.get("posY");
         String nombreContinente = (String) fronterasObject.get("Continente");
         String paisesLimitrofes = (String) fronterasObject.get("Limita con");
 
         this.fronteras.put(nombrePais, paisesLimitrofes);
+        this.cordenadas.put(nombrePais, new Pair<>(cordX, cordY));
 
         if (!continentes.containsKey(nombreContinente)){
             continentes.put(nombreContinente, nombrePais);
@@ -112,6 +117,11 @@ public class ParserJson implements ParserTipo {
     }
     @Override
     public HashMap<String, ArrayList<String>> getObjetivos(){ return objetivos; }
+
+    @Override
+    public HashMap<String, Pair<Integer, Integer>> getCordenadas() {
+        return cordenadas;
+    }
 }
 
 

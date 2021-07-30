@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.Cartas.Carta;
 import edu.fiuba.algo3.modelo.Objetivos.Continente;
 import edu.fiuba.algo3.modelo.Batalla.Pais;
 import edu.fiuba.algo3.modelo.Objetivos.Objetivo;
+import javafx.util.Pair;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,8 +20,9 @@ public class Constructor {
         objetivos = new ConstructorObjetivos();
     }
 
-    public void construirPaisesYCartas(HashMap<String, String> cartaPais, HashMap<String, String> fronteras){
-        this.paisYCarta.construirPaisesYCartas(cartaPais, fronteras);
+    public void construirPaisesYCartas(HashMap<String, String> cartaPais, HashMap<String, String> fronteras, HashMap<String,
+            Pair<Integer, Integer>> cordenadas){
+        this.paisYCarta.construirPaisesYCartas(cartaPais, fronteras, cordenadas);
     }
 
     public void construirContinente(HashMap<String, String> continente){

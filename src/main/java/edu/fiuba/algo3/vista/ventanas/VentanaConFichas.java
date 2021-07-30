@@ -18,8 +18,23 @@ public class VentanaConFichas extends Group {
 
     private void agregarFicha(){
         ArrayList<Ficha> fichas = new ArrayList<>();
-        for(int i = 0; i < 50; i++){
+        for(int i = 0; i < 5; i++){
+            fichas.add(new Ficha("#0077bb"));
+        }
+        for(int i = 0; i < 15; i++){
+            fichas.add(new Ficha("#cc3311"));
+        }
+        for(int i = 0; i < 10; i++){
+            fichas.add(new Ficha("#ee7733"));
+        }
+        for(int i = 0; i < 7; i++){
+            fichas.add(new Ficha("#009988"));
+        }
+        for(int i = 0; i< 7; i++){
             fichas.add(new Ficha("#ee3377"));
+        }
+        for(int i = 0; i < 6; i++){
+            fichas.add(new Ficha("#000000"));
         }
 
         fichas.get(0).setPosicion(290, 165);//Groenlandia
@@ -83,7 +98,9 @@ public class VentanaConFichas extends Group {
         fichas.get(48).setPosicion(628, 350);//Israel
         fichas.get(49).setPosicion(683, 365);//Arabia
 
-        this.getChildren().addAll(fichas);
+        for(int i = 0; i < 50; i++){
+            fichas.get(i).agregarseA(this);
+        }
     }
 
 }

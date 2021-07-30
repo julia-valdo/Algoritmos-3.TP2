@@ -5,11 +5,15 @@ import javafx.scene.layout.Background;
 
 public class CampoDeNombre extends TextField {
 
+    private Integer numeroJugador;
+    private static ColoresJugadores colores = new ColoresJugadores();
+
     public CampoDeNombre(Integer numeroDeJugador){
         super();
+        this.numeroJugador = numeroDeJugador;
         this.setNombreDeCampo(numeroDeJugador);
         this.setPosicion(numeroDeJugador);
-        this.setPropiedades();
+        this.setPropiedades(numeroJugador);
     }
 
     private void setNombreDeCampo(Integer numeroDeJugador){
@@ -22,9 +26,12 @@ public class CampoDeNombre extends TextField {
             this.setTranslateY(100 + (numeroDeJugador - 1) * 40);
     }
 
-    private void setPropiedades(){
+    private void setPropiedades(Integer numeroJugador){
         this.setHeight(20);
-        this.setStyle("-fx-font-weight: bold; -fx-background-color: #ffebcd; -fx-border-color: #000000");
+        String colorDeJugador = colores.getColor(numeroJugador);
+        this.setStyle("-fx-font-weight: bold; -fx-background-color: " +
+                colorDeJugador + "; -fx-border-color: #000000;" +
+                "-fx-text-fill: #ffffff");
     }
 
 }
