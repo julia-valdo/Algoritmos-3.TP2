@@ -1,5 +1,11 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.Batalla.Pais;
+import edu.fiuba.algo3.modelo.JuegoYJugador.Jugador;
+import edu.fiuba.algo3.modelo.Objetivos.Continente;
+import edu.fiuba.algo3.modelo.Objetivos.Objetivo;
+import edu.fiuba.algo3.modelo.Objetivos.ObjetivoConquistar;
+import edu.fiuba.algo3.modelo.Objetivos.ObjetivoDerrotar;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

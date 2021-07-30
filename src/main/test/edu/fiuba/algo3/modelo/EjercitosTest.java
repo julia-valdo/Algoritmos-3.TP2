@@ -1,5 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.Batalla.Ejercitos;
+import edu.fiuba.algo3.modelo.Excepciones.NoHayFuerzasRestantesError;
+import edu.fiuba.algo3.modelo.JuegoYJugador.Jugador;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 

@@ -1,9 +1,14 @@
 package edu.fiuba.algo3.modelo;
 
 
+import edu.fiuba.algo3.modelo.Batalla.Pais;
+import edu.fiuba.algo3.modelo.Cartas.Carta;
+import edu.fiuba.algo3.modelo.Excepciones.NoHayFuerzasRestantesError;
+import edu.fiuba.algo3.modelo.Excepciones.NoQuedanCartasError;
+import edu.fiuba.algo3.modelo.JuegoYJugador.InventarioDeJuego;
+import edu.fiuba.algo3.modelo.JuegoYJugador.Jugador;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
-import org.mockito.*;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
