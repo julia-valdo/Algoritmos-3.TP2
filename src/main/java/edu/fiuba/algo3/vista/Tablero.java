@@ -13,13 +13,7 @@ public class Tablero extends Application {
     public void start (Stage stage) throws Exception{
         stage.setTitle("A.L.T.E.G.O.");
 
-        VentanaPrincipal ventanaPrincipal = new VentanaPrincipal(stage);
-        Scene escenaJuego = new Scene(ventanaPrincipal);
-
-        VentanaCantidadJugadores ventanaCantidadJugadores = new VentanaCantidadJugadores(stage, escenaJuego);
-        Scene escenaJugadores = new Scene(ventanaCantidadJugadores);
-
-        VentanaComienzo ventanaComienzo = new VentanaComienzo(stage, escenaJugadores);
+        VentanaComienzo ventanaComienzo = new VentanaComienzo();
         Scene escenaComienzo = new Scene(ventanaComienzo);
 
         stage.setScene(escenaComienzo);

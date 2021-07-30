@@ -1,6 +1,6 @@
-package edu.fiuba.algo3.vista.ventanas;
+package edu.fiuba.algo3.vista.Botones;
 
-import edu.fiuba.algo3.vista.handlers.CantidadDeJugadoresHandle;
+import edu.fiuba.algo3.Controlador.handlers.CantidadDeJugadoresHandle;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 
@@ -15,7 +15,7 @@ public class BotonDeSeleccion extends Button {
 
     private void crearTexto(Integer numeroBoton) {
         this.setText(numeroBoton.toString());
-
+        this.setStyle("-fx-font-weight: bold;-fx-background-color: #ffebcd; -fx-border-color: #000000");
     }
 
     private void posicionar(int numeroBoton) {

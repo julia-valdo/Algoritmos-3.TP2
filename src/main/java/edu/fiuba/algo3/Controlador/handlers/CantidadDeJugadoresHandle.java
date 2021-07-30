@@ -1,12 +1,12 @@
-package edu.fiuba.algo3.vista.handlers;
+package edu.fiuba.algo3.Controlador.handlers;
 
-import edu.fiuba.algo3.vista.ventanas.VentanaComienzo;
+import edu.fiuba.algo3.Controlador.Controlador;
+import edu.fiuba.algo3.vista.ventanas.VentanaNombrarJugadores;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class CantidadDeJugadoresHandle implements EventHandler<ActionEvent> {
@@ -20,7 +20,10 @@ public class CantidadDeJugadoresHandle implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
         Stage stage =(Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        stage.setTitle("Jugadores: " + this.cantidadDeJugadores);
+        Group grupo = new VentanaNombrarJugadores(this.cantidadDeJugadores);
+        Scene scena = new Scene(grupo);
+        Controlador.setearJuego(this.cantidadDeJugadores);
+        stage.setScene(scena);
         stage.show();
     }
 }

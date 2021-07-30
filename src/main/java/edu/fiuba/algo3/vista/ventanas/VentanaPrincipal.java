@@ -1,21 +1,21 @@
 package edu.fiuba.algo3.vista.ventanas;
 
+import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
-public class VentanaPrincipal extends StackPane {
+public class VentanaPrincipal extends Group {
 
-    Stage stage;
 
-    public VentanaPrincipal(Stage stage) {
+
+    public VentanaPrincipal() {
         super();
-        this.stage = stage;
-        this.setFondo(stage);
+        this.setFondo();
     }
 
-    public void setFondo(Stage stage) {
+    public void setFondo() {
 
         HBox mapa = new HBox();
         ImageView imageMapa = new ImageView();

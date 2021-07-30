@@ -1,29 +1,24 @@
 package edu.fiuba.algo3.vista.ventanas;
 
-import edu.fiuba.algo3.vista.handlers.BotonAceptarHandler;
+import edu.fiuba.algo3.vista.Botones.BotonDeSeleccion;
 import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
 public class VentanaCantidadJugadores extends StackPane {
 
-    Stage stage;
 
-    public VentanaCantidadJugadores(Stage stage, Scene next) {
+
+    public VentanaCantidadJugadores() {
         super();
-        this.stage = stage;
-        this.setFondo(stage, next);
+        this.setFondo();
     }
 
-    public void setFondo(Stage stage, Scene next) {
+    public void setFondo() {
         BorderPane border = new BorderPane();
         HBox mapa = new HBox();
         border.setCenter(mapa);
