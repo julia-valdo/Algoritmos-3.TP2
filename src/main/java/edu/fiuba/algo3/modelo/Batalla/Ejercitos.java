@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo.Batalla;
 
 import edu.fiuba.algo3.modelo.Excepciones.MovimientoDeEjercitoError;
 import edu.fiuba.algo3.modelo.JuegoYJugador.Jugador;
+import edu.fiuba.algo3.vista.Elementos.Ficha;
 
 public class Ejercitos {
 
@@ -64,6 +65,10 @@ public class Ejercitos {
      */
     public void agregarDivision(Ejercitos nuevaDivision) {
         this.agregarEjercitos(nuevaDivision.getCantidadEjercitos());
+    }
+
+    public void ponerColorAFicha(Ficha unaFicha){
+        unaFicha.setColor(this.comandante.getColor());
     }
 
     /*

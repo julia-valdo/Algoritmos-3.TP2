@@ -65,4 +65,10 @@ public class Pais {
         this.posX = parDeCoordenadas.getKey();
         this.posY = parDeCoordenadas.getValue();
     }
+
+    public void setFicha(Ficha unaFicha){
+        this.miFicha = unaFicha;
+        this.miFicha.setPosicion(this.posX, this.posY);
+        this.ejercitos.ponerColorAFicha(unaFicha);
+    }
 }

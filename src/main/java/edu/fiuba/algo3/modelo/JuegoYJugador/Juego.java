@@ -7,6 +7,7 @@ import edu.fiuba.algo3.modelo.FlujoDeJuego.FaseDeRonda;
 import edu.fiuba.algo3.modelo.FlujoDeJuego.FasePrimeraColocacion;
 import edu.fiuba.algo3.modelo.Objetivos.Continente;
 import edu.fiuba.algo3.modelo.Parser.Parser;
+import edu.fiuba.algo3.vista.Elementos.Ficha;
 
 import java.util.*;
 
@@ -108,5 +109,12 @@ public class Juego {
 
     public void setNombreJugadorNumero(int numero, String nombre) {
         this.turnoJugadores.get(numero).setNombre(nombre);
+    }
+
+    public void setearFichas(ArrayList<Ficha> fichas) {
+        List<Pais> paises = new ArrayList<>(this.parser.getPaises().values());
+        for(int i = 0; i < paises.size(); i++){
+            paises.get(i).setFicha(fichas.get(i));
+        }
     }
 }

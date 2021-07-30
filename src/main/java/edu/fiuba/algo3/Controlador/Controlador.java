@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.Controlador;
 
 import edu.fiuba.algo3.modelo.JuegoYJugador.Juego;
+import edu.fiuba.algo3.vista.Elementos.Ficha;
 
 import java.util.ArrayList;
 
@@ -21,5 +22,13 @@ public class Controlador {
         }
     }
 
+    private static void setearFichas(ArrayList<Ficha> fichas){
+            teg.setearFichas(fichas);
+    }
 
+
+    public static void empezarJuego(ArrayList<Ficha> fichas) {
+        teg.iniciarJuego();
+        setearFichas(fichas);
+    }
 }

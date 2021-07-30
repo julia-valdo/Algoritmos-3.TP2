@@ -112,4 +112,8 @@ public class Jugador {
     public void setNombre(String nombre) {
         this.nombreJugador = nombre;
     }
+
+    public String getColor() {
+        return  this.color;
+    }
 }
