@@ -38,7 +38,7 @@ public class Juego {
 
     private void crearJugadores(int cantidadDeJugadores){
         ArrayList<Jugador> jugadores = new ArrayList<>();
-        for(int i = 0; i < cantidadDeJugadores; i++) jugadores.add(new Jugador(i));
+        for(int i = 1; i <= cantidadDeJugadores; i++) jugadores.add(new Jugador(i));
         this.establecerTurnos(jugadores);
     }
 
