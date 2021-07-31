@@ -47,7 +47,7 @@ class Activada{
 }
 
 class Mazo{
-- ArrayList<> cartas:Carta
+- cartas:ArrayList<Carta>
 - asociarmeLasCartas(ArrayList<>cartas):void
 - sePuedeRepartirCarta():void
 - tengoCartasRestantes():boolean
@@ -62,7 +62,7 @@ class NoEstaHabilitado{
 }
 
 class ManoDeCartas{
-- ArrayList<> cartas:Carta
+- cartas:ArrayList<Carta>
 - cantidadDeCanjesHechos:Canjes
 - puedePedirCarta:Habilitado
 - tengo(Carta unaCarta):boolean
