@@ -1,0 +1,32 @@
+@startuml
+class FaseAtacar{
+}
+
+class FaseColocarEjercitos{
+- ejercitoFueIncrementado:boolean
+- incrementarEjercito(Jugador jugador,InventarioDeJuego inventarioDeJuego):void
+}
+
+class FaseDeRonda{
++ aplicarAccionesDeFase(Jugador jugador,InventarioDeJuego inventario):void
++ accionJugador(Jugador jugador, InventarioDeJuego inventarioDeJuego,SeleccionJugador seleccion):boolean
++ cambiarFase():FaseDeRonda
+}
+
+class FasePrimeraColocacion{
+- fichasAAgregar:int
+}
+
+class FaseReagrupar{
+}
+
+class FaseSegundaColocacion{
+}
+
+
+FaseDeRonda <|.. FaseAtacar
+FaseDeRonda <|.. FaseColocarEjercitos
+FaseDeRonda <|.. FasePrimeraColocacion
+FaseDeRonda <|.. FaseSegundaColocacion
+FaseDeRonda <|.. FaseReagrupar
+@enduml
