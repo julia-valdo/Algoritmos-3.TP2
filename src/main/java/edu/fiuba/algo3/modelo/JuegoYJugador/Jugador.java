@@ -1,9 +1,13 @@
 package edu.fiuba.algo3.modelo.JuegoYJugador;
 
+import edu.fiuba.algo3.Controlador.handlers.HandlerDePais;
 import edu.fiuba.algo3.modelo.Batalla.Ejercitos;
 import edu.fiuba.algo3.modelo.Batalla.Pais;
 import edu.fiuba.algo3.modelo.Cartas.Carta;
 import edu.fiuba.algo3.vista.Elementos.ColoresJugadores;
+import edu.fiuba.algo3.vista.Elementos.Ficha;
+import javafx.scene.paint.Paint;
+import javafx.scene.text.Text;
 
 import java.util.ArrayList;
 
@@ -115,5 +119,29 @@ public class Jugador {
 
     public String getColor() {
         return  this.color;
+    }
+
+    public void habilitarPaises(HandlerDePais handler) {
+        for(Pais pais: this.paisesOcupados){
+            HandlerDePais handlerDePais = handler.getCopy();
+            pais.agregarHandler(handlerDePais);
+        }
+    }
+
+    public Ficha getFicha() {
+        return this.inventarioDeJugador.getFicha();
+    }
+
+    public Text prepararNombre() {
+        Text nombre = new Text("Turno de: " + this.nombreJugador);
+        nombre.setStyle("-fx-font-weight: bold");
+        nombre.setTranslateY(50);
+        nombre.setTranslateX(900);
+
+        return nombre;
+    }
+
+    public boolean esElNumero(int numero) {
+        return this.getNumeroJugador() == numero;
     }
 }

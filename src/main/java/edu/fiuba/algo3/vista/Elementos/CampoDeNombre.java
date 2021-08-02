@@ -34,4 +34,7 @@ public class CampoDeNombre extends TextField {
                 "-fx-text-fill: #ffffff");
     }
 
+    public int getNumero() {
+        return this.numeroJugador;
+    }
 }

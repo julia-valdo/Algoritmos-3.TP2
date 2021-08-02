@@ -7,7 +7,16 @@ import edu.fiuba.algo3.modelo.FlujoDeJuego.FaseDeRonda;
 import edu.fiuba.algo3.modelo.FlujoDeJuego.FasePrimeraColocacion;
 import edu.fiuba.algo3.modelo.Objetivos.Continente;
 import edu.fiuba.algo3.modelo.Parser.Parser;
+import edu.fiuba.algo3.vista.Elementos.CampoDeNombre;
+import edu.fiuba.algo3.vista.Elementos.ColoresJugadores;
 import edu.fiuba.algo3.vista.Elementos.Ficha;
+import edu.fiuba.algo3.vista.Elementos.TextoNotificable;
+import edu.fiuba.algo3.vista.ventanas.VentanaFaseColocacion;
+import edu.fiuba.algo3.vista.ventanas.VentanaMenu;
+import edu.fiuba.algo3.vista.ventanas.VentanaMenuColocacion;
+import javafx.scene.Scene;
+import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 
 import java.util.*;
 
@@ -17,12 +26,14 @@ public class Juego {
     private FaseDeRonda fase;
     private Parser parser;
     private InventarioDeJuego inventario;
+    private List<Pais> paises;
+    private ArrayList<Ficha> fichasDeJuego;
 
     public Juego(int cantidadDeJugadores){
         parser = new Parser();
         this.turnoActual = 1;
         this.turnoJugadores = new HashMap<>();
-        this.fase = new FasePrimeraColocacion();
+        this.fase = new FasePrimeraColocacion(new TextoNotificable());
         this.crearJugadores(cantidadDeJugadores);
     }
 
@@ -64,16 +75,13 @@ public class Juego {
 
     public Jugador obtenerSiguiente() {
         Jugador siguiente =  this.turnoJugadores.get(this.turnoActual);
-        this.fase.aplicarAccionesDeFase(siguiente, this.inventario);
         this.avanzarTurno();
         return siguiente;
     }
 
     public void seleccionDeJugador(Jugador jugador, SeleccionJugador seleccion){
         this.fase.accionJugador(jugador, new InventarioDeJuego(new ArrayList<>(), new ArrayList<>()), seleccion);
-        if(this.esElUltimoJugador(jugador)){
-            this.fase = this.fase.cambiarFase();
-        }
+        this.actualizarFase(jugador);
     }
 
     private void avanzarTurno() {
@@ -87,13 +95,14 @@ public class Juego {
 
 
     private void repartirPaises(){
-        List<Pais> paises = new ArrayList<>(this.parser.getPaises().values());
+        this.paises =  new ArrayList<>(this.parser.getPaises().values());
         Collections.shuffle(paises);
         for(Pais pais: paises){
          Jugador actual = this.obtenerSiguiente();
          actual.agregarFichas(1);
          actual.ocupa(pais);
         }
+        this.turnoActual = 1;
     }
 
     private boolean esElUltimoJugador(Jugador jugador){
@@ -107,14 +116,56 @@ public class Juego {
         this.inventario = new InventarioDeJuego(cartas, continentes);
     }
 
-    public void setNombreJugadorNumero(int numero, String nombre) {
-        this.turnoJugadores.get(numero).setNombre(nombre);
-    }
-
     public void setearFichas(ArrayList<Ficha> fichas) {
-        List<Pais> paises = new ArrayList<>(this.parser.getPaises().values());
+        this.fichasDeJuego = fichas;
         for(int i = 0; i < paises.size(); i++){
             paises.get(i).setFicha(fichas.get(i));
+        }
+    }
+
+
+    public Jugador obtenerSiguienteEnTurno() {
+        Jugador siguiente = this.obtenerSiguiente();
+        this.fase.aplicarAccionesDeFase(siguiente, this.inventario);
+        return siguiente;
+    }
+
+    public Scene prepararMenuSiguiente() {
+        this.limpiarFichas();
+        Jugador siguiente = this.obtenerSiguienteEnTurno();
+
+        VentanaMenu ventana =  this.fase.prepararMenu();
+        this.actualizarFase(siguiente);
+
+        return new Scene(new VentanaFaseColocacion(this.fichasDeJuego,ventana));
+    }
+
+    private void actualizarFase(Jugador siguiente) {
+        if(this.esElUltimoJugador(siguiente)){
+            this.fase = this.fase.cambiarFase();
+        }
+    }
+
+    public void setNombreJugador(TextField nombre) {
+        int numeroJugador = ((CampoDeNombre) nombre).getNumero();
+        this.setNombreJugadorNumero(numeroJugador, nombre.getText());
+
+    }
+
+    private void setNombreJugadorNumero(int numero, String nombre) {
+        Jugador jugador = this.buscarNumero(numero);
+        jugador.setNombre(nombre);
+    }
+
+    private Jugador buscarNumero(int numero) {
+        ArrayList<Jugador> jugadores = new ArrayList<>(this.turnoJugadores.values());
+
+        return jugadores.stream().filter(jugador -> jugador.esElNumero(numero)).findFirst().get();
+    }
+
+    private void limpiarFichas() {
+        for(Ficha ficha: fichasDeJuego){
+            ficha.limpiarHandler();
         }
     }
 }

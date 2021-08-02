@@ -1,4 +1,5 @@
 package edu.fiuba.algo3.modelo.Batalla;
+import edu.fiuba.algo3.Controlador.handlers.HandlerDePais;
 import edu.fiuba.algo3.modelo.Excepciones.AtaqueNoPermitidoError;
 import edu.fiuba.algo3.modelo.Excepciones.MovimientoDeEjercitoError;
 import edu.fiuba.algo3.vista.Elementos.Ficha;
@@ -15,7 +16,16 @@ public class Pais {
 
     public void recibirTropas(Ejercitos otrosEjercitos) {
         this.ejercitos = this.ejercitos.disputarDominioDe(this, otrosEjercitos);
+        this.notifyFicha();
     }
+
+
+    private void notifyFicha() {
+        if(this.miFicha != null){
+            this.miFicha.notificar(this.ejercitos.getColor(), this.ejercitos.getCantidadEjercitos());
+        }
+    }
+
     public Pais (String nombre){
         ejercitos = new EjercitosNulos();
         this.nombreDelPais = nombre;
@@ -34,6 +44,7 @@ public class Pais {
 
     public void agregarEjercito(int cantidadDeEjercitos) {
         ejercitos.agregarEjercitos(cantidadDeEjercitos);
+        this.notifyFicha();
     }
 
     public void atacarA(Pais otroPais) {
@@ -69,6 +80,13 @@ public class Pais {
     public void setFicha(Ficha unaFicha){
         this.miFicha = unaFicha;
         this.miFicha.setPosicion(this.posX, this.posY);
-        this.ejercitos.ponerColorAFicha(unaFicha);
+        this.notifyFicha();
+    }
+
+    public void agregarHandler(HandlerDePais handler) {
+        if(this.miFicha != null) {
+            handler.asociarPais(this);
+            this.miFicha.agregarNuevoHandler(handler);
+        }
     }
 }

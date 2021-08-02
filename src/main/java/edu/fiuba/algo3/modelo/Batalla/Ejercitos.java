@@ -90,4 +90,8 @@ public class Ejercitos {
         this.restarEjercitos(cantidad);
         otroEjercito.agregarEjercitos(cantidad);
     }
+
+    public String getColor() {
+        return this.comandante.getColor();
+    }
 }
