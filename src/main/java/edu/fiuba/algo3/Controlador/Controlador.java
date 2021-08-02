@@ -17,7 +17,6 @@ public class Controlador {
 
     public static void setearJuego(int numeroJugadores){
         teg = new Juego(numeroJugadores);
-
     }
 
     public static void setearNombres(ArrayList<TextField> nombres){

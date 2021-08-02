@@ -1,4 +1,5 @@
 package edu.fiuba.algo3.modelo.Batalla;
+import edu.fiuba.algo3.Controlador.handlers.ConfirmacionHandle;
 import edu.fiuba.algo3.Controlador.handlers.HandlerDePais;
 import edu.fiuba.algo3.modelo.Excepciones.AtaqueNoPermitidoError;
 import edu.fiuba.algo3.modelo.Excepciones.MovimientoDeEjercitoError;
@@ -57,6 +58,8 @@ public class Pais {
        Batalla batalla = new Batalla();
        batalla.atacar(this.ejercitos, otroPais.ejercitos);
        otroPais.recibirTropas(this.ejercitos);
+       this.notifyFicha();
+       otroPais.notifyFicha();
    }
 
     private boolean esDelMismoEquipo(Pais otroPais) {
@@ -87,6 +90,12 @@ public class Pais {
         if(this.miFicha != null) {
             handler.asociarPais(this);
             this.miFicha.agregarNuevoHandler(handler);
+        }
+    }
+
+    public void habilitarLimitrofes(HandlerDePais confirmacion){
+        for(Pais pais: paisesConectados){
+            if(!this.esDelMismoEquipo(pais)) pais.agregarHandler(confirmacion);
         }
     }
 }
