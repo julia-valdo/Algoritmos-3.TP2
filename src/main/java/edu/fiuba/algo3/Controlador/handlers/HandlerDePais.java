@@ -8,7 +8,7 @@ import javafx.scene.input.MouseEvent;
 
 public interface HandlerDePais extends EventHandler<MouseEvent> {
 
-
+    /*comentario para el commit*/
     void asociarPais(Pais unPais);
 
     HandlerDePais getCopy();
