@@ -168,8 +168,8 @@ public class IntegracionTest {
 
         teg.iniciarJuego();
 
-        Jugador primero = teg.obtenerSiguiente();
-        Jugador segundo = teg.obtenerSiguiente();
+        Jugador primero = teg.obtenerSiguienteEnTurno();
+        Jugador segundo = teg.obtenerSiguienteEnTurno();
 
 
 
@@ -193,8 +193,8 @@ public class IntegracionTest {
         Pais unPaisDelPrimero, unPaisDelSegundo;
         teg.iniciarJuego();
 
-        Jugador primero = teg.obtenerSiguiente();
-        Jugador segundo = teg.obtenerSiguiente();
+        Jugador primero = teg.obtenerSiguienteEnTurno();
+        Jugador segundo = teg.obtenerSiguienteEnTurno();
         unPaisDelPrimero = primero.getPaisesOcupados().get(0);
         unPaisDelSegundo = segundo.getPaisesOcupados().get(0);
         teg.seleccionDeJugador(primero, new SeleccionJugador(unPaisDelPrimero, unPaisDelPrimero, 5));
@@ -203,11 +203,12 @@ public class IntegracionTest {
 
 
         Executable elPrimeroPuedePoner3Fichas = () -> {
+            teg.obtenerSiguienteEnTurno();
             teg.seleccionDeJugador(primero, new SeleccionJugador(unPaisDelPrimero, unPaisDelPrimero, 3));
         };
 
         Executable elSegundoPuedePoner3Fichas = () -> {
-            ;
+            teg.obtenerSiguienteEnTurno();
             teg.seleccionDeJugador(segundo, new SeleccionJugador(unPaisDelSegundo, unPaisDelSegundo, 3));
         };
 

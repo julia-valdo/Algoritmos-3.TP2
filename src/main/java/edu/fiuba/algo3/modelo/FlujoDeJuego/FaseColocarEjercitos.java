@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo.FlujoDeJuego;
 import edu.fiuba.algo3.modelo.JuegoYJugador.InventarioDeJuego;
 import edu.fiuba.algo3.modelo.JuegoYJugador.Jugador;
 import edu.fiuba.algo3.Controlador.SeleccionJugador;
+import edu.fiuba.algo3.vista.ventanas.VentanaMenu;
 
 public class FaseColocarEjercitos implements FaseDeRonda {
     private boolean ejercitoFueIncrementado;
@@ -34,5 +35,10 @@ public class FaseColocarEjercitos implements FaseDeRonda {
     @Override
     public FaseDeRonda cambiarFase() {
         return new FaseAtacar();
+    }
+
+    @Override
+    public VentanaMenu prepararMenu() {
+        return null;
     }
 }

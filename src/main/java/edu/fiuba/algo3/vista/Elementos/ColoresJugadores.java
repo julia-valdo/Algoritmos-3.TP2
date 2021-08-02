@@ -13,9 +13,9 @@ public class ColoresJugadores {
 
 
     private void setUpColores(){
-        String[] coloresJugadores = {"#0077bb", "#cc3311", "#ee7733", "#009988", "#ee3377", "#000000"};
-        for(Integer i = 1; i < 7; i++){
-            this.colores.put(i, coloresJugadores[i - 1]);
+        String[] coloresJugadores = {"#cc00ff","#0077bb", "#cc3311", "#ee7733", "#009988", "#ee3377", "#000000"};
+        for(Integer i = 0; i < 7; i++){
+            this.colores.put(i, coloresJugadores[i]);
         }
     }
 
