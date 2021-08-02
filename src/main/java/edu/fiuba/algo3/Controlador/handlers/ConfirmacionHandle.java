@@ -42,6 +42,5 @@ public class ConfirmacionHandle implements HandlerDePais{
         } catch (Exception e){
             System.out.println("Error");
         }
-
     }
 }
