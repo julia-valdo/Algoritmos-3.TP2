@@ -95,7 +95,24 @@ public class Pais {
 
     public void habilitarLimitrofes(HandlerDePais confirmacion){
         for(Pais pais: paisesConectados){
-            if(!this.esDelMismoEquipo(pais)) pais.agregarHandler(confirmacion.getCopy());
+            pais.agregarHandler(confirmacion.getCopy());
         }
+    }
+
+    public void restablecerLimitrofesParaAtaque() {
+        for(Pais pais: paisesConectados){
+            if(this.esDelMismoEquipo(pais)){
+                pais.copiarMiHandler(this.miFicha);
+            }
+            else pais.limpiarFicha();
+        }
+    }
+
+    private void copiarMiHandler(Ficha unaFicha) {
+        this.miFicha.copiarEn(unaFicha, this);
+    }
+
+    private void limpiarFicha() {
+        this.miFicha.limpiarHandler();
     }
 }

@@ -26,7 +26,6 @@ public class Juego {
     private FaseDeRonda fase;
     private Parser parser;
     private InventarioDeJuego inventario;
-    private List<Pais> paises;
     private ArrayList<Ficha> fichasDeJuego;
 
     public Juego(int cantidadDeJugadores){
@@ -42,8 +41,8 @@ public class Juego {
         parser.parsearArchivo("Teg - Fronteras.json");
         parser.parsearArchivo("Teg - Objetivos.json");
         parser.construirObjetos();
-        this.repartirPaises();
         this.generarInventario();
+        this.repartirPaises();
     }
 
 
@@ -95,7 +94,7 @@ public class Juego {
 
 
     private void repartirPaises(){
-        this.paises =  new ArrayList<>(this.parser.getPaises().values());
+        ArrayList<Pais> paises =  new ArrayList<>(this.parser.getPaises().values());
         Collections.shuffle(paises);
         for(Pais pais: paises){
          Jugador actual = this.obtenerSiguiente();
@@ -103,6 +102,7 @@ public class Juego {
          actual.ocupa(pais);
         }
         this.turnoActual = 1;
+        this.inventario.setPaises(paises);
     }
 
     private boolean esElUltimoJugador(Jugador jugador){
@@ -118,8 +118,8 @@ public class Juego {
 
     public void setearFichas(ArrayList<Ficha> fichas) {
         this.fichasDeJuego = fichas;
-        for(int i = 0; i < paises.size(); i++){
-            paises.get(i).setFicha(fichas.get(i));
+        for(int i = 0; i < this.inventario.cantidadDePaises(); i++){
+            this.inventario.agregarFichaA(fichas.get(i), i);
         }
     }
 

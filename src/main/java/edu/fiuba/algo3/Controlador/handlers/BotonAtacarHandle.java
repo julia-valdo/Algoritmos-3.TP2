@@ -10,10 +10,11 @@ import javafx.scene.input.MouseEvent;
 public class BotonAtacarHandle implements HandlerDePais {
     private Jugador jugador;
     private Pais pais;
-    private Pais paisDestino;
+    private TextoNotificable textoDeError;
 
-    public BotonAtacarHandle(Jugador jugador){
+    public BotonAtacarHandle(Jugador jugador, TextoNotificable textoDeError){
         this.jugador = jugador;
+        this.textoDeError = textoDeError;
     }
 
     @Override
@@ -23,7 +24,7 @@ public class BotonAtacarHandle implements HandlerDePais {
 
     @Override
     public HandlerDePais getCopy() {
-        return new BotonAtacarHandle(this.jugador);
+        return new BotonAtacarHandle(this.jugador, this.textoDeError);
     }
 
     @Override
@@ -38,30 +39,12 @@ public class BotonAtacarHandle implements HandlerDePais {
 
     @Override
     public void handle(MouseEvent mouseEvent) {
-        this.prepararGrupoDeError(mouseEvent);
-        this.pais.habilitarLimitrofes(new ConfirmacionHandle(this.jugador, this.pais));
+        this.desarmarTextoDeError();
+        this.pais.habilitarLimitrofes(new ConfirmacionHandle(this.jugador, this.pais, this.textoDeError));
     }
 
-//    private void desarmarTextoDeError() {
-//        this.textoDeError.setText("");
-//    }
-
-    private void generarTextoDeError(RuntimeException exception){
-
-        if(NullPointerException.class == exception.getClass()){
-//            this.textoDeError.setText("Ese pais no es tuyo: " + this.pais.getNombreDelPais());
-            System.out.println("Ese pais no es tuyo: " + this.pais.getNombreDelPais());
-        }
-        else{
-//            this.textoDeError.setText("No tenes mas fichas!");
-            System.out.println("No tenes mas fichas!");
-        }
+    private void desarmarTextoDeError(){
+        this.textoDeError.setText("");
     }
 
-    private void prepararGrupoDeError(MouseEvent evento){
-        Group grupoDeEscena  = (Group) ((Node) evento.getSource()).getScene().getRoot();
-//        if(this.textoDeError.noEstaAgregadoA(grupoDeEscena)){
-//            this.textoDeError.agregarAGrupo(grupoDeEscena);
-//        }
-    }
 }

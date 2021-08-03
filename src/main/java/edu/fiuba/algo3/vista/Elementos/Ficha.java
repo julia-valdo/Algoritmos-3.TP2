@@ -74,4 +74,11 @@ public class Ficha extends Circle {
             handler.desarmarHandler();
         }
     }
+
+    public void copiarEn(Ficha unaFicha, Pais pais) {
+        HandlerDePais handlerDelOtro = (HandlerDePais) unaFicha.getOnMouseClicked();
+        HandlerDePais miHandlerNuevo = handlerDelOtro.getCopy();
+        miHandlerNuevo.asociarPais(pais);
+        this.agregarNuevoHandler(miHandlerNuevo);
+    }
 }
