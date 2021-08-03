@@ -29,6 +29,7 @@ public class VentanaCantidadJugadores extends StackPane {
         mapa.getChildren().add(imageMapa);
         this.getChildren().add(mapa);
 
+
         HBox panel = new HBox();
         border.setRight(panel);
         ImageView imagePanel = new ImageView();
