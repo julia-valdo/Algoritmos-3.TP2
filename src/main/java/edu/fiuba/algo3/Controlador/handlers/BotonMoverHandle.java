@@ -7,12 +7,12 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 
-public class BotonAtacarHandle implements HandlerDePais {
+public class BotonMoverHandle implements HandlerDePais{
     private Jugador jugador;
     private Pais pais;
     private TextoNotificable textoDeError;
 
-    public BotonAtacarHandle(Jugador jugador, TextoNotificable textoDeError){
+    public BotonMoverHandle(Jugador jugador, TextoNotificable textoDeError){
         this.jugador = jugador;
         this.textoDeError = textoDeError;
     }
@@ -24,7 +24,7 @@ public class BotonAtacarHandle implements HandlerDePais {
 
     @Override
     public HandlerDePais getCopy() {
-        return new BotonAtacarHandle(this.jugador, this.textoDeError);
+        return new BotonMoverHandle(this.jugador, this.textoDeError);
     }
 
     @Override
@@ -40,11 +40,10 @@ public class BotonAtacarHandle implements HandlerDePais {
     @Override
     public void handle(MouseEvent mouseEvent) {
         this.desarmarTextoDeError();
-        this.pais.habilitarLimitrofes(new ConfirmacionAtaqueHandle(this.jugador, this.pais, this.textoDeError));
+        this.pais.habilitarLimitrofes(new ConfirmacionMovimientoHandler(this.jugador, this.pais, this.textoDeError));
     }
 
     private void desarmarTextoDeError(){
         this.textoDeError.setText("");
     }
-
 }

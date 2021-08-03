@@ -2,27 +2,24 @@ package edu.fiuba.algo3.vista.ventanas;
 
 import edu.fiuba.algo3.vista.Botones.BotonAvanzarTurno;
 import edu.fiuba.algo3.vista.Elementos.Ficha;
-import edu.fiuba.algo3.vista.Elementos.TextoNotificable;
 import javafx.scene.control.Button;
-import javafx.scene.text.Text;
 
-public class VentanaMenuColocacion extends VentanaMenu {
+public class VentanaMenuReagrupar extends VentanaMenu{
     private Ficha fichaJugador;
 
-    public VentanaMenuColocacion(Ficha fichaAPlasmar){
+    public VentanaMenuReagrupar(Ficha fichaAPlasmar){
         this.fichaJugador =fichaAPlasmar;
-        this.setTexto();
+//        this.setTexto();
         this.agregarBotonAvanze();
         this.colocarFicha();
     }
-    private void setTexto(){
-        Text fichasRestantes = new TextoNotificable(this.fichaJugador);
-        fichasRestantes.setTranslateX(900);
-        fichasRestantes.setTranslateY(280);
-        this.getChildren().add(fichasRestantes);
-
-        Text fase = new Text();
-    }
+//    private void setTexto(){
+//        Text fichasRestantes = new TextoNotificable(this.fichaJugador);
+//
+//        fichasRestantes.setTranslateX(900);
+//        fichasRestantes.setTranslateY(280);
+//        this.getChildren().add(fichasRestantes);
+//    }
 
     private void agregarBotonAvanze(){
         Button avanze = new BotonAvanzarTurno();

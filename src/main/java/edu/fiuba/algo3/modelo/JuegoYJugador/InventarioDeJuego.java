@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo.JuegoYJugador;
 
-import edu.fiuba.algo3.Controlador.handlers.AtaqueInvalidoHandler;
 import edu.fiuba.algo3.Controlador.handlers.HandlerDePais;
 import edu.fiuba.algo3.modelo.Batalla.Pais;
 import edu.fiuba.algo3.modelo.Cartas.Carta;

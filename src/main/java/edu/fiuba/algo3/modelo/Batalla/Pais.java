@@ -1,5 +1,4 @@
 package edu.fiuba.algo3.modelo.Batalla;
-import edu.fiuba.algo3.Controlador.handlers.ConfirmacionHandle;
 import edu.fiuba.algo3.Controlador.handlers.HandlerDePais;
 import edu.fiuba.algo3.modelo.Excepciones.AtaqueNoPermitidoError;
 import edu.fiuba.algo3.modelo.Excepciones.MovimientoDeEjercitoError;
@@ -73,6 +72,8 @@ public class Pais {
             throw new MovimientoDeEjercitoError("Movimiento de ejercito invalido");
         }
         this.ejercitos.moverEjercitoACon(otroPais.ejercitos, cantidad);
+        this.notifyFicha();
+        otroPais.notifyFicha();
     }
 
     public void setCordenadas(Pair<Integer, Integer> parDeCoordenadas) {
@@ -96,6 +97,7 @@ public class Pais {
     public void habilitarLimitrofes(HandlerDePais confirmacion){
         for(Pais pais: paisesConectados){
             pais.agregarHandler(confirmacion.getCopy());
+<<<<<<< HEAD
         }
     }
 
@@ -108,6 +110,20 @@ public class Pais {
         }
     }
 
+=======
+        }
+    }
+
+    public void restablecerLimitrofesParaAtaque() {
+        for(Pais pais: paisesConectados){
+            if(this.esDelMismoEquipo(pais)){
+                pais.copiarMiHandler(this.miFicha);
+            }
+            else pais.limpiarFicha();
+        }
+    }
+
+>>>>>>> edaf34d13415ccc8a1cfe21c41cac17986a33b53
     private void copiarMiHandler(Ficha unaFicha) {
         this.miFicha.copiarEn(unaFicha, this);
     }

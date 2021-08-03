@@ -41,4 +41,5 @@ public class AtaqueInvalidoHandler implements HandlerDePais{
     private void setTexto(){
         this.textoDeError.setText("Selecciona un pais tuyo");
     }
+
 }
