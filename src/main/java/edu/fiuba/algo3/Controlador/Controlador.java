@@ -1,10 +1,7 @@
 package edu.fiuba.algo3.Controlador;
 
 import edu.fiuba.algo3.modelo.JuegoYJugador.Juego;
-import edu.fiuba.algo3.modelo.JuegoYJugador.Jugador;
 import edu.fiuba.algo3.vista.Elementos.Ficha;
-import edu.fiuba.algo3.vista.ventanas.VentanaMenu;
-import edu.fiuba.algo3.vista.ventanas.VentanaMenuColocacion;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 

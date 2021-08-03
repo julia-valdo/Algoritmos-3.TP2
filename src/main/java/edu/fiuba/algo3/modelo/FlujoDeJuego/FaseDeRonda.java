@@ -14,4 +14,5 @@ public interface FaseDeRonda {
     FaseDeRonda cambiarFase();
 
     VentanaMenu prepararMenu();
+
 }
