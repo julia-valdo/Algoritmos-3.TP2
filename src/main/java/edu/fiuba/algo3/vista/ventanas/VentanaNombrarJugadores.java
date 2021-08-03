@@ -27,8 +27,7 @@ public class VentanaNombrarJugadores extends Group {
 
     private void agregarBotonCancel(){
         Button cancel = new BotonCancel();
-        Button comenzar = new BotonComenzar();
-        this.getChildren().addAll(cancel, comenzar);
+        this.getChildren().addAll(cancel);
     }
 
     private void agregarCampos(Integer numeroDeJugadores){
@@ -36,7 +35,8 @@ public class VentanaNombrarJugadores extends Group {
         for(int i = 1; i <= numeroDeJugadores; i++){
             textos.add(new CampoDeNombre(i));
         }
-
+        Button comenzar = new BotonComenzar(textos);
+        this.getChildren().add(comenzar);
         this.getChildren().addAll(textos);
     }
 
