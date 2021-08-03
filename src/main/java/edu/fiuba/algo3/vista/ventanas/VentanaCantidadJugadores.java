@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.vista.ventanas;
 
 import edu.fiuba.algo3.vista.Botones.BotonDeSeleccion;
+import edu.fiuba.algo3.vista.Elementos.BarraMenu;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -11,15 +12,15 @@ import java.util.ArrayList;
 
 public class VentanaCantidadJugadores extends StackPane {
 
-
-
     public VentanaCantidadJugadores() {
         super();
         this.setFondo();
     }
 
     public void setFondo() {
+
         BorderPane border = new BorderPane();
+
         HBox mapa = new HBox();
         border.setCenter(mapa);
         ImageView imageMapa = new ImageView();
@@ -47,7 +48,6 @@ public class VentanaCantidadJugadores extends StackPane {
         for(int i = 2; i < 7; i++){
             nodos.add(new BotonDeSeleccion(i));
         }
-
 
         panel.getChildren().addAll(nodos);
 
