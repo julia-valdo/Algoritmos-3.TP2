@@ -6,8 +6,7 @@ import javafx.scene.media.AudioClip;
 public class ControladorMusica{
 
     public void start(){
-        Media musica = new Media("01 Age of Empires II Main Theme.mp3");
-        AudioClip mediaPlayer = new AudioClip(musica.getSource());
+        AudioClip mediaPlayer = new AudioClip("file:AgeOfEmpiresMainTheme.mp3");
         mediaPlayer.setCycleCount(AudioClip.INDEFINITE);
         mediaPlayer.play();
         mediaPlayer.setVolume(7);
