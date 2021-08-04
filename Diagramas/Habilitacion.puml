@@ -1,0 +1,13 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+Juego -> "faseActual:FaseDeRonda": aplicarAccionesDeFase(unJugador:Jugador, inventario:InventarioDeJuego)
+
+"faseActual:FaseDeRonda" -> "unJugador:Jugador":habilitarPaises(elHandlerDeRonda:HandlerDePais)
+
+loop por cada pais del jugador
+    "unJugador:Jugador" -> ":Pais":agregarHandler(elHandlerDeRonda:HandlerDePais)
+    ":Pais" -> "fichaPais:Ficha": agregarHandler(elHandlerDeRonda:HandlerDePais)
+end
+@enduml

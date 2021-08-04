@@ -97,6 +97,7 @@ public class Pais {
     public void habilitarLimitrofes(HandlerDePais confirmacion){
         for(Pais pais: paisesConectados){
             pais.agregarHandler(confirmacion.getCopy());
+
         }
     }
 

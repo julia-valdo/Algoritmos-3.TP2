@@ -5,7 +5,6 @@ import edu.fiuba.algo3.modelo.Batalla.Pais;
 import edu.fiuba.algo3.modelo.Cartas.Carta;
 import edu.fiuba.algo3.modelo.Cartas.ManoDeCartas;
 import edu.fiuba.algo3.modelo.Cartas.Mazo;
-import edu.fiuba.algo3.modelo.JuegoYJugador.Jugador;
 import edu.fiuba.algo3.modelo.Objetivos.Continente;
 import edu.fiuba.algo3.vista.Elementos.Ficha;
 

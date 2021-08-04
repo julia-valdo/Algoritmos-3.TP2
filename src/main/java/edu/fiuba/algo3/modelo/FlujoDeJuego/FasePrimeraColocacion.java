@@ -26,6 +26,7 @@ public class FasePrimeraColocacion implements FaseDeRonda{
 
     @Override
     public void aplicarAccionesDeFase(Jugador jugador, InventarioDeJuego inventario) {
+
         inventario.setHandlerError(new EsePaisNoEsTuyoHandler(this.textoDeError));
         this.jugadorEnTurno = jugador;
         jugador.agregarFichas(this.fichasAAgregar);

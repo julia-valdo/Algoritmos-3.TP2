@@ -42,4 +42,6 @@ public class EsePaisNoEsTuyoHandler implements HandlerDePais{
     private void setTexto(){
         this.textoDeError.setText("Ese pais no es tuyo");
     }
+
 }
+

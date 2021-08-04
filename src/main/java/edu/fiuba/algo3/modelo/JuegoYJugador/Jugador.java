@@ -144,4 +144,5 @@ public class Jugador {
     public boolean esElNumero(int numero) {
         return this.getNumeroJugador() == numero;
     }
+
 }

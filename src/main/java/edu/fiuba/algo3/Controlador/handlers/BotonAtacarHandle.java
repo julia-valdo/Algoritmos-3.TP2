@@ -46,4 +46,5 @@ public class BotonAtacarHandle implements HandlerDePais {
     private void desarmarTextoDeError(){
         this.textoDeError.setText("");
     }
+
 }
