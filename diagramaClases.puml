@@ -268,7 +268,7 @@ ParserTipo <- Parser
 Carta ---> Pais
 
 Continente <-- ParserTipo
-Pais <--- ParserJson
+Pais <--- ParserTipo
 Pais <--- Jugador
 Pais <--- Continente
 @enduml
