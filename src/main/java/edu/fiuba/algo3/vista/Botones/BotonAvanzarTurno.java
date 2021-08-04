@@ -14,7 +14,7 @@ public class BotonAvanzarTurno extends Button {
 
     private void colocarBoton(){
         this.setTranslateX(920);
-        this.setTranslateY(570);
+        this.setTranslateY(540);
     }
 
     private void colocarTexto(){

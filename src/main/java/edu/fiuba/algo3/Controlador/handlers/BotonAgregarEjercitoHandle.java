@@ -57,11 +57,9 @@ public class BotonAgregarEjercitoHandle implements HandlerDePais {
 
         if(NullPointerException.class == exception.getClass()){
             this.textoDeError.setText("Ese pais no es tuyo: " + this.pais.getNombreDelPais());
-            System.out.println("Ese pais no es tuyo: " + this.pais.getNombreDelPais());
         }
         else{
             this.textoDeError.setText("No tenes mas fichas!");
-            System.out.println("No tenes mas fichas!");
         }
     }
 

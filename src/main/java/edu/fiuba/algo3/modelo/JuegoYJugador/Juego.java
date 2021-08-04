@@ -8,32 +8,28 @@ import edu.fiuba.algo3.modelo.FlujoDeJuego.FasePrimeraColocacion;
 import edu.fiuba.algo3.modelo.Objetivos.Continente;
 import edu.fiuba.algo3.modelo.Parser.Parser;
 import edu.fiuba.algo3.vista.Elementos.CampoDeNombre;
-import edu.fiuba.algo3.vista.Elementos.ColoresJugadores;
 import edu.fiuba.algo3.vista.Elementos.Ficha;
 import edu.fiuba.algo3.vista.Elementos.TextoNotificable;
 import edu.fiuba.algo3.vista.ventanas.VentanaFaseColocacion;
 import edu.fiuba.algo3.vista.ventanas.VentanaMenu;
-import edu.fiuba.algo3.vista.ventanas.VentanaMenuColocacion;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 
 import java.util.*;
 
 public class Juego {
     private Integer turnoActual;
     private HashMap<Integer, Jugador> turnoJugadores;
-    private FaseDeRonda fase;
+    private FaseDeRonda faseActual;
     private Parser parser;
     private InventarioDeJuego inventario;
-    private List<Pais> paises;
     private ArrayList<Ficha> fichasDeJuego;
 
     public Juego(int cantidadDeJugadores){
         parser = new Parser();
         this.turnoActual = 1;
         this.turnoJugadores = new HashMap<>();
-        this.fase = new FasePrimeraColocacion(new TextoNotificable());
+        this.faseActual = new FasePrimeraColocacion(new TextoNotificable());
         this.crearJugadores(cantidadDeJugadores);
     }
 
@@ -42,8 +38,8 @@ public class Juego {
         parser.parsearArchivo("Teg - Fronteras.json");
         parser.parsearArchivo("Teg - Objetivos.json");
         parser.construirObjetos();
-        this.repartirPaises();
         this.generarInventario();
+        this.repartirPaises();
     }
 
 
@@ -80,7 +76,7 @@ public class Juego {
     }
 
     public void seleccionDeJugador(Jugador jugador, SeleccionJugador seleccion){
-        this.fase.accionJugador(jugador, new InventarioDeJuego(new ArrayList<>(), new ArrayList<>()), seleccion);
+        this.faseActual.accionJugador(jugador, new InventarioDeJuego(new ArrayList<>(), new ArrayList<>()), seleccion);
         this.actualizarFase(jugador);
     }
 
@@ -95,14 +91,15 @@ public class Juego {
 
 
     private void repartirPaises(){
-        this.paises =  new ArrayList<>(this.parser.getPaises().values());
+        ArrayList<Pais> paises =  new ArrayList<>(this.parser.getPaises().values());
         Collections.shuffle(paises);
         for(Pais pais: paises){
-         Jugador actual = this.obtenerSiguiente();
-         actual.agregarFichas(1);
-         actual.ocupa(pais);
+            Jugador actual = this.obtenerSiguiente();
+            actual.agregarFichas(1);
+            actual.ocupa(pais);
         }
         this.turnoActual = 1;
+        this.inventario.setPaises(paises);
     }
 
     private boolean esElUltimoJugador(Jugador jugador){
@@ -118,15 +115,15 @@ public class Juego {
 
     public void setearFichas(ArrayList<Ficha> fichas) {
         this.fichasDeJuego = fichas;
-        for(int i = 0; i < paises.size(); i++){
-            paises.get(i).setFicha(fichas.get(i));
+        for(int i = 0; i < this.inventario.cantidadDePaises(); i++){
+            this.inventario.agregarFichaA(fichas.get(i), i);
         }
     }
 
 
     public Jugador obtenerSiguienteEnTurno() {
         Jugador siguiente = this.obtenerSiguiente();
-        this.fase.aplicarAccionesDeFase(siguiente, this.inventario);
+        this.faseActual.aplicarAccionesDeFase(siguiente, this.inventario);
         return siguiente;
     }
 
@@ -134,7 +131,7 @@ public class Juego {
         this.limpiarFichas();
         Jugador siguiente = this.obtenerSiguienteEnTurno();
 
-        VentanaMenu ventana =  this.fase.prepararMenu();
+        VentanaMenu ventana =  this.faseActual.prepararMenu();
         this.actualizarFase(siguiente);
 
         return new Scene(new VentanaFaseColocacion(this.fichasDeJuego,ventana));
@@ -142,7 +139,7 @@ public class Juego {
 
     private void actualizarFase(Jugador siguiente) {
         if(this.esElUltimoJugador(siguiente)){
-            this.fase = this.fase.cambiarFase();
+            this.faseActual = this.faseActual.cambiarFase();
         }
     }
 
