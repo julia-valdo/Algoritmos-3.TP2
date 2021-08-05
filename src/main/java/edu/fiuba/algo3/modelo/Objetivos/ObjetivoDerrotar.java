@@ -27,18 +27,17 @@ public class ObjetivoDerrotar implements Objetivo {
         return textoDeObjetivo;
     }
 
+    @Override
+    public void setJugadorAuxiliar(Jugador actual, Jugador auxiliar) {
+        if(this.jugador == null || this.jugador.equals(actual)) this.jugador = auxiliar;
+    }
+
     private void prepararTextoDeObjetivo(Text textoDeObjetivo) {
-        if(this.jugador == null){
-            textoDeObjetivo.setText("Cumplir objetivo general");
-        }
-        else textoDeObjetivo.setText("Derrotar al jugador: " + this.jugador.getNombreJugador());
+        textoDeObjetivo.setText("Derrotar al jugador: " + this.jugador.getNombreJugador());
     }
 
 
     private boolean verificarCumplimiento(){
-        if(jugador == null){
-            return false;
-        }
         return this.jugador.fueDerrotado();
     }
 }

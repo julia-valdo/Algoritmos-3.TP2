@@ -47,10 +47,14 @@ public class Juego {
     private void repartirObjetivos() {
         ArrayList<Objetivo> objetivos =  new ArrayList(this.parser.getObjetivos());
         Collections.shuffle(objetivos);
-            for(int i = 1; i <= this.turnoJugadores.size(); i++){
-                this.turnoJugadores.get(i).asignarObjetivo(objetivos.get(i - 1));
-        }
+        for(int i = 1; i <= this.turnoJugadores.size(); i++){
+            Objetivo objetivo = objetivos.get(i-1);
 
+            if(i < this.turnoJugadores.size()) objetivo.setJugadorAuxiliar(turnoJugadores.get(i), turnoJugadores.get(i+1));
+            else objetivo.setJugadorAuxiliar(turnoJugadores.get(i),turnoJugadores.get(1));
+
+            this.turnoJugadores.get(i).asignarObjetivo(objetivos.get(i - 1));
+        }
     }
 
 
