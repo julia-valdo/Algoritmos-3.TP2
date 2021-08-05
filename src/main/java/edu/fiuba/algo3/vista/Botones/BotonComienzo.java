@@ -5,7 +5,6 @@ import javafx.scene.control.Button;
 
 public class BotonComienzo extends Button {
 
-
     public BotonComienzo(){
         super("Comenzar Juego");
         BotonComienzoHandler botonComienzoHandler = new BotonComienzoHandler();
@@ -13,7 +12,6 @@ public class BotonComienzo extends Button {
         this.setEstilo();
         this.setPosicion();
     }
-
 
     private void setEstilo(){
         this.setStyle("-fx-font-weight: bold;-fx-background-color: #ffebcd; -fx-border-color: #000000");

@@ -9,7 +9,6 @@ import javafx.scene.text.Text;
 
 public class VentanaDePapel extends Group {
 
-
     public VentanaDePapel(Text textoAMostrar){
         this.prepararFondo();
         this.prepararTexto(textoAMostrar);
@@ -36,5 +35,4 @@ public class VentanaDePapel extends Group {
         botonSalir.setTranslateX(105);
         this.getChildren().add(botonSalir);
     }
-
 }
