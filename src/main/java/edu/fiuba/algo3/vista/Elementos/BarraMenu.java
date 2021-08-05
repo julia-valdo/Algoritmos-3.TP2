@@ -2,6 +2,8 @@ package edu.fiuba.algo3.vista.Elementos;
 
 import edu.fiuba.algo3.Controlador.handlers.AyudaHandler;
 import edu.fiuba.algo3.Controlador.handlers.SalirHandler;
+import edu.fiuba.algo3.musica.MusicaOffHandler;
+import edu.fiuba.algo3.musica.MusicaOnHandler;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -28,9 +30,19 @@ public class BarraMenu extends MenuBar {
 
         menuAyuda.getItems().addAll(opcionSalir, opcionAyudaJuego);
 
+        MenuItem opcionOffMusica = new MenuItem("Off");
+        MenuItem opcionOnMusica = new MenuItem("On");
+        opcionOffMusica.setOnAction(new MusicaOffHandler());
+        opcionOffMusica.setStyle("-fx-font-weight: bold");
+        opcionOnMusica.setOnAction(new MusicaOnHandler());
+        opcionOnMusica.setStyle("-fx-font-weight: bold");
+
+        menuMusica.getItems().addAll(opcionOnMusica, opcionOffMusica);
+
         this.setStyle("-fx-font-weight: bold");
 
         this.getMenus().addAll(menuMusica, menuAyuda);
         this.getChildren().add(imagePanel);
     }
 }
+
