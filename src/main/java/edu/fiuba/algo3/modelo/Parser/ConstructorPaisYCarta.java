@@ -34,7 +34,7 @@ public class ConstructorPaisYCarta {
         }
 
 
-        cartaPaisHash.forEach((key, value) -> mazoDeCartas.add(new Carta(paises.get(value), key)));
+        cartaPaisHash.forEach((key, value) -> mazoDeCartas.add(new Carta(paises.get(key), value)));
 
 
     }

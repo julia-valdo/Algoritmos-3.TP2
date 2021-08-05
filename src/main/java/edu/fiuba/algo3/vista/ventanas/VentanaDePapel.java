@@ -3,6 +3,8 @@ package edu.fiuba.algo3.vista.ventanas;
 import edu.fiuba.algo3.vista.Botones.BotonSalir;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
+import javafx.scene.Group;
+
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;

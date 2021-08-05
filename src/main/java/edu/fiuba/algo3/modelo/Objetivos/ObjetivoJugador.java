@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.Objetivos;
 
 import edu.fiuba.algo3.modelo.Batalla.Pais;
+import edu.fiuba.algo3.modelo.JuegoYJugador.Jugador;
 import edu.fiuba.algo3.modelo.Objetivos.Objetivo;
 import javafx.scene.Node;
 import javafx.scene.text.Text;
@@ -26,6 +27,11 @@ public class ObjetivoJugador implements Objetivo {
         Text textoObjetivo = new Text();
         this.prepararTextoDeObjetivo(textoObjetivo);
         return textoObjetivo;
+    }
+
+    @Override
+    public void setJugadorAuxiliar(Jugador actual, Jugador auxiliar) {
+        secreto.setJugadorAuxiliar(actual, auxiliar);
     }
 
     private void prepararTextoDeObjetivo(Text textoObjetivo) {
