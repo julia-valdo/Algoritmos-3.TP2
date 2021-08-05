@@ -1,0 +1,81 @@
+@startuml
+class Batalla{
+- perdidaAtacante:int
+- perdidaDefensor:int
+- resultadoDadoAtacante:ArrayList<Integer>
+- resultadoDadoDefensor:ArrayList<Integer>
+- compararResultado(ArrayList<Integer> resultadoDadoAtacante,ArrayList<Integer> resultadoDadoDefensor):void
+- tirarDado(int cantidadDeTiros):ArrayList<Integer>
+- tirarDadoAtacante(int numeroFichasAtacante):void
+- tirarDadoDefensor(int numeroFichasDefensor):void
++ atacar(Ejercitos ejercitoAtacante,Ejercitos ejercitoDefensor):void
+}
+
+class Dado{
+- maximasTiradas:int
+- cantidadNumerosDado:int
++ tirarDado(int cantidad):ArrayList<Integer>
+}
+
+class Ejercitos{
+- comandante:Jugador
+~ condicionActual:EstadoEjercitos
+~ avisarOcupacionExitosa(Pais unPais):Ejercitos
+- retirarse():void
+- confirmarNuevaDivisionDe(int numeroFuerzas):Ejercitos
+- fueDerrotado():boolean
++ generarDivision(int cantidad):Ejercitos
++ restarEjercitos(int cantidad):void
++ sonAliadosDe(Ejercitos ejercitos):boolean
++ getCantidadEjercitos():int
++ agregarEjercitos(int cantidad):void
++ agregarDivision(Ejercitos nuevaDivision):void
++ equals(Object otroObjeto):boolean
++ moverEjercitoACon(Ejercitos otroEjercito,int cantidad):void
+}
+
+class EjercitosNulos{
++ disputarDominioDe(Pais unPais,Ejercitos otrosEjercitos):Ejercitos
+}
+
+interface EstadoEjercitos{
++ evaluarFuerzasRestantes():EstadoEjercitos
++ getCantidadFuerzas():int
++ agregarFuerzas(int numeroDeFuerzas):EstadoEjercitos
++ restarFuerzas(int numeroFuerzas):EstadoEjercitos
++ estanDerrotados():boolean
+}
+
+class EstadoEjercitosDerrotados{
+}
+
+class EstadoEjercitosEnPie{
+- numeroDeFuerzas:int
+}
+
+class Pais{
+- ejercitos:Ejercitos
+- nombreDelPais:String
+- paisesConectados:ArrayList<Pais>
+- esDelMismoEquipo(Pais otroPais):boolean
+- esLimitrofe(Pais otroPais):boolean
++ recibirTropas(Ejercitos otrosEjercitos):void
++ getNombreDelPais():String
++ getCantidadDeEjercitos():int
++ agregarPaisConectado(Pais unPais):void
++ agregarEjercito(int cantidadDeEjercitos):void
++ atacarA(Pais otroPais):void
++ moverEjercitoA(Pais otroPais,int cantidad):void
+}
+
+
+Batalla ..> Dado
+Batalla ..> Ejercitos
+
+Ejercitos <|-- EjercitosNulos
+Pais --> Ejercitos
+
+EstadoEjercitos <- Ejercitos
+EstadoEjercitos <|.. EstadoEjercitosDerrotados
+EstadoEjercitos <|.. EstadoEjercitosEnPie
+@enduml

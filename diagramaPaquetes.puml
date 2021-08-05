@@ -1,0 +1,91 @@
+@startuml
+package Batalla <<Frame>>{
+ class Batalla
+ class Dado
+ class Ejercitos
+ interface EstadoEjercitos
+ class Pais
+}
+
+package Cartas <<Frame>>{
+ interface EstadoDeActivacion
+ class Canjes
+ class Carta
+ interface Habilitado
+ class ManoDeCartas
+ class Mazo
+}
+
+package FlujoDeJuego <<Frame>>{
+ class FaseDeRonda
+}
+
+package JuegoYJugador <<Frame>>{
+ class InventarioDeJuego
+ class InventarioDeJugador
+ class Juego
+ class Jugador
+}
+
+package Objetivos <<Frame>>{
+ class Continente
+ interface Objetivo
+ class ObjetivoConquistar
+ class ObjetivoDerrotar
+ class ObjetivoGeneral
+ class ObjetivoJugador
+}
+
+package Parser <<Frame>>{
+ class Constructor
+ class ConstructorContinente
+ class ConstructorObjetivos
+ class ConstructorPaisYCarta
+ class Parser
+ interface ParserTipo
+}
+
+Objetivo <|.. ObjetivoConquistar
+Objetivo <|.. ObjetivoDerrotar
+Objetivo <|.. ObjetivoGeneral
+Objetivo <|.. ObjetivoJugador
+
+Continente <-- ObjetivoConquistar
+ObjetivoDerrotar --> Jugador
+
+Parser -> ParserTipo
+Constructor <- Parser
+Constructor --> ConstructorContinente 
+Constructor --> ConstructorObjetivos 
+Constructor --> ConstructorPaisYCarta 
+
+Continente --> Pais
+
+Jugador ---> Pais
+InventarioDeJugador <-- Jugador
+
+Jugador <-- Juego
+FaseDeRonda <-- Juego
+Juego --> Parser
+InventarioDeJuego <-- Juego
+
+InventarioDeJugador --> ManoDeCartas
+Mazo <-- InventarioDeJuego
+Continente <-- InventarioDeJuego
+
+FaseDeRonda <.. Jugador
+
+Carta <-- Mazo
+Carta <-- ManoDeCartas
+Canjes <-- ManoDeCartas
+Habilitado <-- ManoDeCartas
+
+Pais <-- Carta
+EstadoDeActivacion <-- Carta
+
+Ejercitos <-- Pais
+Jugador <-- Ejercitos
+EstadoEjercitos <- Ejercitos
+Batalla .> Dado
+Ejercitos <. Batalla
+@enduml

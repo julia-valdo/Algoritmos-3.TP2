@@ -1,0 +1,44 @@
+@startuml
+class Continente{
+- nombre:String
+- paises:ArrayList<Pais>
+- cantidadDeFichasPorContinente:int
++ agregarPais(Pais pais):void
++ cantidadPaisesQueMeConforman():int
++ getNombre():String
++ fueConquistado(ArrayList<Pais> paises):boolean
++ getCantidadDeFichasPorContinente():int
++ pertenece(Pais pais):boolean
+}
+
+class Objetivo{
++ objetivoCumplido(ArrayList<Pais> paises):boolean
+}
+
+class ObjetivoConquistar{
+- primario:Continente
+- secundario:Continente
+- cantidadAConquistarSecundario:int
+- contadorDePaisesSecundarios(ArrayList<Pais> paises):int
+}
+
+class ObjetivoDerrotar{
+- jugador:Jugador
+- numeroDeJugador:int
+}
+
+class ObjetivoGeneral{
+- cantidadDePaisesAConquistar:int
+}
+
+class ObjetivoJugador{
+- general:Objetivo
+- secreto:Objetivo
+}
+
+Continente <-- ObjetivoConquistar
+Objetivo <|-- ObjetivoConquistar
+Objetivo <|-- ObjetivoDerrotar
+Objetivo <|-- ObjetivoGeneral
+Objetivo <|-- ObjetivoJugador
+@enduml
