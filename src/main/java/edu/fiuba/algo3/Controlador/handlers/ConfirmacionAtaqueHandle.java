@@ -56,7 +56,6 @@ public class ConfirmacionAtaqueHandle implements HandlerDePais{
     }
 
     private void evaluarVictoriaDelJugador(MouseEvent evento) {
-        //Esto tiraba una excepcion que ni idea...
        try {
            this.jugador.evaluarVictoria(evento);
        }catch(Exception excepcion){

@@ -13,7 +13,6 @@ public class BotonCancel extends Button {
         this.colocarTexto();
     }
 
-
     private void colocarBoton(){
         this.setTranslateX(940);
         this.setTranslateY(570);

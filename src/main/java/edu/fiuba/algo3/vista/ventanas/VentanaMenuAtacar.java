@@ -4,6 +4,10 @@ import edu.fiuba.algo3.vista.Botones.BotonAvanzarTurno;
 import edu.fiuba.algo3.vista.Elementos.Ficha;
 import edu.fiuba.algo3.vista.Elementos.TextoNotificable;
 import javafx.scene.control.Button;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 public class VentanaMenuAtacar extends VentanaMenu{
@@ -11,17 +15,19 @@ public class VentanaMenuAtacar extends VentanaMenu{
 
     public VentanaMenuAtacar(Ficha fichaAPlasmar){
         this.fichaJugador =fichaAPlasmar;
-//        this.setTexto();
+        this.setTexto();
         this.agregarBotonAvanze();
         this.colocarFicha();
     }
-//    private void setTexto(){
-//        Text fichasRestantes = new TextoNotificable(this.fichaJugador);
-//
-//        fichasRestantes.setTranslateX(900);
-//        fichasRestantes.setTranslateY(280);
-//        this.getChildren().add(fichasRestantes);
-//    }
+
+    private void setTexto(){
+        Text fase = new Text("FASE DE ATAQUE");
+        fase.setTranslateX(350);
+        fase.setTranslateY(100);
+        fase.setFont(Font.font("times new roman", FontWeight.EXTRA_BOLD, FontPosture.REGULAR, 20));
+        fase.setFill(Color.BLACK);
+        this.getChildren().add(fase);
+    }
 
     private void agregarBotonAvanze(){
         Button avanze = new BotonAvanzarTurno();

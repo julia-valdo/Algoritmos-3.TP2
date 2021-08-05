@@ -1,6 +1,9 @@
 package edu.fiuba.algo3.vista.ventanas;
 
+<<<<<<< HEAD
 import edu.fiuba.algo3.vista.Botones.BotonAvanzarTurno;
+=======
+>>>>>>> 871af294e0156747208af71c3d67fb8d86fe84ed
 import edu.fiuba.algo3.vista.Botones.BotonEmpezarColocacion;
 import javafx.scene.Node;
 import javafx.scene.control.Button;

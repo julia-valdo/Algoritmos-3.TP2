@@ -5,7 +5,6 @@ import edu.fiuba.algo3.Controlador.handlers.SalirHandler;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.TitledPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -34,5 +33,4 @@ public class BarraMenu extends MenuBar {
         this.getMenus().addAll(menuMusica, menuAyuda);
         this.getChildren().add(imagePanel);
     }
-
 }
