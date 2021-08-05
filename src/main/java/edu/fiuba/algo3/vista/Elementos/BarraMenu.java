@@ -14,10 +14,14 @@ public class BarraMenu extends MenuBar {
 
     public BarraMenu() {
         Menu menuAyuda = new Menu("Ayuda");
+        Menu menuOpciones = new Menu("Opciones");
         Menu menuMusica = new Menu("Musica");
 
         MenuItem opcionSalir = new MenuItem("Salir");
-        MenuItem opcionAyudaJuego = new MenuItem("Ayuda");
+        MenuItem opcionAyudaJuego = new MenuItem("Reglas");
+        MenuItem opcionOffMusica = new MenuItem("Off");
+        MenuItem opcionOnMusica = new MenuItem("On");
+
         ImageView imagePanel = new ImageView();
         imagePanel.setImage(new Image("file:papel.jpg"));
         imagePanel.setFitHeight(30);
@@ -25,23 +29,21 @@ public class BarraMenu extends MenuBar {
 
         opcionSalir.setOnAction(new SalirHandler());
         opcionSalir.setStyle("-fx-font-weight: bold");
+        menuOpciones.getItems().add(opcionSalir);
+
         opcionAyudaJuego.setOnAction(new AyudaHandler());
         opcionAyudaJuego.setStyle("-fx-font-weight: bold");
+        menuAyuda.getItems().add(opcionAyudaJuego);
 
-        menuAyuda.getItems().addAll(opcionSalir, opcionAyudaJuego);
-
-        MenuItem opcionOffMusica = new MenuItem("Off");
-        MenuItem opcionOnMusica = new MenuItem("On");
         opcionOffMusica.setOnAction(new MusicaOffHandler());
         opcionOffMusica.setStyle("-fx-font-weight: bold");
         opcionOnMusica.setOnAction(new MusicaOnHandler());
         opcionOnMusica.setStyle("-fx-font-weight: bold");
-
         menuMusica.getItems().addAll(opcionOnMusica, opcionOffMusica);
 
         this.setStyle("-fx-font-weight: bold");
 
-        this.getMenus().addAll(menuMusica, menuAyuda);
+        this.getMenus().addAll(menuOpciones, menuMusica, menuAyuda);
         this.getChildren().add(imagePanel);
     }
 }

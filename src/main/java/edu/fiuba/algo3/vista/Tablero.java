@@ -2,8 +2,6 @@ package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.musica.ControladorMusica;
 import edu.fiuba.algo3.vista.ventanas.VentanaComienzo;
-import edu.fiuba.algo3.vista.ventanas.VentanaCantidadJugadores;
-import edu.fiuba.algo3.vista.ventanas.VentanaPrincipal;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
