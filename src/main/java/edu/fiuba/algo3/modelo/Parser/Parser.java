@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo.Parser;
 
 import edu.fiuba.algo3.modelo.Batalla.Pais;
 import edu.fiuba.algo3.modelo.Cartas.Carta;
+import edu.fiuba.algo3.modelo.JuegoYJugador.Jugador;
 import edu.fiuba.algo3.modelo.Objetivos.Continente;
 import edu.fiuba.algo3.modelo.Objetivos.Objetivo;
 
@@ -11,6 +12,11 @@ import java.util.HashMap;
 public class Parser {
     ParserTipo parser;
     Constructor objetos;
+
+    public Parser(HashMap<Integer, Jugador> jugadores){
+        objetos = new Constructor(jugadores);
+        parser = null;
+    }
 
     public Parser(){
         objetos = new Constructor();
@@ -44,7 +50,9 @@ public class Parser {
         return objetos.getContinente();
     }
 
-    public HashMap<String, ArrayList<Objetivo>> getObjetivos(){
+    public ArrayList<Objetivo> getObjetivos(){
         return objetos.getObjetivos();
+
     }
+
 }

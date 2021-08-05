@@ -35,7 +35,7 @@ public class BotonComenzarJuegoHandler implements EventHandler<ActionEvent> {
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         this.setearNombres();
         this.asociarFichas();
-        Scene scena = Controlador.pedirMenuSiguiente();
+        Scene scena = Controlador.obtenerEscenaObjetivos();
         stage.setScene(scena);
         stage.show();
     }

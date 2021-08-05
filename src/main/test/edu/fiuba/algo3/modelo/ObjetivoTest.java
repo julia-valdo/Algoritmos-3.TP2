@@ -113,6 +113,8 @@ public class ObjetivoTest {
         Pais japon = new Pais("Japon");
         Pais china = new Pais("China");
         Pais kamchatka = new Pais("Kamchatcka");
+        jugador.agregarFichas(1);
+        jugador.ocupa(japon);
 
         ArrayList<Pais> paises = new ArrayList<>();
 
@@ -139,5 +141,6 @@ public class ObjetivoTest {
 
         assertTrue(derrotarJugador1.objetivoCumplido(paises));
     }
+
 
 }

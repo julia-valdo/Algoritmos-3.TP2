@@ -36,6 +36,7 @@ public class Continente {
     }
 
     public boolean fueConquistado(ArrayList<Pais> paises){
+
         return paises.containsAll(this.paises);
     }
 

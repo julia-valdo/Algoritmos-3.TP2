@@ -8,6 +8,7 @@ import edu.fiuba.algo3.Controlador.SeleccionJugador;
 import edu.fiuba.algo3.vista.Elementos.TextoNotificable;
 import edu.fiuba.algo3.vista.ventanas.VentanaMenu;
 import edu.fiuba.algo3.vista.ventanas.VentanaMenuReagrupar;
+import javafx.scene.Node;
 import javafx.scene.text.Text;
 
 public class FaseReagrupar implements FaseDeRonda {
@@ -52,8 +53,16 @@ public class FaseReagrupar implements FaseDeRonda {
     public VentanaMenu prepararMenu() {
         VentanaMenu menuAPreparar = new VentanaMenuReagrupar(this.jugadorEnTurno.getFicha());
         Text nombreDelJugador = this.jugadorEnTurno.prepararNombre();
+        this.agregarBotonObjetivo(menuAPreparar);
         menuAPreparar.getChildren().add(nombreDelJugador);
 
         return menuAPreparar;
+    }
+
+    private void agregarBotonObjetivo(VentanaMenu menu){
+        Node botonObjetivo = this.jugadorEnTurno.prepararObjetivo();
+        botonObjetivo.setTranslateX(905);
+        botonObjetivo.setTranslateY(70);
+        menu.getChildren().add(botonObjetivo);
     }
 }

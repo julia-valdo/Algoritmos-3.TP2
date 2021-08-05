@@ -3,13 +3,15 @@ package edu.fiuba.algo3.modelo.Objetivos;
 import edu.fiuba.algo3.modelo.Batalla.Pais;
 import edu.fiuba.algo3.modelo.Objetivos.Continente;
 import edu.fiuba.algo3.modelo.Objetivos.Objetivo;
+import javafx.scene.Node;
+import javafx.scene.text.Text;
 
 import java.util.ArrayList;
 
 public class ObjetivoConquistar implements Objetivo {
     Continente primario;
     Continente secundario;
-    int cantidadAConquistarSecundario;
+    Integer cantidadAConquistarSecundario;
 
     public ObjetivoConquistar (Continente primario, Continente secundario, int cantidadAConquistarSecundario){
         this.primario = primario;
@@ -29,5 +31,19 @@ public class ObjetivoConquistar implements Objetivo {
     public boolean objetivoCumplido(ArrayList<Pais> paises) {
         int cantidadPaisesSecundarios = this.contadorDePaisesSecundarios(paises);
         return primario.fueConquistado(paises) && (cantidadPaisesSecundarios >= this.cantidadAConquistarSecundario);
+    }
+
+    @Override
+    public Text prepararVista() {
+        Text textoDeObjetivo = new Text();
+        this.prepararTextoDelObjetivo(textoDeObjetivo);
+
+        return textoDeObjetivo;
+    }
+
+
+    private void prepararTextoDelObjetivo(Text textoDeObjetivo){
+        textoDeObjetivo.setText("Conquistar: " + primario.getNombre() + "\n"
+        + this.cantidadAConquistarSecundario.toString() + " paises de: " + secundario.getNombre());
     }
 }

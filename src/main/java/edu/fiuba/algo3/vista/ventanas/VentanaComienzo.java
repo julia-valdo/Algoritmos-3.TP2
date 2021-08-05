@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.vista.ventanas;
 
 import edu.fiuba.algo3.vista.Botones.BotonComienzo;
-import edu.fiuba.algo3.vista.Elementos.BarraMenu;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.layout.*;
@@ -12,7 +11,6 @@ public class VentanaComienzo extends StackPane {
         super();
         this.prepararImagen();
     }
-
 
     private void prepararImagen(){
         Group panel = new VentanaPrincipal();

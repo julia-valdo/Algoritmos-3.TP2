@@ -6,7 +6,6 @@ import edu.fiuba.algo3.vista.Elementos.CampoDeNombre;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.StackPane;
 
 import java.util.ArrayList;
 
