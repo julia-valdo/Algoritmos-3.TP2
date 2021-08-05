@@ -14,7 +14,11 @@ public class BotonAvanzarTurno extends Button {
 
     private void colocarBoton(){
         this.setTranslateX(920);
+<<<<<<< Updated upstream
         this.setTranslateY(570);
+=======
+        this.setTranslateY(590);
+>>>>>>> Stashed changes
     }
 
     private void colocarTexto(){

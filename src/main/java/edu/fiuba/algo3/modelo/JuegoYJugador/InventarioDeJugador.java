@@ -8,6 +8,12 @@ import edu.fiuba.algo3.modelo.Cartas.Mazo;
 import edu.fiuba.algo3.modelo.Excepciones.NoHayFuerzasRestantesError;
 import edu.fiuba.algo3.modelo.JuegoYJugador.Jugador;
 import edu.fiuba.algo3.vista.Elementos.Ficha;
+import edu.fiuba.algo3.vista.ventanas.VentanaDePapel;
+import javafx.scene.Scene;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+
+import java.util.ArrayList;
 
 /*
 Guarda la informacion del canjeo de cartas del jugador particular
@@ -78,5 +84,22 @@ public class InventarioDeJugador {
 
     public Ficha getFicha() {
         return this.miFicha;
+    }
+
+    public ArrayList<Carta> getCartas(){
+        return mano.getCartas();
+    }
+
+    public void mostrarCartas() {
+        VentanaDePapel ventana = new VentanaDePapel(new Text());
+        for(Carta carta: this.getCartas()){
+            carta.getBox().agregarseA(ventana);
+        }
+
+        Scene scena = new Scene(ventana);
+        Stage popUpDeCarta = new Stage();
+
+        popUpDeCarta.setScene(scena);
+        popUpDeCarta.show();
     }
 }

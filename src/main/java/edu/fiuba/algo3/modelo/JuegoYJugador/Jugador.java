@@ -1,9 +1,12 @@
 package edu.fiuba.algo3.modelo.JuegoYJugador;
 
+import edu.fiuba.algo3.Controlador.handlers.BoxCartaHandlerDos;
+import edu.fiuba.algo3.Controlador.handlers.HandlerDeCarta;
 import edu.fiuba.algo3.Controlador.handlers.HandlerDePais;
 import edu.fiuba.algo3.modelo.Batalla.Ejercitos;
 import edu.fiuba.algo3.modelo.Batalla.Pais;
 import edu.fiuba.algo3.modelo.Cartas.Carta;
+<<<<<<< Updated upstream
 import edu.fiuba.algo3.modelo.Objetivos.Objetivo;
 import edu.fiuba.algo3.vista.Botones.BotonMostrarObjetivo;
 import edu.fiuba.algo3.vista.Elementos.ColoresJugadores;
@@ -12,6 +15,13 @@ import edu.fiuba.algo3.vista.ventanas.VentanaVictoria;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
+=======
+import edu.fiuba.algo3.vista.Botones.BotonMostrarCartas;
+import edu.fiuba.algo3.vista.Elementos.BoxCarta;
+import edu.fiuba.algo3.vista.Elementos.ColoresJugadores;
+import edu.fiuba.algo3.vista.Elementos.Ficha;
+import javafx.scene.control.Button;
+>>>>>>> Stashed changes
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -165,6 +175,7 @@ public class Jugador {
         return this.getNumeroJugador() == numero;
     }
 
+<<<<<<< Updated upstream
     public void asignarObjetivo(Objetivo objetivo) {
         this.objetivo = objetivo;
     }
@@ -188,5 +199,25 @@ public class Jugador {
             stage.setScene(scenaFinal);
             stage.show();
         }
+=======
+    public ArrayList<Carta> getCartas(){
+        return this.inventarioDeJugador.getCartas();
+    }
+
+    public ArrayList<BoxCarta> getBoxes(){
+        ArrayList<BoxCarta> boxes = new ArrayList<>();
+        ArrayList<Carta> cartas = this.inventarioDeJugador.getCartas();
+        for(Carta carta: cartas){
+            boxes.add(carta.getBox());
+        }
+        return boxes;
+    }
+
+    public void elegirCarta(Carta primeraCarta, HandlerDeCarta boxCartaHandlerDos) {
+
+    }
+    public Button botonMostrarCarta(){
+        return new BotonMostrarCartas(this.inventarioDeJugador);
+>>>>>>> Stashed changes
     }
 }

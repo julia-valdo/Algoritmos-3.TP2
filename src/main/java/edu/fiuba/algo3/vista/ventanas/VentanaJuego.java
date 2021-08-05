@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.vista.ventanas;
 
+import edu.fiuba.algo3.vista.Elementos.BoxCarta;
 import edu.fiuba.algo3.vista.Elementos.Ficha;
 import javafx.scene.Group;
 
@@ -9,10 +10,10 @@ public class VentanaJuego extends Group {
 
     public VentanaJuego(ArrayList<Ficha> fichas, VentanaMenu menuActual){
         this.prepararMenu();
-        this.agregarElementos(fichas, menuActual);
+        this.agregarElementos(fichas,menuActual);
     }
 
-    private void agregarElementos(ArrayList<Ficha> fichas, VentanaMenu menuActual){
+    private void agregarElementos(ArrayList<Ficha> fichas,VentanaMenu menuActual){
         this.agregarFichas(fichas);
         this.getChildren().add(menuActual);
     }

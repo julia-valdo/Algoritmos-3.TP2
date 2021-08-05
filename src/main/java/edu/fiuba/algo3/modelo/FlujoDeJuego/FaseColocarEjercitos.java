@@ -5,10 +5,15 @@ import edu.fiuba.algo3.Controlador.handlers.HandlerDePais;
 import edu.fiuba.algo3.modelo.JuegoYJugador.InventarioDeJuego;
 import edu.fiuba.algo3.modelo.JuegoYJugador.Jugador;
 import edu.fiuba.algo3.Controlador.SeleccionJugador;
+import edu.fiuba.algo3.vista.Botones.BotonMostrarCartas;
 import edu.fiuba.algo3.vista.Elementos.TextoNotificable;
 import edu.fiuba.algo3.vista.ventanas.VentanaMenu;
 import edu.fiuba.algo3.vista.ventanas.VentanaMenuColocacion;
+<<<<<<< Updated upstream
 import javafx.scene.Node;
+=======
+import javafx.scene.control.Button;
+>>>>>>> Stashed changes
 import javafx.scene.text.Text;
 
 public class FaseColocarEjercitos implements FaseDeRonda {
@@ -50,6 +55,10 @@ public class FaseColocarEjercitos implements FaseDeRonda {
     @Override
     public VentanaMenu prepararMenu() {
         VentanaMenu menuAPreparar = new VentanaMenuColocacion(this.jugadorEnTurno.getFicha());
+        Button boton = this.jugadorEnTurno.botonMostrarCarta();
+        boton.setTranslateX(920);
+        boton.setTranslateY(550);
+        menuAPreparar.getChildren().add(boton);
         Text nombreDelJugador = this.jugadorEnTurno.prepararNombre();
         this.agregarBotonObjetivo(menuAPreparar);
         menuAPreparar.getChildren().add(nombreDelJugador);

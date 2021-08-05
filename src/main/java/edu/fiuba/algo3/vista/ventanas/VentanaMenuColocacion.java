@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.vista.ventanas;
 
+import edu.fiuba.algo3.modelo.Cartas.Carta;
 import edu.fiuba.algo3.vista.Botones.BotonAvanzarTurno;
+import edu.fiuba.algo3.vista.Elementos.BoxCarta;
 import edu.fiuba.algo3.vista.Elementos.Ficha;
 import edu.fiuba.algo3.vista.Elementos.TextoNotificable;
 import javafx.scene.control.Button;
@@ -10,8 +12,13 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
+import java.util.ArrayList;
+
 public class VentanaMenuColocacion extends VentanaMenu {
     private Ficha fichaJugador;
+    private int x = 1075;
+    private int y = 45;
+
 
     public VentanaMenuColocacion(Ficha fichaAPlasmar){
         this.fichaJugador =fichaAPlasmar;
@@ -19,7 +26,9 @@ public class VentanaMenuColocacion extends VentanaMenu {
         this.agregarBotonAvanze();
         this.colocarFicha();
     }
+
     private void setTexto(){
+
         Text fichasRestantes = new TextoNotificable(this.fichaJugador);
         fichasRestantes.setTranslateX(900);
         fichasRestantes.setTranslateY(200);
@@ -39,9 +48,10 @@ public class VentanaMenuColocacion extends VentanaMenu {
         this.getChildren().add(avanze);
     }
     private void colocarFicha() {
-        this.fichaJugador.setTranslateX(1075);
+        this.fichaJugador.setTranslateX(x);
         this.fichaJugador.setRadius(15);
-        this.fichaJugador.setTranslateY(45);
+        this.fichaJugador.setTranslateY(y);
         this.getChildren().add(this.fichaJugador);
     }
+
 }

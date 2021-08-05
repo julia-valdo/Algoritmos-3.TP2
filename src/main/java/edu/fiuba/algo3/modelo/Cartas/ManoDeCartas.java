@@ -72,4 +72,8 @@ public class ManoDeCartas {
     public void ocupePais() {
         this.puedePedirCarta = this.puedePedirCarta.ocupePais();
     }
+
+    public ArrayList<Carta> getCartas(){
+        return this.cartas;
+    }
 }

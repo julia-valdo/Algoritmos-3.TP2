@@ -1,8 +1,13 @@
 package edu.fiuba.algo3.vista.ventanas;
 
+<<<<<<< Updated upstream
 import edu.fiuba.algo3.vista.Botones.BotonSalir;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
+=======
+import javafx.scene.Group;
+
+>>>>>>> Stashed changes
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
@@ -12,7 +17,10 @@ public class VentanaDePapel extends Group {
     public VentanaDePapel(Text textoAMostrar){
         this.prepararFondo();
         this.prepararTexto(textoAMostrar);
+<<<<<<< Updated upstream
         this.prepararBotonSalir();
+=======
+>>>>>>> Stashed changes
     }
 
     private void prepararTexto(Text textoAMostrar) {
@@ -28,6 +36,7 @@ public class VentanaDePapel extends Group {
         imagePanel.setFitWidth(310);
         this.getChildren().add(imagePanel);
     }
+<<<<<<< Updated upstream
 
     private void prepararBotonSalir(){
         Button botonSalir = new BotonSalir();
@@ -37,3 +46,6 @@ public class VentanaDePapel extends Group {
     }
 
 }
+=======
+}
+>>>>>>> Stashed changes

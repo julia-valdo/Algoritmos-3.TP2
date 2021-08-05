@@ -1,6 +1,11 @@
 package edu.fiuba.algo3.modelo.Cartas;
 
+import edu.fiuba.algo3.Controlador.handlers.HandlerDeCarta;
+import edu.fiuba.algo3.Controlador.handlers.HandlerDePais;
 import edu.fiuba.algo3.modelo.Batalla.Pais;
+import edu.fiuba.algo3.vista.Elementos.BoxCarta;
+import edu.fiuba.algo3.vista.Elementos.Ficha;
+import javafx.scene.shape.Box;
 
 import java.util.ArrayList;
 
@@ -9,12 +14,14 @@ public class Carta {
     private final String simbolo;
     private Mazo mazo;
     private EstadoDeActivacion estadoCarta;
+    BoxCarta boxCarta;
 
     public Carta(Pais pais, String simbolo){
         this.pais = pais;
         this.simbolo = simbolo;
         this.mazo = new Mazo(new ArrayList<Carta>());
         this.estadoCarta = new Desactivada();
+        this.boxCarta = new BoxCarta(this);
     }
 
     public String getSimbolo(){
@@ -61,4 +68,28 @@ public class Carta {
     public void asociarAlMazo(Mazo unMazo){
         this.mazo = unMazo;
     }
+
+    public void agregarHandler(HandlerDeCarta handler) {
+        if(this.boxCarta != null) {
+            handler.asociarCarta(this);
+            this.boxCarta.agregarNuevoHandler(handler);
+        }
+    }
+
+    public void limpiarCarta() {
+        this.mazo.limpiarCarta();
+    }
+
+    private void copiarMiHandler(Carta otraCarta) {
+        this.boxCarta.copiarEn(this.boxCarta, otraCarta);
+    }
+
+    public void limpiarHandler() {
+        this.boxCarta.limpiarHandler();
+    }
+
+    public BoxCarta getBox(){
+        return this.boxCarta;
+    }
+
 }
