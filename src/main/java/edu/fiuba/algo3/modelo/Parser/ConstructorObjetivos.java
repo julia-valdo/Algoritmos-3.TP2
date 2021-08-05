@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.Parser;
 
+import edu.fiuba.algo3.modelo.JuegoYJugador.Jugador;
 import edu.fiuba.algo3.modelo.Objetivos.*;
 
 import java.util.ArrayList;
@@ -8,9 +9,11 @@ import java.util.Set;
 
 public class ConstructorObjetivos {
     HashMap<String, ArrayList<Objetivo>> objetivos;
+    HashMap<Integer, Jugador> jugadores;
 
-    public ConstructorObjetivos(){
+    public ConstructorObjetivos(HashMap<Integer, Jugador> jugadores){
         objetivos = new HashMap<>();
+        this.jugadores = jugadores;
     }
 
     public void construirObjetivos(HashMap<String, ArrayList<String>> objetivos, HashMap<String, Continente> continentes) {
@@ -35,7 +38,7 @@ public class ConstructorObjetivos {
     private ArrayList<Objetivo> crearObjetivosDestruccion(ArrayList<String> objetivosDelTipo){
         ArrayList<Objetivo> listaObjetivosDestruccion = new ArrayList<>();
         for(String objetivo: objetivosDelTipo){
-            listaObjetivosDestruccion.add(new ObjetivoDerrotar(Integer.parseInt(objetivo)));
+            listaObjetivosDestruccion.add(new ObjetivoDerrotar(this.jugadores.get(Integer.parseInt(objetivo))));
         }
         return listaObjetivosDestruccion;
     }
@@ -48,7 +51,34 @@ public class ConstructorObjetivos {
         return listaObjetivosComun;
     }
 
-    public HashMap<String, ArrayList<Objetivo>> getObjetivos() {
-        return objetivos;
+    public ArrayList<Objetivo> getObjetivos() {
+        return this.construirObjetivos();
     }
+
+    private ArrayList<Objetivo> construirObjetivos() {
+        ArrayList<Objetivo> objetivosFinales = new ArrayList<>();
+        Objetivo objetivoComun = this.objetivos.get("Comun").get(0);
+        this.terminarObjetivosOcupacion(objetivosFinales, objetivoComun);
+        this.terminarObjetivosDestruccion(objetivosFinales, objetivoComun);
+
+        return objetivosFinales;
+    }
+
+    private void terminarObjetivosDestruccion(ArrayList<Objetivo> objetivosFinales, Objetivo objetivoComun) {
+        ArrayList<Objetivo> objetivosDeDestruccion = this.objetivos.get("Destruccion");
+        this.completarConstruccionDe(objetivosFinales, objetivoComun, objetivosDeDestruccion);
+    }
+
+    private void completarConstruccionDe(ArrayList<Objetivo> objetivosFinales, Objetivo objetivoComun,
+                                         ArrayList<Objetivo> objetivosDeTipo) {
+        for(Objetivo objetivo: objetivosDeTipo){
+            objetivosFinales.add(new ObjetivoJugador(objetivoComun, objetivo));
+        }
+    }
+
+    private void terminarObjetivosOcupacion(ArrayList<Objetivo> objetivosFinales, Objetivo objetivoComun) {
+        ArrayList<Objetivo> objetivosDeOcupacion = this.objetivos.get("Ocupacion");
+        this.completarConstruccionDe(objetivosFinales, objetivoComun, objetivosDeOcupacion);
+    }
+
 }

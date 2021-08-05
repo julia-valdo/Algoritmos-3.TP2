@@ -14,7 +14,6 @@ public class BotonComenzar extends Button {
         this.colocarBoton();
         this.colocarTexto();
         this.addEventHandler(ActionEvent.ACTION, new BotonComenzarJuegoHandler(textos));
-
     }
 
     private void colocarTexto() {

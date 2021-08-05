@@ -5,9 +5,9 @@ import javafx.scene.Group;
 
 import java.util.ArrayList;
 
-public class VentanaFaseColocacion extends Group {
+public class VentanaJuego extends Group {
 
-    public VentanaFaseColocacion(ArrayList<Ficha> fichas, VentanaMenu menuActual){
+    public VentanaJuego(ArrayList<Ficha> fichas, VentanaMenu menuActual){
         this.prepararMenu();
         this.agregarElementos(fichas, menuActual);
     }

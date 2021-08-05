@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.vista.Elementos;
 
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Background;
 
 public class CampoDeNombre extends TextField {
 

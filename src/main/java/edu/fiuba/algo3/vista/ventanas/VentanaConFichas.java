@@ -1,10 +1,7 @@
 package edu.fiuba.algo3.vista.ventanas;
 
 import edu.fiuba.algo3.vista.Elementos.Ficha;
-import javafx.event.ActionEvent;
 import javafx.scene.Group;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
 
 import java.util.ArrayList;
 

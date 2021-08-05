@@ -11,7 +11,6 @@ public class ColoresJugadores {
         this.setUpColores();
     }
 
-
     private void setUpColores(){
         String[] coloresJugadores = {"#cc00ff","#0077bb", "#cc3311", "#ee7733", "#009988", "#ee3377", "#000000"};
         for(Integer i = 0; i < 7; i++){

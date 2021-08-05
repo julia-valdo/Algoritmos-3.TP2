@@ -1,20 +1,20 @@
 package edu.fiuba.algo3.vista.Botones;
 
-import edu.fiuba.algo3.Controlador.handlers.avanzarHandler;
+import edu.fiuba.algo3.Controlador.handlers.AvanzarHandler;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 
 public class BotonAvanzarTurno extends Button {
 
     public BotonAvanzarTurno(){
-        this.addEventHandler(ActionEvent.ACTION, new avanzarHandler());
+        this.addEventHandler(ActionEvent.ACTION, new AvanzarHandler());
         this.colocarBoton();
         this.colocarTexto();
     }
 
     private void colocarBoton(){
         this.setTranslateX(920);
-        this.setTranslateY(540);
+        this.setTranslateY(570);
     }
 
     private void colocarTexto(){

@@ -40,9 +40,12 @@ public class ColocacionTest {
         jugadorUno.agregarFichas(15);
         jugadorDos.agregarFichas(15);
         jugadorTres.agregarFichas(15);
+        HashMap<Integer, Jugador> jugadores = new HashMap<>();
+        jugadores.put(1, jugadorUno);
+        jugadores.put(2, jugadorDos);
+        jugadores.put(3, jugadorTres);
 
-
-        Parser parser = new Parser();
+        Parser parser = new Parser(jugadores);
 
         parser.parsearArchivo("Teg - Cartas.json");
         parser.parsearArchivo("Teg - Fronteras.json");

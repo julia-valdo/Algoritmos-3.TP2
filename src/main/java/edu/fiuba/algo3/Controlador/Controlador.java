@@ -39,4 +39,7 @@ public class Controlador {
         return teg.prepararMenuSiguiente();
     }
 
+    public static Scene obtenerEscenaObjetivos() {
+        return teg.mostrarObjetivos();
+    }
 }
