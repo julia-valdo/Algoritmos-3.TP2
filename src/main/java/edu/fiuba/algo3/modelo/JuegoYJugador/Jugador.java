@@ -109,7 +109,7 @@ public class Jugador {
     public void canjearCarta(Carta unaCarta) {
         if(this.puedoCanjearLaCarta(unaCarta)){
             this.inventarioDeJugador.activarCarta(unaCarta);
-        };
+        }
     }
 
     public ArrayList<Pais> getPaisesOcupados() {
@@ -187,7 +187,7 @@ public class Jugador {
     }
 
     public void evaluarVictoria(MouseEvent evento) {
-        if(this.gane()){
+        if (this.gane()) {
             Stage stage = (Stage) ((Node) evento.getSource()).getScene().getWindow();
             VentanaVictoria victoria = new VentanaVictoria(this);
             Scene scenaFinal = new Scene(victoria);
@@ -195,6 +195,7 @@ public class Jugador {
             stage.setScene(scenaFinal);
             stage.show();
         }
+    }
 
     public ArrayList<Carta> getCartas(){
         return this.inventarioDeJugador.getCartas();

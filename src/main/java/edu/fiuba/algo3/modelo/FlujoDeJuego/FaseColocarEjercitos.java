@@ -9,11 +9,8 @@ import edu.fiuba.algo3.vista.Botones.BotonMostrarCartas;
 import edu.fiuba.algo3.vista.Elementos.TextoNotificable;
 import edu.fiuba.algo3.vista.ventanas.VentanaMenu;
 import edu.fiuba.algo3.vista.ventanas.VentanaMenuColocacion;
-<<<<<<< Updated upstream
 import javafx.scene.Node;
-=======
 import javafx.scene.control.Button;
->>>>>>> Stashed changes
 import javafx.scene.text.Text;
 
 public class FaseColocarEjercitos implements FaseDeRonda {
