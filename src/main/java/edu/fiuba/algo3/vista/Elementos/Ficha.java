@@ -2,13 +2,7 @@ package edu.fiuba.algo3.vista.Elementos;
 
 import edu.fiuba.algo3.Controlador.handlers.HandlerDePais;
 import edu.fiuba.algo3.modelo.Batalla.Pais;
-import edu.fiuba.algo3.modelo.JuegoYJugador.Jugador;
-import edu.fiuba.algo3.vista.Botones.BotonDeFicha;
-import javafx.event.ActionEvent;
 import javafx.scene.Group;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;

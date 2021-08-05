@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.Parser;
 
 import edu.fiuba.algo3.modelo.Cartas.Carta;
+import edu.fiuba.algo3.modelo.JuegoYJugador.Jugador;
 import edu.fiuba.algo3.modelo.Objetivos.Continente;
 import edu.fiuba.algo3.modelo.Batalla.Pais;
 import edu.fiuba.algo3.modelo.Objetivos.Objetivo;
@@ -14,10 +15,15 @@ public class Constructor {
     ConstructorContinente continente;
     ConstructorObjetivos objetivos;
 
+    public Constructor(HashMap<Integer, Jugador> jugadores){
+        paisYCarta = new ConstructorPaisYCarta();
+        continente = new ConstructorContinente();
+        objetivos = new ConstructorObjetivos(jugadores);
+    }
+
     public Constructor(){
         paisYCarta = new ConstructorPaisYCarta();
         continente = new ConstructorContinente();
-        objetivos = new ConstructorObjetivos();
     }
 
     public void construirPaisesYCartas(HashMap<String, String> cartaPais, HashMap<String, String> fronteras, HashMap<String,
@@ -30,7 +36,7 @@ public class Constructor {
     }
 
     public void contruirObjetivos(HashMap<String, ArrayList<String>> objetivos) {
-        this.objetivos.construirObjetivos(objetivos, continente.getContinente());
+        if(this.objetivos != null) this.objetivos.construirObjetivos(objetivos, continente.getContinente());
     }
 
     public HashMap<String, Pais> getPaises(){
@@ -45,7 +51,7 @@ public class Constructor {
         return continente.getContinente();
     }
 
-    public HashMap<String, ArrayList<Objetivo>> getObjetivos(){
+    public ArrayList<Objetivo> getObjetivos(){
         return objetivos.getObjetivos();
     }
 

@@ -8,10 +8,10 @@ import edu.fiuba.algo3.Controlador.SeleccionJugador;
 import edu.fiuba.algo3.vista.Elementos.TextoNotificable;
 import edu.fiuba.algo3.vista.ventanas.VentanaMenu;
 import edu.fiuba.algo3.vista.ventanas.VentanaMenuColocacion;
+import javafx.scene.Node;
 import javafx.scene.text.Text;
 
 public class FaseColocarEjercitos implements FaseDeRonda {
-    private boolean ejercitoFueIncrementado;
     private Jugador jugadorEnTurno;
     private HandlerDePais handlerGeneral;
     private TextoNotificable textoDeError;
@@ -27,14 +27,13 @@ public class FaseColocarEjercitos implements FaseDeRonda {
     public void aplicarAccionesDeFase(Jugador jugador, InventarioDeJuego inventario) {
         jugador.pedirCarta(inventario);
         this.jugadorEnTurno = jugador;
-        jugador.agregarFichas(jugador.cantidadDeEjercitosAColocar(inventario));
+        jugador.cantidadDeEjercitosAColocar(inventario);
         this.handlerGeneral.setJugadorEnTurno(jugador);
         jugador.habilitarPaises(this.handlerGeneral);
     }
 
     @Override
     public boolean accionJugador(Jugador jugador, InventarioDeJuego inventarioDeJuego, SeleccionJugador seleccion) {
-        if(!ejercitoFueIncrementado) this.incrementarEjercito(jugador, inventarioDeJuego);
         try{
             jugador.agregarFichasA(seleccion.getCantidad(), seleccion.getPaisUno());
         } catch (Exception e){
@@ -42,13 +41,6 @@ public class FaseColocarEjercitos implements FaseDeRonda {
         }
         return true;
     }
-
-    private void incrementarEjercito(Jugador jugador, InventarioDeJuego inventarioDeJuego){
-        int cantidadFichas = jugador.cantidadDeEjercitosAColocar(inventarioDeJuego);
-        jugador.agregarFichas(cantidadFichas);
-        ejercitoFueIncrementado = true;
-    }
-
 
     @Override
     public FaseDeRonda cambiarFase() {
@@ -59,9 +51,18 @@ public class FaseColocarEjercitos implements FaseDeRonda {
     public VentanaMenu prepararMenu() {
         VentanaMenu menuAPreparar = new VentanaMenuColocacion(this.jugadorEnTurno.getFicha());
         Text nombreDelJugador = this.jugadorEnTurno.prepararNombre();
+        this.agregarBotonObjetivo(menuAPreparar);
         menuAPreparar.getChildren().add(nombreDelJugador);
 
         return menuAPreparar;
 
+    }
+
+
+    private void agregarBotonObjetivo(VentanaMenu menu){
+        Node botonObjetivo = this.jugadorEnTurno.prepararObjetivo();
+        botonObjetivo.setTranslateX(905);
+        botonObjetivo.setTranslateY(70);
+        menu.getChildren().add(botonObjetivo);
     }
 }
