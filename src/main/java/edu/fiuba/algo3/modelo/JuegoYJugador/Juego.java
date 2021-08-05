@@ -6,12 +6,13 @@ import edu.fiuba.algo3.modelo.Cartas.Carta;
 import edu.fiuba.algo3.modelo.FlujoDeJuego.FaseDeRonda;
 import edu.fiuba.algo3.modelo.FlujoDeJuego.FasePrimeraColocacion;
 import edu.fiuba.algo3.modelo.Objetivos.Continente;
+import edu.fiuba.algo3.modelo.Objetivos.Objetivo;
 import edu.fiuba.algo3.modelo.Parser.Parser;
 import edu.fiuba.algo3.vista.Elementos.CampoDeNombre;
 import edu.fiuba.algo3.vista.Elementos.Ficha;
 import edu.fiuba.algo3.vista.Elementos.TextoNotificable;
-import edu.fiuba.algo3.vista.ventanas.VentanaFaseColocacion;
-import edu.fiuba.algo3.vista.ventanas.VentanaMenu;
+import edu.fiuba.algo3.vista.ventanas.*;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 
@@ -26,11 +27,11 @@ public class Juego {
     private ArrayList<Ficha> fichasDeJuego;
 
     public Juego(int cantidadDeJugadores){
-        parser = new Parser();
         this.turnoActual = 1;
         this.turnoJugadores = new HashMap<>();
         this.faseActual = new FasePrimeraColocacion(new TextoNotificable());
         this.crearJugadores(cantidadDeJugadores);
+        parser = new Parser(this.turnoJugadores);
     }
 
     public void iniciarJuego(){
@@ -40,6 +41,16 @@ public class Juego {
         parser.construirObjetos();
         this.generarInventario();
         this.repartirPaises();
+        this.repartirObjetivos();
+    }
+
+    private void repartirObjetivos() {
+        ArrayList<Objetivo> objetivos =  new ArrayList(this.parser.getObjetivos());
+        Collections.shuffle(objetivos);
+            for(int i = 1; i <= this.turnoJugadores.size(); i++){
+                this.turnoJugadores.get(i).asignarObjetivo(objetivos.get(i - 1));
+        }
+
     }
 
 
@@ -134,7 +145,7 @@ public class Juego {
         VentanaMenu ventana =  this.faseActual.prepararMenu();
         this.actualizarFase(siguiente);
 
-        return new Scene(new VentanaFaseColocacion(this.fichasDeJuego,ventana));
+        return new Scene(new VentanaJuego(this.fichasDeJuego,ventana));
     }
 
     private void actualizarFase(Jugador siguiente) {
@@ -164,5 +175,21 @@ public class Juego {
         for(Ficha ficha: fichasDeJuego){
             ficha.limpiarHandler();
         }
+    }
+
+    public Scene mostrarObjetivos() {
+        VentanaMenu menuDeObjetivos = this.prepararObjetivos();
+        VentanaMostrarObjetivos objetivos = new VentanaMostrarObjetivos(menuDeObjetivos);
+        Scene scena = new Scene(objetivos);
+        return scena;
+    }
+
+    private VentanaMenu prepararObjetivos() {
+            ArrayList<Jugador> jugadores = new ArrayList<>(this.turnoJugadores.values());
+            ArrayList<Node> nodosDeJugadores = new ArrayList<>();
+            for(Jugador jugador: jugadores){
+                nodosDeJugadores.add(jugador.prepararObjetivo());
+            }
+            return new VentanaMenuObjetivos(nodosDeJugadores);
     }
 }

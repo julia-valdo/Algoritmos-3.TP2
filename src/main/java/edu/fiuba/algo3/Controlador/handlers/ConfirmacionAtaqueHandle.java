@@ -52,7 +52,18 @@ public class ConfirmacionAtaqueHandle implements HandlerDePais{
             this.manejarErrorDeAtaque(excepcion);
         }
         this.paisOrigen.restablecerLimitrofesParaAtaque();
+        this.evaluarVictoriaDelJugador(mouseEvent);
     }
+
+    private void evaluarVictoriaDelJugador(MouseEvent evento) {
+        try{
+            this.jugador.evaluarVictoria(evento);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+    }
+
     private void manejarErrorDeAtaque(Exception excepcion){
         if(excepcion.getClass() == AtaqueNoPermitidoError.class){
             this.textoDeError.setText("Ese ataque no esta permitido");

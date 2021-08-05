@@ -4,10 +4,17 @@ import edu.fiuba.algo3.Controlador.handlers.HandlerDePais;
 import edu.fiuba.algo3.modelo.Batalla.Ejercitos;
 import edu.fiuba.algo3.modelo.Batalla.Pais;
 import edu.fiuba.algo3.modelo.Cartas.Carta;
+import edu.fiuba.algo3.modelo.Objetivos.Objetivo;
+import edu.fiuba.algo3.vista.Botones.BotonMostrarObjetivo;
 import edu.fiuba.algo3.vista.Elementos.ColoresJugadores;
 import edu.fiuba.algo3.vista.Elementos.Ficha;
+import edu.fiuba.algo3.vista.ventanas.VentanaVictoria;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
@@ -17,14 +24,13 @@ public class Jugador {
     private String color;
     private ArrayList<Pais> paisesOcupados;
     private InventarioDeJugador inventarioDeJugador;
-    private boolean derrotado;
+    private Objetivo objetivo;
 
     public Jugador(int numeroDeJugador){
         this.paisesOcupados = new ArrayList<>();
         this.numeroDeJugador = numeroDeJugador;
         this.setColor();
         this.inventarioDeJugador = new InventarioDeJugador(this);
-        this.derrotado = false;
     }
 
     private void setColor(){
@@ -42,7 +48,6 @@ public class Jugador {
     //AgregarEstadoDerrotado
     public void perdisteA(Pais unPais){
         this.paisesOcupados.remove(unPais);
-        if (this.paisesOcupados.isEmpty()) this.derrotado = true;
     }
 
     public void ocupasteA(Pais unPais){ paisesOcupados.add(unPais); }
@@ -98,7 +103,7 @@ public class Jugador {
     }
 
     public boolean fueDerrotado(){
-        return this.derrotado;
+        return this.paisesOcupados.isEmpty();
     }
 
     public void moverFichasDeACon(Pais unPais, Pais otroPais, int cantidad){
@@ -141,8 +146,36 @@ public class Jugador {
         return nombre;
     }
 
+    public String getNombreJugador(){
+        return this.nombreJugador;
+    }
+
     public boolean esElNumero(int numero) {
         return this.getNumeroJugador() == numero;
     }
 
+    public void asignarObjetivo(Objetivo objetivo) {
+        this.objetivo = objetivo;
+    }
+
+    public Node prepararObjetivo() {
+        Text textoDeObjetivo = this.objetivo.prepararVista();
+
+        return new BotonMostrarObjetivo(textoDeObjetivo,this.nombreJugador, this.getColor());
+    }
+    
+    private boolean gane(){
+        return this.objetivo.objetivoCumplido(this.paisesOcupados);
+    }
+
+    public void evaluarVictoria(MouseEvent evento) {
+        if(this.gane()){
+            Stage stage = (Stage) ((Node) evento.getSource()).getScene().getWindow();
+            VentanaVictoria victoria = new VentanaVictoria(this);
+            Scene scenaFinal = new Scene(victoria);
+
+            stage.setScene(scenaFinal);
+            stage.show();
+        }
+    }
 }
