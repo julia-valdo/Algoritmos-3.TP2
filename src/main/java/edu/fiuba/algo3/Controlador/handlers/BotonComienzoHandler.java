@@ -16,8 +16,6 @@ public class BotonComienzoHandler implements EventHandler<ActionEvent> {
 
     public BotonComienzoHandler () {
         StackPane seleccion = new VentanaCantidadJugadores();
-
-
         this.nextScene = new Scene(seleccion);
     }
 

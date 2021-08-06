@@ -19,19 +19,20 @@ public class VentanaCantidadJugadores extends StackPane {
 
     public void setFondo() {
 
-        BorderPane border = new BorderPane();
+        BorderPane contenedor = new BorderPane();
+        contenedor.setTop(new BarraMenu());
 
         HBox mapa = new HBox();
-        border.setCenter(mapa);
         ImageView imageMapa = new ImageView();
         imageMapa.setImage(new Image("file:tableroTEG.png"));
         imageMapa.setFitHeight(600);
         mapa.getChildren().add(imageMapa);
         this.getChildren().add(mapa);
 
+        contenedor.setCenter(mapa);
+        this.getChildren().add(contenedor);
 
         HBox panel = new HBox();
-        border.setRight(panel);
         ImageView imagePanel = new ImageView();
         imagePanel.setImage(new Image("file:papel.jpg"));
         imagePanel.setFitHeight(600);
@@ -51,7 +52,6 @@ public class VentanaCantidadJugadores extends StackPane {
         }
 
         panel.getChildren().addAll(nodos);
-
     }
 
 }
