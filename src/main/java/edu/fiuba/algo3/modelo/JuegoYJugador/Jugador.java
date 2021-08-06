@@ -201,20 +201,22 @@ public class Jugador {
         return this.inventarioDeJugador.getCartas();
     }
 
-    public ArrayList<BoxCarta> getBoxes(){
-        ArrayList<BoxCarta> boxes = new ArrayList<>();
-        ArrayList<Carta> cartas = this.inventarioDeJugador.getCartas();
-        for(Carta carta: cartas){
-            boxes.add(carta.getBox());
-        }
-        return boxes;
-    }
 
     public void elegirCarta(Carta primeraCarta, HandlerDeCarta boxCartaHandlerDos) {
-
+        for(Carta carta: this.inventarioDeJugador.getCartas()){
+            boxCartaHandlerDos.asociarCarta(carta);
+            carta.agregarHandler(boxCartaHandlerDos);
+        }
     }
+
+    public void habilitarCartas(HandlerDeCarta handler){
+        for(Carta carta : inventarioDeJugador.getCartas()){
+            carta.agregarHandler(handler);
+        }
+    }
+
+
     public Button botonMostrarCarta(){
         return new BotonMostrarCartas(this.inventarioDeJugador);
-
     }
 }

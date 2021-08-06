@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.modelo.FlujoDeJuego;
 
 import edu.fiuba.algo3.Controlador.handlers.BotonAgregarEjercitoHandle;
+import edu.fiuba.algo3.Controlador.handlers.BoxCartaHandler;
+import edu.fiuba.algo3.Controlador.handlers.HandlerDeCarta;
 import edu.fiuba.algo3.Controlador.handlers.HandlerDePais;
 import edu.fiuba.algo3.modelo.JuegoYJugador.InventarioDeJuego;
 import edu.fiuba.algo3.modelo.JuegoYJugador.Jugador;
@@ -16,6 +18,7 @@ import javafx.scene.text.Text;
 public class FaseColocarEjercitos implements FaseDeRonda {
     private Jugador jugadorEnTurno;
     private HandlerDePais handlerGeneral;
+    private HandlerDeCarta handlerCarta;
     private TextoNotificable textoDeError;
 
     public FaseColocarEjercitos(){
@@ -31,7 +34,9 @@ public class FaseColocarEjercitos implements FaseDeRonda {
         this.jugadorEnTurno = jugador;
         jugador.cantidadDeEjercitosAColocar(inventario);
         this.handlerGeneral.setJugadorEnTurno(jugador);
+        this.handlerCarta = new BoxCartaHandler(this.jugadorEnTurno,textoDeError);
         jugador.habilitarPaises(this.handlerGeneral);
+        jugador.habilitarCartas(this.handlerCarta);
     }
 
     @Override

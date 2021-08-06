@@ -58,7 +58,7 @@ public class BoxCarta extends Rectangle {
 
     public void limpiarHandler() {
         if(this.getOnMouseClicked() != null) {
-            HandlerDePais handler = (HandlerDePais) this.getOnMouseClicked();
+            HandlerDeCarta handler = (HandlerDeCarta) this.getOnMouseClicked();
             handler.desarmarHandler();
         }
     }
