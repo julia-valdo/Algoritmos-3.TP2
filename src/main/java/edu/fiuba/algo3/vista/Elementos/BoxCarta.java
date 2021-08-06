@@ -91,14 +91,11 @@ public class BoxCarta extends Rectangle {
     }
 
     private void desactivarse(){
-        this.setFill(Paint.valueOf("#000000"));
+        this.setFill(Paint.valueOf("#ffebcd"));
         this.setDisable(false);
         this.textoSimbolo.setDisable(false);
         this.textoPais.setDisable(false);
     }
 
-    public void desactivarse(){
-        this.setFill(Paint.valueOf("#ffebcd"));
-    }
 
 }
