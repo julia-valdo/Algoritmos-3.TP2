@@ -1,11 +1,8 @@
 package edu.fiuba.algo3.modelo.Cartas;
 
 import edu.fiuba.algo3.Controlador.handlers.HandlerDeCarta;
-import edu.fiuba.algo3.Controlador.handlers.HandlerDePais;
 import edu.fiuba.algo3.modelo.Batalla.Pais;
 import edu.fiuba.algo3.vista.Elementos.BoxCarta;
-import edu.fiuba.algo3.vista.Elementos.Ficha;
-import javafx.scene.shape.Box;
 
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -77,8 +74,8 @@ public class Carta {
         }
     }
 
-    public void limpiarCarta() {
-        this.mazo.limpiarCarta();
+    public void limpiarCartas() {
+        this.mazo.limpiarCartas();
     }
 
     private void copiarMiHandler(Carta otraCarta) {

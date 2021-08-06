@@ -60,7 +60,7 @@ public class Mazo {
         }
     }
 
-    public void limpiarCarta() {
+    public void limpiarCartas() {
         for(Carta carta: this.cartas){
             carta.limpiarHandler();
         }

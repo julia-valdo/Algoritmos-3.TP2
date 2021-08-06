@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo.JuegoYJugador;
 
+import edu.fiuba.algo3.Controlador.handlers.BoxCartaHandler;
+import edu.fiuba.algo3.Controlador.handlers.HandlerDeCarta;
 import edu.fiuba.algo3.modelo.Batalla.Ejercitos;
 import edu.fiuba.algo3.modelo.Batalla.Pais;
 import edu.fiuba.algo3.modelo.Cartas.Carta;
@@ -8,6 +10,7 @@ import edu.fiuba.algo3.modelo.Cartas.Mazo;
 import edu.fiuba.algo3.modelo.Excepciones.NoHayFuerzasRestantesError;
 import edu.fiuba.algo3.modelo.JuegoYJugador.Jugador;
 import edu.fiuba.algo3.vista.Elementos.Ficha;
+import edu.fiuba.algo3.vista.Elementos.TextoNotificable;
 import edu.fiuba.algo3.vista.ventanas.VentanaDePapel;
 import javafx.scene.Scene;
 import javafx.scene.text.Text;
@@ -94,9 +97,12 @@ public class InventarioDeJugador {
     }
 
     public void mostrarCartas() {
+        this.limpiarCartas();
         VentanaDePapel ventana = new VentanaDePapel(new Text());
         ventana.prepararFondo(200,600);
+        HandlerDeCarta handler = new BoxCartaHandler(this.duenoDelCuartel, new TextoNotificable());
         for(Carta carta: this.getCartas()){
+            carta.agregarHandler(handler.getCopy());
             carta.getBox().setPosicion(xInicial,yInicial);
             carta.getBox().agregarseA(ventana);
             xInicial += 110;
@@ -109,5 +115,9 @@ public class InventarioDeJugador {
 
         popUpDeCarta.setScene(scena);
         popUpDeCarta.show();
+    }
+
+    public void limpiarCartas() {
+        this.mano.limpiarCartas();
     }
 }

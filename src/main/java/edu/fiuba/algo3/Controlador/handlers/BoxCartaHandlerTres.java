@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.Controlador.handlers;
 
 import edu.fiuba.algo3.modelo.Cartas.Carta;
-import edu.fiuba.algo3.modelo.JuegoYJugador.InventarioDeJugador;
 import edu.fiuba.algo3.modelo.JuegoYJugador.Jugador;
 import edu.fiuba.algo3.vista.Elementos.TextoNotificable;
 import javafx.scene.Group;
@@ -71,8 +70,6 @@ public class BoxCartaHandlerTres implements HandlerDeCarta{
     }
 
     private void limpieza(){
-        this.primeraCarta.limpiarCarta();
-        this.segundaCarta.limpiarCarta();
-        this.terceraCarta.limpiarCarta();
+        this.primeraCarta.limpiarCartas();
     }
 }
