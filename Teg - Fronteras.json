@@ -1,354 +1,352 @@
 [
-
- {
-   "Pais": "Francia",
-   "PosX": "510",
-   "PosY": "310",
-   "Continente": "Europa",
-   "Limita con": "Alemania,España,Italia"
- },
- {
-   "Pais": "Gran Bretaña",
-   "PosX": "470",
-   "PosY": "265",
-   "Continente": "Europa",
-   "Limita con": "Islandia,Alemania,España"
- },
- {
-   "Pais": "Tartaria",
-   "PosX": "643",
-   "PosY": "150",
-   "Continente": "Asia",
-   "Limita con": "Aral,Taymir,Siberia"
- },
- {
-   "Pais": "Mongolia",
-   "PosX": "691",
-   "PosY": "225",
-   "Continente": "Asia",
-   "Limita con": "Aral,Siberia,Iran,Gobi,China"
- },
- {
-   "Pais": "Zaire",
-   "PosX": "542",
-   "PosY": "485",
-   "Continente": "Africa",
-   "Limita con": "Madagascar,Sudafrica,Etiopia,Sahara"
- },
- {
-   "Pais": "Polonia",
-   "PosX": "603",
-   "PosY": "295",
-   "Continente": "Europa",
-   "Limita con": "Alemania,Rusia,Turquia,Egipto"
- },
- {
-   "Pais": "Oregon",
-   "PosX": "70",
-   "PosY": "315",
-   "Continente": "America del Norte",
-   "Limita con": "Alaska,Yukon,Canada,Nueva York,California"
- },
- {
-   "Pais": "Etiopia",
-   "PosX": "583",
-   "PosY": "450",
-   "Continente": "Africa",
-   "Limita con": "Sahara,Egipto,Zaire,Sudafrica"
- },
- {
-   "Pais": "Chile",
-   "PosX": "260",
-   "PosY": "495",
-   "Continente": "America del Sur",
-   "Limita con": "Argentina,Peru,Australia"
- },
- {
-   "Pais": "Australia",
-   "PosX": "796",
-   "PosY": "457",
-   "Continente": "Oceania",
-   "Limita con": "Chile,Sumatra,Java,Borneo"
- },
- {
-   "Pais": "Kamtchatka",
-   "PosX": "738",
-   "PosY": "147",
-   "Continente": "Asia",
-   "Limita con": "Siberia,China,Japon,Alaska"
- },
- {
-   "Pais": "Egipto",
-   "PosX": "653",
-   "PosY": "440",
-   "Continente": "Africa",
-   "Limita con": "Polonia,Turquia,Israel,Madagascar,Etiopia,Sahara"
- },
- {
-   "Pais": "Turquia",
-   "PosX": "623",
-   "PosY": "345",
-   "Continente": "Asia",
-   "Limita con": "Egipto,Polonia,Rusia,Iran,Israel,Arabia"
- },
- {
-   "Pais": "Nueva York",
-   "PosX": "155",
-   "PosY": "240",
-   "Continente": "America del Norte",
-   "Limita con": "Groenlandia,Canada,Oregon,California,Terranova"
- },
- {
-   "Pais": "Terranova",
-   "PosX": "185",
-   "PosY": "230",
-   "Continente": "America del Norte",
-   "Limita con": "Labrador,Canada,Nueva York"
- },
- {
-   "Pais": "Iran",
-   "PosX": "653",
-   "PosY": "250",
-   "Continente": "Asia",
-   "Limita con": "Aral,Mongolia,Gobi,China,India,Turquia,Rusia"
- },
- {
-   "Pais": "Madagascar",
-   "PosX": "663",
-   "PosY": "490",
-   "Continente": "Africa",
-   "Limita con": "Egipto,Zaire"
- },
- {
-   "Pais": "Argentina",
-   "PosX": "300",
-   "PosY": "495",
-   "Continente": "America del Sur",
-   "Limita con": "Chile,Peru,Brasil,Uruguay"
- },
- {
-   "Pais": "Israel",
-   "PosX": "628",
-   "PosY": "380",
-   "Continente": "Asia",
-   "Limita con": "Turquia,Arabia,Egipto"
- },
- {
-   "Pais": "Rusia",
-   "PosX": "591",
-   "PosY": "225",
-   "Continente": "Europa",
-   "Limita con": "Suecia,Aral,Iran,Turquia,Polonia"
- },
- {
-   "Pais": "Borneo",
-   "PosX": "768",
-   "PosY": "395",
-   "Continente": "Oceania",
-   "Limita con": "Australia,Malasia"
- },
- {
-   "Pais": "California",
-   "PosX": "120",
-   "PosY": "335",
-   "Continente": "America del Norte",
-   "Limita con": "Oregon,Nueva York,Mexico"
- },
- {
-   "Pais": "Taymir",
-   "PosX": "688",
-   "PosY": "147",
-   "Continente": "Asia",
-   "Limita con": "Tartaria,Siberia"
- },
- {
-   "Pais": "Aral",
-   "PosX": "623",
-   "PosY": "170",
-   "Continente": "Asia",
-   "Limita con": "Rusia,Iran,Mongolia,Siberia,Tartaria"
- },
- {
-   "Pais": "Siberia",
-   "PosX": "663",
-   "PosY": "199",
-   "Continente": "Asia",
-   "Limita con": "Aral,Tartaria,Taymir,Kamtchatka,China,Mongolia"
- },
- {
-   "Pais": "Canada",
-   "PosX": "133",
-   "PosY": "207",
-   "Continente": "America del Norte",
-   "Limita con": "Yukon,Oregon,Nueva York,Terranova"
- },
- {
-   "Pais": "Sahara",
-   "PosX": "523",
-   "PosY": "435",
-   "Continente": "Africa",
-   "Limita con": "Brasil,España,Egipto,Etiopia,Zaire"
- },
- {
-   "Pais": "Yukon",
-   "PosX": "80",
-   "PosY": "215",
-   "Continente": "America del Norte",
-   "Limita con": "Alaska,Canada,Oregon"
- },
- {
-   "Pais": "Uruguay",
-   "PosX": "340",
-   "PosY": "480",
-   "Continente": "America del Sur",
-   "Limita con": "Argentina,Brasil"
- },
- {
-   "Pais": "Groenlandia",
-   "PosX": "290",
-   "PosY": "195",
-   "Continente": "America del Norte",
-   "Limita con": "Labrador,Nueva York,Islandia"
- },
- {
-   "Pais": "Japon",
-   "PosX": "788",
-   "PosY": "174",
-   "Continente": "Asia",
-   "Limita con": "Kamtchatka,China"
- },
- {
-   "Pais": "Sumatra",
-   "PosX": "713",
-   "PosY": "440",
-   "Continente": "Oceania",
-   "Limita con": "Australia,India"
- },
- {
-   "Pais": "Alaska",
-   "PosX": "30",
-   "PosY": "250",
-   "Continente": "America del Norte",
-   "Limita con": "Yukon,Oregon,Kamtchatka"
- },
- {
-   "Pais": "Brasil",
-   "PosX": "340",
-   "PosY": "430",
-   "Continente": "America del Sur",
-   "Limita con": "Colombia,Peru,Argentina,Uruguay,Sahara"
- },
- {
-   "Pais": "Gobi",
-   "PosX": "711",
-   "PosY": "292",
-   "Continente": "Asia",
-   "Limita con": "Mongolia,China,Iran"
- },
- {
-   "Pais": "Italia",
-   "PosX": "550",
-   "PosY": "360",
-   "Continente": "Europa",
-   "Limita con": "Alemania,Francia"
- },
- {
-   "Pais": "España",
-   "PosX": "445",
-   "PosY": "365",
-   "Continente": "Europa",
-   "Limita con": "Sahara,Francia,Gran Bretaña"
- },
- {
-   "Pais": "Colombia",
-   "PosX": "270",
-   "PosY": "370",
-   "Continente": "America del Sur",
-   "Limita con": "Mexico,Peru,Brasil"
- },
- {
-   "Pais": "Suecia",
-   "PosX": "510",
-   "PosY": "195",
-   "Continente": "Europa",
-   "Limita con": "Rusia,Islandia"
- },
- {
-   "Pais": "Sudafrica",
-   "PosX": "623",
-   "PosY": "535",
-   "Continente": "Africa",
-   "Limita con": "Zaire,Etiopia"
- },
- {
-   "Pais": "Arabia",
-   "PosX": "683",
-   "PosY": "395",
-   "Continente": "Asia",
-   "Limita con": "Turquia,Israel"
- },
- {
-   "Pais": "India",
-   "PosX": "748",
-   "PosY": "335",
-   "Continente": "Asia",
-   "Limita con": "China,Malasia,Iran,Sumatra"
- },
- {
-   "Pais": "Java",
-   "PosX": "838",
-   "PosY": "395",
-   "Continente": "Oceania",
-   "Limita con": "Australia"
- },
- {
-   "Pais": "Mexico",
-   "PosX": "220",
-   "PosY": "365",
-   "Continente": "America del Norte",
-   "Limita con": "Colombia,California"
- },
- {
-   "Pais": "Peru",
-   "PosX": "255",
-   "PosY": "425",
-   "Continente": "America del Sur",
-   "Limita con": "Colombia,Brasil,Chile,Argentina"
- },
- {
-   "Pais": "Alemania",
-   "PosX": "550",
-   "PosY": "305",
-   "Continente": "Europa",
-   "Limita con": "Polonia,Italia,Gran Bretaña,Francia"
- },
- {
-   "Pais": "China",
-   "PosX": "768",
-   "PosY": "257",
-   "Continente": "Asia",
-   "Limita con": "Kamtchatka,Siberia,Mongolia,Gobi,Iran,India,Malasia,Japon"
- },
- {
-   "Pais": "Labrador",
-   "PosX": "230",
-   "PosY": "200",
-   "Continente": "America del Norte",
-   "Limita con": "Groenlandia,Terranova"
- },
- {
-   "Pais": "Islandia",
-   "PosX": "370",
-   "PosY": "250",
-   "Continente": "Europa",
-   "Limita con": "Groenlandia,Suecia,Gran Bretaña"
- },
- {
-   "Pais": "Malasia",
-   "PosX": "813",
-   "PosY": "334",
-   "Continente": "Asia",
-   "Limita con": "China,India,Borneo"
- }
-
+  {
+    "Pais": "Francia",
+    "PosX": "510",
+    "PosY": "290",
+    "Continente": "Europa",
+    "Limita con": "Alemania,España,Italia"
+  },
+  {
+    "Pais": "Gran Bretaña",
+    "PosX": "470",
+    "PosY": "235",
+    "Continente": "Europa",
+    "Limita con": "Islandia,Alemania,España"
+  },
+  {
+    "Pais": "Tartaria",
+    "PosX": "643",
+    "PosY": "120",
+    "Continente": "Asia",
+    "Limita con": "Aral,Taymir,Siberia"
+  },
+  {
+    "Pais": "Mongolia",
+    "PosX": "691",
+    "PosY": "195",
+    "Continente": "Asia",
+    "Limita con": "Aral,Siberia,Iran,Gobi,China"
+  },
+  {
+    "Pais": "Zaire",
+    "PosX": "542",
+    "PosY": "455",
+    "Continente": "Africa",
+    "Limita con": "Madagascar,Sudafrica,Etiopia,Sahara"
+  },
+  {
+    "Pais": "Polonia",
+    "PosX": "603",
+    "PosY": "265",
+    "Continente": "Europa",
+    "Limita con": "Alemania,Rusia,Turquia,Egipto"
+  },
+  {
+    "Pais": "Oregon",
+    "PosX": "70",
+    "PosY": "285",
+    "Continente": "America del Norte",
+    "Limita con": "Alaska,Yukon,Canada,Nueva York,California"
+  },
+  {
+    "Pais": "Etiopia",
+    "PosX": "583",
+    "PosY": "420",
+    "Continente": "Africa",
+    "Limita con": "Sahara,Egipto,Zaire,Sudafrica"
+  },
+  {
+    "Pais": "Chile",
+    "PosX": "260",
+    "PosY": "465",
+    "Continente": "America del Sur",
+    "Limita con": "Argentina,Peru,Australia"
+  },
+  {
+    "Pais": "Australia",
+    "PosX": "796",
+    "PosY": "427",
+    "Continente": "Oceania",
+    "Limita con": "Chile,Sumatra,Java,Borneo"
+  },
+  {
+    "Pais": "Kamtchatka",
+    "PosX": "738",
+    "PosY": "117",
+    "Continente": "Asia",
+    "Limita con": "Siberia,China,Japon,Alaska"
+  },
+  {
+    "Pais": "Egipto",
+    "PosX": "653",
+    "PosY": "410",
+    "Continente": "Africa",
+    "Limita con": "Polonia,Turquia,Israel,Madagascar,Etiopia,Sahara"
+  },
+  {
+    "Pais": "Turquia",
+    "PosX": "623",
+    "PosY": "315",
+    "Continente": "Asia",
+    "Limita con": "Egipto,Polonia,Rusia,Iran,Israel,Arabia"
+  },
+  {
+    "Pais": "Nueva York",
+    "PosX": "155",
+    "PosY": "210",
+    "Continente": "America del Norte",
+    "Limita con": "Groenlandia,Canada,Oregon,California,Terranova"
+  },
+  {
+    "Pais": "Terranova",
+    "PosX": "185",
+    "PosY": "200",
+    "Continente": "America del Norte",
+    "Limita con": "Labrador,Canada,Nueva York"
+  },
+  {
+    "Pais": "Iran",
+    "PosX": "653",
+    "PosY": "220",
+    "Continente": "Asia",
+    "Limita con": "Aral,Mongolia,Gobi,China,India,Turquia,Rusia"
+  },
+  {
+    "Pais": "Madagascar",
+    "PosX": "663",
+    "PosY": "460",
+    "Continente": "Africa",
+    "Limita con": "Egipto,Zaire"
+  },
+  {
+    "Pais": "Argentina",
+    "PosX": "300",
+    "PosY": "465",
+    "Continente": "America del Sur",
+    "Limita con": "Chile,Peru,Brasil,Uruguay"
+  },
+  {
+    "Pais": "Israel",
+    "PosX": "628",
+    "PosY": "350",
+    "Continente": "Asia",
+    "Limita con": "Turquia,Arabia,Egipto"
+  },
+  {
+    "Pais": "Rusia",
+    "PosX": "591",
+    "PosY": "195",
+    "Continente": "Europa",
+    "Limita con": "Suecia,Aral,Iran,Turquia,Polonia"
+  },
+  {
+    "Pais": "Borneo",
+    "PosX": "768",
+    "PosY": "365",
+    "Continente": "Oceania",
+    "Limita con": "Australia,Malasia"
+  },
+  {
+    "Pais": "California",
+    "PosX": "120",
+    "PosY": "305",
+    "Continente": "America del Norte",
+    "Limita con": "Oregon,Nueva York,Mexico"
+  },
+  {
+    "Pais": "Taymir",
+    "PosX": "688",
+    "PosY": "117",
+    "Continente": "Asia",
+    "Limita con": "Tartaria,Siberia"
+  },
+  {
+    "Pais": "Aral",
+    "PosX": "623",
+    "PosY": "140",
+    "Continente": "Asia",
+    "Limita con": "Rusia,Iran,Mongolia,Siberia,Tartaria"
+  },
+  {
+    "Pais": "Siberia",
+    "PosX": "663",
+    "PosY": "169",
+    "Continente": "Asia",
+    "Limita con": "Aral,Tartaria,Taymir,Kamtchatka,China,Mongolia"
+  },
+  {
+    "Pais": "Canada",
+    "PosX": "133",
+    "PosY": "177",
+    "Continente": "America del Norte",
+    "Limita con": "Yukon,Oregon,Nueva York,Terranova"
+  },
+  {
+    "Pais": "Sahara",
+    "PosX": "523",
+    "PosY": "405",
+    "Continente": "Africa",
+    "Limita con": "Brasil,España,Egipto,Etiopia,Zaire"
+  },
+  {
+    "Pais": "Yukon",
+    "PosX": "80",
+    "PosY": "185",
+    "Continente": "America del Norte",
+    "Limita con": "Alaska,Canada,Oregon"
+  },
+  {
+    "Pais": "Uruguay",
+    "PosX": "340",
+    "PosY": "450",
+    "Continente": "America del Sur",
+    "Limita con": "Argentina,Brasil"
+  },
+  {
+    "Pais": "Groenlandia",
+    "PosX": "290",
+    "PosY": "165",
+    "Continente": "America del Norte",
+    "Limita con": "Labrador,Nueva York,Islandia"
+  },
+  {
+    "Pais": "Japon",
+    "PosX": "788",
+    "PosY": "144",
+    "Continente": "Asia",
+    "Limita con": "Kamtchatka,China"
+  },
+  {
+    "Pais": "Sumatra",
+    "PosX": "713",
+    "PosY": "410",
+    "Continente": "Oceania",
+    "Limita con": "Australia,India"
+  },
+  {
+    "Pais": "Alaska",
+    "PosX": "30",
+    "PosY": "220",
+    "Continente": "America del Norte",
+    "Limita con": "Yukon,Oregon,Kamtchatka"
+  },
+  {
+    "Pais": "Brasil",
+    "PosX": "340",
+    "PosY": "400",
+    "Continente": "America del Sur",
+    "Limita con": "Colombia,Peru,Argentina,Uruguay,Sahara"
+  },
+  {
+    "Pais": "Gobi",
+    "PosX": "711",
+    "PosY": "262",
+    "Continente": "Asia",
+    "Limita con": "Mongolia,China,Iran"
+  },
+  {
+    "Pais": "Italia",
+    "PosX": "550",
+    "PosY": "330",
+    "Continente": "Europa",
+    "Limita con": "Alemania,Francia"
+  },
+  {
+    "Pais": "España",
+    "PosX": "445",
+    "PosY": "335",
+    "Continente": "Europa",
+    "Limita con": "Sahara,Francia,Gran Bretaña"
+  },
+  {
+    "Pais": "Colombia",
+    "PosX": "270",
+    "PosY": "340",
+    "Continente": "America del Sur",
+    "Limita con": "Mexico,Peru,Brasil"
+  },
+  {
+    "Pais": "Suecia",
+    "PosX": "510",
+    "PosY": "165",
+    "Continente": "Europa",
+    "Limita con": "Rusia,Islandia"
+  },
+  {
+    "Pais": "Sudafrica",
+    "PosX": "623",
+    "PosY": "505",
+    "Continente": "Africa",
+    "Limita con": "Zaire,Etiopia"
+  },
+  {
+    "Pais": "Arabia",
+    "PosX": "683",
+    "PosY": "365",
+    "Continente": "Asia",
+    "Limita con": "Turquia,Israel"
+  },
+  {
+    "Pais": "India",
+    "PosX": "748",
+    "PosY": "305",
+    "Continente": "Asia",
+    "Limita con": "China,Malasia,Iran,Sumatra"
+  },
+  {
+    "Pais": "Java",
+    "PosX": "838",
+    "PosY": "365",
+    "Continente": "Oceania",
+    "Limita con": "Australia"
+  },
+  {
+    "Pais": "Mexico",
+    "PosX": "220",
+    "PosY": "335",
+    "Continente": "America del Norte",
+    "Limita con": "Colombia,California"
+  },
+  {
+    "Pais": "Peru",
+    "PosX": "255",
+    "PosY": "395",
+    "Continente": "America del Sur",
+    "Limita con": "Colombia,Brasil,Chile,Argentina"
+  },
+  {
+    "Pais": "Alemania",
+    "PosX": "550",
+    "PosY": "275",
+    "Continente": "Europa",
+    "Limita con": "Polonia,Italia,Gran Bretaña,Francia"
+  },
+  {
+    "Pais": "China",
+    "PosX": "768",
+    "PosY": "227",
+    "Continente": "Asia",
+    "Limita con": "Kamtchatka,Siberia,Mongolia,Gobi,Iran,India,Malasia,Japon"
+  },
+  {
+    "Pais": "Labrador",
+    "PosX": "230",
+    "PosY": "170",
+    "Continente": "America del Norte",
+    "Limita con": "Groenlandia,Terranova"
+  },
+  {
+    "Pais": "Islandia",
+    "PosX": "370",
+    "PosY": "220",
+    "Continente": "Europa",
+    "Limita con": "Groenlandia,Suecia,Gran Bretaña"
+  },
+  {
+    "Pais": "Malasia",
+    "PosX": "813",
+    "PosY": "304",
+    "Continente": "Asia",
+    "Limita con": "China,India,Borneo"
+  }
 ]

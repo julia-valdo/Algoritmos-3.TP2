@@ -24,7 +24,7 @@ public class VentanaDePapel extends Group {
 
     public void prepararFondo(int altura, int anchura) {
         ImageView imagePanel = new ImageView();
-        imagePanel.setImage(new Image("file:papel.jpg"));
+        imagePanel.setImage(new Image("file:L-Gante.jpg"));
         imagePanel.setFitHeight(altura);
         imagePanel.setFitWidth(anchura);
         this.getChildren().add(imagePanel);
