@@ -2,7 +2,6 @@ package edu.fiuba.algo3.vista.ventanas;
 
 import edu.fiuba.algo3.vista.Botones.BotonAvanzarTurno;
 import edu.fiuba.algo3.vista.Elementos.Ficha;
-import edu.fiuba.algo3.vista.Elementos.TextoNotificable;
 import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;

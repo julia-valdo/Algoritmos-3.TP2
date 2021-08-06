@@ -1,5 +1,12 @@
 package edu.fiuba.algo3.modelo.Batalla;
 
+import edu.fiuba.algo3.vista.ventanas.VentanaAyuda;
+import edu.fiuba.algo3.vista.ventanas.VentanaDados;
+import javafx.animation.PauseTransition;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.util.Duration;
+
 import java.util.ArrayList;
 
 public class Batalla {
@@ -8,7 +15,6 @@ public class Batalla {
     private int perdidaDefensor;
     ArrayList<Integer> resultadoDadoAtacante;
     ArrayList<Integer> resultadoDadoDefensor;
-
     public Batalla(){
         this.perdidaAtacante = 0;
         this.perdidaDefensor = 0;
@@ -18,6 +24,16 @@ public class Batalla {
 
         this.tirarDadoAtacante(ejercitoAtacante.getCantidadEjercitos());
         this.tirarDadoDefensor(ejercitoDefensor.getCantidadEjercitos());
+
+        Stage stageAyuda = new Stage();
+        Scene sceneAyuda = new Scene(new VentanaDados(resultadoDadoAtacante, resultadoDadoDefensor),300,300);
+        stageAyuda.setTitle("Resultados");
+        stageAyuda.setScene(sceneAyuda);
+        stageAyuda.show();
+
+        PauseTransition delay = new PauseTransition(Duration.seconds(5));
+        delay.setOnFinished( event -> stageAyuda.close() );
+        delay.play();
 
         this.compararResultado(resultadoDadoAtacante, resultadoDadoDefensor);
 
