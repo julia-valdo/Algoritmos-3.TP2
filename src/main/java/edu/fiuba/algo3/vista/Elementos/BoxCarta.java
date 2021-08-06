@@ -63,8 +63,10 @@ public class BoxCarta extends Rectangle {
     public void agregarNuevoHandler(HandlerDeCarta handler) {
         this.setOnMouseClicked(handler);
         this.textoSimbolo.setOnMouseClicked(handler);
+        this.textoPais.setOnMouseClicked(handler);
         this.setDisable(false);
         this.textoSimbolo.setDisable(false);
+        this.textoPais.setDisable(false);
     }
 
 
@@ -88,12 +90,14 @@ public class BoxCarta extends Rectangle {
         this.setDisable(true);
         this.textoSimbolo.setDisable(true);
         this.textoPais.setDisable(true);
+        this.textoPais.setDisable(true);
     }
 
     private void desactivarse(){
         this.setFill(Paint.valueOf("#000000"));
         this.setDisable(false);
         this.textoSimbolo.setDisable(false);
+        this.textoPais.setDisable(false);
         this.textoPais.setDisable(false);
     }
 

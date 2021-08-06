@@ -47,6 +47,7 @@ public class BoxCartaHandlerTres implements HandlerDeCarta{
             Stage stage = (Stage) (((Node)mouseEvent.getSource()).getScene().getWindow());
             stage.close();
             jugador.mostrarCartas();
+            this.limpieza();
         } catch (Exception exception){
             manejarErrorDeAtaque(exception);
         }
