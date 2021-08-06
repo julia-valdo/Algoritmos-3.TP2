@@ -211,12 +211,16 @@ public class Jugador {
 
     public void habilitarCartas(HandlerDeCarta handler){
         for(Carta carta : inventarioDeJugador.getCartas()){
-            carta.agregarHandler(handler);
+            carta.agregarHandler(handler.getCopy());
         }
     }
 
 
     public Button botonMostrarCarta(){
         return new BotonMostrarCartas(this.inventarioDeJugador);
+    }
+
+    public void mostrarCartas(){
+        this.inventarioDeJugador.mostrarCartas();
     }
 }

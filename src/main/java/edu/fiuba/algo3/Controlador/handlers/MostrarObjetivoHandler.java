@@ -27,6 +27,7 @@ public class MostrarObjetivoHandler implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
         VentanaDePapel ventana = new VentanaDePapel(this.textoDeObjetivo);
+        ventana.prepararFondo(200,310);
         ventana.getChildren().add(this.textoDeJugador);
         Scene scena = new Scene(ventana);
         Stage popUpDeObjetivo = new Stage();

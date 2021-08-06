@@ -7,6 +7,7 @@ import edu.fiuba.algo3.vista.Elementos.TextoNotificable;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 public class BoxCartaHandlerTres implements HandlerDeCarta{
     private Carta primeraCarta;
@@ -40,8 +41,12 @@ public class BoxCartaHandlerTres implements HandlerDeCarta{
     @Override
     public void handle(MouseEvent mouseEvent) {
         this.desarmarTextoDeError();
+        this.terceraCarta.getBox().activarse();
         try{
             jugador.canjearCartas(primeraCarta, segundaCarta, terceraCarta);
+            Stage stage = (Stage) (((Node)mouseEvent.getSource()).getScene().getWindow());
+            stage.close();
+            jugador.mostrarCartas();
         } catch (Exception exception){
             manejarErrorDeAtaque(exception);
         }
