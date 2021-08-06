@@ -11,7 +11,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class MostrarCartasHandler implements EventHandler<ActionEvent> {
-    Text texto;
     InventarioDeJugador inventario;
 
     public MostrarCartasHandler(InventarioDeJugador inventario) {
