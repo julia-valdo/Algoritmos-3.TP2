@@ -48,18 +48,12 @@ public class Pais {
     }
 
     public void atacarA(Pais otroPais) {
-       if(this.esDelMismoEquipo(otroPais)){
-            throw new AtaqueNoPermitidoError("No se puede atacar a un pais del mismo equipo");
-       }
-       if (!this.esLimitrofe(otroPais)){
-           throw new AtaqueNoPermitidoError("No se puede atacar a un pais no limitrofe");
-       }
-       Batalla batalla = new Batalla();
+        verificarPosibilidadDeAtaque(otroPais);
+        Batalla batalla = new Batalla();
        batalla.atacar(this.ejercitos, otroPais.ejercitos);
        otroPais.recibirTropas(this.ejercitos);
-       this.notifyFicha();
-       otroPais.notifyFicha();
-   }
+        notificarFichasDeResultado(otroPais);
+    }
 
     private boolean esDelMismoEquipo(Pais otroPais) {
         return this.ejercitos.sonAliadosDe(otroPais.ejercitos);
@@ -72,8 +66,7 @@ public class Pais {
             throw new MovimientoDeEjercitoError("Movimiento de ejercito invalido");
         }
         this.ejercitos.moverEjercitoACon(otroPais.ejercitos, cantidad);
-        this.notifyFicha();
-        otroPais.notifyFicha();
+        notificarFichasDeResultado(otroPais);
     }
 
     public void setCordenadas(Pair<Integer, Integer> parDeCoordenadas) {
@@ -116,5 +109,27 @@ public class Pais {
 
     private void limpiarFicha() {
         this.miFicha.limpiarHandler();
+    }
+
+    public void atacarAVisual(Pais otroPais) {
+        verificarPosibilidadDeAtaque(otroPais);
+        Batalla batalla = new Batalla();
+        batalla.atacarVisual(this.ejercitos, otroPais.ejercitos);
+        otroPais.recibirTropas(this.ejercitos);
+        notificarFichasDeResultado(otroPais);
+    }
+
+    private void verificarPosibilidadDeAtaque(Pais otroPais) {
+        if (this.esDelMismoEquipo(otroPais)) {
+            throw new AtaqueNoPermitidoError("No se puede atacar a un pais del mismo equipo");
+        }
+        if (!this.esLimitrofe(otroPais)) {
+            throw new AtaqueNoPermitidoError("No se puede atacar a un pais no limitrofe");
+        }
+    }
+
+    private void notificarFichasDeResultado(Pais otroPais) {
+        this.notifyFicha();
+        otroPais.notifyFicha();
     }
 }

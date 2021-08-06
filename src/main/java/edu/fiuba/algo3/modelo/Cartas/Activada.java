@@ -7,4 +7,9 @@ public class Activada implements EstadoDeActivacion {
     public EstadoDeActivacion activarseEn(Pais unPais) {
         return this;
     }
+
+    @Override
+    public boolean estaActivada() {
+        return true;
+    }
 }

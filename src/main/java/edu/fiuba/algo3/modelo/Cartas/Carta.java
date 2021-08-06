@@ -56,11 +56,15 @@ public class Carta {
 
     public void activarse() {
         this.estadoCarta = this.estadoCarta.activarseEn(this.pais);
+        if(this.estadoCarta.estaActivada()){
+            this.boxCarta.meActive();
+        }
     }
 
     public void devolverAlMazo(){
         this.estadoCarta = new Desactivada();
         this.mazo.vuelveAlMazo(this);
+        this.boxCarta.volviAlMazo();
     }
 
     public void asociarAlMazo(Mazo unMazo){

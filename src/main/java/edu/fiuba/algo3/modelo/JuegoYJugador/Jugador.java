@@ -224,4 +224,9 @@ public class Jugador {
     public void mostrarCartas(){
         this.inventarioDeJugador.mostrarCartas();
     }
+
+    public void atacarPaisDesdeAVisual(Pais paisOrigen, Pais paisDestino) {
+        paisOrigen.atacarAVisual(paisDestino);
+        this.verificarOcupacion(paisOrigen);
+    }
 }

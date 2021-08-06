@@ -15,10 +15,11 @@ public class BoxCarta extends Rectangle {
     private Carta carta;
     private Text textoSimbolo;
     private Text textoPais;
-    private TextoNotificable textoNotificable;
+    private String colorActual;
 
     public BoxCarta(Carta carta){
         super();
+        this.colorActual = "#ffebcd";
         this.carta = carta;
         this.setHeight(100);
         this.setWidth(110);
@@ -82,6 +83,15 @@ public class BoxCarta extends Rectangle {
         this.agregarNuevoHandler(miHandlerNuevo);
     }
 
+    public void meActive(){
+        this.colorActual = "#ffd79a";
+        this.setFill(Paint.valueOf(this.colorActual));
+    }
+
+    public void volviAlMazo(){
+        this.colorActual = "#ffebcd";
+    }
+
     public void activarse(){
         this.setFill(Paint.valueOf("#008000"));
         this.setDisable(true);
@@ -91,12 +101,14 @@ public class BoxCarta extends Rectangle {
     }
 
     private void desactivarse(){
-        this.setFill(Paint.valueOf("#ffebcd"));
+        this.setFill(Paint.valueOf(this.colorActual));
         this.setDisable(false);
         this.textoSimbolo.setDisable(false);
         this.textoPais.setDisable(false);
         this.textoPais.setDisable(false);
     }
+
+
 
 
 }

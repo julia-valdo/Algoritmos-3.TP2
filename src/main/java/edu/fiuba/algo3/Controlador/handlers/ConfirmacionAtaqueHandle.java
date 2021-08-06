@@ -47,7 +47,7 @@ public class ConfirmacionAtaqueHandle implements HandlerDePais{
         this.desarmarTextoDeError();
         this.prepararGrupoDeError(mouseEvent);
         try{
-            this.jugador.atacarPaisDesdeA(this.paisOrigen, this.paisDestino);
+            this.jugador.atacarPaisDesdeAVisual(this.paisOrigen, this.paisDestino);
         } catch (Exception excepcion){
             this.manejarErrorDeAtaque(excepcion);
         }

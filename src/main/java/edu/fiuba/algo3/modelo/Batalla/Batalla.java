@@ -25,6 +25,15 @@ public class Batalla {
         this.tirarDadoAtacante(ejercitoAtacante.getCantidadEjercitos());
         this.tirarDadoDefensor(ejercitoDefensor.getCantidadEjercitos());
 
+        finalizarAtaque(ejercitoAtacante, ejercitoDefensor);
+    }
+
+    public void atacarVisual(Ejercitos ejercitoAtacante, Ejercitos ejercitoDefensor){
+       this.atacar(ejercitoAtacante, ejercitoDefensor);
+        mostrarResultados();
+    }
+
+    private void mostrarResultados() {
         Stage stageAyuda = new Stage();
         Scene sceneAyuda = new Scene(new VentanaDados(resultadoDadoAtacante, resultadoDadoDefensor),300,300);
         stageAyuda.setTitle("Resultados");
@@ -34,7 +43,9 @@ public class Batalla {
         PauseTransition delay = new PauseTransition(Duration.seconds(5));
         delay.setOnFinished( event -> stageAyuda.close() );
         delay.play();
+    }
 
+    private void finalizarAtaque(Ejercitos ejercitoAtacante, Ejercitos ejercitoDefensor) {
         this.compararResultado(resultadoDadoAtacante, resultadoDadoDefensor);
 
         ejercitoAtacante.restarEjercitos(this.perdidaAtacante);

@@ -11,4 +11,9 @@ public class Desactivada implements EstadoDeActivacion {
         return new Activada();
     }
 
+    @Override
+    public boolean estaActivada() {
+        return false;
+    }
+
 }
