@@ -20,14 +20,13 @@ public class BoxCarta extends Rectangle {
         super();
         this.carta = carta;
         this.setHeight(80);
-        this.setWidth(80);
+        this.setWidth(90);
         this.textoSimbolo = new Text(carta.getSimbolo());
         this.textoSimbolo.setFill(Paint.valueOf("#ffffff"));
         this.textoSimbolo.setStyle("-fx-font-weight: bold");
         this.textoPais = new Text(carta.getPais().getNombreDelPais());
         this.textoPais.setFill(Paint.valueOf("#ffffff"));
         this.textoPais.setStyle("-fx-font-weight: bold");
-        this.setPosicion(15 ,15);
     }
 
     public void setPosicion(int posX, int posY){

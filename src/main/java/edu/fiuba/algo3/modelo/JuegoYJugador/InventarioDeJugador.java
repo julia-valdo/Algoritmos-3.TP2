@@ -23,6 +23,8 @@ public class InventarioDeJugador {
     private int fichasDisponibles;
     private Jugador duenoDelCuartel;
     private Ficha miFicha;
+    private int xInicial = 15;
+    private int yInicial = 15;
 
     public InventarioDeJugador(Jugador dueno){
         this.fichasDisponibles = 0;
@@ -93,8 +95,11 @@ public class InventarioDeJugador {
     public void mostrarCartas() {
         VentanaDePapel ventana = new VentanaDePapel(new Text());
         for(Carta carta: this.getCartas()){
+            carta.getBox().setPosicion(xInicial,yInicial);
             carta.getBox().agregarseA(ventana);
+            xInicial += 90;
         }
+        xInicial = 15;
 
         Scene scena = new Scene(ventana);
         Stage popUpDeCarta = new Stage();
