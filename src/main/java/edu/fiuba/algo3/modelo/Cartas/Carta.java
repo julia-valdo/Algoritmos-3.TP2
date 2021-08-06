@@ -7,6 +7,7 @@ import edu.fiuba.algo3.vista.Elementos.BoxCarta;
 import edu.fiuba.algo3.vista.Elementos.Ficha;
 import javafx.scene.shape.Box;
 
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public class Carta {
@@ -49,7 +50,7 @@ public class Carta {
     }
 
     private boolean sonDelMismoTipo(Carta otraCarta){
-        return this.simbolo.equals(otraCarta.simbolo);
+        return this.simbolo.equals(otraCarta.simbolo) || this.simbolo.equals("Comodin") || otraCarta.simbolo.equals("Comodin");
     }
 
     private boolean noSonDelMismoTipo(Carta otraCarta){
