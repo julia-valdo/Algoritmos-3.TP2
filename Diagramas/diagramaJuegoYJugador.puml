@@ -1,0 +1,70 @@
+@startuml
+class InventarioDeJuego{
+- mazoDeCartas:Mazo
+- continentes:ArrayList<Continente>
++ ejercitosPorContinentesConquistados(ArrayList<Pais>paisesOcupados):int
++ repartirCarta(Jugador jugador1):void
++ quedanCartas():boolean
++ repartirCarta(ManoDeCartas mano):void
+}
+
+class InventarioDeJugador{
+- mano:ManoDeCartas
+- fichasDisponibles:int
+- DuenoDelCuartel:Jugador
++ recibirCarta(Carta unaCarta):void
++ canjearCartas(Carta primeraCarta,Carta segundaCarta,Carta terceraCarta):void
++ generarDivision(int cantidadFuerzas):Ejercitos
++ agregarEjercitos(int cantidadFichas):void
++ agregarFichasA(int numeroDeFichas,Pais unPais):void
++ activarCarta(Carta unaCarta):void
++ pedirCarta(InventarioDeJuego inventario):void
++ ocupePais():void
+}
+
+class Juego{
+- turnoActual:Integer
+- turnoJugadores:HashMap<Integer,Jugador>
+- fase:FaseDeRonda
+- parser:Parser
+- inventario:InventarioDeJuego
+- crearJugadores(int cantidadDeJugadores):void
+- establecerTurnos(ArrayList<Jugador> jugadores):void
+- avanzarTurno():void
+- repartirPaises():void
+- esElUltimoJugador(Jugador jugador):boolean
+- generarInventario():void
++ iniciarJuego():void
++ obtenerOrder():ArrayList<Integer>
++ obtenerSiguiente():Jugador
++ seleccionDeJugador(Jugador jugador,SeleccionJugador seleccion):void
+}
+
+class Jugador{
+- numeroDeJugador:int
+- paisesOcupados:ArrayList<Pais>
+- inventarioDeJugador:InventarioDeJugador
+- derrotado:boolean
+- verificarOcupacion(Pais otroPais):void
+- puedoCanjearLaCarta(Carta unaCarta):boolean
++ ocupa(Pais unPais):void
++ perdisteA(Pais unPais):void
++ ocupasteA(Pais unPais):void
++ atacarPaisDesdeA(Pais unPais,Pais otroPais):void
++ cantidadDeEjercitosAColocar(InventarioDeJuego inventarioDeJuego):int
++ agregarFichasA(int numeroDeFichas,Pais unPais):void
++ recibirCarta(Carta unaCarta):void
++ canjearCartas(Carta primeraCarta,Carta segundaCarta,Carta terceraCarta):void
++ canjearCarta(Carta unaCarta):void
++ getPaisesOcupados():ArrayList<Pais>
++ fueDerrotado():boolean
++ moverFichasDeACon(Pais unPais,Pais otroPais,int cantidad):void
++ getNumeroJugador():Integer
++ pedirCarta(InventarioDeJuego inventario):void
+}
+
+Juego --> InventarioDeJuego
+Juego -->"2..6" Jugador
+
+Jugador --> InventarioDeJugador
+@enduml

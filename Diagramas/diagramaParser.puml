@@ -1,0 +1,79 @@
+@startuml
+class Constructor{
+- paisYCarta:ConstructorPaisYCarta
+- continente ConstructorContinente
+- objetivos ConstructorObjetivos
++ construirPaisesYCartas(HashMap<String,String> cartaPais,HashMap<String,String> fronteras):void
++ construirContinente(HashMap<String,String> continente):void
++ contruirObjetivos(HashMap<String,ArrayList<String>> objetivos):void
++ getPaises():HashMap<String,Pais>
++ getCartas():ArrayList<Carta>
++ getContinente():HashMap<String,Continente>
++ getObjetivos():HashMap<String,ArrayList<Objetivo>>
+}
+
+class ConstructorContinente{
+- sieteFichas:int
+- cincoFichas:int
+- tresFichas:int
+- dosFichas:int
+- crearContinente(String nombre):Continente
++ construirContinente(HashMap<String,String>continente,HashMap<String,Pais> paises):void
++ getContinente():HashMap<String,Continente>
+}
+
+class ConstructorObjetivos{
+- objetivos:HashMap<String,ArrayList<Objetivo>>
+- crearObjetivosOcupacion(ArrayList<String> objetivosDelTipo, HashMap<String, Continente> continentes):ArrayList<Objetivo>
+- crearObjetivosDestruccion(ArrayList<String> objetivosDelTipo):ArrayList<Objetivo>
+- crearObjetivosComun(ArrayList<String> objetivosDelTipo):ArrayList<Objetivo>
++ construirObjetivos(HashMap<String,ArrayList<String>> objetivos,HashMap<String,Continente> continentes):void
++ getObjetivos():HashMap<String,ArrayList<Objetivo>>
+}
+
+class ConstructorPaisYCarta{
+- mazoDeCartas:ArrayList<Carta>
+- paises:HashMap<String,Pais>
++ construirPaisesYCartas(HashMap<String,String> cartaPaisHash,HashMap<String,String> fronteras):void
++ getPaises():HashMap<String,Pais>
++ getCartas():ArrayList<Carta>
+}
+
+class Parser{
+- parser ParserTipo
+- objetos Constructor
++ parsearArchivo(String path):void
++ construirObjetos():void
++ getPaises():HashMap<String,Pais>
++ getCartas():ArrayList<Carta>
++ getContinente():HashMap<String,Continente>
++ getObjetivos():HashMap<String,ArrayList<Objetivo>>
+}
+
+interface ParserTipo{
++ parsearArchivo(String path):void
++ getContinente():HashMap<String,Continente>
++ getFronteras():HashMap<String,String>
++ getPaisesConSimbolos():HashMap<String,String>
++ getObjetivos():HashMap<String,ArrayList<String>>
+}
+
+class ParserJson{
+- paises:HashMap<String,String>
+- continentes:HashMap<String,String>
+- fronteras:HashMap<String,String>
+- objetivos:HashMap<String,ArrayList<String>>
+- parseObjetivosObject(JSONObject objetivo):void
+- parseCartasObject(JSONObject cartas):void
+- parseFronterasObject(JSONObject fronteras):void
+}
+
+Parser --> Constructor
+ParserTipo <- Parser
+
+ParserTipo <|.. ParserJson
+
+Constructor <|- ConstructorContinente
+Constructor <|-- ConstructorObjetivos
+Constructor <|--- ConstructorPaisYCarta
+@enduml

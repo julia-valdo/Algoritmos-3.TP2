@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo.Cartas;
 
+import edu.fiuba.algo3.Controlador.handlers.HandlerDeCarta;
+import edu.fiuba.algo3.modelo.Batalla.Pais;
 import edu.fiuba.algo3.modelo.Excepciones.NoQuedanCartasError;
 import edu.fiuba.algo3.modelo.JuegoYJugador.Jugador;
 
@@ -50,5 +52,17 @@ public class Mazo {
     public void repartirCarta(ManoDeCartas manoDeCartas) {
         this.sePuedeRepartirCarta();
         manoDeCartas.recibirCarta(this.retirarPrimera());
+    }
+
+    public void agregarHandler(Carta carta, HandlerDeCarta confirmacion){
+        for(Carta actual: this.cartas){
+            if(!actual.equals(carta)) actual.agregarHandler(confirmacion);
+        }
+    }
+
+    public void limpiarCarta() {
+        for(Carta carta: this.cartas){
+            carta.limpiarHandler();
+        }
     }
 }
