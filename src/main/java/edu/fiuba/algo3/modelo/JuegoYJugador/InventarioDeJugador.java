@@ -39,6 +39,7 @@ public class InventarioDeJugador {
 
     public void canjearCartas(Carta primeraCarta, Carta segundaCarta, Carta terceraCarta) {
         this.fichasDisponibles += this.mano.canjearCartas(primeraCarta, segundaCarta, terceraCarta);
+        this.notifyFicha();
     }
 
     public Ejercitos generarDivision(int cantidadFuerzas) {

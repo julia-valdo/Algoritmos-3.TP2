@@ -27,6 +27,7 @@ public class BoxCarta extends Rectangle {
         this.textoPais = new Text(carta.getPais().getNombreDelPais());
         this.textoPais.setFill(Paint.valueOf("#ffffff"));
         this.textoPais.setStyle("-fx-font-weight: bold");
+        this.setFill(Paint.valueOf("#000000"));
     }
 
     public void setPosicion(int posX, int posY){
@@ -52,7 +53,6 @@ public class BoxCarta extends Rectangle {
         this.textoSimbolo.setOnMouseClicked(handler);
         this.setDisable(false);
         this.textoSimbolo.setDisable(false);
-        this.activarse();
     }
 
 
