@@ -204,8 +204,9 @@ public class Jugador {
 
     public void elegirCarta(Carta cartaElegida, HandlerDeCarta handler) {
         for(Carta carta: this.inventarioDeJugador.getCartas()){
-            handler.asociarCarta(carta);
-            carta.agregarHandler(handler.getCopy());
+            HandlerDeCarta handlerDeCarta = handler.getCopy();
+            handlerDeCarta.asociarCarta(carta);
+            carta.agregarHandler(handlerDeCarta);
         }
         cartaElegida.limpiarHandler();
     }

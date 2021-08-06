@@ -46,7 +46,6 @@ public class BoxCartaHandler implements HandlerDeCarta{
                 primeraCarta.getBox().activarse();
                 this.jugador.elegirCarta(primeraCarta, new BoxCartaHandlerDos(this.primeraCarta, this.jugador, this.textoDeError));
             } catch (Exception error) {
-
             }
         } else {
             try{

@@ -17,7 +17,7 @@ public class Carta {
     public Carta(Pais pais, String simbolo){
         this.pais = pais;
         this.simbolo = simbolo;
-        this.mazo = new Mazo(new ArrayList<Carta>());
+        this.mazo = new Mazo(new ArrayList<>());
         this.estadoCarta = new Desactivada();
         this.boxCarta = new BoxCarta(this);
     }
@@ -27,7 +27,14 @@ public class Carta {
     }
 
     public boolean esValidoElCanje(Carta segundaCarta, Carta terceraCarta) {
-        return (this.sonTresIguales(segundaCarta, terceraCarta) || this.sonTresDistintas(segundaCarta, terceraCarta));
+        if(!this.hayRepetidas(segundaCarta, terceraCarta)){
+            return (this.sonTresIguales(segundaCarta, terceraCarta) || this.sonTresDistintas(segundaCarta, terceraCarta));
+        }
+        return false;
+    }
+
+    private boolean hayRepetidas(Carta segundaCarta, Carta terceraCarta) {
+        return this.equals(segundaCarta) || this.equals(terceraCarta) || segundaCarta.equals(terceraCarta);
     }
 
     private boolean sonTresIguales(Carta segundaCarta, Carta terceraCarta){
@@ -79,16 +86,20 @@ public class Carta {
     }
 
 
-    private void copiarMiHandler(Carta otraCarta) {
-        this.boxCarta.copiarEn(this.boxCarta, otraCarta);
-    }
-
     public void limpiarHandler() {
         this.boxCarta.limpiarHandler();
     }
 
     public BoxCarta getBox(){
         return this.boxCarta;
+    }
+
+    @Override
+    public boolean equals(Object otro){
+        if(this == otro) return true;
+        else if(otro == null || otro.getClass() != Carta.class) return false;
+        Carta otraCarta = (Carta) otro;
+        return this.pais.equals(otraCarta.pais) && this.simbolo.equals(otraCarta.simbolo);
     }
 
 }
