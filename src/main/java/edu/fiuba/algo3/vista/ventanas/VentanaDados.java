@@ -44,12 +44,27 @@ public class VentanaDados extends StackPane {
         resultados.setPadding(new Insets(20));
         resultados.setAlignment(Pos.CENTER_LEFT);
 
-        Text resultadoAtacante = new Text(resultadoDadoAtacante.toString());
-        Text resultadoDefensor = new Text(resultadoDadoDefensor.toString());
+        Text resultadoAtacante = this.estilizarDados(resultadoDadoAtacante);
+        Text resultadoDefensor = this.estilizarDados(resultadoDadoDefensor);
         resultados.getChildren().addAll(resultadoAtacante,resultadoDefensor);
 
         contenedor.getChildren().addAll(atacante, resultadoAtacante, defensor, resultadoDefensor);
 
         super.getChildren().add(contenedor);
+    }
+
+
+    private Text estilizarDados(ArrayList<Integer> unosDados){
+        Text dadosChetos = new Text();
+        String stringDeDados = "";
+
+        for(Integer dado: unosDados){
+            stringDeDados += dado.toString() + "   ";
+        }
+
+        dadosChetos.setText(stringDeDados);
+        dadosChetos.setFont(Font.font("arial", FontWeight.EXTRA_BOLD, FontPosture.REGULAR, 18));
+
+        return dadosChetos;
     }
 }
