@@ -36,7 +36,7 @@ public class VentanaVictoria extends Group {
     }
 
     private void prepararVentanaDeVictoria(Jugador ganador){
-        Text textoDeVictoria = new Text("Victoria de: \n" + ganador.getNombreJugador());
+        Text textoDeVictoria = new Text("ATR EL " + ganador.getNombreJugador() + "\n PERRO");
         textoDeVictoria.setStyle("-fx-font: 24 sans-serif; -fx-font-weight: bold;");
         textoDeVictoria.setFill(Paint.valueOf(ganador.getColor()));
         textoDeVictoria.setTranslateX(900);

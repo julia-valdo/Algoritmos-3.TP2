@@ -10,7 +10,7 @@ public class Tablero extends Application {
     private final ControladorMusica musica = new ControladorMusica();
     @Override
     public void start (Stage stage) throws Exception{
-        stage.setTitle("A.L.T.E.G.O.");
+        stage.setTitle("L-GANTE KELOTEG");
 
         VentanaComienzo ventanaComienzo = new VentanaComienzo();
         Scene escenaComienzo = new Scene(ventanaComienzo);

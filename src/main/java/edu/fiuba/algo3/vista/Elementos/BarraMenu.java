@@ -25,7 +25,7 @@ public class BarraMenu extends MenuBar {
         ImageView imagePanel = new ImageView();
         imagePanel.setImage(new Image("file:papel.jpg"));
         imagePanel.setFitHeight(30);
-        imagePanel.setFitWidth(1110);
+        imagePanel.setFitWidth(1172);
 
         opcionSalir.setOnAction(new SalirHandler());
         opcionSalir.setStyle("-fx-font-weight: bold");
