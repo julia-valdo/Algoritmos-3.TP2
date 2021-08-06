@@ -10,10 +10,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 
 public class VentanaDePapel extends Group {
-
+    Text texto;
     public VentanaDePapel(Text textoAMostrar){
-        this.prepararFondo();
-        this.prepararTexto(textoAMostrar);
+        texto = textoAMostrar;
         this.prepararBotonSalir();
     }
 
@@ -23,12 +22,13 @@ public class VentanaDePapel extends Group {
         this.getChildren().add(textoAMostrar);
     }
 
-    private void prepararFondo() {
+    public void prepararFondo(int altura, int anchura) {
         ImageView imagePanel = new ImageView();
         imagePanel.setImage(new Image("file:papel.jpg"));
-        imagePanel.setFitHeight(200);
-        imagePanel.setFitWidth(310);
+        imagePanel.setFitHeight(altura);
+        imagePanel.setFitWidth(anchura);
         this.getChildren().add(imagePanel);
+        this.prepararTexto(texto);
     }
 
     private void prepararBotonSalir(){

@@ -27,6 +27,7 @@ public class BoxCarta extends Rectangle {
         this.textoPais = new Text(carta.getPais().getNombreDelPais());
         this.textoPais.setFill(Paint.valueOf("#ffffff"));
         this.textoPais.setStyle("-fx-font-weight: bold");
+        this.setFill(Paint.valueOf("#000000"));
     }
 
     public void setPosicion(int posX, int posY){
@@ -52,15 +53,15 @@ public class BoxCarta extends Rectangle {
         this.textoSimbolo.setOnMouseClicked(handler);
         this.setDisable(false);
         this.textoSimbolo.setDisable(false);
-        this.activarse();
     }
 
 
     public void limpiarHandler() {
         if(this.getOnMouseClicked() != null) {
-            HandlerDePais handler = (HandlerDePais) this.getOnMouseClicked();
+            HandlerDeCarta handler = (HandlerDeCarta) this.getOnMouseClicked();
             handler.desarmarHandler();
         }
+        this.desactivarse();
     }
 
     public void copiarEn(BoxCarta unaCarta, Carta otraCarta) {
@@ -72,6 +73,16 @@ public class BoxCarta extends Rectangle {
 
     public void activarse(){
         this.setFill(Paint.valueOf("#008000"));
+        this.setDisable(true);
+        this.textoSimbolo.setDisable(true);
+        this.textoPais.setDisable(true);
+    }
+
+    private void desactivarse(){
+        this.setFill(Paint.valueOf("#000000"));
+        this.setDisable(false);
+        this.textoSimbolo.setDisable(false);
+        this.textoPais.setDisable(false);
     }
 
 }

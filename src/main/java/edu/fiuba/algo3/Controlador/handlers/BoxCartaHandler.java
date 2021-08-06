@@ -38,6 +38,7 @@ public class BoxCartaHandler implements HandlerDeCarta{
     @Override
     public void handle(MouseEvent mouseEvent) {
         this.desarmarTextoDeError();
+        primeraCarta.getBox().activarse();
         this.jugador.elegirCarta(primeraCarta, new BoxCartaHandlerDos(this.primeraCarta, this.jugador, this.textoDeError));
     }
 
