@@ -1,8 +1,6 @@
 package edu.fiuba.algo3.Controlador.handlers;
 
 import edu.fiuba.algo3.modelo.Cartas.Carta;
-import edu.fiuba.algo3.modelo.Excepciones.MovimientoDeEjercitoError;
-import edu.fiuba.algo3.modelo.JuegoYJugador.InventarioDeJugador;
 import edu.fiuba.algo3.modelo.JuegoYJugador.Jugador;
 import edu.fiuba.algo3.vista.Elementos.TextoNotificable;
 import javafx.scene.Group;
@@ -39,9 +37,12 @@ public class BoxCartaHandlerDos implements HandlerDeCarta{
     @Override
     public void handle(MouseEvent mouseEvent) {
         this.desarmarTextoDeError();
-        this.segundaCarta.getBox().activarse();
-        this.jugador.elegirCarta(this.segundaCarta, new BoxCartaHandlerTres(this.primeraCarta, this.segundaCarta, this.jugador ,this.textoDeError));
-        this.limpieza();
+        try {
+            this.segundaCarta.getBox().activarse();
+            this.jugador.elegirCarta(this.segundaCarta, new BoxCartaHandlerTres(this.primeraCarta, this.segundaCarta, this.jugador, this.textoDeError));
+        }catch(Exception error){
+
+        }
     }
 
     private void desarmarTextoDeError(){
@@ -60,7 +61,6 @@ public class BoxCartaHandlerDos implements HandlerDeCarta{
         }
     }
     private void limpieza(){
-        this.primeraCarta.limpiarCarta();
-        this.segundaCarta.limpiarCarta();
+        this.primeraCarta.limpiarCartas();
     }
 }

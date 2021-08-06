@@ -76,4 +76,10 @@ public class ManoDeCartas {
     public ArrayList<Carta> getCartas(){
         return this.cartas;
     }
+
+    public void limpiarCartas() {
+        for(Carta carta: this.cartas){
+            carta.limpiarHandler();
+        }
+    }
 }

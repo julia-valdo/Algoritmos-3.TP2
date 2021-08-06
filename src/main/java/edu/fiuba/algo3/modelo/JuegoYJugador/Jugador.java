@@ -202,11 +202,12 @@ public class Jugador {
     }
 
 
-    public void elegirCarta(Carta primeraCarta, HandlerDeCarta boxCartaHandlerDos) {
+    public void elegirCarta(Carta cartaElegida, HandlerDeCarta handler) {
         for(Carta carta: this.inventarioDeJugador.getCartas()){
-            boxCartaHandlerDos.asociarCarta(carta);
-            carta.agregarHandler(boxCartaHandlerDos);
+            handler.asociarCarta(carta);
+            carta.agregarHandler(handler.getCopy());
         }
+        cartaElegida.limpiarHandler();
     }
 
     public void habilitarCartas(HandlerDeCarta handler){
