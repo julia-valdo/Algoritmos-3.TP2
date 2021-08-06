@@ -74,9 +74,6 @@ public class Carta {
         }
     }
 
-    public void limpiarCartas() {
-        this.mazo.limpiarCartas();
-    }
 
     private void copiarMiHandler(Carta otraCarta) {
         this.boxCarta.copiarEn(this.boxCarta, otraCarta);

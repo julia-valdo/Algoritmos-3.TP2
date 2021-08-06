@@ -54,15 +54,4 @@ public class Mazo {
         manoDeCartas.recibirCarta(this.retirarPrimera());
     }
 
-    public void agregarHandler(Carta carta, HandlerDeCarta confirmacion){
-        for(Carta actual: this.cartas){
-            if(!actual.equals(carta)) actual.agregarHandler(confirmacion);
-        }
-    }
-
-    public void limpiarCartas() {
-        for(Carta carta: this.cartas){
-            carta.limpiarHandler();
-        }
-    }
 }

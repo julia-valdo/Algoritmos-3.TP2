@@ -51,7 +51,7 @@ public class BoxCartaHandlerDos implements HandlerDeCarta{
 
     private void manejarErrorDeAtaque(Exception excepcion){
         this.textoDeError.setText("Carta Ya Activada");
-        this.limpieza();
+
     }
 
     private void prepararGrupoDeError(MouseEvent evento) {
@@ -60,7 +60,5 @@ public class BoxCartaHandlerDos implements HandlerDeCarta{
             this.textoDeError.agregarAGrupo(grupoDeEscena);
         }
     }
-    private void limpieza(){
-        this.primeraCarta.limpiarCartas();
-    }
+
 }

@@ -64,9 +64,6 @@ public class BoxCarta extends Rectangle {
         this.setOnMouseClicked(handler);
         this.textoSimbolo.setOnMouseClicked(handler);
         this.textoPais.setOnMouseClicked(handler);
-        this.setDisable(false);
-        this.textoSimbolo.setDisable(false);
-        this.textoPais.setDisable(false);
     }
 
 

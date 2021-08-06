@@ -5,7 +5,10 @@ import edu.fiuba.algo3.modelo.Cartas.Carta;
 import edu.fiuba.algo3.modelo.JuegoYJugador.InventarioDeJugador;
 import edu.fiuba.algo3.modelo.JuegoYJugador.Jugador;
 import edu.fiuba.algo3.vista.Elementos.TextoNotificable;
+import javafx.scene.Node;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 import java.io.InvalidClassException;
 import java.util.ArrayList;
@@ -38,11 +41,22 @@ public class BoxCartaHandler implements HandlerDeCarta{
     @Override
     public void handle(MouseEvent mouseEvent) {
         this.desarmarTextoDeError();
-        try {
-            primeraCarta.getBox().activarse();
-            this.jugador.elegirCarta(primeraCarta, new BoxCartaHandlerDos(this.primeraCarta, this.jugador, this.textoDeError));
-        } catch (Exception error) {
+        if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
+            try {
+                primeraCarta.getBox().activarse();
+                this.jugador.elegirCarta(primeraCarta, new BoxCartaHandlerDos(this.primeraCarta, this.jugador, this.textoDeError));
+            } catch (Exception error) {
 
+            }
+        } else {
+            try{
+                this.jugador.canjearCarta(primeraCarta);
+                Stage stage = (Stage) (((Node)mouseEvent.getSource()).getScene().getWindow());
+                stage.close();
+                jugador.mostrarCartas();
+            }catch (Exception error) {
+
+            }
         }
     }
 

@@ -32,7 +32,6 @@ public class Jugador {
     private ArrayList<Pais> paisesOcupados;
     private InventarioDeJugador inventarioDeJugador;
     private Objetivo objetivo;
-    private ArrayList<Carta> aux = new ArrayList<>();
 
     public Jugador(int numeroDeJugador){
         this.paisesOcupados = new ArrayList<>();
@@ -105,7 +104,6 @@ public class Jugador {
 
     public void canjearCartas(Carta primeraCarta, Carta segundaCarta, Carta terceraCarta) {
             this.inventarioDeJugador.canjearCartas(primeraCarta, segundaCarta, terceraCarta);
-            aux = new ArrayList<>();
     }
 
     public void canjearCarta(Carta unaCarta) {
