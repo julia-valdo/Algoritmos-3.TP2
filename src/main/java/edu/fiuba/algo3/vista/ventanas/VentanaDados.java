@@ -19,9 +19,9 @@ public class VentanaDados extends StackPane {
 
     public VentanaDados(ArrayList<Integer> resultadoDadoAtacante, ArrayList<Integer> resultadoDadoDefensor){
 
-        ImageView imagen = new ImageView("file:L-Gante.jpg");
-        imagen.setFitHeight(600);
-        imagen.setFitWidth(800);
+        ImageView imagen = new ImageView("file:Dados420.png");
+        imagen.setFitHeight(200);
+        imagen.setFitWidth(300);
         imagen.fitHeightProperty();
         imagen.fitWidthProperty();
         this.getChildren().add(imagen);
@@ -33,12 +33,12 @@ public class VentanaDados extends StackPane {
         Text atacante = new Text("Atacante:");
         atacante.setFont(Font.font("arial", FontWeight.EXTRA_BOLD, FontPosture.REGULAR, 18));
         atacante.setStyle("-fx-font-weight: bold");
-        atacante.setFill(Color.BLACK);
+        atacante.setFill(Color.WHITE);
 
         Text defensor = new Text("Defensor:");
         defensor.setFont(Font.font("arial", FontWeight.EXTRA_BOLD, FontPosture.REGULAR, 18));
         defensor.setStyle("-fx-font-weight: bold");
-        defensor.setFill(Color.BLACK);
+        defensor.setFill(Color.WHITE);
 
         VBox resultados = new VBox();
         resultados.setPadding(new Insets(20));
@@ -64,6 +64,7 @@ public class VentanaDados extends StackPane {
 
         dadosChetos.setText(stringDeDados);
         dadosChetos.setFont(Font.font("arial", FontWeight.EXTRA_BOLD, FontPosture.REGULAR, 18));
+        dadosChetos.setFill(Color.WHITE);
 
         return dadosChetos;
     }

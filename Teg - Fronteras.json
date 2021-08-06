@@ -1,352 +1,191 @@
 [
   {
-    "Pais": "Francia",
-    "PosX": "510",
-    "PosY": "290",
+    "Pais": "Escobar",
+    "PosX": "100",
+    "PosY": "150",
     "Continente": "Europa",
-    "Limita con": "Alemania,España,Italia"
+    "Limita con": "Tigre,Malvinas Argentinas,Pilar"
   },
   {
-    "Pais": "Gran Bretaña",
-    "PosX": "470",
-    "PosY": "235",
-    "Continente": "Europa",
-    "Limita con": "Islandia,Alemania,España"
-  },
-  {
-    "Pais": "Tartaria",
-    "PosX": "643",
-    "PosY": "120",
-    "Continente": "Asia",
-    "Limita con": "Aral,Taymir,Siberia"
-  },
-  {
-    "Pais": "Mongolia",
-    "PosX": "691",
-    "PosY": "195",
-    "Continente": "Asia",
-    "Limita con": "Aral,Siberia,Iran,Gobi,China"
-  },
-  {
-    "Pais": "Zaire",
-    "PosX": "542",
-    "PosY": "455",
-    "Continente": "Africa",
-    "Limita con": "Madagascar,Sudafrica,Etiopia,Sahara"
-  },
-  {
-    "Pais": "Polonia",
-    "PosX": "603",
-    "PosY": "265",
-    "Continente": "Europa",
-    "Limita con": "Alemania,Rusia,Turquia,Egipto"
-  },
-  {
-    "Pais": "Oregon",
-    "PosX": "70",
-    "PosY": "285",
-    "Continente": "America del Norte",
-    "Limita con": "Alaska,Yukon,Canada,Nueva York,California"
-  },
-  {
-    "Pais": "Etiopia",
-    "PosX": "583",
-    "PosY": "420",
-    "Continente": "Africa",
-    "Limita con": "Sahara,Egipto,Zaire,Sudafrica"
-  },
-  {
-    "Pais": "Chile",
-    "PosX": "260",
-    "PosY": "465",
-    "Continente": "America del Sur",
-    "Limita con": "Argentina,Peru,Australia"
-  },
-  {
-    "Pais": "Australia",
-    "PosX": "796",
-    "PosY": "427",
-    "Continente": "Oceania",
-    "Limita con": "Chile,Sumatra,Java,Borneo"
-  },
-  {
-    "Pais": "Kamtchatka",
-    "PosX": "738",
-    "PosY": "117",
-    "Continente": "Asia",
-    "Limita con": "Siberia,China,Japon,Alaska"
-  },
-  {
-    "Pais": "Egipto",
-    "PosX": "653",
-    "PosY": "410",
-    "Continente": "Africa",
-    "Limita con": "Polonia,Turquia,Israel,Madagascar,Etiopia,Sahara"
-  },
-  {
-    "Pais": "Turquia",
-    "PosX": "623",
-    "PosY": "315",
-    "Continente": "Asia",
-    "Limita con": "Egipto,Polonia,Rusia,Iran,Israel,Arabia"
-  },
-  {
-    "Pais": "Nueva York",
-    "PosX": "155",
-    "PosY": "210",
-    "Continente": "America del Norte",
-    "Limita con": "Groenlandia,Canada,Oregon,California,Terranova"
-  },
-  {
-    "Pais": "Terranova",
-    "PosX": "185",
-    "PosY": "200",
-    "Continente": "America del Norte",
-    "Limita con": "Labrador,Canada,Nueva York"
-  },
-  {
-    "Pais": "Iran",
-    "PosX": "653",
-    "PosY": "220",
-    "Continente": "Asia",
-    "Limita con": "Aral,Mongolia,Gobi,China,India,Turquia,Rusia"
-  },
-  {
-    "Pais": "Madagascar",
-    "PosX": "663",
-    "PosY": "460",
-    "Continente": "Africa",
-    "Limita con": "Egipto,Zaire"
-  },
-  {
-    "Pais": "Argentina",
-    "PosX": "300",
-    "PosY": "465",
-    "Continente": "America del Sur",
-    "Limita con": "Chile,Peru,Brasil,Uruguay"
-  },
-  {
-    "Pais": "Israel",
-    "PosX": "628",
-    "PosY": "350",
-    "Continente": "Asia",
-    "Limita con": "Turquia,Arabia,Egipto"
-  },
-  {
-    "Pais": "Rusia",
-    "PosX": "591",
-    "PosY": "195",
-    "Continente": "Europa",
-    "Limita con": "Suecia,Aral,Iran,Turquia,Polonia"
-  },
-  {
-    "Pais": "Borneo",
-    "PosX": "768",
-    "PosY": "365",
-    "Continente": "Oceania",
-    "Limita con": "Australia,Malasia"
-  },
-  {
-    "Pais": "California",
-    "PosX": "120",
-    "PosY": "305",
-    "Continente": "America del Norte",
-    "Limita con": "Oregon,Nueva York,Mexico"
-  },
-  {
-    "Pais": "Taymir",
-    "PosX": "688",
-    "PosY": "117",
-    "Continente": "Asia",
-    "Limita con": "Tartaria,Siberia"
-  },
-  {
-    "Pais": "Aral",
-    "PosX": "623",
-    "PosY": "140",
-    "Continente": "Asia",
-    "Limita con": "Rusia,Iran,Mongolia,Siberia,Tartaria"
-  },
-  {
-    "Pais": "Siberia",
-    "PosX": "663",
-    "PosY": "169",
-    "Continente": "Asia",
-    "Limita con": "Aral,Tartaria,Taymir,Kamtchatka,China,Mongolia"
-  },
-  {
-    "Pais": "Canada",
-    "PosX": "133",
-    "PosY": "177",
-    "Continente": "America del Norte",
-    "Limita con": "Yukon,Oregon,Nueva York,Terranova"
-  },
-  {
-    "Pais": "Sahara",
-    "PosX": "523",
-    "PosY": "405",
-    "Continente": "Africa",
-    "Limita con": "Brasil,España,Egipto,Etiopia,Zaire"
-  },
-  {
-    "Pais": "Yukon",
-    "PosX": "80",
-    "PosY": "185",
-    "Continente": "America del Norte",
-    "Limita con": "Alaska,Canada,Oregon"
-  },
-  {
-    "Pais": "Uruguay",
-    "PosX": "340",
-    "PosY": "450",
-    "Continente": "America del Sur",
-    "Limita con": "Argentina,Brasil"
-  },
-  {
-    "Pais": "Groenlandia",
-    "PosX": "290",
-    "PosY": "165",
-    "Continente": "America del Norte",
-    "Limita con": "Labrador,Nueva York,Islandia"
-  },
-  {
-    "Pais": "Japon",
-    "PosX": "788",
-    "PosY": "144",
-    "Continente": "Asia",
-    "Limita con": "Kamtchatka,China"
-  },
-  {
-    "Pais": "Sumatra",
-    "PosX": "713",
-    "PosY": "410",
-    "Continente": "Oceania",
-    "Limita con": "Australia,India"
-  },
-  {
-    "Pais": "Alaska",
-    "PosX": "30",
-    "PosY": "220",
-    "Continente": "America del Norte",
-    "Limita con": "Yukon,Oregon,Kamtchatka"
-  },
-  {
-    "Pais": "Brasil",
-    "PosX": "340",
-    "PosY": "400",
-    "Continente": "America del Sur",
-    "Limita con": "Colombia,Peru,Argentina,Uruguay,Sahara"
-  },
-  {
-    "Pais": "Gobi",
-    "PosX": "711",
-    "PosY": "262",
-    "Continente": "Asia",
-    "Limita con": "Mongolia,China,Iran"
-  },
-  {
-    "Pais": "Italia",
-    "PosX": "550",
-    "PosY": "330",
-    "Continente": "Europa",
-    "Limita con": "Alemania,Francia"
-  },
-  {
-    "Pais": "España",
-    "PosX": "445",
-    "PosY": "335",
-    "Continente": "Europa",
-    "Limita con": "Sahara,Francia,Gran Bretaña"
-  },
-  {
-    "Pais": "Colombia",
-    "PosX": "270",
-    "PosY": "340",
-    "Continente": "America del Sur",
-    "Limita con": "Mexico,Peru,Brasil"
-  },
-  {
-    "Pais": "Suecia",
-    "PosX": "510",
-    "PosY": "165",
-    "Continente": "Europa",
-    "Limita con": "Rusia,Islandia"
-  },
-  {
-    "Pais": "Sudafrica",
-    "PosX": "623",
-    "PosY": "505",
-    "Continente": "Africa",
-    "Limita con": "Zaire,Etiopia"
-  },
-  {
-    "Pais": "Arabia",
-    "PosX": "683",
-    "PosY": "365",
-    "Continente": "Asia",
-    "Limita con": "Turquia,Israel"
-  },
-  {
-    "Pais": "India",
-    "PosX": "748",
-    "PosY": "305",
-    "Continente": "Asia",
-    "Limita con": "China,Malasia,Iran,Sumatra"
-  },
-  {
-    "Pais": "Java",
-    "PosX": "838",
-    "PosY": "365",
-    "Continente": "Oceania",
-    "Limita con": "Australia"
-  },
-  {
-    "Pais": "Mexico",
+    "Pais": "Tigre",
     "PosX": "220",
-    "PosY": "335",
-    "Continente": "America del Norte",
-    "Limita con": "Colombia,California"
+    "PosY": "225",
+    "Continente": "Europa",
+    "Limita con": "Escobar,Malvinas Argentinas,San Miguel,San Fernando,San Isidro,San Martin"
   },
   {
-    "Pais": "Peru",
-    "PosX": "255",
-    "PosY": "395",
+    "Pais": "Pilar",
+    "PosX": "100",
+    "PosY": "340",
+    "Continente": "Asia",
+    "Limita con": "Escobar,Malvinas Argentinas,Jose C.Paz,Moreno"
+  },
+  {
+    "Pais": "Malvinas Argentinas",
+    "PosX": "240",
+    "PosY": "280",
+    "Continente": "Asia",
+    "Limita con": "Tigre,Escobar,Jose C.Paz,San Miguel,Pilar"
+  },
+  {
+    "Pais": "Jose C.Paz",
+    "PosX": "240",
+    "PosY": "350",
+    "Continente": "Africa",
+    "Limita con": "Malvinas Argentinas,Pilar,Moreno,San Miguel"
+  },
+  {
+    "Pais": "San Miguel",
+    "PosX": "300",
+    "PosY": "350",
+    "Continente": "Europa",
+    "Limita con": "Jose C.Paz,Malvinas Argentinas,Moreno,Ituzaingo,Hurlingham,Tres De Febrero,San Martin"
+  },
+  {
+    "Pais": "Moreno",
+    "PosX": "300",
+    "PosY": "420",
+    "Continente": "America del Norte",
+    "Limita con": "San Miguel,Ituzaingo,Merlo,Jose C.Paz,Pilar"
+  },
+  {
+    "Pais": "Merlo",
+    "PosX": "380",
+    "PosY": "450",
+    "Continente": "Africa",
+    "Limita con": "Moreno,Moron,La Matanza,Ituzaingo"
+  },
+  {
+    "Pais": "Ituzaingo",
+    "PosX": "350",
+    "PosY": "420",
     "Continente": "America del Sur",
-    "Limita con": "Colombia,Brasil,Chile,Argentina"
+    "Limita con": "Moron,Merlo,Moreno,San Miguel,Hurlingham"
   },
   {
-    "Pais": "Alemania",
-    "PosX": "550",
-    "PosY": "275",
-    "Continente": "Europa",
-    "Limita con": "Polonia,Italia,Gran Bretaña,Francia"
+    "Pais": "Hurlingham",
+    "PosX": "350",
+    "PosY": "370",
+    "Continente": "Oceania",
+    "Limita con": "Ituzaingo,Moron,Tres De Febrero,San Miguel"
   },
   {
-    "Pais": "China",
-    "PosX": "768",
-    "PosY": "227",
-    "Continente": "Asia",
-    "Limita con": "Kamtchatka,Siberia,Mongolia,Gobi,Iran,India,Malasia,Japon"
-  },
-  {
-    "Pais": "Labrador",
-    "PosX": "230",
-    "PosY": "170",
-    "Continente": "America del Norte",
-    "Limita con": "Groenlandia,Terranova"
-  },
-  {
-    "Pais": "Islandia",
+    "Pais": "Tres De Febrero",
     "PosX": "370",
-    "PosY": "220",
-    "Continente": "Europa",
-    "Limita con": "Groenlandia,Suecia,Gran Bretaña"
+    "PosY": "320",
+    "Continente": "Asia",
+    "Limita con": "Hurlingham,San Miguel,Moron,CABA,La Matanza,San Martin"
   },
   {
-    "Pais": "Malasia",
-    "PosX": "813",
-    "PosY": "304",
+    "Pais": "San Martin",
+    "PosX": "370",
+    "PosY": "280",
+    "Continente": "Africa",
+    "Limita con": "San Miguel,Tres De Febrero,CABA,Vicente Lopez,San Isidro,Tigre"
+  },
+  {
+    "Pais": "San Isidro",
+    "PosX": "350",
+    "PosY": "220",
     "Continente": "Asia",
-    "Limita con": "China,India,Borneo"
+    "Limita con": "San Martin,Vicente Lopez,San Fernando,Tigre"
+  },
+  {
+    "Pais": "San Fernando",
+    "PosX": "320",
+    "PosY": "220",
+    "Continente": "America del Norte",
+    "Limita con": "Tigre,San Isidro"
+  },
+  {
+    "Pais": "Vicente Lopez",
+    "PosX": "400",
+    "PosY": "220",
+    "Continente": "America del Norte",
+    "Limita con": "San Isidro,San Martin,CABA"
+  },
+  {
+    "Pais": "CABA",
+    "PosX": "450",
+    "PosY": "220",
+    "Continente": "Asia",
+    "Limita con": "Vicente Lopez,San Martin,Tres De Febrero,La Matanza,Lomas De Zamora,Lanus,Avellaneda"
+  },
+  {
+    "Pais": "Moron",
+    "PosX": "430",
+    "PosY": "340",
+    "Continente": "Africa",
+    "Limita con": "Tres De Febrero,Hurlingham,Ituzaingo,Merlo,La Matanza"
+  },
+  {
+    "Pais": "La Matanza",
+    "PosX": "470",
+    "PosY": "360",
+    "Continente": "America del Sur",
+    "Limita con": "CABA,Tres De Febrero,Moron,Merlo,Ezeiza,Esteban Echeverria,Lomas De Zamora"
+  },
+  {
+    "Pais": "Lomas De Zamora",
+    "PosX": "590",
+    "PosY": "320",
+    "Continente": "Asia",
+    "Limita con": "Lanus,CABA,La Matanza,Esteban Echeverria,Almirante Brown,Quilmes"
+  },
+  {
+    "Pais": "Lanus",
+    "PosX": "590",
+    "PosY": "270",
+    "Continente": "Europa",
+    "Limita con": "Avellaneda,CABA,Lomas De Zamora,Quilmes"
+  },
+  {
+    "Pais": "Avellaneda",
+    "PosX": "590",
+    "PosY": "240",
+    "Continente": "Oceania",
+    "Limita con": "CABA,Lanus,Quilmes"
+  },
+  {
+    "Pais": "Esteban Echeverria",
+    "PosX": "590",
+    "PosY": "400",
+    "Continente": "America del Norte",
+    "Limita con": "Lomas De Zamora,La Matanza,Ezeiza,Presidente Peron,Almirante Brown"
+  },
+  {
+    "Pais": "Ezeiza",
+    "PosX": "590",
+    "PosY": "450",
+    "Continente": "Asia",
+    "Limita con": "Esteban Echeverria,La Matanza"
+  },
+  {
+    "Pais": "Quilmes",
+    "PosX": "670",
+    "PosY": "240",
+    "Continente": "Asia",
+    "Limita con": "Avellaneda,Lanus,Lomas De Zamora,Almirante Brown,Florencio Varela"
+  },
+  {
+    "Pais": "Almirante Brown",
+    "PosX": "670",
+    "PosY": "300",
+    "Continente": "Asia",
+    "Limita con": "Quilmes,Lomas De Zamora,Esteban Echeverria,Presidente Peron,Florencio Varela"
+  },
+  {
+    "Pais": "Florencio Varela",
+    "PosX": "720",
+    "PosY": "300",
+    "Continente": "America del Norte",
+    "Limita con": "Quilmes,Almirante Brown,Presidente Peron"
+  },
+  {
+    "Pais": "Presidente Peron",
+    "PosX": "720",
+    "PosY": "460",
+    "Continente": "America del Norte",
+    "Limita con": "Florencio Varela,Almirante Brown,Esteban Echeverria"
   }
 ]

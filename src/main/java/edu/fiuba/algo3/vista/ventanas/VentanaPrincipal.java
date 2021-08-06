@@ -22,8 +22,8 @@ public class VentanaPrincipal extends Group {
         HBox mapa = new HBox();
         ImageView imageMapa = new ImageView();
         imageMapa.setImage(new Image("file:conurbano.jpg"));
-        imageMapa.setFitHeight(500);
-        imageMapa.setFitWidth(700);
+        imageMapa.setFitHeight(600);
+        imageMapa.setFitWidth(870);
         mapa.getChildren().add(imageMapa);
 
         contenedor.setTop(menu);
@@ -33,8 +33,8 @@ public class VentanaPrincipal extends Group {
 
         ImageView imagePanel = new ImageView();
         imagePanel.setImage(new Image("file:L-Gante.jpg"));
-        imagePanel.setFitHeight(500);
-        imagePanel.setFitWidth(500);
+        imagePanel.setFitHeight(600);
+        imagePanel.setFitWidth(300);
         mapa.getChildren().add(imagePanel);
     }
 }
