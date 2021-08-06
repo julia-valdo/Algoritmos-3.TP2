@@ -15,8 +15,7 @@ public class BotonMostrarCartas extends Button{
         super();
         MostrarCartasHandler handler = new MostrarCartasHandler(inventario);
         this.addEventHandler(ActionEvent.ACTION, handler);
-//        this.setStyle("-fx-background-color: " + color + "; -fx-font-weight: bold;" +
-//                "-fx-text-fill: #ffffff");
+        this.setStyle("-fx-font-weight: bold;-fx-background-color: #ffebcd; -fx-border-color: #000000");
         this.setText("Mostrar Cartas");
     }
 }

@@ -29,8 +29,8 @@ public class JugadorTest {
     public void unJugadorNoPuedeOcuparUnPaisConEjercitosEnPie(){
         Jugador jugador1 = new Jugador(1);
         Jugador jugador2 = new Jugador(2); //no se derrotan sus fuerzas
-        jugador1.agregarFichas(2);
-        jugador2.agregarFichas(1);
+        jugador1.agregarFichas(10);
+        jugador2.agregarFichas(10);
         Pais argentina = new Pais("argentina");
         Pais chile = new Pais("chile");
         chile.agregarPaisConectado(argentina);
@@ -38,11 +38,12 @@ public class JugadorTest {
 
         jugador1.ocupa(argentina);
         jugador2.ocupa(chile);
+        jugador1.agregarFichasA(5,argentina);
 
         jugador1.ocupa(chile);
 
         Executable noExcepcion = () -> {
-            jugador1.atacarPaisDesdeA(chile, argentina);
+            jugador1.atacarPaisDesdeA(argentina, chile);
         };
         //Como no lo ocupa, lo puede atacar
         assertDoesNotThrow(noExcepcion);

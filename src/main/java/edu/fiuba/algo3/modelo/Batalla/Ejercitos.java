@@ -55,20 +55,6 @@ public class Ejercitos {
         return this.condicionActual.estanDerrotados();
     }
 
-    /*
-    Se junta con las fichas de la otra division, solamente si tienen el mismo comandante
-     */
-    public void agregarDivision(Ejercitos nuevaDivision) {
-        this.agregarEjercitos(nuevaDivision.getCantidadEjercitos());
-    }
-
-    public void ponerColorAFicha(Ficha unaFicha){
-        unaFicha.setColor(this.comandante.getColor());
-    }
-
-    /*
-    Hago override del metodo equals
-     */
     public boolean equals(Object otroObjeto){
         if(this == otroObjeto) return true;
         else if(otroObjeto == null || otroObjeto.getClass() != Ejercitos.class) return false;

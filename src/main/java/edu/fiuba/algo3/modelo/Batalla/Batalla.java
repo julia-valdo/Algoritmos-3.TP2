@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.Batalla;
 
+import edu.fiuba.algo3.modelo.Excepciones.AtaqueNoPermitidoError;
 import edu.fiuba.algo3.vista.ventanas.VentanaAyuda;
 import edu.fiuba.algo3.vista.ventanas.VentanaDados;
 import javafx.animation.PauseTransition;
@@ -15,6 +16,8 @@ public class Batalla {
     private int perdidaDefensor;
     ArrayList<Integer> resultadoDadoAtacante;
     ArrayList<Integer> resultadoDadoDefensor;
+    private int minimoAtacante = 1;
+
     public Batalla(){
         this.perdidaAtacante = 0;
         this.perdidaDefensor = 0;
@@ -72,6 +75,7 @@ public class Batalla {
     }
 
     private void tirarDadoAtacante(int numeroFichasAtacante){
+        if (numeroFichasAtacante == minimoAtacante) throw new AtaqueNoPermitidoError("");
         resultadoDadoAtacante = this.tirarDado(numeroFichasAtacante - 1);
     }
 
