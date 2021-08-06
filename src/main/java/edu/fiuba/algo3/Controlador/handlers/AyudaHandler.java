@@ -11,7 +11,7 @@ public class AyudaHandler implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
         Stage stageAyuda = new Stage();
-        Scene sceneAyuda = new Scene(new VentanaAyuda(),900,600);
+        Scene sceneAyuda = new Scene(new VentanaAyuda(),700,600);
         stageAyuda.setTitle("Ayuda A.L.T.E.G.O.");
         stageAyuda.setScene(sceneAyuda);
         stageAyuda.show();
