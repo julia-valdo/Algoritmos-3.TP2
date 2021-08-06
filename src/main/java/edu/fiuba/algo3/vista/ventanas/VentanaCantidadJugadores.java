@@ -24,8 +24,9 @@ public class VentanaCantidadJugadores extends StackPane {
 
         HBox mapa = new HBox();
         ImageView imageMapa = new ImageView();
-        imageMapa.setImage(new Image("file:tableroTEG.png"));
-        imageMapa.setFitHeight(600);
+        imageMapa.setImage(new Image("file:conurbano.jpg"));
+        imageMapa.setFitHeight(500);
+        imageMapa.setFitWidth(700);
         mapa.getChildren().add(imageMapa);
         this.getChildren().add(mapa);
 
@@ -34,9 +35,9 @@ public class VentanaCantidadJugadores extends StackPane {
 
         HBox panel = new HBox();
         ImageView imagePanel = new ImageView();
-        imagePanel.setImage(new Image("file:papel.jpg"));
-        imagePanel.setFitHeight(600);
-        imagePanel.setFitWidth(250);
+        imagePanel.setImage(new Image("file:L-Gante.jpg"));
+        imagePanel.setFitHeight(500);
+        imagePanel.setFitWidth(500);
         mapa.getChildren().add(imagePanel);
         this.getChildren().add(panel);
 

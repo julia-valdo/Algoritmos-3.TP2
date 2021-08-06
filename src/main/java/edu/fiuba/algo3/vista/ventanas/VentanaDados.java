@@ -19,7 +19,7 @@ public class VentanaDados extends StackPane {
 
     public VentanaDados(ArrayList<Integer> resultadoDadoAtacante, ArrayList<Integer> resultadoDadoDefensor){
 
-        ImageView imagen = new ImageView("file:papel.jpg");
+        ImageView imagen = new ImageView("file:L-Gante.jpg");
         imagen.setFitHeight(600);
         imagen.setFitWidth(800);
         imagen.fitHeightProperty();
