@@ -1,0 +1,105 @@
+@startuml
+interface Canjes{
++ realizarCanje():int
+}
+
+class CanjesMenosDeTres{
+- cantidadFichasMenosDeTres:int
+- cantidadFichasPorCanje:int
+- cantidadMaximaFichas:int
+- fichasPorCanje:int
++ obtenerProximoCanje():Canjes
+}
+
+class CanjesMasDeTres{
+- cantidadFichasPorCanje:int
+- cantidadFichasMasDeTres:int
+- fichasPorCanje:int
++ obtenerProximoCanje():Canjes
+}
+
+class Carta{
+- pais:Pais
+- simbolo:String
+- mazo:Mazo
+- estadoCarta:EstadoDeActivacion
+- sonTresIguales(Carta segundaCarta,Carta terceraCarta):boolean
+- sonTresDistintas(Carta segundaCarta,Carta terceraCarta):boolean
+- sonDelMismoTipo(Carta otraCarta):boolean
+- noSonDelMismoTipo(Carta otraCarta):boolean
++ getSimbolo():String
++ esValidoElCanje(Carta segundaCarta,Carta terceraCarta):boolean
++ getPais():Pais
++ activarse():void
++ devolverAlMazo():void
++ asociarAlMazo(Mazo unMazo):void
+}
+
+interface EstadoDeActivacion{
++ activarseEn(unPais:Pais):EstadoDeActivacion
+}
+
+class Desactivada{
+- cantidadDeEjercitos:int
+}
+
+class Activada{
+}
+
+class Mazo{
+- cartas:ArrayList<Carta>
+- asociarmeLasCartas(ArrayList<>cartas):void
+- sePuedeRepartirCarta():void
+- tengoCartasRestantes():boolean
+- retirarPrimera():Carta
++ repartirCarta(Jugador unJugador):void
++ vuelveAlMazo(Carta carta):void
++ quedanCartas():boolean
++ repartirCarta(ManoDeCartas manoDeCartas):void
+}
+
+class NoEstaHabilitado{
+}
+
+class ManoDeCartas{
+- cartas:ArrayList<Carta>
+- cantidadDeCanjesHechos:Canjes
+- puedePedirCarta:Habilitado
+- tengo(Carta unaCarta):boolean
+- tengoLasCartas(Carta primeraCarta,Carta segundaCarta,Carta terceraCarta):boolean
+- finalizarCanje(Carta primeraCarta,Carta segundaCarta,Carta terceraCarta):void
+- realizarCanje(Carta primeraCarta,Carta segundaCarta,Carta terceraCarta):int
+- confirmarCanje():int
++ recibirCarta(Carta unaCarta):void
++ canjearCartas(Carta primeraCarta,Carta segundaCarta,Carta terceraCarta):int
++ activarCarta(Carta unaCarta):void
++ pedirCarta(InventarioDeJuego inventario):void
++ ocupePais():void
+}
+
+class EstaHabilitado{
+}
+
+interface Habilitado{
++ pedirCarta(ManoDeCartas mano,InventarioDeJuego mazo):Habilitado
++ ocupePais():Habilitado
+}
+
+
+Habilitado <|.. NoEstaHabilitado
+Habilitado <|.. EstaHabilitado
+
+Mazo --> Carta
+Carta <-- ManoDeCartas
+ManoDeCartas -> Habilitado
+Canjes <- ManoDeCartas
+
+
+EstadoDeActivacion <- Carta
+EstadoDeActivacion <|.. Desactivada
+EstadoDeActivacion <|.. Activada
+
+
+Canjes <|.. CanjesMenosDeTres
+Canjes <|.. CanjesMasDeTres
+@enduml

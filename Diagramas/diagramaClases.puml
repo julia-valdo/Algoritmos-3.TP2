@@ -1,0 +1,274 @@
+@startuml
+class Batalla{
+- perdidaAtacante:int
+- perdidaDefensor:int
+- resultadoDadoAtacante:ArrayList<Integer>
+- resultadoDadoDefensor:ArrayList<Integer>
+- compararResultado(ArrayList<Integer> resultadoDadoAtacante,ArrayList<Integer> resultadoDadoDefensor):void
+- tirarDado(int cantidadDeTiros):ArrayList<Integer>
+- tirarDadoAtacante(int numeroFichasAtacante):void
+- tirarDadoDefensor(int numeroFichasDefensor):void
++ atacar(Ejercitos ejercitoAtacante,Ejercitos ejercitoDefensor):void
+}
+
+class Dado{
+- maximasTiradas:int
+- cantidadNumerosDado:int
++ tirarDado(int cantidad):ArrayList<Integer>
+}
+
+class Ejercitos{
+- comandante:Jugador
+~ condicionActual:EstadoEjercitos
+~ avisarOcupacionExitosa(Pais unPais):Ejercitos
+- retirarse():void
+- confirmarNuevaDivisionDe(int numeroFuerzas):Ejercitos
+- fueDerrotado():boolean
++ generarDivision(int cantidad):Ejercitos
++ restarEjercitos(int cantidad):void
++ sonAliadosDe(Ejercitos ejercitos):boolean
++ getCantidadEjercitos():int
++ agregarEjercitos(int cantidad):void
++ agregarDivision(Ejercitos nuevaDivision):void
++ equals(Object otroObjeto):boolean
++ moverEjercitoACon(Ejercitos otroEjercito,int cantidad):void
+}
+
+class EjercitosNulos{
++ disputarDominioDe(Pais unPais,Ejercitos otrosEjercitos):Ejercitos
+}
+
+interface EstadoEjercitos{
++ evaluarFuerzasRestantes():EstadoEjercitos
++ getCantidadFuerzas():int
++ agregarFuerzas(int numeroDeFuerzas):EstadoEjercitos
++ restarFuerzas(int numeroFuerzas):EstadoEjercitos
++ estanDerrotados():boolean
+}
+
+class Pais{
+- ejercitos:Ejercitos
+- nombreDelPais:String
+- paisesConectados:ArrayList<Pais>
+- esDelMismoEquipo(Pais otroPais):boolean
+- esLimitrofe(Pais otroPais):boolean
++ recibirTropas(Ejercitos otrosEjercitos):void
++ getNombreDelPais():String
++ getCantidadDeEjercitos():int
++ agregarPaisConectado(Pais unPais):void
++ agregarEjercito(int cantidadDeEjercitos):void
++ atacarA(Pais otroPais):void
++ moverEjercitoA(Pais otroPais,int cantidad):void
+}
+
+
+Batalla ..> Dado
+Batalla ..> Ejercitos
+
+Ejercitos <|-- EjercitosNulos
+Pais --> Ejercitos
+
+EstadoEjercitos <- Ejercitos
+
+interface Canjes{
++ realizarCanje():int
+}
+
+class Carta{
+- pais:Pais
+- simbolo:String
+- mazo:Mazo
+- estadoCarta:EstadoDeActivacion
+- sonTresIguales(Carta segundaCarta,Carta terceraCarta):boolean
+- sonTresDistintas(Carta segundaCarta,Carta terceraCarta):boolean
+- sonDelMismoTipo(Carta otraCarta):boolean
+- noSonDelMismoTipo(Carta otraCarta):boolean
++ getSimbolo():String
++ esValidoElCanje(Carta segundaCarta,Carta terceraCarta):boolean
++ getPais():Pais
++ activarse():void
++ devolverAlMazo():void
++ asociarAlMazo(Mazo unMazo):void
+}
+
+interface EstadoDeActivacion{
++ activarseEn(unPais:Pais):EstadoDeActivacion
+}
+
+class Mazo{
+- cartas:ArrayList<Carta>
+- asociarmeLasCartas(ArrayList<>cartas):void
+- sePuedeRepartirCarta():void
+- tengoCartasRestantes():boolean
+- retirarPrimera():Carta
++ repartirCarta(Jugador unJugador):void
++ vuelveAlMazo(Carta carta):void
++ quedanCartas():boolean
++ repartirCarta(ManoDeCartas manoDeCartas):void
+}
+
+class ManoDeCartas{
+- cartas:ArrayList<Carta>
+- cantidadDeCanjesHechos:Canjes
+- puedePedirCarta:Habilitado
+- tengo(Carta unaCarta):boolean
+- tengoLasCartas(Carta primeraCarta,Carta segundaCarta,Carta terceraCarta):boolean
+- finalizarCanje(Carta primeraCarta,Carta segundaCarta,Carta terceraCarta):void
+- realizarCanje(Carta primeraCarta,Carta segundaCarta,Carta terceraCarta):int
+- confirmarCanje():int
++ recibirCarta(Carta unaCarta):void
++ canjearCartas(Carta primeraCarta,Carta segundaCarta,Carta terceraCarta):int
++ activarCarta(Carta unaCarta):void
++ pedirCarta(InventarioDeJuego inventario):void
++ ocupePais():void
+}
+
+interface Habilitado{
++ pedirCarta(ManoDeCartas mano,InventarioDeJuego mazo):Habilitado
++ ocupePais():Habilitado
+}
+
+
+Mazo --> Carta
+Carta <-- ManoDeCartas
+ManoDeCartas -> Habilitado
+Canjes <- ManoDeCartas
+
+
+EstadoDeActivacion <- Carta
+
+class FaseDeRonda{
++ aplicarAccionesDeFase(Jugador jugador,InventarioDeJuego inventario):void
++ accionJugador(Jugador jugador, InventarioDeJuego inventarioDeJuego,SeleccionJugador seleccion):boolean
++ cambiarFase():FaseDeRonda
+}
+
+class InventarioDeJuego{
+- mazoDeCartas:Mazo
+- continentes:ArrayList<Continente>
++ ejercitosPorContinentesConquistados(ArrayList<Pais>paisesOcupados):int
++ repartirCarta(Jugador jugador1):void
++ quedanCartas():boolean
++ repartirCarta(ManoDeCartas mano):void
+}
+
+class InventarioDeJugador{
+- mano:ManoDeCartas
+- fichasDisponibles:int
+- DuenoDelCuartel:Jugador
++ recibirCarta(Carta unaCarta):void
++ canjearCartas(Carta primeraCarta,Carta segundaCarta,Carta terceraCarta):void
++ generarDivision(int cantidadFuerzas):Ejercitos
++ agregarEjercitos(int cantidadFichas):void
++ agregarFichasA(int numeroDeFichas,Pais unPais):void
++ activarCarta(Carta unaCarta):void
++ pedirCarta(InventarioDeJuego inventario):void
++ ocupePais():void
+}
+
+class Juego{
+- turnoActual:Integer
+- turnoJugadores:HashMap<Integer,Jugador>
+- fase:FaseDeRonda
+- parser:Parser
+- inventario:InventarioDeJuego
+- crearJugadores(int cantidadDeJugadores):void
+- establecerTurnos(ArrayList<Jugador> jugadores):void
+- avanzarTurno():void
+- repartirPaises():void
+- esElUltimoJugador(Jugador jugador):boolean
+- generarInventario():void
++ iniciarJuego():void
++ obtenerOrder():ArrayList<Integer>
++ obtenerSiguiente():Jugador
++ seleccionDeJugador(Jugador jugador,SeleccionJugador seleccion):void
+}
+
+class Jugador{
+- numeroDeJugador:int
+- paisesOcupados:ArrayList<Pais>
+- inventarioDeJugador:InventarioDeJugador
+- derrotado:boolean
+- verificarOcupacion(Pais otroPais):void
+- puedoCanjearLaCarta(Carta unaCarta):boolean
++ ocupa(Pais unPais):void
++ perdisteA(Pais unPais):void
++ ocupasteA(Pais unPais):void
++ atacarPaisDesdeA(Pais unPais,Pais otroPais):void
++ cantidadDeEjercitosAColocar(InventarioDeJuego inventarioDeJuego):int
++ agregarFichasA(int numeroDeFichas,Pais unPais):void
++ recibirCarta(Carta unaCarta):void
++ canjearCartas(Carta primeraCarta,Carta segundaCarta,Carta terceraCarta):void
++ canjearCarta(Carta unaCarta):void
++ getPaisesOcupados():ArrayList<Pais>
++ fueDerrotado():boolean
++ moverFichasDeACon(Pais unPais,Pais otroPais,int cantidad):void
++ getNumeroJugador():Integer
++ pedirCarta(InventarioDeJuego inventario):void
+}
+
+Juego --> InventarioDeJuego
+Jugador "2..6"<-- Juego
+
+Jugador --> InventarioDeJugador
+
+class Continente{
+- nombre:String
+- paises:ArrayList<Pais>
+- cantidadDeFichasPorContinente:int
++ agregarPais(Pais pais):void
++ cantidadPaisesQueMeConforman():int
++ getNombre():String
++ fueConquistado(ArrayList<Pais> paises):boolean
++ getCantidadDeFichasPorContinente():int
++ pertenece(Pais pais):boolean
+}
+
+class Objetivo{
++ objetivoCumplido(ArrayList<Pais> paises):boolean
+}
+
+Continente <-- Objetivo
+
+class Constructor{
+- paisYCarta:ConstructorPaisYCarta
+- continente ConstructorContinente
+- objetivos ConstructorObjetivos
++ construirPaisesYCartas(HashMap<String,String> cartaPais,HashMap<String,String> fronteras):void
++ construirContinente(HashMap<String,String> continente):void
++ contruirObjetivos(HashMap<String,ArrayList<String>> objetivos):void
++ getPaises():HashMap<String,Pais>
++ getCartas():ArrayList<Carta>
++ getContinente():HashMap<String,Continente>
++ getObjetivos():HashMap<String,ArrayList<Objetivo>>
+}
+
+class Parser{
+- parser ParserTipo
+- objetos Constructor
++ parsearArchivo(String path):void
++ construirObjetos():void
++ getPaises():HashMap<String,Pais>
++ getCartas():ArrayList<Carta>
++ getContinente():HashMap<String,Continente>
++ getObjetivos():HashMap<String,ArrayList<Objetivo>>
+}
+
+interface ParserTipo{
++ parsearArchivo(String path):void
++ getContinente():HashMap<String,Continente>
++ getFronteras():HashMap<String,String>
++ getPaisesConSimbolos():HashMap<String,String>
++ getObjetivos():HashMap<String,ArrayList<String>>
+}
+
+Parser --> Constructor
+ParserTipo <- Parser
+
+Carta ---> Pais
+
+Continente <-- ParserTipo
+Pais <--- ParserTipo
+Pais <--- Jugador
+Pais <--- Continente
+@enduml

@@ -13,6 +13,8 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 
+import java.util.ArrayList;
+
 public class FasePrimeraColocacion implements FaseDeRonda{
     private final int fichasAAgregar = 5;
     private Jugador jugadorEnTurno;

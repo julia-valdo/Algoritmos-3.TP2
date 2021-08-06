@@ -12,6 +12,8 @@ import edu.fiuba.algo3.vista.ventanas.VentanaMenuColocacion;
 import javafx.scene.Node;
 import javafx.scene.text.Text;
 
+import java.util.ArrayList;
+
 public class FaseSegundaColocacion implements FaseDeRonda {
     private final int fichasAAgregar = 3;
     private Jugador jugadorEnTurno;
