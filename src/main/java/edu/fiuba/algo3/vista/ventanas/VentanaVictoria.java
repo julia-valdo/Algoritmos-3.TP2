@@ -5,16 +5,22 @@ import edu.fiuba.algo3.vista.Botones.BotonComienzo;
 import edu.fiuba.algo3.vista.Botones.BotonSalir;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
+import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 
 public class VentanaVictoria extends Group {
+
+    AudioClip mediaPlayer = new AudioClip("file:AgeofEmpires2VictoryMusic.mp3");
 
     public VentanaVictoria(Jugador jugadorGanador){
         super();
         this.prepararFondoDeVentana();
         this.prepararVentanaDeVictoria(jugadorGanador);
         this.prepararBotonDeReinicio();
+
+        mediaPlayer.play();
+        mediaPlayer.setVolume(5);
     }
 
     private void prepararBotonDeReinicio() {

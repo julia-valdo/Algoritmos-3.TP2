@@ -19,6 +19,7 @@ import edu.fiuba.algo3.vista.Elementos.BoxCarta;
 import edu.fiuba.algo3.vista.Elementos.ColoresJugadores;
 import edu.fiuba.algo3.vista.Elementos.Ficha;
 import javafx.scene.control.Button;
+import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -194,6 +195,7 @@ public class Jugador {
 
             stage.setScene(scenaFinal);
             stage.show();
+
         }
     }
 
