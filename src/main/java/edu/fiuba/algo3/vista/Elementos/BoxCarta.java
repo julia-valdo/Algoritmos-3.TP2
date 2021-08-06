@@ -8,6 +8,7 @@ import javafx.scene.Group;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Box;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.StrokeType;
 import javafx.scene.text.Text;
 
 public class BoxCarta extends Rectangle {
@@ -19,13 +20,24 @@ public class BoxCarta extends Rectangle {
     public BoxCarta(Carta carta){
         super();
         this.carta = carta;
-        this.setHeight(80);
-        this.setWidth(90);
+        this.setHeight(100);
+        this.setWidth(110);
+        this.formatearTexto(carta);
+        this.formatearVista();
+    }
+
+    private void formatearVista() {
+        this.desactivarse();
+        this.setStroke(Paint.valueOf("#000000"));
+        this.setStrokeType(StrokeType.INSIDE);
+    }
+
+    private void formatearTexto(Carta carta) {
         this.textoSimbolo = new Text(carta.getSimbolo());
-        this.textoSimbolo.setFill(Paint.valueOf("#ffffff"));
+        this.textoSimbolo.setFill(Paint.valueOf("#000000"));
         this.textoSimbolo.setStyle("-fx-font-weight: bold");
         this.textoPais = new Text(carta.getPais().getNombreDelPais());
-        this.textoPais.setFill(Paint.valueOf("#ffffff"));
+        this.textoPais.setFill(Paint.valueOf("#000000"));
         this.textoPais.setStyle("-fx-font-weight: bold");
         this.setFill(Paint.valueOf("#000000"));
     }
@@ -72,6 +84,10 @@ public class BoxCarta extends Rectangle {
 
     public void activarse(){
         this.setFill(Paint.valueOf("#008000"));
+    }
+
+    public void desactivarse(){
+        this.setFill(Paint.valueOf("#ffebcd"));
     }
 
 }

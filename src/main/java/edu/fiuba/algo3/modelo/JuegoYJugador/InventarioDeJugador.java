@@ -98,12 +98,13 @@ public class InventarioDeJugador {
         for(Carta carta: this.getCartas()){
             carta.getBox().setPosicion(xInicial,yInicial);
             carta.getBox().agregarseA(ventana);
-            xInicial += 90;
+            xInicial += 110;
         }
         xInicial = 15;
 
         Scene scena = new Scene(ventana);
         Stage popUpDeCarta = new Stage();
+        popUpDeCarta.setTitle("Cartas de: " + this.duenoDelCuartel.getNombreJugador());
 
         popUpDeCarta.setScene(scena);
         popUpDeCarta.show();
