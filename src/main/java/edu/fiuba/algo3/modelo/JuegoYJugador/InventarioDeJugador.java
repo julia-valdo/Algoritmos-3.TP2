@@ -95,6 +95,7 @@ public class InventarioDeJugador {
 
     public void mostrarCartas() {
         VentanaDePapel ventana = new VentanaDePapel(new Text());
+        ventana.prepararFondo(200,600);
         for(Carta carta: this.getCartas()){
             carta.getBox().setPosicion(xInicial,yInicial);
             carta.getBox().agregarseA(ventana);
