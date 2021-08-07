@@ -6,6 +6,7 @@ import edu.fiuba.algo3.Controlador.handlers.HandlerDePais;
 import edu.fiuba.algo3.modelo.Batalla.Ejercitos;
 import edu.fiuba.algo3.modelo.Batalla.Pais;
 import edu.fiuba.algo3.modelo.Cartas.Carta;
+import edu.fiuba.algo3.modelo.Excepciones.ColocacionEjercitoError;
 import edu.fiuba.algo3.modelo.Objetivos.Objetivo;
 import edu.fiuba.algo3.vista.Botones.BotonMostrarObjetivo;
 import edu.fiuba.algo3.vista.Elementos.ColoresJugadores;
@@ -94,7 +95,8 @@ public class Jugador {
 
 
     public void agregarFichasA(int numeroDeFichas, Pais unPais) {
-        this.inventarioDeJugador.agregarFichasA(numeroDeFichas, unPais);
+        if(this.ocupeElPais(unPais)) this.inventarioDeJugador.agregarFichasA(numeroDeFichas, unPais);
+        else throw new ColocacionEjercitoError("Debes elegir a un pais tuyo");
     }
 
 

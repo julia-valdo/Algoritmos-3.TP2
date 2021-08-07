@@ -50,6 +50,10 @@ public class Controlador {
         teg.habilitarPaisesParaAtaque(pais, confirmacionAtaqueHandle);
     }
 
+    public static void habilitarPaisesParaColocacion(HandlerDePais handler){
+        teg.habilitarPaisesParaColocacion(handler);
+    }
+
     public static void reestablecerPaises(Jugador jugador, HandlerDePais handler){
         teg.reestablecerPaises(jugador, handler);
     }

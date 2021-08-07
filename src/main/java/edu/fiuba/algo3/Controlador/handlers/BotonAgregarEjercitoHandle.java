@@ -2,6 +2,7 @@ package edu.fiuba.algo3.Controlador.handlers;
 
 import edu.fiuba.algo3.Controlador.Controlador;
 import edu.fiuba.algo3.modelo.Batalla.Pais;
+import edu.fiuba.algo3.modelo.Excepciones.ColocacionEjercitoError;
 import edu.fiuba.algo3.modelo.JuegoYJugador.Jugador;
 import edu.fiuba.algo3.vista.Elementos.TextoNotificable;
 import edu.fiuba.algo3.vista.ventanas.VentanaDePapel;
@@ -49,7 +50,7 @@ public class BotonAgregarEjercitoHandle implements HandlerDePais {
         this.desarmarTextoDeError();
         try {
             this.jugador.agregarFichasA(1, this.pais);
-            Controlador.reestablecerPaises(this.jugador, new BotonAgregarEjercitoHandle(this.jugador, this.textoDeError));
+            Controlador.habilitarPaisesParaColocacion(new BotonAgregarEjercitoHandle(this.jugador, this.textoDeError));
         }catch (Exception exception){
             this.generarTextoDeError(exception);
             this.mostrarError();
@@ -62,7 +63,7 @@ public class BotonAgregarEjercitoHandle implements HandlerDePais {
 
     private void generarTextoDeError(Exception exception){
 
-        if(NullPointerException.class == exception.getClass()){
+        if(ColocacionEjercitoError.class == exception.getClass()){
             this.textoDeError.setText("Ese pais no es tuyo: " + this.pais.getNombreDelPais());
         }
         else{

@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.FlujoDeJuego;
 
+import edu.fiuba.algo3.Controlador.Controlador;
 import edu.fiuba.algo3.Controlador.SeleccionJugador;
 import edu.fiuba.algo3.Controlador.handlers.BotonAgregarEjercitoHandle;
 import edu.fiuba.algo3.Controlador.handlers.EsePaisNoEsTuyoHandler;
@@ -32,7 +33,7 @@ public class FaseSegundaColocacion implements FaseDeRonda {
         this.jugadorEnTurno = jugador;
         jugador.agregarFichas(this.fichasAAgregar);
         this.handlerGeneral.setJugadorEnTurno(jugador);
-        jugador.habilitarPaises(this.handlerGeneral);
+        Controlador.habilitarPaisesParaColocacion(this.handlerGeneral);
     }
 
     @Override

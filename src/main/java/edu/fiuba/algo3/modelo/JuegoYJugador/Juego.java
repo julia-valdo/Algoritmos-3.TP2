@@ -207,4 +207,8 @@ public class Juego {
         jugador.habilitarPaises(handler);
     }
 
+    public void habilitarPaisesParaColocacion(HandlerDePais colocacion) {
+        inventario.habilitarPaises(null, colocacion);
+    }
+
 }
