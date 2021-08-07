@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.vista.Elementos;
 
 import edu.fiuba.algo3.Controlador.handlers.AyudaHandler;
+import edu.fiuba.algo3.Controlador.handlers.ComoJugarHandler;
 import edu.fiuba.algo3.Controlador.handlers.SalirHandler;
 import edu.fiuba.algo3.musica.MusicaOffHandler;
 import edu.fiuba.algo3.musica.MusicaOnHandler;
@@ -21,6 +22,7 @@ public class BarraMenu extends MenuBar {
         MenuItem opcionAyudaJuego = new MenuItem("Reglas");
         MenuItem opcionOffMusica = new MenuItem("Off");
         MenuItem opcionOnMusica = new MenuItem("On");
+        MenuItem opcionComoJugar = new MenuItem("Como Jugar");
 
         ImageView imagePanel = new ImageView();
         imagePanel.setImage(new Image("file:papel.jpg"));
@@ -33,7 +35,10 @@ public class BarraMenu extends MenuBar {
 
         opcionAyudaJuego.setOnAction(new AyudaHandler());
         opcionAyudaJuego.setStyle("-fx-font-weight: bold");
+        opcionComoJugar.setOnAction(new ComoJugarHandler());
+        opcionComoJugar.setStyle("-fx-font-weight: bold");
         menuAyuda.getItems().add(opcionAyudaJuego);
+        menuAyuda.getItems().add(opcionComoJugar);
 
         opcionOffMusica.setOnAction(new MusicaOffHandler());
         opcionOffMusica.setStyle("-fx-font-weight: bold");
