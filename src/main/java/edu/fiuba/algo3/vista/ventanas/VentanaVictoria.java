@@ -1,26 +1,24 @@
 package edu.fiuba.algo3.vista.ventanas;
 
 import edu.fiuba.algo3.modelo.JuegoYJugador.Jugador;
+import edu.fiuba.algo3.musica.ControladorMusica;
 import edu.fiuba.algo3.vista.Botones.BotonComienzo;
 import edu.fiuba.algo3.vista.Botones.BotonSalir;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
-import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 
 public class VentanaVictoria extends Group {
 
-    AudioClip mediaPlayer = new AudioClip("file:AgeofEmpires2VictoryMusic.mp3");
+    private ControladorMusica musica = ControladorMusica.getInstance();
 
     public VentanaVictoria(Jugador jugadorGanador){
         super();
         this.prepararFondoDeVentana();
         this.prepararVentanaDeVictoria(jugadorGanador);
         this.prepararBotonDeReinicio();
-
-        mediaPlayer.play();
-        mediaPlayer.setVolume(5);
+        musica.playVictory();
     }
 
     private void prepararBotonDeReinicio() {

@@ -7,7 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Tablero extends Application {
-    private final ControladorMusica musica = new ControladorMusica();
+    private final ControladorMusica musica = ControladorMusica.getInstance();
     @Override
     public void start (Stage stage) throws Exception{
         stage.setTitle("A.L.T.E.G.O.");
@@ -17,7 +17,7 @@ public class Tablero extends Application {
 
         stage.setScene(escenaComienzo);
         stage.show();
-        musica.start();
+        musica.playBackgroundMusic();
     }
     public static void main (String[] args){
         launch(args);

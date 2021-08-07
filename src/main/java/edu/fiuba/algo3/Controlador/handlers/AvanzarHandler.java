@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 
 public class AvanzarHandler implements EventHandler<ActionEvent> {
 
-    private ControladorMusica musica = new ControladorMusica();
+    private ControladorMusica musica = ControladorMusica.getInstance();
 
     @Override
     public void handle(ActionEvent actionEvent) {
@@ -19,6 +19,6 @@ public class AvanzarHandler implements EventHandler<ActionEvent> {
         Scene scena = Controlador.pedirMenuSiguiente();
         stage.setScene(scena);
         stage.show();
-        musica.startCambioEscena();
+        musica.playEffect();
     }
 }
