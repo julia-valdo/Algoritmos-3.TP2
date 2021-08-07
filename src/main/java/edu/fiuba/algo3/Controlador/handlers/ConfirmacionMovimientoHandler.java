@@ -1,14 +1,20 @@
 package edu.fiuba.algo3.Controlador.handlers;
 
+import edu.fiuba.algo3.Controlador.Controlador;
 import edu.fiuba.algo3.modelo.Batalla.Pais;
 import edu.fiuba.algo3.modelo.Excepciones.AtaqueNoPermitidoError;
 import edu.fiuba.algo3.modelo.Excepciones.MovimientoDeEjercitoError;
 import edu.fiuba.algo3.modelo.Excepciones.NoHayFuerzasRestantesError;
 import edu.fiuba.algo3.modelo.JuegoYJugador.Jugador;
 import edu.fiuba.algo3.vista.Elementos.TextoNotificable;
+import edu.fiuba.algo3.vista.ventanas.VentanaDePapel;
 import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+
+import java.util.ResourceBundle;
 
 public class ConfirmacionMovimientoHandler implements HandlerDePais{
     private Jugador jugador;
@@ -45,32 +51,35 @@ public class ConfirmacionMovimientoHandler implements HandlerDePais{
     @Override
     public void handle(MouseEvent mouseEvent) {
         this.desarmarTextoDeError();
-        this.prepararGrupoDeError(mouseEvent);
         try{
             this.jugador.moverFichasDeACon(this.paisOrigen, this.paisDestino,1);
+            Controlador.reestablecerPaises(this.jugador, new BotonMoverHandle(this.jugador, this.textoDeError));
         } catch (Exception excepcion){
-            this.manejarErrorDeAtaque(excepcion);
+            if(excepcion.getClass() == MovimientoDeEjercitoError.class){
+                this.textoDeError.setText(excepcion.getMessage());
+                Controlador.reestablecerPaises(this.jugador, new BotonMoverHandle(this.jugador, this.textoDeError));
+            }
+            else {
+                this.textoDeError.setText("Elige un pais tuyo");
+            }
+            this.mostrarError();
         }
-        this.paisOrigen.restablecerLimitrofesParaAtaque();
-    }
-    private void manejarErrorDeAtaque(Exception excepcion){
-        if(excepcion.getClass() == MovimientoDeEjercitoError.class){
-            this.textoDeError.setText("Ese Movimiento no esta permitido");
-        }
-        else {
-            this.textoDeError.setText("Selecciona un pais de origen nuevamente");
-        }
-        this.paisOrigen.restablecerLimitrofesParaAtaque();
     }
 
     private void desarmarTextoDeError(){
         this.textoDeError.setText("");
     }
 
-    private void prepararGrupoDeError(MouseEvent evento) {
-        Group grupoDeEscena = (Group) ((Node) evento.getSource()).getScene().getRoot();
-        if (this.textoDeError.noEstaAgregadoA(grupoDeEscena)) {
-            this.textoDeError.agregarAGrupo(grupoDeEscena);
-        }
+
+    private void mostrarError(){
+        VentanaDePapel ventana = new VentanaDePapel(textoDeError);
+        ventana.prepararFondo(200,500);
+
+        Scene scena = new Scene(ventana);
+        Stage popUpDeCarta = new Stage();
+
+
+        popUpDeCarta.setScene(scena);
+        popUpDeCarta.show();
     }
 }

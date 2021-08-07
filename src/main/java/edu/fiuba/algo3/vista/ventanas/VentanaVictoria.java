@@ -11,14 +11,13 @@ import javafx.scene.text.Text;
 
 public class VentanaVictoria extends Group {
 
-    private ControladorMusica musica = ControladorMusica.getInstance();
 
     public VentanaVictoria(Jugador jugadorGanador){
         super();
         this.prepararFondoDeVentana();
         this.prepararVentanaDeVictoria(jugadorGanador);
         this.prepararBotonDeReinicio();
-        musica.playVictory();
+        ControladorMusica.playVictory();
     }
 
     private void prepararBotonDeReinicio() {

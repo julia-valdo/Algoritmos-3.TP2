@@ -43,6 +43,7 @@ public class BoxCartaHandlerTres implements HandlerDeCarta{
         this.terceraCarta.getBox().activarse();
         try{
             jugador.canjearCartas(primeraCarta, segundaCarta, terceraCarta);
+            jugador.habilitarCartas(new BoxCartaHandler(this.jugador,this.textoDeError));
             Stage stage = (Stage) (((Node)mouseEvent.getSource()).getScene().getWindow());
             stage.close();
             jugador.mostrarCartas();
@@ -58,12 +59,4 @@ public class BoxCartaHandlerTres implements HandlerDeCarta{
     private void manejarErrorDeAtaque(Exception excepcion){
         this.textoDeError.setText("Carta Ya Activada");
     }
-
-    private void prepararGrupoDeError(MouseEvent evento) {
-        Group grupoDeEscena = (Group) ((Node) evento.getSource()).getScene().getRoot();
-        if (this.textoDeError.noEstaAgregadoA(grupoDeEscena)) {
-            this.textoDeError.agregarAGrupo(grupoDeEscena);
-        }
-    }
-
 }

@@ -204,13 +204,14 @@ public class Jugador {
     }
 
 
-    public void elegirCarta(Carta cartaElegida, HandlerDeCarta handler) {
+    public void elegirCarta(Carta cartaElegidaUno, Carta cartaElegidaDos, HandlerDeCarta handler) {
         for(Carta carta: this.inventarioDeJugador.getCartas()){
-            HandlerDeCarta handlerDeCarta = handler.getCopy();
-            handlerDeCarta.asociarCarta(carta);
-            carta.agregarHandler(handlerDeCarta);
+            if(!carta.equals(cartaElegidaUno) && !carta.equals(cartaElegidaDos)){
+                HandlerDeCarta handlerDeCarta = handler.getCopy();
+                handlerDeCarta.asociarCarta(carta);
+                carta.agregarHandler(handlerDeCarta);
+            }
         }
-        cartaElegida.limpiarHandler();
     }
 
     public void habilitarCartas(HandlerDeCarta handler){
@@ -218,7 +219,6 @@ public class Jugador {
             carta.agregarHandler(handler.getCopy());
         }
     }
-
 
     public Button botonMostrarCarta(){
         return new BotonMostrarCartas(this.inventarioDeJugador);

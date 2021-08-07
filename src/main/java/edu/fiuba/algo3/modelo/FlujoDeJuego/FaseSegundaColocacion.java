@@ -20,8 +20,8 @@ public class FaseSegundaColocacion implements FaseDeRonda {
     private HandlerDePais handlerGeneral;
     private TextoNotificable textoDeError;
 
-    public FaseSegundaColocacion(TextoNotificable textoDeError){
-        this.jugadorEnTurno = new Jugador(0);
+    public FaseSegundaColocacion(Jugador jugador, TextoNotificable textoDeError){
+        this.jugadorEnTurno = jugador;
         this.textoDeError = textoDeError;
         this.handlerGeneral = new BotonAgregarEjercitoHandle(this.jugadorEnTurno, textoDeError);
     }
@@ -43,8 +43,8 @@ public class FaseSegundaColocacion implements FaseDeRonda {
     }
 
     @Override
-    public FaseDeRonda cambiarFase() {
-        return new FaseAtacar();
+    public FaseDeRonda cambiarFase(Jugador siguiente) {
+        return new FaseAtacar(siguiente);
     }
 
     @Override
@@ -64,4 +64,5 @@ public class FaseSegundaColocacion implements FaseDeRonda {
         botonObjetivo.setTranslateY(70);
         menu.getChildren().add(botonObjetivo);
     }
+
 }

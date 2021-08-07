@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.JuegoYJugador;
 
 import edu.fiuba.algo3.Controlador.SeleccionJugador;
+import edu.fiuba.algo3.Controlador.handlers.HandlerDePais;
 import edu.fiuba.algo3.modelo.Batalla.Pais;
 import edu.fiuba.algo3.modelo.Cartas.Carta;
 import edu.fiuba.algo3.modelo.FlujoDeJuego.FaseDeRonda;
@@ -29,7 +30,6 @@ public class Juego {
     public Juego(int cantidadDeJugadores){
         this.turnoActual = 1;
         this.turnoJugadores = new HashMap<>();
-        this.faseActual = new FasePrimeraColocacion(new TextoNotificable());
         this.crearJugadores(cantidadDeJugadores);
         parser = new Parser(this.turnoJugadores);
     }
@@ -42,6 +42,7 @@ public class Juego {
         this.generarInventario();
         this.repartirPaises();
         this.repartirObjetivos();
+        this.faseActual = new FasePrimeraColocacion(this.turnoJugadores.get(turnoActual), new TextoNotificable());
     }
 
     private void repartirObjetivos() {
@@ -154,7 +155,7 @@ public class Juego {
 
     private void actualizarFase(Jugador siguiente) {
         if(this.esElUltimoJugador(siguiente)){
-            this.faseActual = this.faseActual.cambiarFase();
+            this.faseActual = this.faseActual.cambiarFase(siguiente);
         }
     }
 
@@ -196,4 +197,14 @@ public class Juego {
             }
             return new VentanaMenuObjetivos(nodosDeJugadores);
     }
+
+    public void habilitarPaisesParaAtaque(Pais pais, HandlerDePais confirmacionAtaqueHandle) {
+        inventario.habilitarPaises(pais, confirmacionAtaqueHandle);
+    }
+
+    public void reestablecerPaises(Jugador jugador, HandlerDePais handler){
+        this.inventario.reestablecerPaises();
+        jugador.habilitarPaises(handler);
+    }
+
 }

@@ -75,7 +75,7 @@ public class Batalla {
     }
 
     private void tirarDadoAtacante(int numeroFichasAtacante){
-        if (numeroFichasAtacante == minimoAtacante) throw new AtaqueNoPermitidoError("");
+        if (numeroFichasAtacante == minimoAtacante) throw new AtaqueNoPermitidoError("No puedes atacar con una sola ficha");
         resultadoDadoAtacante = this.tirarDado(numeroFichasAtacante - 1);
     }
 

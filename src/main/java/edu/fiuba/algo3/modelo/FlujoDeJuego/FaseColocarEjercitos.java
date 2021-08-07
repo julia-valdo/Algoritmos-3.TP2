@@ -21,8 +21,8 @@ public class FaseColocarEjercitos implements FaseDeRonda {
     private HandlerDeCarta handlerCarta;
     private TextoNotificable textoDeError;
 
-    public FaseColocarEjercitos(){
-        this.jugadorEnTurno = new Jugador(0);
+    public FaseColocarEjercitos(Jugador jugador){
+        this.jugadorEnTurno = jugador;
         this.textoDeError = new TextoNotificable();
         this.textoDeError.setPosicion(900, 550);
         this.handlerGeneral = new BotonAgregarEjercitoHandle(this.jugadorEnTurno, textoDeError);
@@ -50,8 +50,8 @@ public class FaseColocarEjercitos implements FaseDeRonda {
     }
 
     @Override
-    public FaseDeRonda cambiarFase() {
-        return new FaseAtacar();
+    public FaseDeRonda cambiarFase(Jugador siguiente) {
+        return new FaseAtacar(siguiente);
     }
 
     @Override
@@ -68,7 +68,6 @@ public class FaseColocarEjercitos implements FaseDeRonda {
         return menuAPreparar;
 
     }
-
 
     private void agregarBotonObjetivo(VentanaMenu menu){
         Node botonObjetivo = this.jugadorEnTurno.prepararObjetivo();

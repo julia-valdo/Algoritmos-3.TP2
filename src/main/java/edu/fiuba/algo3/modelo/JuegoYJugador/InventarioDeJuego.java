@@ -62,4 +62,18 @@ public class InventarioDeJuego {
             pais.agregarHandler(handler);
         }
     }
+
+    public void habilitarPaises(Pais pais, HandlerDePais handler) {
+        for(Pais paisActual: this.paises){
+            if(!paisActual.equals(pais)) {
+                paisActual.agregarHandler(handler.getCopy());
+            }
+        }
+    }
+
+    public void reestablecerPaises() {
+        for(Pais paisActual : paises){
+            paisActual.limpiarFicha();
+        }
+    }
 }

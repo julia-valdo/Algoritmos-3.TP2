@@ -1,11 +1,17 @@
 package edu.fiuba.algo3.Controlador.handlers;
 
+import edu.fiuba.algo3.Controlador.Controlador;
 import edu.fiuba.algo3.modelo.Batalla.Pais;
 import edu.fiuba.algo3.modelo.JuegoYJugador.Jugador;
 import edu.fiuba.algo3.vista.Elementos.TextoNotificable;
+import edu.fiuba.algo3.vista.ventanas.VentanaDePapel;
 import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+
+import java.util.concurrent.ExecutionException;
 
 public class BotonAgregarEjercitoHandle implements HandlerDePais {
 
@@ -40,12 +46,13 @@ public class BotonAgregarEjercitoHandle implements HandlerDePais {
 
     @Override
     public void handle(MouseEvent mouseEvent) {
-        this.prepararGrupoDeError(mouseEvent);
+        this.desarmarTextoDeError();
         try {
             this.jugador.agregarFichasA(1, this.pais);
-            this.desarmarTextoDeError();
-        }catch (RuntimeException exception){
+            Controlador.reestablecerPaises(this.jugador, new BotonAgregarEjercitoHandle(this.jugador, this.textoDeError));
+        }catch (Exception exception){
             this.generarTextoDeError(exception);
+            this.mostrarError();
         }
     }
 
@@ -53,7 +60,7 @@ public class BotonAgregarEjercitoHandle implements HandlerDePais {
         this.textoDeError.setText("");
     }
 
-    private void generarTextoDeError(RuntimeException exception){
+    private void generarTextoDeError(Exception exception){
 
         if(NullPointerException.class == exception.getClass()){
             this.textoDeError.setText("Ese pais no es tuyo: " + this.pais.getNombreDelPais());
@@ -63,11 +70,16 @@ public class BotonAgregarEjercitoHandle implements HandlerDePais {
         }
     }
 
-    private void prepararGrupoDeError(MouseEvent evento){
-        Group grupoDeEscena  = (Group) ((Node) evento.getSource()).getScene().getRoot();
-        if(this.textoDeError.noEstaAgregadoA(grupoDeEscena)){
-            this.textoDeError.agregarAGrupo(grupoDeEscena);
-        }
+    private void mostrarError(){
+        VentanaDePapel ventana = new VentanaDePapel(textoDeError);
+        ventana.prepararFondo(200,300);
+
+        Scene scena = new Scene(ventana);
+        Stage popUpDeCarta = new Stage();
+
+
+        popUpDeCarta.setScene(scena);
+        popUpDeCarta.show();
     }
 
 }

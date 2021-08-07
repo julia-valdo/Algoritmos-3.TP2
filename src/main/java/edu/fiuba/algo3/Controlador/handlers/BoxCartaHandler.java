@@ -41,10 +41,11 @@ public class BoxCartaHandler implements HandlerDeCarta{
     @Override
     public void handle(MouseEvent mouseEvent) {
         this.desarmarTextoDeError();
+
         if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
+            this.primeraCarta.getBox().activarse();
             try {
-                primeraCarta.getBox().activarse();
-                this.jugador.elegirCarta(primeraCarta, new BoxCartaHandlerDos(this.primeraCarta, this.jugador, this.textoDeError));
+                this.jugador.elegirCarta(primeraCarta,null ,new BoxCartaHandlerDos(this.primeraCarta, this.jugador, this.textoDeError));
             } catch (Exception error) {
             }
         } else {

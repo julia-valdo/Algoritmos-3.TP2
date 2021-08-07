@@ -21,8 +21,8 @@ public class FasePrimeraColocacion implements FaseDeRonda{
     private HandlerDePais handlerGeneral;
     private TextoNotificable textoDeError;
 
-    public FasePrimeraColocacion(TextoNotificable textoDeError){
-        this.jugadorEnTurno = new Jugador(0);
+    public FasePrimeraColocacion(Jugador jugador, TextoNotificable textoDeError){
+        this.jugadorEnTurno = jugador;
         this.textoDeError = textoDeError;
         this.textoDeError.setPosicion(900, 550);
         this.handlerGeneral = new BotonAgregarEjercitoHandle(this.jugadorEnTurno, textoDeError);
@@ -38,6 +38,7 @@ public class FasePrimeraColocacion implements FaseDeRonda{
         jugador.habilitarPaises(this.handlerGeneral);
     }
 
+
     @Override
     public boolean accionJugador(Jugador jugador, InventarioDeJuego inventarioDeJuego, SeleccionJugador seleccion) {
 
@@ -47,8 +48,8 @@ public class FasePrimeraColocacion implements FaseDeRonda{
     }
 
     @Override
-    public FaseDeRonda cambiarFase() {
-        return new FaseSegundaColocacion(this.textoDeError);
+    public FaseDeRonda cambiarFase(Jugador siguiente) {
+        return new FaseSegundaColocacion(siguiente, this.textoDeError);
     }
 
     @Override
