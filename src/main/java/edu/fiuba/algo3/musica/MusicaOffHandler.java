@@ -8,7 +8,11 @@ public class MusicaOffHandler implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        AudioClip mediaPlayer = new AudioClip("file:AgeOfEmpiresMainTheme.mp3");
-        mediaPlayer.stop();
+        AudioClip musicaFondo = new AudioClip("file:AgeOfEmpiresMainTheme.mp3");
+        AudioClip musicaEfecto = new AudioClip("file:campana_aoe.mp3");
+        AudioClip musicaVictoria = new AudioClip("file:AgeofEmpires2VictoryMusic.mp3");
+        musicaFondo.stop();
+        musicaEfecto.stop();
+        musicaVictoria.stop();
     }
 }
