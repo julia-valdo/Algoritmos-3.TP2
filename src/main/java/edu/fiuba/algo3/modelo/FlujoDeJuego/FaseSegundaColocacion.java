@@ -33,7 +33,7 @@ public class FaseSegundaColocacion implements FaseDeRonda {
         this.jugadorEnTurno = jugador;
         jugador.agregarFichas(this.fichasAAgregar);
         this.handlerGeneral.setJugadorEnTurno(jugador);
-        Controlador.habilitarPaisesParaColocacion(this.handlerGeneral);
+        inventario.habilitarPaises(null, this.handlerGeneral);
     }
 
     @Override

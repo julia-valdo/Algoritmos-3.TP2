@@ -36,7 +36,7 @@ public class FaseColocarEjercitos implements FaseDeRonda {
         jugador.cantidadDeEjercitosAColocar(inventario);
         this.handlerGeneral.setJugadorEnTurno(jugador);
         this.handlerCarta = new BoxCartaHandler(this.jugadorEnTurno,textoDeError);
-        Controlador.habilitarPaisesParaColocacion(this.handlerGeneral);
+        inventario.habilitarPaises(null, this.handlerGeneral);
         jugador.habilitarCartas(this.handlerCarta);
     }
 

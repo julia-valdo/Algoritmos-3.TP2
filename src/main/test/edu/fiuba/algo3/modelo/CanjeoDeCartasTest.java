@@ -208,7 +208,7 @@ public class CanjeoDeCartasTest {
     public void alCanjearUnaCartaDeUnPaisQueNoOcupaNoAumentanLasFuerzasEnEsePais(){
 
         Jugador jugador1 = new Jugador(1);
-        jugador1.agregarFichas(1);
+        jugador1.agregarFichas(10);
         Carta cartaFrancia = new Carta(new Pais("Francia"), "Globo");
         Pais argentina = this.armarMockPaisPara(jugador1);
 
