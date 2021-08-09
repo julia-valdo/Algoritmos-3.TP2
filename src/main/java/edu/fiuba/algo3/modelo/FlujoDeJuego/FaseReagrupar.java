@@ -16,8 +16,8 @@ public class FaseReagrupar implements FaseDeRonda {
     private Jugador jugadorEnTurno;
     private HandlerDePais handlerGeneral;
 
-    public FaseReagrupar(){
-        this.jugadorEnTurno = new Jugador(0);
+    public FaseReagrupar(Jugador jugador){
+        this.jugadorEnTurno = jugador;
         this.textoDeError = this.prepararTextoDeError();
         this.handlerGeneral = new BotonMoverHandle(this.jugadorEnTurno, this.textoDeError);
     }
@@ -45,8 +45,8 @@ public class FaseReagrupar implements FaseDeRonda {
         return true;
     }
     @Override
-    public FaseDeRonda cambiarFase(){
-        return new FaseColocarEjercitos();
+    public FaseDeRonda cambiarFase(Jugador siguiente){
+        return new FaseColocarEjercitos(siguiente);
     }
 
     @Override
@@ -65,4 +65,11 @@ public class FaseReagrupar implements FaseDeRonda {
         botonObjetivo.setTranslateY(70);
         menu.getChildren().add(botonObjetivo);
     }
+
+    @Override
+    public boolean puedoPasar() {
+        return true;
+    }
+
+
 }

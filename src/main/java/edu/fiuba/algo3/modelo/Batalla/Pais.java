@@ -50,8 +50,8 @@ public class Pais {
     public void atacarA(Pais otroPais) {
         verificarPosibilidadDeAtaque(otroPais);
         Batalla batalla = new Batalla();
-       batalla.atacar(this.ejercitos, otroPais.ejercitos);
-       otroPais.recibirTropas(this.ejercitos);
+        batalla.atacar(this.ejercitos, otroPais.ejercitos);
+        otroPais.recibirTropas(this.ejercitos);
         notificarFichasDeResultado(otroPais);
     }
 
@@ -63,7 +63,7 @@ public class Pais {
 
     public void moverEjercitoA(Pais otroPais, int cantidad){
         if(!this.esDelMismoEquipo(otroPais) || !this.esLimitrofe(otroPais)){
-            throw new MovimientoDeEjercitoError("Movimiento de ejercito invalido");
+            throw new MovimientoDeEjercitoError("Debes mover el ejercito de tu equipo a otro tuyo y debe ser limitrofe");
         }
         this.ejercitos.moverEjercitoACon(otroPais.ejercitos, cantidad);
         notificarFichasDeResultado(otroPais);
@@ -87,30 +87,6 @@ public class Pais {
         }
     }
 
-    public void habilitarLimitrofes(HandlerDePais confirmacion){
-        for(Pais pais: paisesConectados){
-            pais.agregarHandler(confirmacion.getCopy());
-
-        }
-    }
-
-    public void restablecerLimitrofesParaAtaque() {
-        for(Pais pais: paisesConectados){
-            if(this.esDelMismoEquipo(pais)){
-                pais.copiarMiHandler(this.miFicha);
-            }
-            else pais.limpiarFicha();
-        }
-    }
-
-    private void copiarMiHandler(Ficha unaFicha) {
-        this.miFicha.copiarEn(unaFicha, this);
-    }
-
-    private void limpiarFicha() {
-        this.miFicha.limpiarHandler();
-    }
-
     public void atacarAVisual(Pais otroPais) {
         verificarPosibilidadDeAtaque(otroPais);
         Batalla batalla = new Batalla();
@@ -131,5 +107,9 @@ public class Pais {
     private void notificarFichasDeResultado(Pais otroPais) {
         this.notifyFicha();
         otroPais.notifyFicha();
+    }
+
+    public void limpiarFicha() {
+        this.miFicha.limpiarHandler();
     }
 }

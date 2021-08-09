@@ -5,10 +5,8 @@ import javafx.event.EventHandler;
 
 public class MusicaOffHandler implements EventHandler<ActionEvent> {
 
-    private final ControladorMusica musica = ControladorMusica.getInstance();
-
     @Override
     public void handle(ActionEvent actionEvent) {
-        musica.muteAll();
+        ControladorMusica.muteAll();
     }
 }

@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.JuegoYJugador;
 
 import edu.fiuba.algo3.Controlador.SeleccionJugador;
+import edu.fiuba.algo3.Controlador.handlers.HandlerDePais;
 import edu.fiuba.algo3.modelo.Batalla.Pais;
 import edu.fiuba.algo3.modelo.Cartas.Carta;
 import edu.fiuba.algo3.modelo.FlujoDeJuego.FaseDeRonda;
@@ -21,7 +22,7 @@ import java.util.*;
 public class Juego {
     private Integer turnoActual;
     private HashMap<Integer, Jugador> turnoJugadores;
-    private FaseDeRonda faseActual;
+    private FaseDeRonda faseActual,faseAnterior;
     private Parser parser;
     private InventarioDeJuego inventario;
     private ArrayList<Ficha> fichasDeJuego;
@@ -29,7 +30,6 @@ public class Juego {
     public Juego(int cantidadDeJugadores){
         this.turnoActual = 1;
         this.turnoJugadores = new HashMap<>();
-        this.faseActual = new FasePrimeraColocacion(new TextoNotificable());
         this.crearJugadores(cantidadDeJugadores);
         parser = new Parser(this.turnoJugadores);
     }
@@ -42,6 +42,8 @@ public class Juego {
         this.generarInventario();
         this.repartirPaises();
         this.repartirObjetivos();
+        this.faseActual = new FasePrimeraColocacion(this.turnoJugadores.get(turnoActual), new TextoNotificable());
+        this.faseAnterior = faseActual;
     }
 
     private void repartirObjetivos() {
@@ -143,6 +145,8 @@ public class Juego {
     }
 
     public Scene prepararMenuSiguiente() {
+        this.faseAnterior.puedoPasar();
+        this.faseAnterior = this.faseActual;
         this.limpiarFichas();
         Jugador siguiente = this.obtenerSiguienteEnTurno();
 
@@ -154,7 +158,7 @@ public class Juego {
 
     private void actualizarFase(Jugador siguiente) {
         if(this.esElUltimoJugador(siguiente)){
-            this.faseActual = this.faseActual.cambiarFase();
+            this.faseActual = this.faseActual.cambiarFase(siguiente);
         }
     }
 
@@ -189,11 +193,25 @@ public class Juego {
     }
 
     private VentanaMenu prepararObjetivos() {
-            ArrayList<Jugador> jugadores = new ArrayList<>(this.turnoJugadores.values());
-            ArrayList<Node> nodosDeJugadores = new ArrayList<>();
-            for(Jugador jugador: jugadores){
-                nodosDeJugadores.add(jugador.prepararObjetivo());
-            }
-            return new VentanaMenuObjetivos(nodosDeJugadores);
+        ArrayList<Jugador> jugadores = new ArrayList<>(this.turnoJugadores.values());
+        ArrayList<Node> nodosDeJugadores = new ArrayList<>();
+        for(Jugador jugador: jugadores){
+            nodosDeJugadores.add(jugador.prepararObjetivo());
+        }
+        return new VentanaMenuObjetivos(nodosDeJugadores);
     }
+
+    public void habilitarPaisesParaAtaque(Pais pais, HandlerDePais confirmacionAtaqueHandle) {
+        inventario.habilitarPaises(pais, confirmacionAtaqueHandle);
+    }
+
+    public void reestablecerPaises(Jugador jugador, HandlerDePais handler){
+        this.inventario.reestablecerPaises();
+        jugador.habilitarPaises(handler);
+    }
+
+    public void habilitarPaisesParaColocacion(HandlerDePais colocacion) {
+        inventario.habilitarPaises(null, colocacion);
+    }
+
 }

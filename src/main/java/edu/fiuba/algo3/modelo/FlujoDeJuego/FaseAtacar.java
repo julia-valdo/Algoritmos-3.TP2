@@ -17,8 +17,8 @@ public class FaseAtacar implements FaseDeRonda {
     private Jugador jugadorEnTurno;
     private HandlerDePais handlerGeneral;
 
-    public FaseAtacar(){
-        this.jugadorEnTurno = new Jugador(0);
+    public FaseAtacar(Jugador jugador){
+        this.jugadorEnTurno = jugador;
         this.textoDeError = this.prepararTextoDeError();
         this.handlerGeneral = new BotonAtacarHandle(this.jugadorEnTurno, textoDeError);
     }
@@ -47,8 +47,8 @@ public class FaseAtacar implements FaseDeRonda {
         return true;
     }
     @Override
-    public FaseDeRonda cambiarFase(){
-        return new FaseReagrupar();
+    public FaseDeRonda cambiarFase(Jugador siguiente){
+        return new FaseReagrupar(siguiente);
     }
 
     @Override
@@ -61,10 +61,16 @@ public class FaseAtacar implements FaseDeRonda {
         return menuAPreparar;
     }
 
+    @Override
+    public boolean puedoPasar() {
+        return true;
+    }
+
     private void agregarBotonObjetivo(VentanaMenu menu){
         Node botonObjetivo = this.jugadorEnTurno.prepararObjetivo();
         botonObjetivo.setTranslateX(905);
         botonObjetivo.setTranslateY(70);
         menu.getChildren().add(botonObjetivo);
     }
+
 }

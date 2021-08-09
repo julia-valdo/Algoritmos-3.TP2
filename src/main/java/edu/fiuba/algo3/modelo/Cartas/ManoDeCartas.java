@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo.Cartas;
 import edu.fiuba.algo3.modelo.Cartas.Canjes;
 import edu.fiuba.algo3.modelo.Cartas.CanjesMenosDeTres;
 import edu.fiuba.algo3.modelo.Cartas.Carta;
+import edu.fiuba.algo3.modelo.Excepciones.CanjesError;
 import edu.fiuba.algo3.modelo.JuegoYJugador.InventarioDeJuego;
 
 import java.util.ArrayList;
@@ -52,10 +53,11 @@ public class ManoDeCartas {
 
     private int realizarCanje(Carta primeraCarta, Carta segundaCarta, Carta terceraCarta){
         int fichasPorCanje = 0;
-        if(primeraCarta.esValidoElCanje(segundaCarta, terceraCarta)){
-            fichasPorCanje = this.confirmarCanje();
-            this.finalizarCanje(primeraCarta, segundaCarta, terceraCarta);
+        if(!primeraCarta.esValidoElCanje(segundaCarta, terceraCarta)){
+            throw new CanjesError("Las cartas deben tener tres simbolos distintos o iguales, el comodin es igual a todas");
         }
+        fichasPorCanje = this.confirmarCanje();
+        this.finalizarCanje(primeraCarta, segundaCarta, terceraCarta);
         return fichasPorCanje;
     }
 

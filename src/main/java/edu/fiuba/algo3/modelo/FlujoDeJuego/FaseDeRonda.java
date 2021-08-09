@@ -11,8 +11,10 @@ public interface FaseDeRonda {
 
     boolean accionJugador(Jugador jugador, InventarioDeJuego inventarioDeJuego, SeleccionJugador seleccion);
 
-    FaseDeRonda cambiarFase();
+    FaseDeRonda cambiarFase(Jugador siguiente);
 
     VentanaMenu prepararMenu();
+
+    public boolean puedoPasar();
 
 }

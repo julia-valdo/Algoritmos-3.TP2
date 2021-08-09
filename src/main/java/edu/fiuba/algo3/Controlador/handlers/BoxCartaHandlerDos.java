@@ -37,9 +37,9 @@ public class BoxCartaHandlerDos implements HandlerDeCarta{
     @Override
     public void handle(MouseEvent mouseEvent) {
         this.desarmarTextoDeError();
+        this.segundaCarta.getBox().activarse();
         try {
-            this.segundaCarta.getBox().activarse();
-            this.jugador.elegirCarta(this.segundaCarta, new BoxCartaHandlerTres(this.primeraCarta, this.segundaCarta, this.jugador, this.textoDeError));
+            this.jugador.elegirCarta(this.primeraCarta,this.segundaCarta, new BoxCartaHandlerTres(this.primeraCarta, this.segundaCarta, this.jugador, this.textoDeError));
         }catch(Exception error){
 
         }
@@ -49,16 +49,5 @@ public class BoxCartaHandlerDos implements HandlerDeCarta{
         this.textoDeError.setText("");
     }
 
-    private void manejarErrorDeAtaque(Exception excepcion){
-        this.textoDeError.setText("Carta Ya Activada");
-
-    }
-
-    private void prepararGrupoDeError(MouseEvent evento) {
-        Group grupoDeEscena = (Group) ((Node) evento.getSource()).getScene().getRoot();
-        if (this.textoDeError.noEstaAgregadoA(grupoDeEscena)) {
-            this.textoDeError.agregarAGrupo(grupoDeEscena);
-        }
-    }
 
 }

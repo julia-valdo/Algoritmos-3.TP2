@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.vista.ventanas;
 
+import edu.fiuba.algo3.Controlador.Controlador;
 import edu.fiuba.algo3.modelo.Cartas.Carta;
 import edu.fiuba.algo3.vista.Botones.BotonAvanzarTurno;
 import edu.fiuba.algo3.vista.Elementos.BoxCarta;

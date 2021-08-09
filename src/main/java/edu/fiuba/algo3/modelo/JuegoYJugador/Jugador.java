@@ -6,6 +6,8 @@ import edu.fiuba.algo3.Controlador.handlers.HandlerDePais;
 import edu.fiuba.algo3.modelo.Batalla.Ejercitos;
 import edu.fiuba.algo3.modelo.Batalla.Pais;
 import edu.fiuba.algo3.modelo.Cartas.Carta;
+import edu.fiuba.algo3.modelo.Excepciones.CanjesError;
+import edu.fiuba.algo3.modelo.Excepciones.ColocacionEjercitoError;
 import edu.fiuba.algo3.modelo.Objetivos.Objetivo;
 import edu.fiuba.algo3.vista.Botones.BotonMostrarObjetivo;
 import edu.fiuba.algo3.vista.Elementos.ColoresJugadores;
@@ -94,7 +96,8 @@ public class Jugador {
 
 
     public void agregarFichasA(int numeroDeFichas, Pais unPais) {
-        this.inventarioDeJugador.agregarFichasA(numeroDeFichas, unPais);
+        if(this.ocupeElPais(unPais)) this.inventarioDeJugador.agregarFichasA(numeroDeFichas, unPais);
+        else throw new ColocacionEjercitoError("Debes elegir a un pais tuyo");
     }
 
 
@@ -104,13 +107,14 @@ public class Jugador {
 
 
     public void canjearCartas(Carta primeraCarta, Carta segundaCarta, Carta terceraCarta) {
-            this.inventarioDeJugador.canjearCartas(primeraCarta, segundaCarta, terceraCarta);
+        this.inventarioDeJugador.canjearCartas(primeraCarta, segundaCarta, terceraCarta);
     }
 
     public void canjearCarta(Carta unaCarta) {
         if(this.puedoCanjearLaCarta(unaCarta)){
             this.inventarioDeJugador.activarCarta(unaCarta);
         }
+        else throw new CanjesError("Debes tener a este pais para activarla");
     }
 
     public ArrayList<Pais> getPaisesOcupados() {
@@ -204,13 +208,14 @@ public class Jugador {
     }
 
 
-    public void elegirCarta(Carta cartaElegida, HandlerDeCarta handler) {
+    public void elegirCarta(Carta cartaElegidaUno, Carta cartaElegidaDos, HandlerDeCarta handler) {
         for(Carta carta: this.inventarioDeJugador.getCartas()){
-            HandlerDeCarta handlerDeCarta = handler.getCopy();
-            handlerDeCarta.asociarCarta(carta);
-            carta.agregarHandler(handlerDeCarta);
+            if(!carta.equals(cartaElegidaUno) && !carta.equals(cartaElegidaDos)){
+                HandlerDeCarta handlerDeCarta = handler.getCopy();
+                handlerDeCarta.asociarCarta(carta);
+                carta.agregarHandler(handlerDeCarta);
+            }
         }
-        cartaElegida.limpiarHandler();
     }
 
     public void habilitarCartas(HandlerDeCarta handler){
@@ -218,7 +223,6 @@ public class Jugador {
             carta.agregarHandler(handler.getCopy());
         }
     }
-
 
     public Button botonMostrarCarta(){
         return new BotonMostrarCartas(this.inventarioDeJugador);
@@ -231,5 +235,9 @@ public class Jugador {
     public void atacarPaisDesdeAVisual(Pais paisOrigen, Pais paisDestino) {
         paisOrigen.atacarAVisual(paisDestino);
         this.verificarOcupacion(paisOrigen);
+    }
+
+    public boolean quedanFichas() {
+        return this.inventarioDeJugador.quedanFichas();
     }
 }

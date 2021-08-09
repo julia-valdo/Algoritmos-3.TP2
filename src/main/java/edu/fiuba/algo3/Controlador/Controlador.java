@@ -1,6 +1,9 @@
 package edu.fiuba.algo3.Controlador;
 
+import edu.fiuba.algo3.Controlador.handlers.HandlerDePais;
+import edu.fiuba.algo3.modelo.Batalla.Pais;
 import edu.fiuba.algo3.modelo.JuegoYJugador.Juego;
+import edu.fiuba.algo3.modelo.JuegoYJugador.Jugador;
 import edu.fiuba.algo3.vista.Elementos.Ficha;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
@@ -41,5 +44,17 @@ public class Controlador {
 
     public static Scene obtenerEscenaObjetivos() {
         return teg.mostrarObjetivos();
+    }
+
+    public static void habilitarPaises(Pais pais, HandlerDePais confirmacionAtaqueHandle) {
+        teg.habilitarPaisesParaAtaque(pais, confirmacionAtaqueHandle);
+    }
+
+    public static void habilitarPaisesParaColocacion(HandlerDePais handler){
+        teg.habilitarPaisesParaColocacion(handler);
+    }
+
+    public static void reestablecerPaises(Jugador jugador, HandlerDePais handler){
+        teg.reestablecerPaises(jugador, handler);
     }
 }
