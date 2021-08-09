@@ -120,4 +120,8 @@ public class InventarioDeJugador {
     public void limpiarCartas() {
         this.mano.limpiarCartas();
     }
+
+    public boolean quedanFichas() {
+        return this.fichasDisponibles > 0;
+    }
 }

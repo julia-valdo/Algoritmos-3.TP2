@@ -5,7 +5,9 @@ import edu.fiuba.algo3.modelo.Cartas.Carta;
 import edu.fiuba.algo3.modelo.JuegoYJugador.InventarioDeJugador;
 import edu.fiuba.algo3.modelo.JuegoYJugador.Jugador;
 import edu.fiuba.algo3.vista.Elementos.TextoNotificable;
+import edu.fiuba.algo3.vista.ventanas.VentanaDePapel;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -55,12 +57,25 @@ public class BoxCartaHandler implements HandlerDeCarta{
                 stage.close();
                 jugador.mostrarCartas();
             }catch (Exception error) {
-
+                this.textoDeError.setText(error.getMessage());
+                mostrarError();
             }
         }
     }
 
     private void desarmarTextoDeError(){
         this.textoDeError.setText("");
+    }
+
+    private void mostrarError(){
+        VentanaDePapel ventana = new VentanaDePapel(textoDeError);
+        ventana.prepararFondo(200,300);
+
+        Scene scena = new Scene(ventana);
+        Stage popUpDeCarta = new Stage();
+
+
+        popUpDeCarta.setScene(scena);
+        popUpDeCarta.show();
     }
 }

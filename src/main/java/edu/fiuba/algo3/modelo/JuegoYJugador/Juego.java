@@ -22,7 +22,7 @@ import java.util.*;
 public class Juego {
     private Integer turnoActual;
     private HashMap<Integer, Jugador> turnoJugadores;
-    private FaseDeRonda faseActual;
+    private FaseDeRonda faseActual,faseAnterior;
     private Parser parser;
     private InventarioDeJuego inventario;
     private ArrayList<Ficha> fichasDeJuego;
@@ -43,6 +43,7 @@ public class Juego {
         this.repartirPaises();
         this.repartirObjetivos();
         this.faseActual = new FasePrimeraColocacion(this.turnoJugadores.get(turnoActual), new TextoNotificable());
+        this.faseAnterior = faseActual;
     }
 
     private void repartirObjetivos() {
@@ -144,6 +145,8 @@ public class Juego {
     }
 
     public Scene prepararMenuSiguiente() {
+        this.faseAnterior.puedoPasar();
+        this.faseAnterior = this.faseActual;
         this.limpiarFichas();
         Jugador siguiente = this.obtenerSiguienteEnTurno();
 
@@ -190,12 +193,12 @@ public class Juego {
     }
 
     private VentanaMenu prepararObjetivos() {
-            ArrayList<Jugador> jugadores = new ArrayList<>(this.turnoJugadores.values());
-            ArrayList<Node> nodosDeJugadores = new ArrayList<>();
-            for(Jugador jugador: jugadores){
-                nodosDeJugadores.add(jugador.prepararObjetivo());
-            }
-            return new VentanaMenuObjetivos(nodosDeJugadores);
+        ArrayList<Jugador> jugadores = new ArrayList<>(this.turnoJugadores.values());
+        ArrayList<Node> nodosDeJugadores = new ArrayList<>();
+        for(Jugador jugador: jugadores){
+            nodosDeJugadores.add(jugador.prepararObjetivo());
+        }
+        return new VentanaMenuObjetivos(nodosDeJugadores);
     }
 
     public void habilitarPaisesParaAtaque(Pais pais, HandlerDePais confirmacionAtaqueHandle) {

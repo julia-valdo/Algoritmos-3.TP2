@@ -49,16 +49,5 @@ public class BoxCartaHandlerDos implements HandlerDeCarta{
         this.textoDeError.setText("");
     }
 
-    private void manejarErrorDeAtaque(Exception excepcion){
-        this.textoDeError.setText("Carta Ya Activada");
-
-    }
-
-    private void prepararGrupoDeError(MouseEvent evento) {
-        Group grupoDeEscena = (Group) ((Node) evento.getSource()).getScene().getRoot();
-        if (this.textoDeError.noEstaAgregadoA(grupoDeEscena)) {
-            this.textoDeError.agregarAGrupo(grupoDeEscena);
-        }
-    }
 
 }

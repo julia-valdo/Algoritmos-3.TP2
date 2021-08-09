@@ -6,6 +6,7 @@ import edu.fiuba.algo3.Controlador.handlers.HandlerDePais;
 import edu.fiuba.algo3.modelo.Batalla.Ejercitos;
 import edu.fiuba.algo3.modelo.Batalla.Pais;
 import edu.fiuba.algo3.modelo.Cartas.Carta;
+import edu.fiuba.algo3.modelo.Excepciones.CanjesError;
 import edu.fiuba.algo3.modelo.Excepciones.ColocacionEjercitoError;
 import edu.fiuba.algo3.modelo.Objetivos.Objetivo;
 import edu.fiuba.algo3.vista.Botones.BotonMostrarObjetivo;
@@ -106,13 +107,14 @@ public class Jugador {
 
 
     public void canjearCartas(Carta primeraCarta, Carta segundaCarta, Carta terceraCarta) {
-            this.inventarioDeJugador.canjearCartas(primeraCarta, segundaCarta, terceraCarta);
+        this.inventarioDeJugador.canjearCartas(primeraCarta, segundaCarta, terceraCarta);
     }
 
     public void canjearCarta(Carta unaCarta) {
         if(this.puedoCanjearLaCarta(unaCarta)){
             this.inventarioDeJugador.activarCarta(unaCarta);
         }
+        else throw new CanjesError("Debes tener a este pais para activarla");
     }
 
     public ArrayList<Pais> getPaisesOcupados() {
@@ -233,5 +235,9 @@ public class Jugador {
     public void atacarPaisDesdeAVisual(Pais paisOrigen, Pais paisDestino) {
         paisOrigen.atacarAVisual(paisDestino);
         this.verificarOcupacion(paisOrigen);
+    }
+
+    public boolean quedanFichas() {
+        return this.inventarioDeJugador.quedanFichas();
     }
 }

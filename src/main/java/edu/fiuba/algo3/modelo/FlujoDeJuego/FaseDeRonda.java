@@ -15,5 +15,6 @@ public interface FaseDeRonda {
 
     VentanaMenu prepararMenu();
 
+    public boolean puedoPasar();
 
 }

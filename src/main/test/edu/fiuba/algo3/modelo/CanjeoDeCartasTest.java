@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.Batalla.Pais;
 import edu.fiuba.algo3.modelo.Cartas.Carta;
+import edu.fiuba.algo3.modelo.Excepciones.CanjesError;
 import edu.fiuba.algo3.modelo.Excepciones.NoHayFuerzasRestantesError;
 import edu.fiuba.algo3.modelo.Excepciones.NoQuedanCartasError;
 import edu.fiuba.algo3.modelo.JuegoYJugador.InventarioDeJuego;
@@ -205,7 +206,7 @@ public class CanjeoDeCartasTest {
     }
 
     @Test
-    public void alCanjearUnaCartaDeUnPaisQueNoOcupaNoAumentanLasFuerzasEnEsePais(){
+    public void alCanjearUnaCartaDeUnPaisQueNoOcupaNoAumentanLasFuerzasEnEsePaisYLanzaExcepcion(){
 
         Jugador jugador1 = new Jugador(1);
         jugador1.agregarFichas(10);
@@ -215,14 +216,18 @@ public class CanjeoDeCartasTest {
         jugador1.ocupa(argentina);
         jugador1.recibirCarta(cartaFrancia);
 
-        jugador1.canjearCarta(cartaFrancia);
+        try{
+            jugador1.canjearCarta(cartaFrancia);
+        } catch (Exception e){
+            assertEquals(e.getClass(), CanjesError.class);
+        }
 
         //Compruebo que se haya llamado al metodo recibirFuerzasAliadas
         verify(argentina, times(0)).agregarEjercito(2);
     }
 
     @Test
-    public void alCanjearCartasQueNoTienenElMismoSimboloNoSeAgreganFichasAlJugador(){
+    public void alCanjearCartasQueNoTienenElMismoSimboloNoSeAgreganFichasAlJugadorYLanzaExcepcion(){
         Jugador jugador1 = new Jugador(1);
         Pais chile = new Pais("chile");
         Carta barcoUno = new Carta(new Pais("Francia"), "Barco");
@@ -235,8 +240,12 @@ public class CanjeoDeCartasTest {
         jugador1.recibirCarta(barcoUno);
         jugador1.recibirCarta(globoUno);
         jugador1.recibirCarta(globoDos);
+        try{
+            jugador1.canjearCartas(barcoUno, globoUno, globoDos);
+        } catch (Exception e){
+            assertEquals(e.getClass(), CanjesError.class);
+        }
 
-        jugador1.canjearCartas(barcoUno, globoUno, globoDos);
 
         Executable noTieneMasFichas = () -> {
             jugador1.agregarFichasA(1, chile);
@@ -246,15 +255,19 @@ public class CanjeoDeCartasTest {
     }
 
     @Test
-    public void siSeCanjeaDosVecesUnaMismaCartaLaSegundaVezNoSeSumanEjercitos(){
+    public void siSeCanjeaDosVecesUnaMismaCartaLaSegundaVezNoSeSumanEjercitosYLanzaExcepcion(){
         Jugador jugador1 = new Jugador(0);
         Pais argentina = this.armarMockPaisPara(jugador1);
         Carta cartaArgentina = new Carta(argentina, "Globo");
         jugador1.agregarFichas(1);
         jugador1.ocupa(argentina);
         jugador1.recibirCarta(cartaArgentina);
-        jugador1.canjearCarta(cartaArgentina);
-        jugador1.canjearCarta(cartaArgentina);
+
+        try{
+            jugador1.canjearCarta(cartaArgentina);
+        } catch (Exception e){
+            assertEquals(e.getClass(), CanjesError.class);
+        }
 
         verify(argentina, times(1)).agregarEjercito(2);
 

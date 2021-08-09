@@ -1,14 +1,13 @@
 package edu.fiuba.algo3.modelo.FlujoDeJuego;
 
-import edu.fiuba.algo3.Controlador.Controlador;
 import edu.fiuba.algo3.Controlador.handlers.BotonAgregarEjercitoHandle;
 import edu.fiuba.algo3.Controlador.handlers.BoxCartaHandler;
 import edu.fiuba.algo3.Controlador.handlers.HandlerDeCarta;
 import edu.fiuba.algo3.Controlador.handlers.HandlerDePais;
+import edu.fiuba.algo3.modelo.Excepciones.ColocacionEjercitoError;
 import edu.fiuba.algo3.modelo.JuegoYJugador.InventarioDeJuego;
 import edu.fiuba.algo3.modelo.JuegoYJugador.Jugador;
 import edu.fiuba.algo3.Controlador.SeleccionJugador;
-import edu.fiuba.algo3.vista.Botones.BotonMostrarCartas;
 import edu.fiuba.algo3.vista.Elementos.TextoNotificable;
 import edu.fiuba.algo3.vista.ventanas.VentanaMenu;
 import edu.fiuba.algo3.vista.ventanas.VentanaMenuColocacion;
@@ -68,6 +67,12 @@ public class FaseColocarEjercitos implements FaseDeRonda {
 
         return menuAPreparar;
 
+    }
+
+    @Override
+    public boolean puedoPasar() {
+        if(!this.jugadorEnTurno.quedanFichas()) return true;
+        else throw new ColocacionEjercitoError("Aun quedan fichas por colocar");
     }
 
     private void agregarBotonObjetivo(VentanaMenu menu){

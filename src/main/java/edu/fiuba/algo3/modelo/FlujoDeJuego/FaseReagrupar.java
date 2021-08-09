@@ -66,5 +66,10 @@ public class FaseReagrupar implements FaseDeRonda {
         menu.getChildren().add(botonObjetivo);
     }
 
+    @Override
+    public boolean puedoPasar() {
+        return true;
+    }
+
 
 }

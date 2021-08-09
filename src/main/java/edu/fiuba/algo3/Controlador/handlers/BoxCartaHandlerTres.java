@@ -3,8 +3,10 @@ package edu.fiuba.algo3.Controlador.handlers;
 import edu.fiuba.algo3.modelo.Cartas.Carta;
 import edu.fiuba.algo3.modelo.JuegoYJugador.Jugador;
 import edu.fiuba.algo3.vista.Elementos.TextoNotificable;
+import edu.fiuba.algo3.vista.ventanas.VentanaDePapel;
 import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -48,7 +50,8 @@ public class BoxCartaHandlerTres implements HandlerDeCarta{
             stage.close();
             jugador.mostrarCartas();
         } catch (Exception exception){
-            manejarErrorDeAtaque(exception);
+            this.textoDeError.setText(exception.getMessage());
+            mostrarError();
         }
     }
 
@@ -56,7 +59,15 @@ public class BoxCartaHandlerTres implements HandlerDeCarta{
         this.textoDeError.setText("");
     }
 
-    private void manejarErrorDeAtaque(Exception excepcion){
-        this.textoDeError.setText("Carta Ya Activada");
+    private void mostrarError(){
+        VentanaDePapel ventana = new VentanaDePapel(textoDeError);
+        ventana.prepararFondo(200,500);
+
+        Scene scena = new Scene(ventana);
+        Stage popUpDeCarta = new Stage();
+
+
+        popUpDeCarta.setScene(scena);
+        popUpDeCarta.show();
     }
 }

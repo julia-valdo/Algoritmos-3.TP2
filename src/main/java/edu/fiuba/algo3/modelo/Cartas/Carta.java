@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo.Cartas;
 
 import edu.fiuba.algo3.Controlador.handlers.HandlerDeCarta;
 import edu.fiuba.algo3.modelo.Batalla.Pais;
+import edu.fiuba.algo3.modelo.Excepciones.CanjesError;
 import edu.fiuba.algo3.vista.Elementos.BoxCarta;
 
 import java.nio.charset.StandardCharsets;
@@ -62,10 +63,12 @@ public class Carta {
     }
 
     public void activarse() {
-        this.estadoCarta = this.estadoCarta.activarseEn(this.pais);
+
         if(this.estadoCarta.estaActivada()){
-            this.boxCarta.meActive();
+            throw new CanjesError("La carta esta Activada");
         }
+        this.estadoCarta = this.estadoCarta.activarseEn(this.pais);
+        this.boxCarta.meActive();
     }
 
     public void devolverAlMazo(){

@@ -61,10 +61,16 @@ public class FaseAtacar implements FaseDeRonda {
         return menuAPreparar;
     }
 
+    @Override
+    public boolean puedoPasar() {
+        return true;
+    }
+
     private void agregarBotonObjetivo(VentanaMenu menu){
         Node botonObjetivo = this.jugadorEnTurno.prepararObjetivo();
         botonObjetivo.setTranslateX(905);
         botonObjetivo.setTranslateY(70);
         menu.getChildren().add(botonObjetivo);
     }
+
 }
